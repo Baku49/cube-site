@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>カードリスト | デュエマパワドラ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0e13; --bg2:#12151d; --panel:#171b25; --panel2:#1d222e;
+  --line:#2a3040; --text:#e8e4d8; --muted:#9a94a8; --gold:#c9a86a; --gold2:#e3c98f;
+  --w:#f5f0d8; --u:#4f9edb; --b:#a48ac2; --r:#e05b4b; --g:#57a05e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.9;}
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mana-strip{height:4px;background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+header.site{position:sticky;top:0;z-index:50;background:rgba(12,14,19,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.site-inner{max-width:1040px;margin:0 auto;padding:.6rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.brand{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.1em;color:var(--gold2);white-space:nowrap;line-height:1.3}
+.brand .sub{font-size:.62rem;color:var(--muted);letter-spacing:.22em;display:block}
+.cube-switch{display:flex;align-items:center;gap:.5rem}
+.cube-switch select{background:var(--panel);color:var(--gold2);border:1px solid var(--line);
+  border-radius:8px;padding:.35rem .6rem;font-size:.92rem;font-family:inherit;cursor:pointer}
+.cube-switch select:focus{outline:none;border-color:var(--gold)}
+nav.main{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto;align-items:center}
+nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem}
+nav.main a:hover{background:var(--panel2);text-decoration:none}
+nav.main a.active{background:var(--panel2);color:var(--gold2);border:1px solid var(--line)}
+nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default}
+.badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
+  padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
+main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;
+  background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
+  margin:.2rem 0 .6rem;color:var(--gold2);}
+.hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
+h1.page{font-family:"Shippori Mincho",serif;font-size:1.9rem;letter-spacing:.1em;
+  color:var(--gold2);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:.5rem 0 1.2rem}
+.updated{color:var(--muted);font-size:.82rem;margin-bottom:1.6rem}
+/* ---- article (rules) ---- */
+article.doc h1{font-family:"Shippori Mincho",serif;font-size:1.45rem;color:var(--gold2);
+  letter-spacing:.06em;margin:2.6rem 0 1rem;padding:.5rem .9rem;
+  background:linear-gradient(90deg,var(--panel) 0%,transparent 100%);
+  border-left:4px solid var(--gold);border-radius:3px;}
+article.doc h2{font-family:"Shippori Mincho",serif;font-size:1.2rem;color:var(--gold2);
+  margin:2rem 0 .8rem;padding-left:.7rem;border-left:3px solid var(--u);}
+article.doc h3{font-size:1.05rem;color:var(--text);margin:1.6rem 0 .6rem;
+  padding-left:.7rem;border-left:3px solid var(--r);}
+article.doc h4{font-size:1rem;color:var(--gold2);margin:1.4rem 0 .4rem;}
+article.doc p{margin:.55rem 0}
+article.doc strong{color:var(--gold2)}
+article.doc a{border-bottom:1px dotted var(--gold)}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:1rem 1.4rem;margin:0 0 1.5rem;}
+.toc .toc-title{font-size:.8rem;letter-spacing:.25em;color:var(--muted);margin-bottom:.5rem}
+.toc ol{margin:0;padding-left:1.2rem}
+.toc li{margin:.15rem 0;font-size:.95rem}
+.toc ol ol{padding-left:1.1rem;font-size:.9rem}
+/* ---- cards (top page) ---- */
+.cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
+.cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
+  letter-spacing:.08em;color:var(--gold2)}
+.cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{font-size:.72rem;padding:.15rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.45rem 1rem;border-radius:8px;font-size:.9rem;
+  border:1px solid var(--gold);color:var(--gold2)}
+.btn:hover{background:var(--gold);color:#14100a;text-decoration:none}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{background:var(--panel2);color:var(--text)}
+.btn.disabled{border-color:var(--line);color:var(--muted);pointer-events:none}
+.cube-card.coming{opacity:.6}
+/* ---- 準備中 ---- */
+.wip{background:var(--panel);border:1px dashed var(--line);border-radius:14px;
+  text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
+.wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
+  letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- glossary ---- */
+.g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.g-search{width:100%;padding:.65rem 1rem;font-size:1rem;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text);outline:none}
+.g-search:focus{border-color:var(--gold)}
+.g-cats{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.6rem}
+.g-cat{padding:.28rem .8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.g-cat.active{border-color:var(--gold);color:var(--gold2);background:var(--panel2)}
+.g-count{color:var(--muted);font-size:.82rem;margin:.5rem 0 1rem}
+.g-section-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.25rem;
+  letter-spacing:.08em;margin:2rem 0 .4rem;padding-left:.7rem;border-left:4px solid var(--gold)}
+.g-section-note{color:var(--muted);font-size:.88rem;margin:0 0 1rem;padding-left:.9rem}
+.entry{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:.9rem 1.2rem;margin:.6rem 0;}
+.entry dt{font-weight:700;color:var(--gold2);font-size:1.02rem;margin-bottom:.25rem}
+.entry dd{margin:0;color:var(--text);font-size:.95rem;line-height:1.85}
+.hidden{display:none}
+footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;
+  text-align:center;padding:1.6rem 1rem 2.2rem;}
+@media(max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:1.7rem}
+  .site-inner{padding:.6rem .8rem;gap:.6rem}
+  nav.main{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="mana-strip"></div>
+<header class="site">
+  <div class="site-inner">
+    <a href="../index.html" style="text-decoration:none"><div class="brand">キューブドラフト保管庫<span class="sub">CUBE DRAFT ARCHIVE</span></div></a>
+    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html" selected>デュエマパワドラ</option></select></div>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><span class="disabled">ルール<span class="badge">準備中</span></span><span class="disabled">用語集<span class="badge">準備中</span></span><a href="cards.html" class="active">カードリスト</a></nav>
+  </div>
+</header>
+
+<main>
+<h1 class="page">デュエマパワドラ カードリスト</h1>
+<div class="wip">
+  <div class="wip-mark">─ 準備中 ─</div>
+  <p>カードリストのページは現在準備中です。<br>公開までしばらくお待ちください。</p>
+  
+</div>
+</main>
+<footer class="site">
+  最終更新日: 2026年07月28日<br>
+  本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
+</footer>
+</body>
+</html>
