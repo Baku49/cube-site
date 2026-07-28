@@ -279,8 +279,24 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 (function(){
 const CATS = [
   ["White","白"],["Blue","青"],["Black","黒"],["Red","赤"],["Green","緑"],
-  ["Multicolored","多色"],["Colorless","無色"],["Lands","土地"],["Hybrid","混成"]
+  ["Multicolored","多色"],["Colorless","無色"]
 ];
+const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
+function typePri(c){
+  const tl = [c.type_line||"", ...(c.faces||[]).map(f=>f.type_line||"")].join(" // ");
+  for(let i=0;i<TYPE_PRI.length;i++){ if(tl.includes(TYPE_PRI[i])) return i; }
+  return TYPE_PRI.length;
+}
+const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
+  "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
+  "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
+function ciIdx(c){ const i = CI_ORDER.indexOf(c.ci||""); return i<0 ? CI_ORDER.length : i; }
+function cardCmp(a,b){
+  if(a.cat==="Multicolored" && b.cat==="Multicolored"){
+    const d = ciIdx(a)-ciIdx(b); if(d) return d;
+  }
+  return typePri(a)-typePri(b) || (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:(a.name>b.name?1:0));
+}
 let CARDS = [], OVR = {}, LOG = [], view = "img", query = "";
 
 function norm(s){
@@ -446,7 +462,7 @@ document.addEventListener("DOMContentLoaded", function(){
   ]).then(function(res){
     CARDS = res[0].cards;
     OVR = res[1]; LOG = res[2];
-    CARDS.sort(function(a,b){ return (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:1); });
+    CARDS.sort(cardCmp);
     document.getElementById("cl-meta").textContent = "最終更新日: "+(res[0].generated||"-")+" ｜ カードリストは Cube Cobra を元に Scryfall のデータで表示しています";
     render();
   }).catch(function(e){
