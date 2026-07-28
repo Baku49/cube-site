@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ルールエイドとヒント | デュエマパワドラ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0e13; --bg2:#12151d; --panel:#171b25; --panel2:#1d222e;
+  --line:#2a3040; --text:#e8e4d8; --muted:#9a94a8; --gold:#c9a86a; --gold2:#e3c98f;
+  --w:#f5f0d8; --u:#4f9edb; --b:#a48ac2; --r:#e05b4b; --g:#57a05e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.9;}
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mana-strip{height:4px;background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+header.site{position:sticky;top:0;z-index:50;background:rgba(12,14,19,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.site-inner{max-width:1040px;margin:0 auto;padding:.6rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.brand{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.1em;color:var(--gold2);white-space:nowrap;line-height:1.3}
+.brand .sub{font-size:.62rem;color:var(--muted);letter-spacing:.22em;display:block}
+.cube-switch{display:flex;align-items:center;gap:.5rem}
+.cube-switch select{background:var(--panel);color:var(--gold2);border:1px solid var(--line);
+  border-radius:8px;padding:.35rem .6rem;font-size:.92rem;font-family:inherit;cursor:pointer}
+.cube-switch select:focus{outline:none;border-color:var(--gold)}
+nav.main{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto;align-items:center}
+nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem}
+nav.main a:hover{background:var(--panel2);text-decoration:none}
+nav.main a.active{background:var(--panel2);color:var(--gold2);border:1px solid var(--line)}
+nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default}
+.badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
+  padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
+main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;position:relative;
+  background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero.art{background-size:cover;background-position:center 30%;
+  padding:4.6rem 1.2rem 3.4rem;border-bottom:1px solid var(--line);}
+.hero.art h1,.hero.art p{text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 4px rgba(0,0,0,.9)}
+.hero.art p{color:#d9d3c2}
+.hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
+  margin:.2rem 0 .6rem;color:var(--gold2);}
+.hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
+h1.page{font-family:"Shippori Mincho",serif;font-size:1.9rem;letter-spacing:.1em;
+  color:var(--gold2);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:.5rem 0 1.2rem}
+.updated{color:var(--muted);font-size:.82rem;margin-bottom:1.6rem}
+/* ---- article (rules) ---- */
+article.doc h1{font-family:"Shippori Mincho",serif;font-size:1.45rem;color:var(--gold2);
+  letter-spacing:.06em;margin:2.6rem 0 1rem;padding:.5rem .9rem;
+  background:linear-gradient(90deg,var(--panel) 0%,transparent 100%);
+  border-left:4px solid var(--gold);border-radius:3px;}
+article.doc h2{font-family:"Shippori Mincho",serif;font-size:1.2rem;color:var(--gold2);
+  margin:2rem 0 .8rem;padding-left:.7rem;border-left:3px solid var(--u);}
+article.doc h3{font-size:1.05rem;color:var(--text);margin:1.6rem 0 .6rem;
+  padding-left:.7rem;border-left:3px solid var(--r);}
+article.doc h4{font-size:1rem;color:var(--gold2);margin:1.4rem 0 .4rem;}
+article.doc p{margin:.55rem 0}
+article.doc strong{color:var(--gold2)}
+article.doc a{border-bottom:1px dotted var(--gold)}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:1rem 1.4rem;margin:0 0 1.5rem;}
+.toc .toc-title{font-size:.8rem;letter-spacing:.25em;color:var(--muted);margin-bottom:.5rem}
+.toc ol{margin:0;padding-left:1.2rem}
+.toc li{margin:.15rem 0;font-size:.95rem}
+.toc ol ol{padding-left:1.1rem;font-size:.9rem}
+/* ---- cards (top page) ---- */
+.cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
+.cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;z-index:2;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.card-art{height:130px;margin:-1.4rem -1.5rem 1rem;background-size:cover;background-position:center 30%;
+  border-bottom:1px solid var(--line);}
+.cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
+  letter-spacing:.08em;color:var(--gold2)}
+.cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{font-size:.72rem;padding:.15rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.45rem 1rem;border-radius:8px;font-size:.9rem;
+  border:1px solid var(--gold);color:var(--gold2)}
+.btn:hover{background:var(--gold);color:#14100a;text-decoration:none}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{background:var(--panel2);color:var(--text)}
+.btn.disabled{border-color:var(--line);color:var(--muted);pointer-events:none}
+.cube-card.coming{opacity:.6}
+/* ---- 準備中 ---- */
+.wip{background:var(--panel);border:1px dashed var(--line);border-radius:14px;
+  text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
+.wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
+  letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- summary ---- */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.sum-span2{grid-column:1/-1}
+.sum-panel{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.3rem 1.5rem;position:relative;overflow:hidden}
+.sum-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.sum-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.2rem;
+  letter-spacing:.08em;margin:.3rem 0 .9rem;display:flex;align-items:center;gap:.5rem}
+.sum-num{color:var(--gold)}
+.sum-note{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.sum-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem}
+.sum-stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  text-align:center;padding:1rem .6rem}
+.sum-stat .v{font-family:"Shippori Mincho",serif;font-size:1.7rem;color:var(--gold2);line-height:1.2}
+.sum-stat .l{color:var(--muted);font-size:.82rem;margin-top:.3rem;line-height:1.5}
+.sum-list{margin:.4rem 0;padding-left:1.3rem}
+.sum-list li{margin:.25rem 0}
+.sum-em{color:var(--gold2);font-weight:700}
+.sum-formula{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;
+  padding:.7rem 1rem;text-align:center;color:var(--gold2);font-weight:700;letter-spacing:.02em}
+.sum-sub{color:var(--muted);margin:.8rem 0 .2rem}
+.sum-banner{margin-top:1rem;background:linear-gradient(90deg,#2a1e1e,#1d1622);
+  border:1px solid var(--r);border-radius:10px;padding:.8rem 1rem;text-align:center;line-height:1.7}
+.sum-banner strong{color:#f0b8a8}
+.sum-cards{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.9rem}
+.sum-cards img{width:130px;border-radius:7px;border:1px solid var(--line);
+  box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.sum-cards-cap{align-items:flex-start}
+.sum-cards-cap figure{margin:0;width:170px}
+.sum-cards-cap img{width:150px}
+.sum-cards-cap figcaption{font-size:.74rem;color:var(--muted);line-height:1.6;margin-top:.4rem}
+.sum-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.sum-step{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.sum-step p{font-size:.92rem;margin:.45rem 0;line-height:1.75}
+.sum-step strong{color:var(--gold2)}
+.sum-step-head{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.05rem;
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;
+  border-radius:50%;border:1px solid var(--gold);color:var(--gold2);font-size:.95rem;flex:none}
+@media(max-width:760px){.sum-grid{grid-template-columns:1fr}}
+/* ---- glossary ---- */
+.g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.g-search{width:100%;padding:.65rem 1rem;font-size:1rem;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text);outline:none}
+.g-search:focus{border-color:var(--gold)}
+.g-cats{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.6rem}
+.g-cat{padding:.28rem .8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.g-cat.active{border-color:var(--gold);color:var(--gold2);background:var(--panel2)}
+.g-count{color:var(--muted);font-size:.82rem;margin:.5rem 0 1rem}
+.g-section-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.25rem;
+  letter-spacing:.08em;margin:2rem 0 .4rem;padding-left:.7rem;border-left:4px solid var(--gold)}
+.g-section-note{color:var(--muted);font-size:.88rem;margin:0 0 1rem;padding-left:.9rem}
+.entry{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:.9rem 1.2rem;margin:.6rem 0;}
+.entry dt{font-weight:700;color:var(--gold2);font-size:1.02rem;margin-bottom:.25rem}
+.entry dd{margin:0;color:var(--text);font-size:.95rem;line-height:1.85}
+.hidden{display:none}
+footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;
+  text-align:center;padding:1.6rem 1rem 2.2rem;}
+@media(max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:1.7rem}
+  .site-inner{padding:.6rem .8rem;gap:.6rem}
+  nav.main{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="mana-strip"></div>
+<header class="site">
+  <div class="site-inner">
+    <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
+    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html" selected>デュエマパワドラ</option></select></div>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="glossary.html">用語集</a><a href="aid.html" class="active">ルールエイドとヒント</a><a href="cards.html">カードリスト</a></nav>
+  </div>
+</header>
+
+<main>
+<h1 class="page">デュエマパワドラ ルールエイドとヒント</h1>
+<div class="updated">最終更新日: 2026年07月28日</div>
+<div class="toc"><div class="toc-title">目次</div><ol><li><a href="#sec1">ルールエイド</a><ol><li><a href="#sec2">ドラフト全般のルール</a></li><li><a href="#sec3">ゲームのルール</a></li></ol></li><li><a href="#sec4">ヒント</a><ol><li><a href="#sec5">概観</a></li><li><a href="#sec6">文明ごとの特色</a></li><li><a href="#sec7">多色で成立するアーキタイプ</a></li><li><a href="#sec8">構築の基礎</a></li></ol></li></li></ol></div>
+<article class="doc">
+<h1 id="sec1">ルールエイド</h1>
+<h2 id="sec2">ドラフト全般のルール</h2>
+<h3>どのデッキに入るか</h3>
+<p>サイキックorドラグハートorデュエルメイト→超次元ゾーン</p>
+<p>GR→超GR</p>
+<p>「滅亡の起源 零無」「禁断 ～封印されしX～」→ゲーム開始時にバトルゾーンに存在</p>
+<p>その他→メインデッキ</p>
+<h3>カードの裏面</h3>
+<p>サイキック・ドラグハート・「ゲーム開始時にバトルゾーンに存在するカード」には第2面以降がある</p>
+<p>第1面を確認できるときならいつでも、第2面以降を確認できる</p>
+<p>3D龍解や3D覚醒のカードには第3面があり、これらはドラフトの際はプロキシを使用している</p>
+<h3>特殊なドラフトルール</h3>
+<p>「メタルポンの助」(パワー1000の無色バニラGRクリーチャー)6枚が配布カード</p>
+<p>デュエリストをドラフトすると、対応するデュエルメイト3種を1枚ずつカードプールに加える</p>
+<p>複数の構成要素からなる「ゲーム開始時にバトルゾーンに存在するカード」をドラフトすると、他の構成要素を1枚ずつカードプールに加える</p>
+<h3>デッキ枚数</h3>
+<p>40枚ちょうどのメインデッキ</p>
+<p>0～8枚の超次元デッキ：サイキック・ドラグハート・デュエルメイトが入る、公開</p>
+<p>0枚ちょうどまたは6枚ちょうどの超GR：GRが入る、非公開</p>
+<p>0～1組の「ゲーム開始時にバトルゾーンに存在するカード」(メインデッキの枚数には数えない)</p>
+<h2 id="sec3">ゲームのルール</h2>
+<h3>開始時</h3>
+<p>初期手札5枚</p>
+<p>マリガンなし</p>
+<p>初期シールド5枚</p>
+<p>先攻ドローなし</p>
+<h3>ステップ進行</h3>
+<p>ターン開始ステップ</p>
+<p>ドローステップ</p>
+<p>マナチャージステップ</p>
+<p>メインステップ</p>
+<p>攻撃ステップ</p>
+<p>ターン終了ステップ</p>
+<h3>カードタイプ</h3>
+<p>クリーチャー</p>
+<p>呪文</p>
+<p>クロスギア：装備品、出したあとでさらにコストを払うとクリーチャーにクロスできる</p>
+<p>城：シールドに重ねたり、自身が表向きでシールドになることで効果を発揮する</p>
+<p>D2フィールド：各プレイヤー1つしかコントロールできない</p>
+<p>オレガ・オーラ：GRクリーチャーにつける形でしかバトルゾーンに存在できない</p>
+<p>タマシード：クリーチャーではないが、単独でバトルゾーンに存在できる</p>
+<p>デュエリスト：1ターンに1度、自分のマナの数以下のコストを持つ対応するデュエルメイトを超次元ゾーンから踏み倒す</p>
+<h3>戦闘周りの仕様</h3>
+<p>戦闘ステップに、1体ずつクリーチャーをタップして攻撃する</p>
+<p>攻撃する時、相手プレイヤー自身か、タップ状態の相手クリーチャーを攻撃対象として選ぶ</p>
+<p>その後、防御プレイヤーはブロッカーを持つクリーチャーでブロックし、攻撃対象をそのブロッカーに変更できる</p>
+<p>プレイヤーへの攻撃であるなら、シールドをブレイクする</p>
+<p>シールドが0枚のプレイヤーに攻撃すると、攻撃を受けたプレイヤーは敗北する</p>
+<p>クリーチャーへの攻撃であるなら、その2体はバトルし、パワーが小さい方が破壊される(同じパワーなら両方が破壊できる)</p>
+<h3>ブレイク</h3>
+<p>ブレイクする側はブレイクするシールドを決める</p>
+<p>複数枚ブレイクした場合、全てを同時にブレイクする</p>
+<p>S・トリガーがその中にあれば、手札に加わる前に公開に唱えるものを全て公開し、唱える側が選んだ順番で唱える(唱えなくてもよい)</p>
+<h3>置換効果</h3>
+<p>デュエマのルールの特徴として、置換効果をさらに置換することはできない</p>
+<p>また、単一のイベントに対して複数の置換効果が働くなら、ターンプレイヤーのものを優先する</p>
+<p>1人のプレイヤーによる置換効果が複数あるなら、そのプレイヤーはどの置換効果を適用するか選ぶ</p>
+<h3>空撃ち</h3>
+<p>空撃ちは認められている</p>
+<p>処理できる部分のみを処理する</p>
+<h3>「エレメント」と「カード」</h3>
+<p>エレメントとは、バトルゾーンにあるクリーチャー・タマシード・クロスギア・ウェポン・フォートレス・フィールド・オーラ</p>
+<p>カードは、さらに封印も含む</p>
+<p>マナゾーンやシールドゾーンのカードはどちらにも含まれない</p>
+<p>エレメントを対象としている場合、進化クリーチャーは全体で1つのオブジェクトとして扱うが、カードを対象としている場合、一番上のカードだけを移動させ、残りは留まる</p>
+<h3>超次元ゾーン</h3>
+<p>超次元ゾーンに由来するカードは、バトルゾーンを離れれると超次元ゾーンに戻る</p>
+<p>超次元ゾーンのカードは「超次元ゾーンからプレイできる」効果を持つ一部のカード以外は、コストを払ってプレイすることはできない</p>
+<p>基本的には超次元ゾーンからカードを出す効果によってバトルゾーンに出す</p>
+<p>サイキックやドラグハートには裏面があるが、「メインの面」のようなものはなく、条件を満たしていればいきなりコストの大きい面を出すこともできる</p>
+<h3>超GR</h3>
+<p>超GRは裏向きかつシャッフルした状態で準備し、自分も表を見られない</p>
+<p>GR召喚すると、超GRの一番上のカードをマナを支払ったものとして召喚する</p>
+<p>GRがバトルゾーンを離れると、超GRの一番下に戻る</p>
+<h3>封印</h3>
+<p>封印が置かれているクリーチャーの存在は無視される</p>
+<p>コマンドをバトルゾーンに出したとき、そのコマンドと文明を共有しているクリーチャーに置かれている封印を1つ墓地に置く</p>
+<h3>「召喚」と「出す」</h3>
+<p>召喚：「手札から」「プレイする」ことによって出すこと（ただし、これ以外の方法であっても「召喚」とテキストに書いてあるのあれば「召喚」してバトルゾーンに出たものとして扱う）</p>
+<p>プレイして出す：手札以外からプレイした場合を含む</p>
+<p>出す：どんな方法であれ、別の領域からバトルゾーンに移動すること</p>
+<h1 id="sec4">ヒント</h1>
+<h2 id="sec5">概観</h2>
+<p>最速キルターンは3,4ターンくらい</p>
+<p>自然に到達できるマナ数の最大値は7くらい</p>
+<p>メタクリーチャーやSトリガーを多めに採用することでゲームレンジは多少伸ばせる</p>
+<h2 id="sec6">文明ごとの特色</h2>
+<p><strong>光</strong></p>
+<p>Sトリガー、ブロッカー、メタクリーチャーが最多で守りが硬い</p>
+<p>光のブロッカーを踏み倒す呪文や能力を多数有する</p>
+<p>除去方法はシールド送り</p>
+<p><strong>水</strong></p>
+<p>呪文の扱いに最も長けていて、呪文を踏み倒したり再利用するカードが多い</p>
+<p>山札からランダム性を持ってカードを踏み倒す効果がある</p>
+<p>また、手札増強に最も優れ、ドローとサーチが多い</p>
+<p>除去方法はバウンス</p>
+<p><strong>闇</strong></p>
+<p>手札破壊は闇にしかない</p>
+<p>また、墓地利用が最も得意であり、墓地から直接クリーチャーを出す能力は闇にしかない</p>
+<p>墓地利用のための墓地肥やし手段もある</p>
+<p>除去方法は破壊</p>
+<p><strong>火</strong></p>
+<p>1～2マナクリーチャーの質と数が最良</p>
+<p>火のコマンドを条件に侵略を行うことによる速攻デッキが可能</p>
+<p>メタクリーチャー・Sトリガーともに少なく、受けは最弱</p>
+<p>除去方法はパワーX以下を破壊/パワーの合計がX以下になるように選んで破壊</p>
+<p><strong>自然</strong></p>
+<p>マナ加速の質と量がともに最良</p>
+<p>マナからの踏み倒しやプレイが可能であり、大型クリーチャーを踏み倒したり、マナ操作を繰り返すコンボが可能</p>
+<p>山札からランダム性を持ってクリーチャーを踏み倒す効果がある</p>
+<p>除去方法はマナ送り</p>
+<h2 id="sec7">多色で成立するアーキタイプ</h2>
+<p>青赤：マジック革命チェンジ</p>
+<p>赤黒(+青緑)：墓地ソース</p>
+<p>赤黒(+青)：コマンド展開</p>
+<p>赤+α：ドラゴン革命チェンジ</p>
+<p>黒緑：オーラコンボ</p>
+<h2 id="sec8">構築の基礎</h2>
+<p>多色肯定の環境で、速攻デッキを組むのでない限り、3色以上が基本</p>
+<p>4、5色も多少の低速化に目を瞑れば十分可能</p>
+<p>多色カードの採用は多くても15枚くらいに抑えるべき</p>
+<p>Sトリガー(及びそれに準ずるもの)は8枚採用が基本ライン、相性が良いものがあればもっと増やそう</p>
+<p>2、3ターン目に最終地点までの準備を行えることが望ましい</p>
+<p>2、3ターン目をパスせざるを得ないような構築は避けるべき</p>
+<p>メタクリーチャーが致命的なデッキは除去やマッハファイターを最低限採用する</p>
+</article>
+</main>
+<footer class="site">
+  最終更新日: 2026年07月28日<br>
+  本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
+</footer>
+</body>
+</html>
