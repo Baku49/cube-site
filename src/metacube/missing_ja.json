@@ -1,0 +1,877 @@
+{
+ "no_japanese_printing": [
+  {
+   "set": "40k",
+   "cn": "175",
+   "name": "Marneus Calgar"
+  },
+  {
+   "set": "all",
+   "cn": "129",
+   "name": "Shield Sphere"
+  },
+  {
+   "set": "ath",
+   "cn": "77",
+   "name": "Strip Mine"
+  },
+  {
+   "set": "atq",
+   "cn": "43",
+   "name": "Candelabra of Tawnos"
+  },
+  {
+   "set": "cmb2",
+   "cn": "107",
+   "name": "Mirrored Lotus"
+  },
+  {
+   "set": "cm2",
+   "cn": "35",
+   "name": "Reveillark"
+  },
+  {
+   "set": "cmb2",
+   "cn": "102",
+   "name": "Slivdrazi Monstrosity"
+  },
+  {
+   "set": "cmb2",
+   "cn": "16",
+   "name": "Animate Spell"
+  },
+  {
+   "set": "cmb2",
+   "cn": "31",
+   "name": "Time Sidewalk"
+  },
+  {
+   "set": "cmb2",
+   "cn": "116",
+   "name": "Gold Mine"
+  },
+  {
+   "set": "cmb2",
+   "cn": "109",
+   "name": "Puresteel Angel"
+  },
+  {
+   "set": "eld",
+   "cn": "326",
+   "name": "Chulane, Teller of Tales"
+  },
+  {
+   "set": "eld",
+   "cn": "329",
+   "name": "Korvold, Fae-Cursed King"
+  },
+  {
+   "set": "fic",
+   "cn": "463",
+   "name": "Flash Photography"
+  },
+  {
+   "set": "gnt",
+   "cn": "5",
+   "name": "Avatar of Growth"
+  },
+  {
+   "set": "h1r",
+   "cn": "26",
+   "name": "The First Sliver"
+  },
+  {
+   "set": "hho",
+   "cn": "25",
+   "name": "Cheer"
+  },
+  {
+   "set": "ice",
+   "cn": "289",
+   "name": "Fire Covenant"
+  },
+  {
+   "set": "ice",
+   "cn": "116",
+   "name": "Burnt Offering"
+  },
+  {
+   "set": "ice",
+   "cn": "118",
+   "name": "Dance of the Dead"
+  },
+  {
+   "set": "ice",
+   "cn": "326",
+   "name": "Jeweled Amulet"
+  },
+  {
+   "set": "inr",
+   "cn": "183",
+   "name": "Zealous Conscripts"
+  },
+  {
+   "set": "inr",
+   "cn": "17",
+   "name": "Cathars' Crusade"
+  },
+  {
+   "set": "inr",
+   "cn": "268",
+   "name": "Metallic Mimic"
+  },
+  {
+   "set": "inr",
+   "cn": "59",
+   "name": "Deadeye Navigator"
+  },
+  {
+   "set": "inr",
+   "cn": "410",
+   "name": "Eldritch Evolution"
+  },
+  {
+   "set": "inr",
+   "cn": "90",
+   "name": "Temporal Mastery"
+  },
+  {
+   "set": "j15",
+   "cn": "1",
+   "name": "Temporal Manipulation"
+  },
+  {
+   "set": "ltc",
+   "cn": "544",
+   "name": "Galadriel's Dismissal"
+  },
+  {
+   "set": "ltc",
+   "cn": "553",
+   "name": "Call Forth the Tempest"
+  },
+  {
+   "set": "mar",
+   "cn": "91",
+   "name": "Iron Man, Titan of Innovation"
+  },
+  {
+   "set": "mb2",
+   "cn": "539",
+   "name": "Wisedrafter's Will"
+  },
+  {
+   "set": "mb2",
+   "cn": "588",
+   "name": "Wrenn and One"
+  },
+  {
+   "set": "mb2",
+   "cn": "608",
+   "name": "Mox Poison"
+  },
+  {
+   "set": "mb2",
+   "cn": "605",
+   "name": "Wrath of Leknif"
+  },
+  {
+   "set": "mh3",
+   "cn": "247",
+   "name": "Ral, Monsoon Mage // Ral, Leyline Prodigy"
+  },
+  {
+   "set": "mma",
+   "cn": "14",
+   "name": "Ethersworn Canonist"
+  },
+  {
+   "set": "mul",
+   "cn": "174",
+   "name": "Jegantha, the Wellspring"
+  },
+  {
+   "set": "mom",
+   "cn": "295",
+   "name": "Rona, Herald of Invasion // Rona, Tolarian Obliterator"
+  },
+  {
+   "set": "msc",
+   "cn": "707",
+   "name": "The Vision and Scarlet Witch"
+  },
+  {
+   "set": "msc",
+   "cn": "654",
+   "name": "Doctor Doom, Unrivaled"
+  },
+  {
+   "set": "msc",
+   "cn": "772",
+   "name": "Flash Thompson, Spider-Fan"
+  },
+  {
+   "set": "msc",
+   "cn": "694",
+   "name": "Karolina Dean, Runaway"
+  },
+  {
+   "set": "oc13",
+   "cn": "198",
+   "name": "Marath, Will of the Wild"
+  },
+  {
+   "set": "otc",
+   "cn": "247",
+   "name": "Ukkima, Stalking Shadow"
+  },
+  {
+   "set": "pf25",
+   "cn": "4",
+   "name": "Second City"
+  },
+  {
+   "set": "pbfz",
+   "cn": "17p",
+   "name": "Void Winnower"
+  },
+  {
+   "set": "ph21",
+   "cn": "4",
+   "name": "Ersta, Friend to All"
+  },
+  {
+   "set": "ph17",
+   "cn": "2",
+   "name": "Inzerva, Master of Insights"
+  },
+  {
+   "set": "ph19",
+   "cn": "5",
+   "name": "Myntasha, Honored One"
+  },
+  {
+   "set": "ph17",
+   "cn": "3",
+   "name": "M'Odo, the Gnarled Oracle"
+  },
+  {
+   "set": "ph22",
+   "cn": "5",
+   "name": "Wizard from Beyond"
+  },
+  {
+   "set": "phtr",
+   "cn": "3",
+   "name": "Nira, Hellkite Duelist"
+  },
+  {
+   "set": "prm",
+   "cn": "80919",
+   "name": "Gyruda, Doom of Depths"
+  },
+  {
+   "set": "prm",
+   "cn": "60450",
+   "name": "The Tabernacle at Pendrell Vale"
+  },
+  {
+   "set": "pmid",
+   "cn": "18p",
+   "name": "Fateful Absence"
+  },
+  {
+   "set": "q06",
+   "cn": "6",
+   "name": "Chandra, Torch of Defiance"
+  },
+  {
+   "set": "rex",
+   "cn": "42",
+   "name": "Permission Denied"
+  },
+  {
+   "set": "scd",
+   "cn": "151",
+   "name": "Mana Geyser"
+  },
+  {
+   "set": "sld",
+   "cn": "1127",
+   "name": "Demonic Consultation"
+  },
+  {
+   "set": "sld",
+   "cn": "1742",
+   "name": "Storm, Force of Nature"
+  },
+  {
+   "set": "sld",
+   "cn": "1753",
+   "name": "Deadpool, Trading Card"
+  },
+  {
+   "set": "sld",
+   "cn": "2082",
+   "name": "Knuckles the Echidna"
+  },
+  {
+   "set": "sld",
+   "cn": "2198",
+   "name": "Joel, Resolute Survivor"
+  },
+  {
+   "set": "sld",
+   "cn": "2203",
+   "name": "Ellie, Vengeful Hunter"
+  },
+  {
+   "set": "slx",
+   "cn": "6",
+   "name": "Othelm, Sigardian Outcast"
+  },
+  {
+   "set": "slx",
+   "cn": "4",
+   "name": "Elmar, Ulvenwald Informant"
+  },
+  {
+   "set": "slx",
+   "cn": "7",
+   "name": "Sophina, Spearsage Deserter"
+  },
+  {
+   "set": "slx",
+   "cn": "2",
+   "name": "Bjorna, Nightfall Alchemist"
+  },
+  {
+   "set": "slx",
+   "cn": "5",
+   "name": "Hargilde, Kindly Runechanter"
+  },
+  {
+   "set": "slx",
+   "cn": "8",
+   "name": "Wernog, Rider's Chaplain"
+  },
+  {
+   "set": "sos",
+   "cn": "245",
+   "name": "Witherbloom, the Balancer"
+  },
+  {
+   "set": "sos",
+   "cn": "259",
+   "name": "Petrified Hamlet"
+  },
+  {
+   "set": "ugl",
+   "cn": "70",
+   "name": "Blacker Lotus"
+  },
+  {
+   "set": "ugl",
+   "cn": "77",
+   "name": "Mirror Mirror"
+  },
+  {
+   "set": "ugl",
+   "cn": "75",
+   "name": "Jack-in-the-Mox"
+  },
+  {
+   "set": "ulst",
+   "cn": "7",
+   "name": "Rules Lawyer"
+  },
+  {
+   "set": "und",
+   "cn": "33",
+   "name": "Booster Tutor"
+  },
+  {
+   "set": "und",
+   "cn": "29",
+   "name": "Topsy Turvy"
+  },
+  {
+   "set": "unf",
+   "cn": "118",
+   "name": "Opening Ceremony"
+  },
+  {
+   "set": "unf",
+   "cn": "149",
+   "name": "Pair o' Dice Lost"
+  },
+  {
+   "set": "unf",
+   "cn": "107",
+   "name": "_____ Goblin"
+  },
+  {
+   "set": "und",
+   "cn": "9",
+   "name": "Look at Me, I'm R&D"
+  },
+  {
+   "set": "unf",
+   "cn": "166",
+   "name": "Comet, Stellar Pup"
+  },
+  {
+   "set": "unf",
+   "cn": "199",
+   "name": "Urza's Fun House"
+  },
+  {
+   "set": "unf",
+   "cn": "190",
+   "name": "Park Map"
+  },
+  {
+   "set": "unf",
+   "cn": "16",
+   "name": "Katerina of Myra's Marvels"
+  },
+  {
+   "set": "unf",
+   "cn": "20",
+   "name": "Now You See Me . . ."
+  },
+  {
+   "set": "unf",
+   "cn": "82",
+   "name": "Nocturno of Myra's Marvels"
+  },
+  {
+   "set": "unh",
+   "cn": "60",
+   "name": "Necro-Impotence"
+  },
+  {
+   "set": "ust",
+   "cn": "136",
+   "name": "Urza, Academy Headmaster"
+  },
+  {
+   "set": "ust",
+   "cn": "40",
+   "name": "More or Less"
+  },
+  {
+   "set": "ust",
+   "cn": "74",
+   "name": "Summon the Pack"
+  },
+  {
+   "set": "vma",
+   "cn": "208",
+   "name": "Eureka"
+  },
+  {
+   "set": "vma",
+   "cn": "192",
+   "name": "Wheel of Fortune"
+  },
+  {
+   "set": "vma",
+   "cn": "209",
+   "name": "Fastbond"
+  },
+  {
+   "set": "vma",
+   "cn": "305",
+   "name": "Mishra's Workshop"
+  },
+  {
+   "set": "vma",
+   "cn": "303",
+   "name": "Library of Alexandria"
+  },
+  {
+   "set": "vma",
+   "cn": "3",
+   "name": "Timetwister"
+  },
+  {
+   "set": "vma",
+   "cn": "294",
+   "name": "Bazaar of Baghdad"
+  },
+  {
+   "set": "ytdm",
+   "cn": "1",
+   "name": "Lam, Storm Crane Elder"
+  }
+ ],
+ "ja_but_no_printed_text": [
+  {
+   "set": "5ed",
+   "cn": "406",
+   "name": "Urza's Bauble",
+   "ja": "ウルザのガラクタ"
+  },
+  {
+   "set": "5ed",
+   "cn": "140",
+   "name": "Animate Dead",
+   "ja": "動く死体"
+  },
+  {
+   "set": "6ed",
+   "cn": "322",
+   "name": "Crystal Vein",
+   "ja": "水晶鉱脈"
+  },
+  {
+   "set": "6ed",
+   "cn": "121",
+   "name": "Doomsday",
+   "ja": "最後の審判"
+  },
+  {
+   "set": "6ed",
+   "cn": "19",
+   "name": "Enlightened Tutor",
+   "ja": "悟りの教示者"
+  },
+  {
+   "set": "6ed",
+   "cn": "269",
+   "name": "Worldly Tutor",
+   "ja": "俗世の教示者"
+  },
+  {
+   "set": "7ed",
+   "cn": "319",
+   "name": "Static Orb",
+   "ja": "静態の宝珠"
+  },
+  {
+   "set": "6ed",
+   "cn": "83",
+   "name": "Mystical Tutor",
+   "ja": "神秘の教示者"
+  },
+  {
+   "set": "7ed",
+   "cn": "182",
+   "name": "Final Fortune",
+   "ja": "最後の賭け"
+  },
+  {
+   "set": "cst",
+   "cn": "270",
+   "name": "Tinder Wall",
+   "ja": "ほくちの壁"
+  },
+  {
+   "set": "exo",
+   "cn": "72",
+   "name": "Recurring Nightmare",
+   "ja": "繰り返す悪夢"
+  },
+  {
+   "set": "exo",
+   "cn": "129",
+   "name": "Survival of the Fittest",
+   "ja": "適者生存"
+  },
+  {
+   "set": "exo",
+   "cn": "139",
+   "name": "Sphere of Resistance",
+   "ja": "抵抗の宝球"
+  },
+  {
+   "set": "exo",
+   "cn": "55",
+   "name": "Culling the Weak",
+   "ja": "弱者選別"
+  },
+  {
+   "set": "inv",
+   "cn": "233",
+   "name": "Aura Shards",
+   "ja": "オーラの破片"
+  },
+  {
+   "set": "inv",
+   "cn": "237",
+   "name": "Captain Sisay",
+   "ja": "艦長シッセイ"
+  },
+  {
+   "set": "mir",
+   "cn": "141",
+   "name": "Shallow Grave",
+   "ja": "浅すぎる墓穴"
+  },
+  {
+   "set": "mir",
+   "cn": "307",
+   "name": "Lion's Eye Diamond",
+   "ja": "ライオンの瞳のダイアモンド"
+  },
+  {
+   "set": "mmq",
+   "cn": "246",
+   "name": "Food Chain",
+   "ja": "食物連鎖"
+  },
+  {
+   "set": "mmq",
+   "cn": "129",
+   "name": "Dark Ritual",
+   "ja": "暗黒の儀式"
+  },
+  {
+   "set": "mmq",
+   "cn": "162",
+   "name": "Snuff Out",
+   "ja": "殺し"
+  },
+  {
+   "set": "nem",
+   "cn": "139",
+   "name": "Tangle Wire",
+   "ja": "からみつく鉄線"
+  },
+  {
+   "set": "ody",
+   "cn": "329",
+   "name": "Tarnished Citadel",
+   "ja": "色あせた城塞"
+  },
+  {
+   "set": "ody",
+   "cn": "159",
+   "name": "Sadistic Hypnotist",
+   "ja": "サディストの催眠術師"
+  },
+  {
+   "set": "ons",
+   "cn": "73",
+   "name": "Chain of Vapor",
+   "ja": "蒸気の連鎖"
+  },
+  {
+   "set": "pcy",
+   "cn": "45",
+   "name": "Rhystic Study",
+   "ja": "リスティックの研究"
+  },
+  {
+   "set": "pls",
+   "cn": "106",
+   "name": "Eladamri's Call",
+   "ja": "エラダムリーの呼び声"
+  },
+  {
+   "set": "plg24",
+   "cn": "3J",
+   "name": "Cut Down",
+   "ja": null
+  },
+  {
+   "set": "sld",
+   "cn": "1599",
+   "name": "Child of Alara",
+   "ja": null
+  },
+  {
+   "set": "sld",
+   "cn": "1597★",
+   "name": "Azusa, Lost but Seeking",
+   "ja": null
+  },
+  {
+   "set": "sth",
+   "cn": "138",
+   "name": "Mox Diamond",
+   "ja": "モックス・ダイアモンド"
+  },
+  {
+   "set": "tdm",
+   "cn": "5",
+   "name": "Clarion Conqueror",
+   "ja": null
+  },
+  {
+   "set": "tmp",
+   "cn": "116",
+   "name": "Corpse Dance",
+   "ja": "死体のダンス"
+  },
+  {
+   "set": "tmp",
+   "cn": "151",
+   "name": "Reanimate",
+   "ja": "再活性"
+  },
+  {
+   "set": "tmp",
+   "cn": "294",
+   "name": "Lotus Petal",
+   "ja": "水蓮の花びら"
+  },
+  {
+   "set": "tmp",
+   "cn": "222",
+   "name": "Earthcraft",
+   "ja": "大地の知識"
+  },
+  {
+   "set": "tmp",
+   "cn": "70",
+   "name": "Intuition",
+   "ja": "直観"
+  },
+  {
+   "set": "tor",
+   "cn": "77",
+   "name": "Putrid Imp",
+   "ja": "朽ちゆくインプ"
+  },
+  {
+   "set": "tor",
+   "cn": "51",
+   "name": "Cabal Ritual",
+   "ja": "陰謀団の儀式"
+  },
+  {
+   "set": "uds",
+   "cn": "9",
+   "name": "Flicker",
+   "ja": "ちらつき"
+  },
+  {
+   "set": "uds",
+   "cn": "75",
+   "name": "Yawgmoth's Bargain",
+   "ja": "ヨーグモスの取り引き"
+  },
+  {
+   "set": "uds",
+   "cn": "118",
+   "name": "Rofellos, Llanowar Emissary",
+   "ja": "ラノワールの使者ロフェロス"
+  },
+  {
+   "set": "uds",
+   "cn": "135",
+   "name": "Metalworker",
+   "ja": "金属細工師"
+  },
+  {
+   "set": "ulg",
+   "cn": "126",
+   "name": "Grim Monolith",
+   "ja": "厳かなモノリス"
+  },
+  {
+   "set": "ulg",
+   "cn": "129",
+   "name": "Memory Jar",
+   "ja": "記憶の壺"
+  },
+  {
+   "set": "ulg",
+   "cn": "38",
+   "name": "Palinchron",
+   "ja": "パリンクロン"
+  },
+  {
+   "set": "ulg",
+   "cn": "45",
+   "name": "Tinker",
+   "ja": "修繕"
+  },
+  {
+   "set": "usg",
+   "cn": "103",
+   "name": "Time Spiral",
+   "ja": "時のらせん"
+  },
+  {
+   "set": "usg",
+   "cn": "171",
+   "name": "Yawgmoth's Will",
+   "ja": "ヨーグモスの意志"
+  },
+  {
+   "set": "usg",
+   "cn": "151",
+   "name": "Rain of Filth",
+   "ja": "汚物の雨"
+  },
+  {
+   "set": "usg",
+   "cn": "134",
+   "name": "Exhume",
+   "ja": "死体発掘"
+  },
+  {
+   "set": "usg",
+   "cn": "321",
+   "name": "Gaea's Cradle",
+   "ja": "ガイアの揺籃の地"
+  },
+  {
+   "set": "usg",
+   "cn": "330",
+   "name": "Tolarian Academy",
+   "ja": "トレイリアのアカデミー"
+  },
+  {
+   "set": "usg",
+   "cn": "325",
+   "name": "Serra's Sanctum",
+   "ja": "セラの聖域"
+  },
+  {
+   "set": "usg",
+   "cn": "77",
+   "name": "Great Whale",
+   "ja": "巨大鯨"
+  },
+  {
+   "set": "usg",
+   "cn": "76",
+   "name": "Gilded Drake",
+   "ja": "金粉のドレイク"
+  },
+  {
+   "set": "vis",
+   "cn": "64",
+   "name": "Necromancy",
+   "ja": "ネクロマンシー"
+  },
+  {
+   "set": "wth",
+   "cn": "1",
+   "name": "Abeyance",
+   "ja": "中断"
+  },
+  {
+   "set": "wth",
+   "cn": "154",
+   "name": "Null Rod",
+   "ja": "無のロッド"
+  },
+  {
+   "set": "wth",
+   "cn": "166",
+   "name": "Scorched Ruins",
+   "ja": "焦土"
+  },
+  {
+   "set": "wth",
+   "cn": "165",
+   "name": "Lotus Vale",
+   "ja": "水蓮の谷間"
+  }
+ ]
+}
