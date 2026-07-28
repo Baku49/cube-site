@@ -48,7 +48,8 @@ CUBES = [
         "cardlist_label": None,
         "has_content": True,
         "src_dir": "dm-powdra",
-        "art": None,
+        "art": "dm_theme.webp",
+        "art_overlay": (".25", ".85"),
         "has_summary": False,
         "has_aid": True,
         "glossary_style": "dm",
@@ -537,8 +538,9 @@ def build_cube_index(cube):
   <p>このキューブの情報は現在準備中です。<br>公開までしばらくお待ちください。</p>
 </div>"""
     if cube.get("art"):
-        hero_open = ('<div class="hero art" style="background-image:linear-gradient(rgba(12,14,19,.45),'
-                     f'rgba(12,14,19,.94)),url(\'../assets/{cube["art"]}\')">')
+        ov1, ov2 = cube.get("art_overlay", (".45", ".94"))
+        hero_open = (f'<div class="hero art" style="background-image:linear-gradient(rgba(12,14,19,{ov1}),'
+                     f'rgba(12,14,19,{ov2})),url(\'../assets/{cube["art"]}\')">')
     else:
         hero_open = '<div class="hero">'
     body = f"""
