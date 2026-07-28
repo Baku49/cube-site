@@ -20,8 +20,8 @@ OUT.mkdir(exist_ok=True)
 
 UPDATED = datetime.date.today().strftime("%Y年%m月%d日")
 
-SITE_NAME = "キューブドラフト保管庫"
-SITE_SUB = "CUBE DRAFT ARCHIVE"
+SITE_NAME = "がくたそのキューブ"
+SITE_SUB = "GAKUTASO'S CUBE DRAFTS"
 
 # ---------------- キューブ定義 ----------------
 CUBES = [
@@ -34,6 +34,7 @@ CUBES = [
         "cardlist_label": "Cube Cobra",
         "has_content": True,
         "src_dir": "metacube",
+        "art": "art_crop.webp",
     },
     {
         "slug": "dm-powdra",
@@ -44,6 +45,7 @@ CUBES = [
         "cardlist_label": None,
         "has_content": False,
         "src_dir": None,
+        "art": None,
     },
 ]
 
@@ -80,8 +82,12 @@ nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;
 .badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
   padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
 main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
-.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;position:relative;
   background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero.art{background-size:cover;background-position:center 30%;
+  padding:4.6rem 1.2rem 3.4rem;border-bottom:1px solid var(--line);}
+.hero.art h1,.hero.art p{text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 4px rgba(0,0,0,.9)}
+.hero.art p{color:#d9d3c2}
 .hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
   margin:.2rem 0 .6rem;color:var(--gold2);}
 .hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
@@ -111,8 +117,10 @@ article.doc a{border-bottom:1px dotted var(--gold)}
 .cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
 .cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
   border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
-.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;z-index:2;
   background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.card-art{height:130px;margin:-1.4rem -1.5rem 1rem;background-size:cover;background-position:center 30%;
+  border-bottom:1px solid var(--line);}
 .cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
   letter-spacing:.08em;color:var(--gold2)}
 .cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
@@ -131,6 +139,47 @@ article.doc a{border-bottom:1px dotted var(--gold)}
   text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
 .wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
   letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- summary ---- */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.sum-span2{grid-column:1/-1}
+.sum-panel{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.3rem 1.5rem;position:relative;overflow:hidden}
+.sum-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.sum-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.2rem;
+  letter-spacing:.08em;margin:.3rem 0 .9rem;display:flex;align-items:center;gap:.5rem}
+.sum-num{color:var(--gold)}
+.sum-note{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.sum-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem}
+.sum-stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  text-align:center;padding:1rem .6rem}
+.sum-stat .v{font-family:"Shippori Mincho",serif;font-size:1.7rem;color:var(--gold2);line-height:1.2}
+.sum-stat .l{color:var(--muted);font-size:.82rem;margin-top:.3rem;line-height:1.5}
+.sum-list{margin:.4rem 0;padding-left:1.3rem}
+.sum-list li{margin:.25rem 0}
+.sum-em{color:var(--gold2);font-weight:700}
+.sum-formula{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;
+  padding:.7rem 1rem;text-align:center;color:var(--gold2);font-weight:700;letter-spacing:.02em}
+.sum-sub{color:var(--muted);margin:.8rem 0 .2rem}
+.sum-banner{margin-top:1rem;background:linear-gradient(90deg,#2a1e1e,#1d1622);
+  border:1px solid var(--r);border-radius:10px;padding:.8rem 1rem;text-align:center;line-height:1.7}
+.sum-banner strong{color:#f0b8a8}
+.sum-cards{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.9rem}
+.sum-cards img{width:130px;border-radius:7px;border:1px solid var(--line);
+  box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.sum-cards-cap{align-items:flex-start}
+.sum-cards-cap figure{margin:0;width:170px}
+.sum-cards-cap img{width:150px}
+.sum-cards-cap figcaption{font-size:.74rem;color:var(--muted);line-height:1.6;margin-top:.4rem}
+.sum-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.sum-step{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.sum-step p{font-size:.92rem;margin:.45rem 0;line-height:1.75}
+.sum-step strong{color:var(--gold2)}
+.sum-step-head{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.05rem;
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;
+  border-radius:50%;border:1px solid var(--gold);color:var(--gold2);font-size:.95rem;flex:none}
+@media(max-width:760px){.sum-grid{grid-template-columns:1fr}}
 /* ---- glossary ---- */
 .g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
   backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
@@ -184,6 +233,7 @@ def page(title, body, *, cube=None, active="", depth=0):
         items = []
         items.append(("index", f'{cube["slug"]}トップ' if False else "キューブトップ", "index.html", True))
         items.append(("rules", "ルール", "rules.html", cube["has_content"]))
+        items.append(("summary", "ルールサマリー", "summary.html", cube["has_content"]))
         items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
         items.append(("cards", "カードリスト", "cards.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
@@ -270,6 +320,21 @@ def build_rules(cube):
     out.mkdir(exist_ok=True)
     (out / "rules.html").write_text(
         page(f'ルール | {cube["name"]}', body, cube=cube, active="rules", depth=1), encoding="utf-8")
+
+
+# ---------------- メタキューブ: ルールサマリー ----------------
+def build_summary(cube):
+    frag = (SRC / cube["src_dir"] / "summary_content.html").read_text(encoding="utf-8")
+    body = f"""
+<main>
+<h1 class="page">{cube["name"]} ルールサマリー</h1>
+<div class="updated">最終更新日: {UPDATED} ｜ 統率者指定・固有色・対戦ルールの早見表</div>
+{frag}
+</main>"""
+    out = OUT / cube["slug"]
+    out.mkdir(exist_ok=True)
+    (out / "summary.html").write_text(
+        page(f'ルールサマリー | {cube["name"]}', body, cube=cube, active="summary", depth=1), encoding="utf-8")
 
 
 # ---------------- メタキューブ: 用語集 ----------------
@@ -413,6 +478,7 @@ def build_cube_index(cube):
     tags = "".join(f'<span class="tag">{t}</span>' for t in cube["tags"])
     if cube["has_content"]:
         btns = ('<a class="btn" href="rules.html">ルール</a>'
+                '<a class="btn" href="summary.html">ルールサマリー</a>'
                 '<a class="btn" href="glossary.html">用語集</a>'
                 '<a class="btn" href="cards.html">カードリスト</a>')
         if cube["cardlist_url"]:
@@ -426,8 +492,13 @@ def build_cube_index(cube):
   <div class="wip-mark">─ 準備中 ─</div>
   <p>このキューブの情報は現在準備中です。<br>公開までしばらくお待ちください。</p>
 </div>"""
+    if cube.get("art"):
+        hero_open = ('<div class="hero art" style="background-image:linear-gradient(rgba(12,14,19,.45),'
+                     f'rgba(12,14,19,.94)),url(\'../assets/{cube["art"]}\')">')
+    else:
+        hero_open = '<div class="hero">'
     body = f"""
-<div class="hero">
+{hero_open}
   <h1>{cube["name"]}</h1>
   <p>{cube["desc"]}</p>
 </div>
@@ -455,15 +526,17 @@ def build_site_index():
         else:
             btns = f'<a class="btn ghost" href="{c["slug"]}/index.html">キューブトップ(準備中)</a>'
             cls = "cube-card coming"
+        art = f'<div class="card-art" style="background-image:url(assets/{c["art"]})"></div>' if c.get("art") else ""
         cards += f"""
   <div class="{cls}">
+    {art}
     <h2>{c["name"]}</h2>
     <div class="tags">{tags}</div>
     <p>{c["desc"]}</p>
     <div class="btns">{btns}</div>
   </div>"""
     body = f"""
-<div class="hero">
+<div class="hero art" style="background-image:linear-gradient(rgba(12,14,19,.5),rgba(12,14,19,.94)),url('assets/art_crop2.webp')">
   <h1>{SITE_NAME}</h1>
   <p>管理中のキューブドラフトの情報を公開しています。<br>各キューブのルール・用語集・カードリストは随時更新されます。</p>
 </div>
@@ -474,13 +547,28 @@ def build_site_index():
     (OUT / "index.html").write_text(page(SITE_NAME, body, cube=None, depth=0), encoding="utf-8")
 
 
+def copy_assets():
+    import shutil
+    a = SRC / "assets"
+    if a.is_dir():
+        dest = OUT / "assets"
+        dest.mkdir(exist_ok=True)
+        for f in a.rglob("*"):
+            if f.is_file():
+                target = dest / f.relative_to(a)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(f, target)
+
+
 if __name__ == "__main__":
+    copy_assets()
     build_site_index()
     for c in CUBES:
         build_cube_index(c)
         build_cards(c)
         if c["has_content"]:
             build_rules(c)
+            build_summary(c)
             build_glossary(c)
     gen = sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.html"))
     print("generated:")
