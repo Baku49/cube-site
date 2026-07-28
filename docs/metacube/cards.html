@@ -91,6 +91,69 @@ article.doc a{border-bottom:1px dotted var(--gold)}
 .btn.ghost:hover{background:var(--panel2);color:var(--text)}
 .btn.disabled{border-color:var(--line);color:var(--muted);pointer-events:none}
 .cube-card.coming{opacity:.6}
+/* ---- card list ---- */
+.cl-main{max-width:1200px}
+.cl-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.96);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1rem}
+.cl-btnrow{display:flex;gap:.6rem;align-items:center;margin-top:.6rem;flex-wrap:wrap}
+.cl-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cl-tbtn{background:var(--panel);color:var(--muted);border:none;padding:.4rem .9rem;
+  font-size:.9rem;cursor:pointer;font-family:inherit}
+.cl-tbtn.active{background:var(--panel2);color:var(--gold2)}
+button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
+.cl-count{color:var(--muted);font-size:.85rem;margin-left:auto}
+.cl-seccount{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;margin:.8rem 0 1.6rem}
+.cl-card{position:relative;cursor:pointer;border-radius:8px;transition:transform .12s}
+.cl-card:hover{transform:translateY(-3px)}
+.cl-card img{width:100%;border-radius:8px;display:block;background:var(--panel);min-height:120px}
+.cl-badge{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.85);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:999px;padding:.05rem .5rem;font-size:.8rem;font-weight:700}
+.cl-errata{position:absolute;top:6px;left:6px;background:#7a2a1e;color:#ffd9cc;border-radius:4px;
+  padding:.02rem .35rem;font-size:.72rem;font-weight:700}
+.cl-errata-inline{font-size:.68rem;background:#7a2a1e;color:#ffd9cc;border-radius:4px;padding:.05rem .3rem}
+.cl-names{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.3rem;margin:.8rem 0 1.6rem}
+.cl-nameitem{text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--text);
+  border-radius:7px;padding:.35rem .7rem;font-size:.9rem;cursor:pointer;font-family:inherit}
+.cl-nameitem:hover{border-color:var(--gold);color:var(--gold2)}
+.cl-nbadge{color:var(--gold2);font-weight:700}
+.cl-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
+.cl-modal-back{position:absolute;inset:0;background:rgba(0,0,0,.75)}
+.cl-modal-box{position:relative;background:var(--bg2);border:1px solid var(--gold);border-radius:14px;
+  max-width:880px;width:calc(100% - 2rem);max-height:88vh;overflow-y:auto;padding:1.4rem 1.6rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.8)}
+.cl-close{position:absolute;top:.6rem;right:.8rem;background:none;border:none;color:var(--muted);
+  font-size:1.6rem;cursor:pointer;line-height:1}
+.cl-close:hover{color:var(--gold2)}
+.cl-h2{font-family:"Shippori Mincho",serif;color:var(--gold2);margin:.2rem 0 1rem}
+.cl-detail{display:flex;gap:1.4rem;flex-wrap:wrap}
+.cl-detail-imgs{flex:0 0 260px;display:flex;flex-direction:column;gap:.7rem}
+.cl-detail-imgs img{width:260px;border-radius:12px}
+.cl-detail-info{flex:1;min-width:260px}
+.cl-cardname{font-family:"Shippori Mincho",serif;font-size:1.3rem;color:var(--gold2);font-weight:700}
+.cl-en{color:var(--muted);font-size:.85rem;margin-bottom:.3rem}
+.cl-line{margin:.3rem 0}
+.cl-type{color:var(--text);font-weight:600;margin:.4rem 0;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+.cl-text{margin:.6rem 0;line-height:1.8;font-size:.95rem}
+.cl-flavor{margin:.6rem 0;color:var(--muted);font-style:italic;font-size:.88rem;
+  border-left:2px solid var(--line);padding-left:.7rem}
+.cl-pt{text-align:right;font-weight:700;color:var(--gold2);font-size:1.05rem}
+.cl-metainfo{color:var(--muted);font-size:.8rem;margin-top:.7rem;border-top:1px solid var(--line);padding-top:.5rem}
+.cl-noja{color:#c9a06a}
+.cl-ovnote{background:#3a2018;border:1px solid #7a2a1e;color:#ffd9cc;border-radius:8px;
+  padding:.5rem .8rem;margin-bottom:.8rem;font-size:.88rem}
+.cl-orig{margin:.8rem 0;color:var(--muted)}
+.cl-orig summary{cursor:pointer;font-size:.85rem}
+.cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
+.cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
+.cl-logdate{color:var(--gold2);font-weight:700}
+.cl-lognote{margin:.2rem 0;color:var(--text)}
+.cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+.cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+.ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
+  border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
+.ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
+.ms.mr{background:#e8a898}.ms.mg{background:#a8cbaa}.ms.mc{background:#c8c4bc}
 /* ---- 準備中 ---- */
 .wip{background:var(--panel);border:1px dashed var(--line);border-radius:14px;
   text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
@@ -175,15 +238,223 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
     <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="summary.html">ルールサマリー</a><a href="glossary.html">用語集</a><a href="cards.html" class="active">カードリスト</a></nav>
   </div>
 </header>
-
-<main>
+<main class="cl-main">
 <h1 class="page">メタキューブ カードリスト</h1>
-<div class="wip">
-  <div class="wip-mark">─ 準備中 ─</div>
-  <p>カードリストのページは現在準備中です。<br>公開までしばらくお待ちください。</p>
-  <p style="margin-top:1.2rem"><a class="btn ghost" href="https://cubecobra.com/cube/list/MetaCube" target="_blank" rel="noopener">それまでは Cube Cobra を参照 ↗</a></p>
+<div class="updated" id="cl-meta">読み込み中…</div>
+
+<div class="cl-controls">
+  <input id="cl-search" class="g-search" type="search" placeholder="カード名で検索(日本語名・英語名)" autocomplete="off">
+  <div class="cl-btnrow">
+    <div class="cl-toggle">
+      <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
+      <button id="cl-view-name" class="cl-tbtn">カード名表示</button>
+    </div>
+    <button id="cl-history" class="cl-tbtn">更新履歴</button>
+    <span id="cl-count" class="cl-count"></span>
+  </div>
 </div>
+
+<div id="cl-sections"></div>
+<div id="cl-empty" class="wip hidden"><p>該当するカードがありません</p></div>
 </main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<div id="cl-hmodal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <h2 class="cl-h2">更新履歴</h2>
+    <div id="cl-hmodal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const CATS = [
+  ["White","白"],["Blue","青"],["Black","黒"],["Red","赤"],["Green","緑"],
+  ["Multicolored","多色"],["Colorless","無色"],["Lands","土地"],["Hybrid","混成"]
+];
+let CARDS = [], OVR = {}, LOG = [], view = "img", query = "";
+
+function norm(s){
+  return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
+}
+function key(c){ return c.set + ":" + c.cn; }
+function ov(c){ return OVR[key(c)] || {}; }
+function jaName(c){ const o=ov(c); return o.name || c.printed_name || (c.faces&&c.faces.map(f=>f.printed_name||f.name).join(" // ")) || c.name; }
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function br(s){ return esc(s).replace(/\n/g,"<br>").replace(/\{([^}]{1,4})\}/g, function(_, sym){
+  const cls = {W:"mw",U:"mu",B:"mb",R:"mr",G:"mg"}[sym] || "mc";
+  return '<span class="ms '+cls+'">'+sym+'</span>';
+}); }
+function manaHtml(cost){
+  if(!cost) return "";
+  return esc(cost).replace(/\{([^}]+)\}/g, function(_, sym){
+    const cls = {W:"mw",U:"mu",B:"mb",R:"mr",G:"mg"}[sym] || "mc";
+    return '<span class="ms '+cls+'">'+sym+'</span>';
+  });
+}
+function cardImg(c){
+  const o=ov(c);
+  return o.img || c.img || (c.faces && c.faces[0] && c.faces[0].img) || "";
+}
+function matches(c){
+  if(!query) return true;
+  const hay = norm([c.name, c.printed_name, (c.faces||[]).map(f=>(f.name||"")+" "+(f.printed_name||"")).join(" "), (ov(c).name||"")].join(" "));
+  return hay.includes(query);
+}
+
+function render(){
+  const root = document.getElementById("cl-sections");
+  root.innerHTML = "";
+  let shown = 0, total = 0;
+  CATS.forEach(function(cat){
+    const cs = CARDS.filter(c=>c.cat===cat[0]);
+    if(!cs.length) return;
+    total += cs.reduce((a,c)=>a+c.count,0);
+    const vis = cs.filter(matches);
+    if(!vis.length) return;
+    shown += vis.reduce((a,c)=>a+c.count,0);
+    const sec = document.createElement("section");
+    sec.innerHTML = '<h2 class="g-section-title">'+cat[1]+' <span class="cl-seccount">'+vis.reduce((a,c)=>a+c.count,0)+'枚</span></h2>';
+    const wrap = document.createElement("div");
+    wrap.className = view==="img" ? "cl-grid" : "cl-names";
+    vis.forEach(function(c){
+      const el = document.createElement(view==="img" ? "div" : "button");
+      if(view==="img"){
+        el.className = "cl-card";
+        el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
+          (c.count>1 ? '<span class="cl-badge">×'+c.count+'</span>' : "") +
+          (ov(c).note ? '<span class="cl-errata">E</span>' : "");
+      } else {
+        el.className = "cl-nameitem";
+        el.innerHTML = esc(jaName(c)) + (c.count>1 ? ' <span class="cl-nbadge">×'+c.count+'</span>' : "") +
+          (ov(c).note ? ' <span class="cl-errata-inline">エラッタ</span>' : "");
+      }
+      el.addEventListener("click", ()=>openModal(c));
+      wrap.appendChild(el);
+    });
+    sec.appendChild(wrap);
+    root.appendChild(sec);
+  });
+  document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
+  document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚("+CARDS.length+"種)");
+}
+
+function faceHtml(f, c){
+  const o = ov(c);
+  let h = '<div class="cl-face">';
+  h += '<div class="cl-cardname">'+esc(f.printed_name||f.name)+'</div>';
+  if(f.printed_name && f.name && f.printed_name!==f.name) h += '<div class="cl-en">'+esc(f.name)+'</div>';
+  if(f.mana_cost) h += '<div class="cl-line">'+manaHtml(f.mana_cost)+'</div>';
+  h += '<div class="cl-type">'+esc(f.printed_type_line||f.type_line||"")+'</div>';
+  const text = f.printed_text!=null ? f.printed_text : f.oracle_text;
+  if(text) h += '<div class="cl-text">'+br(text)+'</div>';
+  if(f.flavor_text) h += '<div class="cl-flavor">'+br(f.flavor_text)+'</div>';
+  const pt = f.power!=null ? f.power+"/"+f.toughness : (f.loyalty!=null ? "忠誠度 "+f.loyalty : (f.defense!=null ? "守備値 "+f.defense : ""));
+  if(pt) h += '<div class="cl-pt">'+esc(pt)+'</div>';
+  h += '</div>';
+  return h;
+}
+
+function openModal(c){
+  const o = ov(c);
+  const box = document.getElementById("cl-modal-content");
+  let imgs = [];
+  if(c.faces && c.faces.some(f=>f.img)){ imgs = c.faces.map(f=>f.img).filter(Boolean); }
+  else if(cardImg(c)) imgs = [cardImg(c)];
+  let h = '<div class="cl-detail">';
+  h += '<div class="cl-detail-imgs">'+imgs.map(u=>'<img src="'+u+'">').join("")+'</div>';
+  h += '<div class="cl-detail-info">';
+  if(o.note) h += '<div class="cl-ovnote">⚠ '+esc(o.note)+'</div>';
+  if(o.name || o.type || o.text || o.flavor){
+    h += '<div class="cl-face">';
+    h += '<div class="cl-cardname">'+esc(o.name||jaName(c))+'</div>';
+    h += '<div class="cl-en">'+esc(c.name)+'</div>';
+    if(c.mana_cost) h += '<div class="cl-line">'+manaHtml(c.mana_cost)+'</div>';
+    h += '<div class="cl-type">'+esc(o.type||c.printed_type_line||c.type_line||"")+'</div>';
+    if(o.text) h += '<div class="cl-text">'+br(o.text)+'</div>';
+    if(o.flavor) h += '<div class="cl-flavor">'+br(o.flavor)+'</div>';
+    h += '</div>';
+    h += '<details class="cl-orig"><summary>元のテキストを表示</summary>';
+  }
+  if(c.faces && c.faces.length){
+    h += c.faces.map(f=>faceHtml(f,c)).join('<hr class="cl-hr">');
+  } else {
+    h += faceHtml(c, c);
+  }
+  if(o.name || o.type || o.text || o.flavor) h += '</details>';
+  h += '<div class="cl-metainfo">';
+  h += esc(c.set_name||c.set.toUpperCase())+' ('+esc(c.set.toUpperCase())+') #'+esc(c.cn);
+  if(c.rarity) h += ' ｜ '+esc(c.rarity);
+  if(c.artist) h += ' ｜ Illus. '+esc(c.artist);
+  if(c.count>1) h += ' ｜ キューブに'+c.count+'枚';
+  if(c.lang!=='ja') h += '<br><span class="cl-noja">※日本語版データなし(英語版を表示)</span>';
+  h += '</div>';
+  if(c.scryfall_uri) h += '<div class="cl-metainfo"><a href="'+esc(c.scryfall_uri)+'" target="_blank" rel="noopener">Scryfallで見る ↗</a></div>';
+  h += '</div></div>';
+  box.innerHTML = h;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function openHistory(){
+  const box = document.getElementById("cl-hmodal-content");
+  if(!LOG.length){ box.innerHTML = "<p>履歴はまだありません。</p>"; }
+  else{
+    box.innerHTML = LOG.map(function(e){
+      let h = '<div class="cl-logentry"><div class="cl-logdate">'+esc(e.date)+'</div>';
+      if(e.note) h += '<div class="cl-lognote">'+esc(e.note)+'</div>';
+      if(e.added && e.added.length) h += '<div class="cl-logadd">＋ 追加('+e.added.length+'): '+e.added.map(esc).join("、")+'</div>';
+      if(e.removed && e.removed.length) h += '<div class="cl-logrem">－ 削除('+e.removed.length+'): '+e.removed.map(esc).join("、")+'</div>';
+      return h+'</div>';
+    }).join("");
+  }
+  document.getElementById("cl-hmodal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModals(){
+  document.querySelectorAll(".cl-modal").forEach(m=>m.classList.add("hidden"));
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".cl-modal-back,.cl-close").forEach(el=>el.addEventListener("click", closeModals));
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModals(); });
+  document.getElementById("cl-search").addEventListener("input", function(){ query = norm(this.value.trim()); render(); });
+  document.getElementById("cl-view-img").addEventListener("click", function(){ view="img"; setToggle(this); render(); });
+  document.getElementById("cl-view-name").addEventListener("click", function(){ view="name"; setToggle(this); render(); });
+  document.getElementById("cl-history").addEventListener("click", openHistory);
+  function setToggle(btn){
+    document.getElementById("cl-view-img").classList.remove("active");
+    document.getElementById("cl-view-name").classList.remove("active");
+    btn.classList.add("active");
+  }
+  Promise.all([
+    fetch("data/cards.json").then(r=>r.json()),
+    fetch("data/overrides.json").then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch("data/changelog.json").then(r=>r.ok?r.json():[]).catch(()=>[])
+  ]).then(function(res){
+    CARDS = res[0].cards;
+    OVR = res[1]; LOG = res[2];
+    CARDS.sort(function(a,b){ return (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:1); });
+    document.getElementById("cl-meta").textContent = "最終更新日: "+(res[0].generated||"-")+" ｜ カードリストは Cube Cobra を元に Scryfall のデータで表示しています";
+    render();
+  }).catch(function(e){
+    document.getElementById("cl-meta").textContent = "データの読み込みに失敗しました: "+e;
+  });
+});
+})();
+</script>
+
 <footer class="site">
   最終更新日: 2026年07月28日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
