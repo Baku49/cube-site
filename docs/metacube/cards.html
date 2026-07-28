@@ -368,7 +368,8 @@ function openModal(c){
   const o = ov(c);
   const box = document.getElementById("cl-modal-content");
   let imgs = [];
-  if(c.faces && c.faces.some(f=>f.img)){ imgs = c.faces.map(f=>f.img).filter(Boolean); }
+  if(o.img){ imgs = [o.img]; }
+  else if(c.faces && c.faces.some(f=>f.img)){ imgs = c.faces.map(f=>f.img).filter(Boolean); }
   else if(cardImg(c)) imgs = [cardImg(c)];
   let h = '<div class="cl-detail">';
   h += '<div class="cl-detail-imgs">'+imgs.map(u=>'<img src="'+u+'">').join("")+'</div>';
