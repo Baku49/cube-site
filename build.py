@@ -35,17 +35,23 @@ CUBES = [
         "has_content": True,
         "src_dir": "metacube",
         "art": "art_crop.webp",
+        "has_summary": True,
+        "has_aid": False,
+        "glossary_style": "metacube",
     },
     {
         "slug": "dm-powdra",
         "name": "デュエマパワドラ",
-        "tags": ["デュエル・マスターズ"],
-        "desc": "デュエル・マスターズのキューブドラフト。情報は準備中です。",
+        "tags": ["デュエル・マスターズ", "殿堂ゼロ", "3〜6人"],
+        "desc": "殿堂ゼロルールで遊ぶ、デュエル・マスターズのパワードキューブドラフト。",
         "cardlist_url": None,
         "cardlist_label": None,
-        "has_content": False,
-        "src_dir": None,
+        "has_content": True,
+        "src_dir": "dm-powdra",
         "art": None,
+        "has_summary": False,
+        "has_aid": True,
+        "glossary_style": "dm",
     },
 ]
 
@@ -233,8 +239,11 @@ def page(title, body, *, cube=None, active="", depth=0):
         items = []
         items.append(("index", f'{cube["slug"]}トップ' if False else "キューブトップ", "index.html", True))
         items.append(("rules", "ルール", "rules.html", cube["has_content"]))
-        items.append(("summary", "ルールサマリー", "summary.html", cube["has_content"]))
+        if cube.get("has_summary"):
+            items.append(("summary", "ルールサマリー", "summary.html", True))
         items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
+        if cube.get("has_aid"):
+            items.append(("aid", "ルールエイドとヒント", "aid.html", True))
         items.append(("cards", "カードリスト", "cards.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
         for key, label, href, enabled in items:
@@ -272,23 +281,25 @@ def page(title, body, *, cube=None, active="", depth=0):
 </html>"""
 
 
-# ---------------- メタキューブ: ルール ----------------
-def build_rules(cube):
-    src = SRC / cube["src_dir"] / "rule.md"
-    md_text = src.read_text(encoding="utf-8")
+# ---------------- ルール/記事ページ共通 ----------------
+def article_html(md_text):
+    """markdown -> (toc_html, body_html)"""
     body_html = markdown.markdown(md_text, extensions=["extra"])
     toc_items = []
     counter = [0]
+
+    def clean(t):
+        return t.lstrip("・◯○ ")
 
     def add_id(m):
         level, text = m.group(1), m.group(2)
         counter[0] += 1
         hid = f"sec{counter[0]}"
-        toc_items.append((int(level), hid, re.sub(r"<[^>]+>", "", text).lstrip("・")))
-        return f'<h{level} id="{hid}">{text.lstrip("・")}</h{level}>'
+        toc_items.append((int(level), hid, clean(re.sub(r"<[^>]+>", "", text))))
+        return f'<h{level} id="{hid}">{clean(text)}</h{level}>'
 
     body_html = re.sub(r"<h([12])>(.*?)</h\1>", add_id, body_html)
-    body_html = re.sub(r"<h([34])>(・?)(.*?)</h\1>", lambda m: f"<h{m.group(1)}>{m.group(3)}</h{m.group(1)}>", body_html)
+    body_html = re.sub(r"<h([34])>([・◯○]?)(.*?)</h\1>", lambda m: f"<h{m.group(1)}>{m.group(3)}</h{m.group(1)}>", body_html)
 
     toc_html = '<div class="toc"><div class="toc-title">目次</div><ol>'
     open_sub = False
@@ -306,10 +317,15 @@ def build_rules(cube):
     if open_sub:
         toc_html += "</ol></li>"
     toc_html += "</li></ol></div>"
+    return toc_html, body_html
 
+
+def build_article(cube, src_name, out_name, title, active):
+    md_text = (SRC / cube["src_dir"] / src_name).read_text(encoding="utf-8")
+    toc_html, body_html = article_html(md_text)
     body = f"""
 <main>
-<h1 class="page">{cube["name"]} ルール</h1>
+<h1 class="page">{cube["name"]} {title}</h1>
 <div class="updated">最終更新日: {UPDATED}</div>
 {toc_html}
 <article class="doc">
@@ -318,8 +334,16 @@ def build_rules(cube):
 </main>"""
     out = OUT / cube["slug"]
     out.mkdir(exist_ok=True)
-    (out / "rules.html").write_text(
-        page(f'ルール | {cube["name"]}', body, cube=cube, active="rules", depth=1), encoding="utf-8")
+    (out / out_name).write_text(
+        page(f'{title} | {cube["name"]}', body, cube=cube, active=active, depth=1), encoding="utf-8")
+
+
+def build_rules(cube):
+    build_article(cube, "rule.md", "rules.html", "ルール", "rules")
+
+
+def build_aid(cube):
+    build_article(cube, "aid.md", "aid.html", "ルールエイドとヒント", "aid")
 
 
 # ---------------- メタキューブ: ルールサマリー ----------------
@@ -349,23 +373,36 @@ SECTION_DEFS = [
 def build_glossary(cube):
     src = SRC / cube["src_dir"] / "glossary.md"
     text = src.read_text(encoding="utf-8")
+    style = cube.get("glossary_style", "metacube")
     paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
     sections = []
     current = None
-    for para in paragraphs:
+    for i, para in enumerate(paragraphs):
         matched = False
-        for name, key in SECTION_DEFS:
-            if para.startswith("・" + name):
-                note = para[len("・" + name):].lstrip("：: ").strip()
-                current = {"name": name, "key": key, "note": note, "entries": []}
+        if style == "metacube":
+            for name, key in SECTION_DEFS:
+                if para.startswith("・" + name):
+                    note = para[len("・" + name):].lstrip("：: ").strip()
+                    current = {"name": name, "key": key, "note": note, "entries": []}
+                    sections.append(current)
+                    matched = True
+                    break
+        else:  # dm: ◯で始まる1行段落がセクション見出し
+            if para.startswith("◯") and "\n" not in para:
+                name = para.lstrip("◯").strip()
+                current = {"name": name, "key": f"sec{len(sections)}", "note": "", "entries": []}
                 sections.append(current)
                 matched = True
-                break
         if matched:
             continue
         lines = para.split("\n")
         first = lines[0]
-        if "　" in first:
+        if style == "dm":
+            if "：" in first:
+                term, rest = first.split("：", 1)
+            else:
+                term, rest = first, ""
+        elif "　" in first:
             term, rest = first.split("　", 1)
         else:
             sp = first.find(" ")
@@ -373,14 +410,18 @@ def build_glossary(cube):
         desc_lines = [rest.strip()] + [l.strip() for l in lines[1:]]
         desc = "<br>".join(html.escape(l) for l in desc_lines if l)
         if current is None:
-            current = {"name": "その他", "key": "other", "note": "", "entries": []}
+            current = {"name": "用語", "key": "other", "note": "", "entries": []}
             sections.append(current)
         current["entries"].append((term.strip(), desc))
 
     total = sum(len(s["entries"]) for s in sections)
-    cats_html = '<button class="g-cat active" data-cat="all">すべて</button>' + "".join(
-        f'<button class="g-cat" data-cat="{s["key"]}">{s["name"]}</button>' for s in sections
-    )
+    if len(sections) > 1:
+        cats_html = '<button class="g-cat active" data-cat="all">すべて</button>' + "".join(
+            f'<button class="g-cat" data-cat="{s["key"]}">{s["name"]}</button>' for s in sections
+        )
+        cats_html = f'<div class="g-cats">{cats_html}</div>'
+    else:
+        cats_html = ""
     sections_html = ""
     for s in sections:
         note = f'<p class="g-section-note">{html.escape(s["note"])}</p>' if s["note"] else ""
@@ -439,8 +480,8 @@ document.addEventListener('DOMContentLoaded', function(){
 <h1 class="page">{cube["name"]} 用語集</h1>
 <div class="updated">最終更新日: {UPDATED} ｜ 全{total}項目</div>
 <div class="g-controls">
-  <input id="gsearch" class="g-search" type="search" placeholder="用語を検索(例: 護法、トークン、ドラフト …)" autocomplete="off">
-  <div class="g-cats">{cats_html}</div>
+  <input id="gsearch" class="g-search" type="search" placeholder="用語を検索" autocomplete="off">
+  {cats_html}
 </div>
 <div id="gcount" class="g-count"></div>
 {sections_html}
@@ -477,10 +518,13 @@ def build_cards(cube):
 def build_cube_index(cube):
     tags = "".join(f'<span class="tag">{t}</span>' for t in cube["tags"])
     if cube["has_content"]:
-        btns = ('<a class="btn" href="rules.html">ルール</a>'
-                '<a class="btn" href="summary.html">ルールサマリー</a>'
-                '<a class="btn" href="glossary.html">用語集</a>'
-                '<a class="btn" href="cards.html">カードリスト</a>')
+        btns = '<a class="btn" href="rules.html">ルール</a>'
+        if cube.get("has_summary"):
+            btns += '<a class="btn" href="summary.html">ルールサマリー</a>'
+        btns += '<a class="btn" href="glossary.html">用語集</a>'
+        if cube.get("has_aid"):
+            btns += '<a class="btn" href="aid.html">ルールエイドとヒント</a>'
+        btns += '<a class="btn" href="cards.html">カードリスト</a>'
         if cube["cardlist_url"]:
             btns += (f'<a class="btn ghost" href="{cube["cardlist_url"]}" target="_blank" '
                      f'rel="noopener">カードリスト ({cube["cardlist_label"]}) ↗</a>')
@@ -568,7 +612,10 @@ if __name__ == "__main__":
         build_cards(c)
         if c["has_content"]:
             build_rules(c)
-            build_summary(c)
+            if c.get("has_summary"):
+                build_summary(c)
+            if c.get("has_aid"):
+                build_aid(c)
             build_glossary(c)
     gen = sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.html"))
     print("generated:")
