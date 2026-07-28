@@ -50,6 +50,7 @@ CUBES = [
         "src_dir": "dm-powdra",
         "art": "dm_theme.webp",
         "art_overlay": (".25", ".85"),
+        "art_in_header": True,
         "has_summary": False,
         "has_aid": True,
         "glossary_style": "dm",
@@ -254,6 +255,11 @@ def page(title, body, *, cube=None, active="", depth=0):
                 cls = ' class="active"' if key == active else ""
                 nav += f'<a href="{href}"{cls}>{label}</a>'
     switcher = cube_switcher(cube["slug"] if cube else None, depth)
+    header_style = ""
+    if cube and cube.get("art_in_header") and cube.get("art"):
+        art_url = root + "assets/" + cube["art"]
+        header_style = (' style="background-image:linear-gradient(rgba(12,14,19,.82),rgba(12,14,19,.9)),'
+                        + "url('" + art_url + "');background-size:cover;background-position:center 30%" + '"')
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -266,7 +272,7 @@ def page(title, body, *, cube=None, active="", depth=0):
 </head>
 <body>
 <div class="mana-strip"></div>
-<header class="site">
+<header class="site"{header_style}>
   <div class="site-inner">
     <a href="{root}index.html" style="text-decoration:none"><div class="brand">{SITE_NAME}<span class="sub">{SITE_SUB}</span></div></a>
     {switcher}
