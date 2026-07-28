@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ルール | メタキューブ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0e13; --bg2:#12151d; --panel:#171b25; --panel2:#1d222e;
+  --line:#2a3040; --text:#e8e4d8; --muted:#9a94a8; --gold:#c9a86a; --gold2:#e3c98f;
+  --w:#f5f0d8; --u:#4f9edb; --b:#a48ac2; --r:#e05b4b; --g:#57a05e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.9;}
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mana-strip{height:4px;background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+header.site{position:sticky;top:0;z-index:50;background:rgba(12,14,19,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.site-inner{max-width:1040px;margin:0 auto;padding:.6rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.brand{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.1em;color:var(--gold2);white-space:nowrap;line-height:1.3}
+.brand .sub{font-size:.62rem;color:var(--muted);letter-spacing:.22em;display:block}
+.cube-switch{display:flex;align-items:center;gap:.5rem}
+.cube-switch select{background:var(--panel);color:var(--gold2);border:1px solid var(--line);
+  border-radius:8px;padding:.35rem .6rem;font-size:.92rem;font-family:inherit;cursor:pointer}
+.cube-switch select:focus{outline:none;border-color:var(--gold)}
+nav.main{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto;align-items:center}
+nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem}
+nav.main a:hover{background:var(--panel2);text-decoration:none}
+nav.main a.active{background:var(--panel2);color:var(--gold2);border:1px solid var(--line)}
+nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default}
+.badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
+  padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
+main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;
+  background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
+  margin:.2rem 0 .6rem;color:var(--gold2);}
+.hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
+h1.page{font-family:"Shippori Mincho",serif;font-size:1.9rem;letter-spacing:.1em;
+  color:var(--gold2);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:.5rem 0 1.2rem}
+.updated{color:var(--muted);font-size:.82rem;margin-bottom:1.6rem}
+/* ---- article (rules) ---- */
+article.doc h1{font-family:"Shippori Mincho",serif;font-size:1.45rem;color:var(--gold2);
+  letter-spacing:.06em;margin:2.6rem 0 1rem;padding:.5rem .9rem;
+  background:linear-gradient(90deg,var(--panel) 0%,transparent 100%);
+  border-left:4px solid var(--gold);border-radius:3px;}
+article.doc h2{font-family:"Shippori Mincho",serif;font-size:1.2rem;color:var(--gold2);
+  margin:2rem 0 .8rem;padding-left:.7rem;border-left:3px solid var(--u);}
+article.doc h3{font-size:1.05rem;color:var(--text);margin:1.6rem 0 .6rem;
+  padding-left:.7rem;border-left:3px solid var(--r);}
+article.doc h4{font-size:1rem;color:var(--gold2);margin:1.4rem 0 .4rem;}
+article.doc p{margin:.55rem 0}
+article.doc strong{color:var(--gold2)}
+article.doc a{border-bottom:1px dotted var(--gold)}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:1rem 1.4rem;margin:0 0 1.5rem;}
+.toc .toc-title{font-size:.8rem;letter-spacing:.25em;color:var(--muted);margin-bottom:.5rem}
+.toc ol{margin:0;padding-left:1.2rem}
+.toc li{margin:.15rem 0;font-size:.95rem}
+.toc ol ol{padding-left:1.1rem;font-size:.9rem}
+/* ---- cards (top page) ---- */
+.cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
+.cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
+  letter-spacing:.08em;color:var(--gold2)}
+.cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{font-size:.72rem;padding:.15rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.45rem 1rem;border-radius:8px;font-size:.9rem;
+  border:1px solid var(--gold);color:var(--gold2)}
+.btn:hover{background:var(--gold);color:#14100a;text-decoration:none}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{background:var(--panel2);color:var(--text)}
+.btn.disabled{border-color:var(--line);color:var(--muted);pointer-events:none}
+.cube-card.coming{opacity:.6}
+/* ---- 準備中 ---- */
+.wip{background:var(--panel);border:1px dashed var(--line);border-radius:14px;
+  text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
+.wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
+  letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- glossary ---- */
+.g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.g-search{width:100%;padding:.65rem 1rem;font-size:1rem;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text);outline:none}
+.g-search:focus{border-color:var(--gold)}
+.g-cats{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.6rem}
+.g-cat{padding:.28rem .8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.g-cat.active{border-color:var(--gold);color:var(--gold2);background:var(--panel2)}
+.g-count{color:var(--muted);font-size:.82rem;margin:.5rem 0 1rem}
+.g-section-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.25rem;
+  letter-spacing:.08em;margin:2rem 0 .4rem;padding-left:.7rem;border-left:4px solid var(--gold)}
+.g-section-note{color:var(--muted);font-size:.88rem;margin:0 0 1rem;padding-left:.9rem}
+.entry{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:.9rem 1.2rem;margin:.6rem 0;}
+.entry dt{font-weight:700;color:var(--gold2);font-size:1.02rem;margin-bottom:.25rem}
+.entry dd{margin:0;color:var(--text);font-size:.95rem;line-height:1.85}
+.hidden{display:none}
+footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;
+  text-align:center;padding:1.6rem 1rem 2.2rem;}
+@media(max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:1.7rem}
+  .site-inner{padding:.6rem .8rem;gap:.6rem}
+  nav.main{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="mana-strip"></div>
+<header class="site">
+  <div class="site-inner">
+    <a href="../index.html" style="text-decoration:none"><div class="brand">キューブドラフト保管庫<span class="sub">CUBE DRAFT ARCHIVE</span></div></a>
+    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html" selected>メタキューブ</option><option value="../dm-powdra/index.html">デュエマパワドラ</option></select></div>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html" class="active">ルール</a><a href="glossary.html">用語集</a><a href="cards.html">カードリスト</a></nav>
+  </div>
+</header>
+
+<main>
+<h1 class="page">メタキューブ ルール</h1>
+<div class="updated">最終更新日: 2026年07月28日</div>
+<div class="toc"><div class="toc-title">目次</div><ol><li><a href="#sec1">メタキューブとは</a><li><a href="#sec2">メタキューブで遊ぶためには</a><li><a href="#sec3">メタキューブを遊ぶにあたって</a><li><a href="#sec4">ドラフトの前に決めるべきルール選択肢</a><li><a href="#sec5">ドラフトのルール</a><li><a href="#sec6">デッキ構築のルール</a><li><a href="#sec7">ゲームのルール</a><ol><li><a href="#sec8">全般</a></li><li><a href="#sec9">選択したルールごとの事項</a></li><li><a href="#sec10">特殊な裁定</a></li></ol></li><li><a href="#sec11">2人用ルール</a></li></ol></div>
+<article class="doc">
+<h1 id="sec1">メタキューブとは</h1>
+<p>メタキューブは、私が管理するマジックザギャザリングのキューブドラフトである。</p>
+<p>メタキューブは主としてコマンダーやその変種ルールで遊ぶ。</p>
+<p>また、メタキューブはいわゆる「パワード」に近いキューブである。ごく一部のカードを除いて、カードパワーの上限を設けていない。そのため、極めて強力なカードがキューブ内に多々存在している。</p>
+<p>なお、このルールにはメタキューブのキューブの内容については記述されていない。キューブの内容については以下のリンクを参照せよ。</p>
+<p><a href="https://cubecobra.com/cube/list/MetaCube">メタキューブ カードリスト(Cube Cobra)</a></p>
+<h1 id="sec2">メタキューブで遊ぶためには</h1>
+<p>・プレイ人数</p>
+<p>2人から6人</p>
+<p>ただし、5人は非推奨</p>
+<p>最も推奨する人数は4人</p>
+<p>・プレイヤーに求める技能</p>
+<p>マジックの基本的なルールを理解していること</p>
+<p>マジックのテキストを読んで、処理の方法をある程度理解できること</p>
+<p>コマンダーや、選択した場合には双頭巨人戦やプレインチェイス戦やアーチエネミー戦の、基本的なルールを理解していること</p>
+<p>・プレイヤーが受け入れる必要があること</p>
+<p>ハウスルールが存在すること</p>
+<p>プロキシの使用</p>
+<h1 id="sec3">メタキューブを遊ぶにあたって</h1>
+<p>メタキューブは「ゲームを楽しむこと」を目的としている限り、以下の行為に一切の制限を設けない。</p>
+<p>・他プレイヤーに助言を求める、または助けを求めている他プレイヤーに助言すること</p>
+<p>・スマートフォンなどの媒体を使って、マジックのルールやカードの情報、メタキューブのルールやカードリスト、その他プレイに関係あるあらゆる情報について調べること</p>
+<p>・他のプレイヤーが納得する範囲内でのプレイの巻き戻し</p>
+<p>・すぐにルール上の結論が出ないようなゲーム状況について、プレイヤー同士でルーリングの判断をすること</p>
+<p>・カードを汚さないような飲食</p>
+<p>また、以下のようなことを禁止する。</p>
+<p>・ゲーム上の情報についての虚言や、他のプレイヤーを錯誤させることを目的とした発言</p>
+<p>・他のプレイヤーが不快に感じるゲーム外の行動</p>
+<p>・知識の少ないプレイヤーに対してゲーム上必要な知識を提供しないこと</p>
+<p>・ライブラリーのカットの強要</p>
+<p>・(多人数戦の場合)ゲーム上正当な理由なく1人のプレイヤーに対して集中して敵対的な行動を選ぶこと</p>
+<p>このルールで定められていないことについても、全てのプレイヤーがプレイを楽しめるよう心がけた行動を求める。</p>
+<h1 id="sec4">ドラフトの前に決めるべきルール選択肢</h1>
+<p>ドラフトを開始する前に、プレイヤー全員の合意のもと、以下の5つのルールから選ぶ。</p>
+<p>1回のドラフトで複数のルールを遊んでもよいが、そのルールの全てをドラフトより前に決定しておく。</p>
+<p>複数の卓に分かれる場合、卓ごとにルールを変えてもよいが、その場合はどのようなグループに別れるかをドラフトより前に決定しておく。</p>
+<p>・<strong>(通常の)コマンダー</strong>：ゲーム人数3人以上のコマンダー。</p>
+<p>・<strong>デュエルコマンダー</strong>：ゲーム人数2人のデュエルコマンダー。</p>
+<p>・<strong>統率者双頭巨人戦</strong>：ゲーム人数4人の、コマンダーかつ双頭巨人戦。</p>
+<p>・<strong>統率者プレインチェイス戦</strong>：ゲーム人数3人以上の、コマンダーかつプレインチェイス戦。</p>
+<p>・<strong>統率者アーチエネミー戦</strong>：ゲーム人数4人で1人が魔王となる、統率者アーチエネミー戦。</p>
+<p>複数のルールを選んだ場合、ルールを変えるたびにサイドボーディングの機会を設ける。</p>
+<h1 id="sec5">ドラフトのルール</h1>
+<p>1パック目を見る前に、各プレイヤーは、自分のカードプールに《虹色の笛吹き》2枚、《宝石の睡蓮》1枚、《太陽の指輪》1枚、《秘儀の印鑑》1枚《統率の塔》4枚、《寓話の小道》4枚、《祖先の道》4枚を加える。その後、それぞれ用意された背景カードの中から、ランダムに選ばれた2枚を自分のカードプールに加える。</p>
+<p>1つのブースターパックの枚数：<strong>20枚</strong></p>
+<p>パックの個数：<strong>プレイ人数×3個</strong></p>
+<p>メタキューブのドラフトの形式は、プレイ人数が3人から6人において共通で通常のドラフトである。3人か4人である場合、プレイヤー全員が同意したなら、代わりにピック2ドラフトを選択してもよい。2人の場合は、「2人用ルール」に書かれている手順で行う。</p>
+<p>ドラフトの段階において、コンスピラシー・ドラフトのルールを適用する。そのため、一部のカードはドラフトのルールに影響を与える効果を発揮する。</p>
+<h1 id="sec6">デッキ構築のルール</h1>
+<p>統率者の指定について、以下の3段階の手順で決定する。</p>
+<p>①最初の統率者を1枚指定する。</p>
+<p>最初の統率者として選べるのは「伝説のクリーチャー」か「伝説の機体」か「パワーとタフネスを持つ伝説の宇宙船」か「<strong>伝説のプレインズウォーカー</strong>」である。</p>
+<p>②最初の統率者が「共闘」を持つなら、共闘する統率者を追加で1枚指定する。</p>
+<p>通常の統率者のルールと同様に、追加で指定できるのは「共闘」を持つカードのみである。</p>
+<p>③この時点で統率者の<strong>全て</strong>がプレインズウォーカーなら、そのプレインズウォーカーは「誓い破り」である(第2面のみがプレインズウォーカーであるカードも、ここではプレインズウォーカーとして扱う)。</p>
+<p>統率者の全てが誓い破りなら、その誓い破りのそれぞれについて、固有色の全てがその誓い破りの固有色に含まれるインスタントかソーサリーであるカード1枚を追加で統率者に指定する。</p>
+<p>④この時点で統率者の固有色の合計が2色以下なら、追加で以下の枚数だけ、背景カードを統率者にしてする。</p>
+<p>背景を指定する前の固有色の合計が…</p>
+<p>無色か1色：2枚</p>
+<p>2色：1枚</p>
+<p>以降のデッキ構築のルールは、概ねコマンダーと同様である。コマンダーのルールと同じ部分についてはこのルールでは記述しない。(<a href="http://mtgwiki.com/wiki/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%80%E3%83%BC">コマンダー - MTG Wiki</a> などを参照せよ)</p>
+<p>ただし、以下の点でコマンダーと異なる。</p>
+<p>・デッキを構築する際に使用できるカードはあなたのカードプールのカード、及び無制限に使用できる《平地》、《島》、《沼》、《山》、《森》である。</p>
+<p>・デッキの最小サイズは<strong>統率者を含む50枚</strong>である。(デッキ枚数の上限はない)</p>
+<p>・ハイランダールールは適用されず、同名カードを何枚でもデッキに入れることができる。(同名カードを5枚以上入れてもよい)</p>
+<p>・禁止カードのルールは適用されない。</p>
+<p>・デッキに入れなかったカードは全てサイドボードとする。(サイドボードのカードは固有色のルールに従っている必要はない)</p>
+<h1 id="sec7">ゲームのルール</h1>
+<h2 id="sec8">全般</h2>
+<p>基本的には総合ルールに従ってゲームを行う。</p>
+<p>コマンダーの<strong>統率者のルール</strong>を適用する。</p>
+<p>多人数戦であっても、フリーマリガンは行わない。</p>
+<p>通常のコマンダーと異なり、自分のサイドボードのカードをゲームの外部として用いることができる。そのカードが統率者の固有色の構築ルールに従っている必要はない。</p>
+<p>サイドボードの入れ替えによってデッキに入れることができるカードは、固有色のルールに従っているカードのみである。</p>
+<p>各プレイヤーは自身の統率領域に《荒地》4枚がある状態でゲームを開始する。このカードはヒュージ・リーダーズのルールと同様に「拠点」としてのルールを受ける。</p>
+<p>誓い破りのルールを部分的に用いる。</p>
+<p>トレードマークの呪文は、対応する誓い破りをコントロールしている場合にのみ統率領域から唱えられる。</p>
+<p>「誓い破り」や「トレードマークの呪文」はカードそのものが持つ属性であり、その属性は「統率者」という属性を持つことを妨げない。</p>
+<p>コンスピラシー・ドラフトのルールのうち、ドラフトに関するルールと策略のルールを用いる。</p>
+<p>アン・ゲームのルールを適用する。ただし、数として選べるのは0以上の整数のみである。支払えるマナやライフは、カードのテキストで½点を支払えることが示されていない限り、0以上の整数のみである。色として選べるのは通常のマジックに存在する5つの色のみである。文章欄を書き換える効果は、カード実物の代わりに、公式サイトのエラッタ告知記事に記載の最新のエラッタ後の文章→WISDOM GUILDに記載の日本語のルール・テキスト→MTG Wikiに記載の日本語のルール・テキスト→カードに貼り付けられているシールに書かれた日本語の文章→オラクル→カードに書かれた日本語以外の文章の優先度で参照して書き換える。</p>
+<p>マジックのカードとして選ぶことができるカードは、「エターナルのカードプールに含まれるカード（カードを放り投げるカード・人種または文化に対し攻撃的なカード・アンティに関連するカード以外の禁止カードを含む）」か「メタキューブのカードプールに含まれるカード」のいずれかに当てはまるカードである。</p>
+<h2 id="sec9">選択したルールごとの事項</h2>
+<p>統率者ダメージのルールがある場合、トレードマークの呪文については統率者ダメージを計算しない。</p>
+<p>通常のコマンダーの場合：</p>
+<p>コマンダーの多人数戦のルール(多人数戦の無差別戦、「複数への攻撃」選択ルール)、「開始時のライフの総量は<strong>30</strong>」のルールを用いる(統率者ダメージのルールは用いない)。</p>
+<p>デュエルコマンダーの場合：</p>
+<p>「開始時のライフの総量は<strong>30</strong>」である(統率者ダメージのルールは適用されない)。その他の対戦のルールは通常の2人戦と同じである。</p>
+<p>双頭巨人戦の場合：</p>
+<p>通常のコマンダーの場合と同様の、統率者ダメージのルール、「チームの開始時のライフの総量は<strong>30</strong>」を採用することを除き、双頭巨人戦と同じである(統率者ダメージのルールは用いない)。</p>
+<p>プレインチェイス戦の場合：</p>
+<p>通常のコマンダーのルールに加えて、プレインチェイス戦のルールを用いる。</p>
+<p>単一次元の選択ルールを使用する。</p>
+<p>次元デッキの構築についてのルールは適用されず、代わりに用意された次元デッキを使用する(複数卓に分かれる場合には、用意された次元デッキを無作為に分割してそれぞれ用いる)。</p>
+<p>統率者アーチエネミー戦の場合：</p>
+<p>統率者アーチエネミー戦のルールを用いる(通常通り、初期ライフは60であり、統率者ダメージのルールは適用されない)。ただし、ゲームの外部のルールについては、このルールに書かれたルールを適用する。</p>
+<p>計略デッキの構築についてのルールは適用されず、代わりに用意された計略デッキを用いる。</p>
+<h2 id="sec10">特殊な裁定</h2>
+<p>以下のカードについて、このゲームにおいては特殊な処理を行う。</p>
+<h3>一部の色と固有色が一致していないカード</h3>
+<p>以下のカードは、固有色を、本来のものでなく、それの色と同じものとして扱う。</p>
+<p>《Opening Ceremony》：赤</p>
+<p>《アヴァシンの巡礼者》：緑</p>
+<p>《深き闇のエルフ》：緑</p>
+<p>《下賤の教主》：緑</p>
+<p>《貴族の教主》：緑</p>
+<p>《Jack-in-the-Mox》：無色</p>
+<h3>共闘の変種である能力を持つカード</h3>
+<p>「〇〇との共闘」「共闘─〇〇」「永遠の友」「ドクターのコンパニオン」を持つカードは、その能力の代わりに共闘を持ち、伝説である。</p>
+<p>(背景選択を持つカードはこのルールの対象外である。)</p>
+<h3>英語版の名前やルール・テキストやフレイバー・テキストを参照するカード</h3>
+<p>メタキューブにおいては、これらの情報はカード実物の情報を参照し、それが日本語版であれば日本語として参照する。また、テキスト修正のために貼り付けているシールがあれば、それを優先する。</p>
+<p>そのために、以下のカードのルール・テキストを以下のように書き換える。</p>
+<h4>《Katerina of Myra's Marvels》</h4>
+<p>このクリーチャーが戦場に出るに際し、仮名1文字かアルファベット1文字を選ぶ。(仮名の平仮名と片仮名は区別しない。)</p>
+<p>あなたがカード実物に記されている名前がその選んだ文字から始まる呪文1つを唱えるたび、飛行を持つ白の2/2の猫・クリーチャー・トークン１体を生成する。(仮名を選んでいて、カード実物の名前が日本語なら、そのカード名前の読み仮名を参照する。)</p>
+<p>共闘（両方が共闘を持つなら、あなたは2体の統率者を使用できる。）</p>
+<h4>《Nocturno of Myra's Marvels》</h4>
+<p>このクリーチャーが戦場に出るに際し、数詞や形式名詞でない日本語の名詞1つか動詞1つを選ぶ。</p>
+<p>あなたがその選ばれた単語をカード実物のルール・テキストに含む呪文1つを唱えるたび、あなたはカード1枚を引きライフ2点を失う。(ルール・テキストがシールによって上書きされているなら、それを優先する。動詞を選んだなら、含むかどうかについて、その活用形は区別しない。)</p>
+<p>共闘（両方が共闘を持つなら、あなたは2体の統率者を使用できる。）</p>
+<p>なお、《＿＿＿ Goblin》の名前は「G」から始まる。</p>
+<h3>テキストに書かれている数を変更する能力を持つカード</h3>
+<p>呪文の解決時に、呪文能力で決められている対象の数とその呪文が実際に対象としているオブジェクトの数が異なる場合には以下のように処理する。</p>
+<p>呪文能力で決められている対象が多い：解決時に、呪文能力で決められている数になるように新たな対象を選んで、対象にしているものとする。選べる対象が不足することにより、呪文能力で決められている数の対象を選べない場合、対象不適正により立ち消える。</p>
+<p>呪文能力で決められている対象の数が少ない：解決時に、実際に対象としているオブジェクトから呪文能力で決められている対象の数のオブジェクトを選び、それについてのみ処理を行う。ただし、呪文能力で決められている対象の数が0以下である場合、対象不適正により立ち消える。</p>
+<p>また、数値が書き換えられることによって0による除算が発生した場合、その結果の値は無限大になる。</p>
+<p>また、0個のオブジェクトや0の数値に関するイベントは起こらず、それらに関する条件は満たされることはない。ただし、このルールの例外として、0個のオブジェクトや0の数値に関するコストは、何もせずに支払うことができる。</p>
+<h3>「マジックのブースターパックを1つ開ける」効果を持つカード</h3>
+<p>キューブの残りからカードを15枚取り出し(足りない場合は取り出せる分だけ取り出す)、ゲームの外部に1つの束として置き、それらのカードを「開けた」カードとして扱う。ゲーム終了時、取り出したそれらのカードを全て取り除く。</p>
+<p>これらのカードのオーナーは、その効果のコントローラーである。</p>
+<p>これらのカードはゲームの外部のカードであるため、固有色の構築のルールは適用されない。</p>
+<h3>《Frankie Peanuts》</h3>
+<p>質問できるのは、ゲーム内容について各プレイヤーが合意できる程度に形式的に回答できるものだけである。(例えば、「あなたの手札に終盤に使ったら強いカードはありますか？」という質問は、そのYES/NOの回答について参加プレイヤーの間で意見が割れる可能性があるため、することができない。)</p>
+<p>自己言及となるような質問はできない。</p>
+<p>回答によって強制されるのはゲーム内の行動のみである。これについて、投了することはゲーム内の行動に含めない。</p>
+<p>回答した後のゲーム状況の変化によって、質問の答えに従うことが不可能になったなら、従えなくなるたびに、その旨を各プレイヤーに伝えればよい。</p>
+<h3>《嵐鶴の長老、ラム》</h3>
+<p>テキストを以下のように変更する。</p>
+<p>果敢</p>
+<p>あなたがクリーチャーでない呪文１つを唱えるたび、「僧院の導師」のコピーであるトークン１体を生成する。</p>
+<h3>《＿＿＿ Goblin》</h3>
+<p>《＿＿＿ Goblin》はマジック・オンラインと同様の以下のテキストを持つものとして扱う。</p>
+<p>このクリーチャーが墓地や追放領域を除くいずこかから戦場に出たとき、それが戦場に出ており、あなたがコントロールする《＿＿＿ Goblin》という名前のクリーチャーが9体以下の場合、1個の20面サイコロを振る。</p>
+<p>1-6｜(赤)(赤)(赤)(赤)を加える。</p>
+<p>7-14｜(赤)(赤)(赤)(赤)(赤)を加える。</p>
+<p>15-20｜(赤)(赤)(赤)(赤)(赤)(赤)を加える。</p>
+<h3>《Blacker Lotus》</h3>
+<p>バラバラにちぎらずとも、追放さえすればこと足りる。</p>
+<p>どうしてもバラバラにしたいならしてもいいが、私はこのカードを5000円で購入したことを覚えておいてほしい。</p>
+<h3>《Gold Mine》</h3>
+<p>つけた印はゲーム終了時に消える。</p>
+<h1 id="sec11">2人用ルール</h1>
+<p>ドラフトはホースマンドラフトで行う。手順は以下の通りである。</p>
+<p>①：キューブをシャッフルし、19枚の山札を12個作る。</p>
+<p>②：無作為な方法で先攻と後攻を決める。</p>
+<p>③：残っている山札から1つを無作為に選び、各プレイヤーはその山札の上から5枚のカードをそれぞれに配り、手札とする(自分のみが確認できる)。</p>
+<p>④：その山札の上から9枚を公開して置き、場札とする。</p>
+<p>⑤：先攻から交互に「自分の手札1枚と場札1枚を交換する」という手順を、お互いが3回交換するまで繰り返す(交換は必ず行わなければならない)。</p>
+<p>⑥：交換が終わったら、それぞれ手札をカードプールに加える(コンスピラシー・ドラフトのルールにより「表向きでドラフト」する場合、この時に表向きにする)。その後、場札は避けておく(ストアやファンドに戻すことはせず、以後使用しない)。</p>
+<p>⑦：③〜⑥の手順を、毎回先攻と後攻を入れ替えて、12回行う。</p>
+<p>・以降のデッキ構築やゲームのルールは通常と同じである。</p>
+<p>・2人戦の場合には、コンスピラシー・ドラフトのルールでカードを表向きにドラフトすることはできない。</p>
+</article>
+</main>
+<footer class="site">
+  最終更新日: 2026年07月28日<br>
+  本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
+</footer>
+</body>
+</html>
