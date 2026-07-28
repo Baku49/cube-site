@@ -291,9 +291,13 @@ const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
   "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
   "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
 function ciIdx(c){ const i = CI_ORDER.indexOf(c.ci||""); return i<0 ? CI_ORDER.length : i; }
+const CAT_IDX = {White:0,Blue:1,Black:2,Red:3,Green:4,Multicolored:5,Colorless:6};
 function cardCmp(a,b){
-  if(a.cat==="Multicolored" && b.cat==="Multicolored"){
-    const d = ciIdx(a)-ciIdx(b); if(d) return d;
+  const ca = CAT_IDX[a.cat] != null ? CAT_IDX[a.cat] : 9;
+  const cb = CAT_IDX[b.cat] != null ? CAT_IDX[b.cat] : 9;
+  if(ca !== cb) return ca - cb;
+  if(a.cat === "Multicolored"){
+    const d = ciIdx(a) - ciIdx(b); if(d) return d;
   }
   return typePri(a)-typePri(b) || (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:(a.name>b.name?1:0));
 }
