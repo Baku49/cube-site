@@ -43,7 +43,9 @@ const CATS = [
 ];
 const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
 function typePri(c){
-  const tl = [c.type_line||"", ...(c.faces||[]).map(f=>f.type_line||"")].join(" // ");
+  // 両面カードは第1面のタイプのみで判定
+  const tl = (c.faces && c.faces.length) ? (c.faces[0].type_line||"") :
+             (c.type_line||"").split(" // ")[0];
   for(let i=0;i<TYPE_PRI.length;i++){ if(tl.includes(TYPE_PRI[i])) return i; }
   return TYPE_PRI.length;
 }
