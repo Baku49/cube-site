@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>デュエマパワドラ | キューブドラフト保管庫</title>
+<title>デュエマパワドラ | がくたそのキューブ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -39,8 +39,12 @@ nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;
 .badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
   padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
 main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
-.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;position:relative;
   background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero.art{background-size:cover;background-position:center 30%;
+  padding:4.6rem 1.2rem 3.4rem;border-bottom:1px solid var(--line);}
+.hero.art h1,.hero.art p{text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 4px rgba(0,0,0,.9)}
+.hero.art p{color:#d9d3c2}
 .hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
   margin:.2rem 0 .6rem;color:var(--gold2);}
 .hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
@@ -70,8 +74,10 @@ article.doc a{border-bottom:1px dotted var(--gold)}
 .cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
 .cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
   border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
-.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;z-index:2;
   background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.card-art{height:130px;margin:-1.4rem -1.5rem 1rem;background-size:cover;background-position:center 30%;
+  border-bottom:1px solid var(--line);}
 .cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
   letter-spacing:.08em;color:var(--gold2)}
 .cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
@@ -90,6 +96,47 @@ article.doc a{border-bottom:1px dotted var(--gold)}
   text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
 .wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
   letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- summary ---- */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.sum-span2{grid-column:1/-1}
+.sum-panel{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.3rem 1.5rem;position:relative;overflow:hidden}
+.sum-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.sum-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.2rem;
+  letter-spacing:.08em;margin:.3rem 0 .9rem;display:flex;align-items:center;gap:.5rem}
+.sum-num{color:var(--gold)}
+.sum-note{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.sum-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem}
+.sum-stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  text-align:center;padding:1rem .6rem}
+.sum-stat .v{font-family:"Shippori Mincho",serif;font-size:1.7rem;color:var(--gold2);line-height:1.2}
+.sum-stat .l{color:var(--muted);font-size:.82rem;margin-top:.3rem;line-height:1.5}
+.sum-list{margin:.4rem 0;padding-left:1.3rem}
+.sum-list li{margin:.25rem 0}
+.sum-em{color:var(--gold2);font-weight:700}
+.sum-formula{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;
+  padding:.7rem 1rem;text-align:center;color:var(--gold2);font-weight:700;letter-spacing:.02em}
+.sum-sub{color:var(--muted);margin:.8rem 0 .2rem}
+.sum-banner{margin-top:1rem;background:linear-gradient(90deg,#2a1e1e,#1d1622);
+  border:1px solid var(--r);border-radius:10px;padding:.8rem 1rem;text-align:center;line-height:1.7}
+.sum-banner strong{color:#f0b8a8}
+.sum-cards{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.9rem}
+.sum-cards img{width:130px;border-radius:7px;border:1px solid var(--line);
+  box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.sum-cards-cap{align-items:flex-start}
+.sum-cards-cap figure{margin:0;width:170px}
+.sum-cards-cap img{width:150px}
+.sum-cards-cap figcaption{font-size:.74rem;color:var(--muted);line-height:1.6;margin-top:.4rem}
+.sum-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.sum-step{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.sum-step p{font-size:.92rem;margin:.45rem 0;line-height:1.75}
+.sum-step strong{color:var(--gold2)}
+.sum-step-head{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.05rem;
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;
+  border-radius:50%;border:1px solid var(--gold);color:var(--gold2);font-size:.95rem;flex:none}
+@media(max-width:760px){.sum-grid{grid-template-columns:1fr}}
 /* ---- glossary ---- */
 .g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
   backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
@@ -123,9 +170,9 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 <div class="mana-strip"></div>
 <header class="site">
   <div class="site-inner">
-    <a href="../index.html" style="text-decoration:none"><div class="brand">キューブドラフト保管庫<span class="sub">CUBE DRAFT ARCHIVE</span></div></a>
+    <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
     <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html" selected>デュエマパワドラ</option></select></div>
-    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html" class="active">キューブトップ</a><span class="disabled">ルール<span class="badge">準備中</span></span><span class="disabled">用語集<span class="badge">準備中</span></span><a href="cards.html">カードリスト</a></nav>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html" class="active">キューブトップ</a><span class="disabled">ルール<span class="badge">準備中</span></span><span class="disabled">ルールサマリー<span class="badge">準備中</span></span><span class="disabled">用語集<span class="badge">準備中</span></span><a href="cards.html">カードリスト</a></nav>
   </div>
 </header>
 
