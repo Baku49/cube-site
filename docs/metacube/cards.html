@@ -455,10 +455,11 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("cl-view-name").classList.remove("active");
     btn.classList.add("active");
   }
+  const v = "?v=" + Date.now();
   Promise.all([
-    fetch("data/cards.json").then(r=>r.json()),
-    fetch("data/overrides.json").then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch("data/changelog.json").then(r=>r.ok?r.json():[]).catch(()=>[])
+    fetch("data/cards.json"+v).then(r=>r.json()),
+    fetch("data/overrides.json"+v).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch("data/changelog.json"+v).then(r=>r.ok?r.json():[]).catch(()=>[])
   ]).then(function(res){
     CARDS = res[0].cards;
     OVR = res[1]; LOG = res[2];
