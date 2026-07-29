@@ -291,7 +291,7 @@ let DATA = null;
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 function brz(s){ return esc(s).replace(/\n/g,"<br>"); }
 function card(name){ return DATA.cards[name] || null; }
-function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+c.id+".jpg" : ""; }
+function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+(c.imgId||c.id)+".jpg" : ""; }
 
 const FACE_FIELDS = [["文明","文明"],["カードの種類","カードの種類"],["コスト","コスト"],["パワー","パワー"],["マナ","マナ"],["種族","種族"],["レアリティ","レアリティ"]];
 function faceHtml(face, faceName){
@@ -315,7 +315,7 @@ function openModal(name){
   h += '<div class="cl-detail-imgs">'+(imgSrc(name)
     ? '<img src="'+imgSrc(name)+'" alt="'+esc(name)+'">'
     : '<div class="cl-blank cl-blank-lg"><span>'+esc(name)+'</span></div>')+
-    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.id)+'b.jpg" alt="'+esc(name)+' 裏面">' : '')+'</div>';
+    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.imgId||c.id)+'b.jpg" alt="'+esc(name)+' 裏面">' : '')+'</div>';
   h += '<div class="cl-detail-info">';
   if(!c){ h += '<div class="cl-cardname">'+esc(name)+'</div>'; }
   else {
