@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ヒント | オールイン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0e13; --bg2:#12151d; --panel:#171b25; --panel2:#1d222e;
+  --line:#2a3040; --text:#e8e4d8; --muted:#9a94a8; --gold:#c9a86a; --gold2:#e3c98f;
+  --w:#f5f0d8; --u:#4f9edb; --b:#a48ac2; --r:#e05b4b; --g:#57a05e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+  font-size:16px;line-height:1.9;}
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mana-strip{height:4px;background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+header.site{position:sticky;top:0;z-index:50;background:rgba(12,14,19,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.site-inner{max-width:1040px;margin:0 auto;padding:.6rem 1.2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.brand{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:.1em;color:var(--gold2);white-space:nowrap;line-height:1.3}
+.brand .sub{font-size:.62rem;color:var(--muted);letter-spacing:.22em;display:block}
+.cube-switch{display:flex;align-items:center;gap:.5rem}
+.cube-switch select{background:var(--panel);color:var(--gold2);border:1px solid var(--line);
+  border-radius:8px;padding:.35rem .6rem;font-size:.92rem;font-family:inherit;cursor:pointer}
+.cube-switch select:focus{outline:none;border-color:var(--gold)}
+nav.main{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto;align-items:center}
+nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem}
+nav.main a:hover{background:var(--panel2);text-decoration:none}
+nav.main a.active{background:var(--panel2);color:var(--gold2);border:1px solid var(--line)}
+nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default}
+.badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
+  padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
+main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
+.hero{padding:3.2rem 1.2rem 2.6rem;text-align:center;position:relative;
+  background:radial-gradient(ellipse at 50% -20%, #232a3d 0%, transparent 60%);}
+.hero.art{background-size:cover;background-position:center 30%;
+  padding:4.6rem 1.2rem 3.4rem;border-bottom:1px solid var(--line);}
+.hero.art h1,.hero.art p{text-shadow:0 2px 14px rgba(0,0,0,.95),0 0 4px rgba(0,0,0,.9)}
+.hero.art p{color:#d9d3c2}
+.hero h1{font-family:"Shippori Mincho",serif;font-size:2.3rem;letter-spacing:.15em;
+  margin:.2rem 0 .6rem;color:var(--gold2);}
+.hero p{color:var(--muted);max-width:620px;margin:.4rem auto}
+h1.page{font-family:"Shippori Mincho",serif;font-size:1.9rem;letter-spacing:.1em;
+  color:var(--gold2);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:.5rem 0 1.2rem}
+.updated{color:var(--muted);font-size:.82rem;margin-bottom:1.6rem}
+/* ---- article (rules) ---- */
+article.doc h1{font-family:"Shippori Mincho",serif;font-size:1.45rem;color:var(--gold2);
+  letter-spacing:.06em;margin:2.6rem 0 1rem;padding:.5rem .9rem;
+  background:linear-gradient(90deg,var(--panel) 0%,transparent 100%);
+  border-left:4px solid var(--gold);border-radius:3px;}
+article.doc h2{font-family:"Shippori Mincho",serif;font-size:1.2rem;color:var(--gold2);
+  margin:2rem 0 .8rem;padding-left:.7rem;border-left:3px solid var(--u);}
+article.doc h3{font-size:1.05rem;color:var(--text);margin:1.6rem 0 .6rem;
+  padding-left:.7rem;border-left:3px solid var(--r);}
+article.doc h4{font-size:1rem;color:var(--gold2);margin:1.4rem 0 .4rem;}
+article.doc p{margin:.55rem 0}
+article.doc strong{color:var(--gold2)}
+article.doc a{border-bottom:1px dotted var(--gold)}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:1rem 1.4rem;margin:0 0 1.5rem;}
+.toc .toc-title{font-size:.8rem;letter-spacing:.25em;color:var(--muted);margin-bottom:.5rem}
+.toc ol{margin:0;padding-left:1.2rem}
+.toc li{margin:.15rem 0;font-size:.95rem}
+.toc ol ol{padding-left:1.1rem;font-size:.9rem}
+/* ---- cards (top page) ---- */
+.cube-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:1.4rem}
+.cube-card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.4rem 1.5rem;position:relative;overflow:hidden;}
+.cube-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;z-index:2;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.card-art{height:130px;margin:-1.4rem -1.5rem 1rem;background-size:cover;background-position:center 30%;
+  border-bottom:1px solid var(--line);}
+.cube-card h2{font-family:"Shippori Mincho",serif;margin:.2rem 0 .5rem;font-size:1.35rem;
+  letter-spacing:.08em;color:var(--gold2)}
+.cube-card p{color:var(--muted);font-size:.92rem;margin:.3rem 0 .9rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{font-size:.72rem;padding:.15rem .55rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.45rem 1rem;border-radius:8px;font-size:.9rem;
+  border:1px solid var(--gold);color:var(--gold2)}
+.btn:hover{background:var(--gold);color:#14100a;text-decoration:none}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{background:var(--panel2);color:var(--text)}
+.btn.disabled{border-color:var(--line);color:var(--muted);pointer-events:none}
+.cube-card.coming{opacity:.6}
+/* ---- card list ---- */
+.cl-main{max-width:1200px}
+.cl-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.96);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1rem}
+.cl-btnrow{display:flex;gap:.6rem;align-items:center;margin-top:.6rem;flex-wrap:wrap}
+.cl-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.cl-tbtn{background:var(--panel);color:var(--muted);border:none;padding:.4rem .9rem;
+  font-size:.9rem;cursor:pointer;font-family:inherit}
+.cl-tbtn.active{background:var(--panel2);color:var(--gold2)}
+button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
+.cl-count{color:var(--muted);font-size:.85rem;margin-left:auto}
+.cl-seccount{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.7rem;margin:.8rem 0 1.6rem}
+.cl-card{position:relative;cursor:pointer;border-radius:8px;transition:transform .12s}
+.cl-card:hover{transform:translateY(-3px)}
+.cl-card img{width:100%;border-radius:8px;display:block;background:var(--panel);min-height:120px}
+.cl-badge{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.85);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:999px;padding:.05rem .5rem;font-size:.8rem;font-weight:700}
+.cl-errata{position:absolute;top:6px;left:6px;background:#7a2a1e;color:#ffd9cc;border-radius:4px;
+  padding:.02rem .35rem;font-size:.72rem;font-weight:700}
+.cl-errata-inline{font-size:.68rem;background:#7a2a1e;color:#ffd9cc;border-radius:4px;padding:.05rem .3rem}
+.cl-names{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.3rem;margin:.8rem 0 1.6rem}
+.cl-nameitem{text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--text);
+  border-radius:7px;padding:.35rem .7rem;font-size:.9rem;cursor:pointer;font-family:inherit}
+.cl-nameitem:hover{border-color:var(--gold);color:var(--gold2)}
+.cl-nbadge{color:var(--gold2);font-weight:700}
+.cl-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
+.cl-modal-back{position:absolute;inset:0;background:rgba(0,0,0,.75)}
+.cl-modal-box{position:relative;background:var(--bg2);border:1px solid var(--gold);border-radius:14px;
+  max-width:880px;width:calc(100% - 2rem);max-height:88vh;overflow-y:auto;padding:1.4rem 1.6rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.8)}
+.cl-close{position:absolute;top:.6rem;right:.8rem;background:none;border:none;color:var(--muted);
+  font-size:1.6rem;cursor:pointer;line-height:1}
+.cl-close:hover{color:var(--gold2)}
+.cl-h2{font-family:"Shippori Mincho",serif;color:var(--gold2);margin:.2rem 0 1rem}
+.cl-detail{display:flex;gap:1.4rem;flex-wrap:wrap}
+.cl-detail-imgs{flex:0 0 260px;display:flex;flex-direction:column;gap:.7rem}
+.cl-detail-imgs img{width:260px;border-radius:12px}
+.cl-detail-info{flex:1;min-width:260px}
+.cl-cardname{font-family:"Shippori Mincho",serif;font-size:1.3rem;color:var(--gold2);font-weight:700}
+.cl-en{color:var(--muted);font-size:.85rem;margin-bottom:.3rem}
+.cl-line{margin:.3rem 0}
+.cl-type{color:var(--text);font-weight:600;margin:.4rem 0;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+.cl-text{margin:.6rem 0;line-height:1.8;font-size:.95rem}
+.cl-flavor{margin:.6rem 0;color:var(--muted);font-style:italic;font-size:.88rem;
+  border-left:2px solid var(--line);padding-left:.7rem}
+.cl-pt{text-align:right;font-weight:700;color:var(--gold2);font-size:1.05rem}
+.cl-metainfo{color:var(--muted);font-size:.8rem;margin-top:.7rem;border-top:1px solid var(--line);padding-top:.5rem}
+.cl-noja{color:#c9a06a}
+.cl-ovnote{background:#3a2018;border:1px solid #7a2a1e;color:#ffd9cc;border-radius:8px;
+  padding:.5rem .8rem;margin-bottom:.8rem;font-size:.88rem}
+.cl-orig{margin:.8rem 0;color:var(--muted)}
+.cl-orig summary{cursor:pointer;font-size:.85rem}
+.cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
+.cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
+.cl-logdate{color:var(--gold2);font-weight:700}
+.cl-lognote{margin:.2rem 0;color:var(--text)}
+.cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+.cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+.ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
+  border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
+.ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
+.ms.mr{background:#e8a898}.ms.mg{background:#a8cbaa}.ms.mc{background:#c8c4bc}
+/* ---- 準備中 ---- */
+.wip{background:var(--panel);border:1px dashed var(--line);border-radius:14px;
+  text-align:center;padding:3.5rem 1.5rem;margin-top:1.5rem;color:var(--muted)}
+.wip .wip-mark{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--gold2);
+  letter-spacing:.3em;margin-bottom:.8rem}
+/* ---- summary ---- */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.sum-span2{grid-column:1/-1}
+.sum-panel{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);
+  border-radius:14px;padding:1.3rem 1.5rem;position:relative;overflow:hidden}
+.sum-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--w),var(--u),var(--b),var(--r),var(--g));}
+.sum-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.2rem;
+  letter-spacing:.08em;margin:.3rem 0 .9rem;display:flex;align-items:center;gap:.5rem}
+.sum-num{color:var(--gold)}
+.sum-note{font-size:.8rem;color:var(--muted);font-family:"Noto Sans JP",sans-serif;margin-left:.4rem}
+.sum-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem}
+.sum-stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+  text-align:center;padding:1rem .6rem}
+.sum-stat .v{font-family:"Shippori Mincho",serif;font-size:1.7rem;color:var(--gold2);line-height:1.2}
+.sum-stat .l{color:var(--muted);font-size:.82rem;margin-top:.3rem;line-height:1.5}
+.sum-list{margin:.4rem 0;padding-left:1.3rem}
+.sum-list li{margin:.25rem 0}
+.sum-em{color:var(--gold2);font-weight:700}
+.sum-formula{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;
+  padding:.7rem 1rem;text-align:center;color:var(--gold2);font-weight:700;letter-spacing:.02em}
+.sum-sub{color:var(--muted);margin:.8rem 0 .2rem}
+.sum-banner{margin-top:1rem;background:linear-gradient(90deg,#2a1e1e,#1d1622);
+  border:1px solid var(--r);border-radius:10px;padding:.8rem 1rem;text-align:center;line-height:1.7}
+.sum-banner strong{color:#f0b8a8}
+.sum-cards{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.9rem}
+.sum-cards img{width:130px;border-radius:7px;border:1px solid var(--line);
+  box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.sum-cards-cap{align-items:flex-start}
+.sum-cards-cap figure{margin:0;width:170px}
+.sum-cards-cap img{width:150px}
+.sum-cards-cap figcaption{font-size:.74rem;color:var(--muted);line-height:1.6;margin-top:.4rem}
+.sum-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.sum-step{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem}
+.sum-step p{font-size:.92rem;margin:.45rem 0;line-height:1.75}
+.sum-step strong{color:var(--gold2)}
+.sum-step-head{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.05rem;
+  margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;
+  border-radius:50%;border:1px solid var(--gold);color:var(--gold2);font-size:.95rem;flex:none}
+@media(max-width:760px){.sum-grid{grid-template-columns:1fr}}
+/* ---- glossary ---- */
+.g-controls{position:sticky;top:56px;z-index:40;background:rgba(12,14,19,.95);
+  backdrop-filter:blur(8px);padding:.8rem 0;border-bottom:1px solid var(--line);margin-bottom:1.2rem}
+.g-search{width:100%;padding:.65rem 1rem;font-size:1rem;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text);outline:none}
+.g-search:focus{border-color:var(--gold)}
+.g-cats{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.6rem}
+.g-cat{padding:.28rem .8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.g-cat.active{border-color:var(--gold);color:var(--gold2);background:var(--panel2)}
+.g-count{color:var(--muted);font-size:.82rem;margin:.5rem 0 1rem}
+.g-section-title{font-family:"Shippori Mincho",serif;color:var(--gold2);font-size:1.25rem;
+  letter-spacing:.08em;margin:2rem 0 .4rem;padding-left:.7rem;border-left:4px solid var(--gold)}
+.g-section-note{color:var(--muted);font-size:.88rem;margin:0 0 1rem;padding-left:.9rem}
+.entry{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:.9rem 1.2rem;margin:.6rem 0;}
+.entry dt{font-weight:700;color:var(--gold2);font-size:1.02rem;margin-bottom:.25rem}
+.entry dd{margin:0;color:var(--text);font-size:.95rem;line-height:1.85}
+.hidden{display:none}
+footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;
+  text-align:center;padding:1.6rem 1rem 2.2rem;}
+@media(max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:1.7rem}
+  .site-inner{padding:.6rem .8rem;gap:.6rem}
+  nav.main{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div class="mana-strip"></div>
+<header class="site" style="background-image:linear-gradient(rgba(12,14,19,.82),rgba(12,14,19,.9)),url('../assets/allin_theme.webp');background-size:cover;background-position:center 30%">
+  <div class="site-inner">
+    <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
+    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html">デュエマパワドラ</option><option value="../all-in/index.html" selected>オールイン</option></select></div>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="hint.html" class="active">ヒント</a><a href="cards.html">カードリスト</a></nav>
+  </div>
+</header>
+
+<main>
+<h1 class="page">オールイン ヒント</h1>
+<div class="updated">最終更新日: 2026年07月29日</div>
+<div class="toc"><div class="toc-title">目次</div><ol><li><a href="#sec1">オールインとは</a><li><a href="#sec2">ルールの概説</a><li><a href="#sec3">ワイルドカード</a><li><a href="#sec4">アーキタイプ</a><ol><li><a href="#sec5">カオス</a></li><li><a href="#sec6">征竜</a></li><li><a href="#sec7">ペンデュラム</a></li><li><a href="#sec8">融合</a></li><li><a href="#sec9">チューナー</a></li></ol></li><li><a href="#sec10">アイコニックなカード</a><ol><li><a href="#sec11">《アークネメシス・プロートス》《アークネメシス・エスカトス》</a></li><li><a href="#sec12">《フォトン・デルタ・ウィング》</a></li><li><a href="#sec13">《ピースリア》《恋する乙女》《擬態する人喰い虫》《モコモッコ》</a></li><li><a href="#sec14">《イエロー・ガジェット》《グリーン・ガジェット》《レッド・ガジェット》</a></li><li><a href="#sec15">《一撃必殺！居合いドロー》</a></li><li><a href="#sec16">《コンセントレイト》《才呼粉身》《ライフハック》</a></li><li><a href="#sec17">《王宮の弾圧》</a></li></ol></li></li></ol></div>
+<article class="doc">
+<h1 id="sec1">オールインとは</h1>
+<p>管理者が運営する遊戯王OCGのキューブドラフトである。</p>
+<p>「強すぎる」という理由でカードを不採用にしない、という理念に基づき、非常にハイパワーなカードで構成されている。</p>
+<p>同時に、グッドスタッフ要素の強いドラフトでもあり、近年のカテゴリ中心の遊戯王とは異なる体験を提供する。</p>
+<h1 id="sec2">ルールの概説</h1>
+<p>基本は通常のキューブドラフトと同様であり、キューブからランダムなパックを作成し、ブースタードラフトを行う。</p>
+<p>オールインでは1パックの枚数は16枚、1人あたり3パックを用意するため、1人がドラフトする枚数は48枚となる。</p>
+<p>特殊な点として、ドラフトしたカードは全てそのままメインデッキ・エクストラデッキとなる。サイドアウトすることはできない。エクストラデッキのカードを多くドラフトすれば、その分メインデッキが薄くなるという特異な現象も起こる。</p>
+<p>これにより誰でも手軽にドラフトを遊ぶことができる。一方で、デッキ内に機能しないカードが生まれる可能性もあるが、それもオールインの醍醐味である。</p>
+<p>また、オールインでは、現在エラッタされているカードをエラッタ前の姿で使用する。《混沌帝龍 －終焉の使者－》《クリッター》《ダーク・ダイブ・ボンバー》《ファイアウォール・ドラゴン》といったカードを全盛期の性能で使うことができる。通常のゲームでは味わえない体験を提供する要素である。</p>
+<h1 id="sec3">ワイルドカード</h1>
+<p>オールインには、世の多くのキューブドラフトでは採用されていない「ワイルドカード」というルールがある。</p>
+<p>キューブの中に、複数のカード名が記されたプロキシ（例：「イエロー・ガジェット+グリーン・ガジェット+レッド・ガジェット」）が入っており、これをドラフトすると、ドラフト終了後に、記されているカードの全てがセットでカードプールに加わる。</p>
+<p>このルールにより、複数枚がデッキに入っていないと機能しないカードを気軽にキューブに採用できるようになり、キューブの自由度が上がる。一方で、強すぎる組み合わせのワイルドカードは、「ドラフトしたもの勝ち」の理不尽さを生む原因にもなる。</p>
+<h1 id="sec4">アーキタイプ</h1>
+<p>グッドスタッフ色の強いキューブではあるが、「カオス」「征竜」「ペンデュラム」「融合」「チューナー」の5つのアーキタイプが用意されている。多くの場合、アーキタイプから1つ以上の要素を取り入れたデッキを組むことになる。</p>
+<h2 id="sec5">カオス</h2>
+<p>代表カード：《混沌帝龍 －終焉の使者－》（エラッタ前）《カオス・ソルジャー －開闢の使者－》《混源龍レヴィオニア》</p>
+<p>闇属性と光属性がデッキに入ってさえいれば、カオスモンスターをドラフトするだけで成立するため、他アーキタイプとの複合が容易である。</p>
+<p>《混沌帝龍 －終焉の使者－》が特に強力で、効果を起動するだけで、征竜のような墓地リソースが豊富なデッキ以外は致命傷を受ける。</p>
+<p>オールインの環境ではカオスモンスター単体でも十分にフィニッシャーとして機能し、それを手札から直接出せる点は単純に強力である。</p>
+<p>一方で、カオスモンスター単体ではパワー不足の感は否めず、純粋な「カオスグッドスタッフ」のようなデッキで勝ちきることは難しい。</p>
+<h2 id="sec6">征竜</h2>
+<p>代表カード：各征竜</p>
+<p>オールインの覇者である。たびたび弱体化を受けながら、今なお最強のアーキタイプとして君臨している。</p>
+<p>成立条件は「征竜を多くドラフトすること」であり、多くの場合、プレイヤーのうち1～2人が征竜を集めることになる。</p>
+<p>構築は比較的容易でありながら、プレイングには独特の慣れを要する。ただし《極征竜－シャスマティス》の獲得以降、構築難度・プレイング難度ともに大幅に低下している。</p>
+<p>リソース量はアーキタイプ中で最大であり、しかも墓地という干渉されにくい場所をリソースにできる。《極征竜－シャスマティス》がいれば、《焔征竜－ブラスター》を墓地へ送ることによる妨害も容易である。</p>
+<p>総じて、瞬間的な爆発力で勝る融合以外のアーキタイプには有利が付く、強力なアーキタイプである。</p>
+<h2 id="sec7">ペンデュラム</h2>
+<p>代表カード：《ＥＭモンキーボード》《軌跡の魔術師》</p>
+<p>基本的には《ＥＭモンキーボード》から上スケールをサーチし、手札のモンスターを展開することから始める。</p>
+<p>単にペンデュラム召喚するだけであれば《ＥＭモンキーボード》数枚と上スケールのＥＭ1枚をドラフトすれば成立するが、ペンデュラムモンスターで固めたデッキを組み、リソースの強化や強力な展開を目指すと構築難度が上がる。</p>
+<p>レベル4を2体並べることが容易であるため、エクシーズを最も上手く使うアーキタイプでもある。</p>
+<p>《軌跡の魔術師》があると、初動の安定と除去の両方を得られるため、パワーが大きく上がる。十分に組めたときのパワーは融合と並ぶ最強クラスである。</p>
+<p>一方で、カオスの《混沌帝龍 －終焉の使者－》や征竜の《焔征竜－ブラスター》にスケールを剥がされると苦しく、主要なデッキに対して相性面の不利を抱えている。</p>
+<h2 id="sec8">融合</h2>
+<p>代表カード：《魔導サイエンティスト》《デビル・フランケン》《旧神ノーデン》</p>
+<p>《魔導サイエンティスト》からの大量展開、または《デビル・フランケン》による強力なフィニッシャーの踏み倒し、という2つの軸を持つ。</p>
+<p>エクストラデッキのモンスターを大量にドラフトしてメインデッキを薄くし、「《魔導サイエンティスト》か《デビル・フランケン》が通れば勝ち」という状況を目指すことになる。</p>
+<p>リンクモンスターはもちろん、シンクロやエクシーズにも展開が伸びるため、あらゆる方向からフィニッシャーや解決札を用意できる。決まったときのパワーは全アーキタイプ中最強であり、他のデッキを遥かに上回る。</p>
+<p>《デビル・フランケン》から《旧神ノーデン》やチューナー融合モンスターを出す動きは一見弱く見えるが、実際にはそれで勝つことも多く、柔軟に立ち回ることができる。</p>
+<h2 id="sec9">チューナー</h2>
+<p>代表カード：《水晶機巧－ハリファイバー》《水晶機巧－ハリファイバーＰ》《リンクロス》</p>
+<p>「シンクロ」ではなく「チューナー」である。《水晶機巧－ハリファイバー》からリンク展開を行うことを基本としつつ、時にシンクロ召喚を行う。</p>
+<p>《水晶機巧－ハリファイバー》と数枚のチューナーをドラフトできれば成立するため、最低限のリンク展開の構築は比較的容易である。</p>
+<p>一方、シンクロ召喚のためのレベル調整は難しく、シンクロモンスターまで辿り着こうとすると構築難度が高い。シンクロモンスターはいずれもフィニッシャーとして一級品の性能を持つため、シンクロ召喚まで辿り着ければ勝利に大きく近付く。</p>
+<p>《水晶機巧－ハリファイバーＰ》の登場により、他アーキタイプとの複合は容易になっている。</p>
+<h1 id="sec10">アイコニックなカード</h1>
+<p>単体で強力なカードはおおむね採用されているオールインだが、その中でも特に印象的なカードを紹介する。オールインだからこそ活きるカード、他のドラフトにはあまり入らないカードを中心に挙げる。</p>
+<h2 id="sec11">《アークネメシス・プロートス》《アークネメシス・エスカトス》</h2>
+<p>オールイン最強のカードとして挙げられる2枚。自身の効果で手札から出せる高打点であり、耐性と除去効果を併せ持つ、非の打ち所のない性能である。出せばほぼ勝敗が決する。</p>
+<h2 id="sec12">《フォトン・デルタ・ウィング》</h2>
+<p>3枚セットのワイルドカードとして採用されている。ワイルドカードというルールを持つオールインだからこそ採用できるカードである。1枚が2枚になりながら攻撃ロックを仕掛け、エクストラデッキの展開にも繋がる。</p>
+<p>他にも強力な3枚ワイルドカードとして《トリックスター・キャンディナ》《千年の眠りから覚めし原人》《Ｅ・ＨＥＲＯ エアーマン》などがある。</p>
+<h2 id="sec13">《ピースリア》《恋する乙女》《擬態する人喰い虫》《モコモッコ》</h2>
+<p>戦闘耐性を持つカードを採用しないキューブドラフトが多いが、オールインでは採用している。この4枚は付随する効果が強力であり、戦況を停滞させるだけに留まらない働きをする。</p>
+<h2 id="sec14">《イエロー・ガジェット》《グリーン・ガジェット》《レッド・ガジェット》</h2>
+<p>レベル4をサーチし続けるカードとして採用している。ペンデュラムデッキに採用し、ランク4の補助として使うのが最も強力な使い方である。ガジェットで攻撃し続けるという、往年の除去ガジェットのような動きが有効な場合もある。</p>
+<h2 id="sec15">《一撃必殺！居合いドロー》</h2>
+<p>これも3枚ワイルドカードである。墓地を肥やしつつ手札を交換するカードとしても役立つが、最大の特徴は運任せのバーン効果である。このバーンによる勝利は、これまでに1回だけ成立している。</p>
+<h2 id="sec16">《コンセントレイト》《才呼粉身》《ライフハック》</h2>
+<p>攻撃力を上げる速攻魔法群。構築戦で使われることは稀だが、戦闘が重視されるグッドスタッフ環境であるオールインでは十分に強力である。</p>
+<h2 id="sec17">《王宮の弾圧》</h2>
+<p>構築戦では環境を破壊しかねない禁止カードであり、オールインにおいても極めて強力である。特殊召喚を主体とする遊戯王の基本を根底から否定する永続罠であり、自分が展開した後に発動することで、相手の逆転の可能性を刈り取る。数々の禁止カードが入るオールインの中でも、特に凶悪な1枚である。</p>
+</article>
+</main>
+<footer class="site">
+  最終更新日: 2026年07月29日<br>
+  本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
+</footer>
+</body>
+</html>
