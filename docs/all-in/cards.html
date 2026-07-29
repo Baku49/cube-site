@@ -150,6 +150,20 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-lognote{margin:.2rem 0;color:var(--text)}
 .cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
 .cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+/* ---- wild card sets (all-in) ---- */
+.cl-set-stack{position:relative;width:100%;padding-top:150%}
+.cl-set-img{position:absolute;width:76%;border-radius:7px;background:var(--panel);
+  box-shadow:2px 3px 10px rgba(0,0,0,.65);display:block}
+.cl-si0{left:0;top:0;z-index:3}
+.cl-si1{left:12%;top:5%;z-index:2}
+.cl-si2{left:24%;top:10%;z-index:1}
+.cl-sn2.cl-si0{left:0;top:0}.cl-sn2.cl-si1{left:16%;top:7%}
+.cl-set:hover .cl-set-img{box-shadow:2px 3px 14px rgba(0,0,0,.85)}
+.cl-wtag{position:absolute;bottom:6px;left:6px;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.02rem .4rem;font-size:.72rem;font-weight:700}
+.cl-wtag-in{font-size:.7rem;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.05rem .3rem}
+.cl-set-no{color:var(--muted);font-size:.8rem;letter-spacing:.15em;margin:.2rem 0 .4rem}
 .ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
   border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
 .ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
@@ -238,15 +252,211 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
     <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="hint.html">ヒント</a><a href="cards.html" class="active">カードリスト</a></nav>
   </div>
 </header>
-
-<main>
+<main class="cl-main">
 <h1 class="page">オールイン カードリスト</h1>
-<div class="wip">
-  <div class="wip-mark">─ 準備中 ─</div>
-  <p>カードリストのページは現在準備中です。<br>公開までしばらくお待ちください。</p>
-  
+<div class="updated" id="cl-meta">読み込み中…</div>
+
+<div class="cl-controls">
+  <input id="cl-search" class="g-search" type="search" placeholder="カード名で検索(かな・カナ可)" autocomplete="off">
+  <div class="cl-btnrow">
+    <div class="cl-toggle">
+      <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
+      <button id="cl-view-name" class="cl-tbtn">カード名表示</button>
+    </div>
+    <span id="cl-count" class="cl-count"></span>
+  </div>
 </div>
+
+<div id="cl-sections"></div>
+<div id="cl-empty" class="wip hidden"><p>該当するカードがありません</p></div>
 </main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const SECTIONS = [
+  ["闇","闇属性"],["光","光属性"],["地","地属性"],["水","水属性"],["炎","炎属性"],
+  ["風","風属性"],["神","神属性"],["魔法","魔法"],["罠","罠"],["EX","エクストラデッキ"]
+];
+const SPELL_ORD = {"通常":0,"装備":1,"フィールド":2,"速攻":3,"儀式":4,"永続":5};
+const TRAP_ORD = {"通常":0,"永続":1,"カウンター":2};
+const EX_ORD = ["融合","シンクロ","エクシーズ","リンク"];
+
+let DATA = null, view = "img", query = "";
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function brz(s){ return esc(s).replace(/\n/g,"<br>"); }
+function kanaN(s){
+  return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
+}
+function card(name){ return DATA.cards[name] || {name:name, ruby:"", types:[], text:""}; }
+function imgSrc(c){ return c.cid && c.img ? "../assets/ygo/"+c.cid+".jpg" : ""; }
+
+function typeOrd(u){
+  const c = card(u.names[0]);
+  if(u.sec === "魔法") return SPELL_ORD[c.sub||"通常"] != null ? SPELL_ORD[c.sub||"通常"] : 9;
+  if(u.sec === "罠") return TRAP_ORD[c.sub||"通常"] != null ? TRAP_ORD[c.sub||"通常"] : 9;
+  if(u.sec === "EX"){
+    const t = c.types||[];
+    for(let i=0;i<EX_ORD.length;i++){ if(t.indexOf(EX_ORD[i])>=0) return i; }
+    return 9;
+  }
+  return 0;
+}
+function unitCmp(a,b){
+  const ca = card(a.names[0]), cb = card(b.names[0]);
+  const d1 = (ca.lv||0)-(cb.lv||0); if(d1) return d1;
+  const d2 = typeOrd(a)-typeOrd(b); if(d2) return d2;
+  const ka = kanaN(ca.ruby||ca.name), kb = kanaN(cb.ruby||cb.name);
+  return ka.localeCompare(kb, "ja");
+}
+function unitLabel(u){ return u.names.join(" ＋ "); }
+function matches(u){
+  if(!query) return true;
+  const hay = kanaN(u.names.map(n => { const c=card(n); return n+" "+(c.ruby||""); }).join(" "));
+  return hay.includes(query);
+}
+
+function render(){
+  const root = document.getElementById("cl-sections");
+  root.innerHTML = "";
+  let shown = 0, total = 0;
+  SECTIONS.forEach(function(sec){
+    const us = DATA.units.filter(u=>u.sec===sec[0]).slice().sort(unitCmp);
+    if(!us.length) return;
+    total += us.reduce((a,u)=>a+u.count,0);
+    const vis = us.filter(matches);
+    if(!vis.length) return;
+    shown += vis.reduce((a,u)=>a+u.count,0);
+    const secEl = document.createElement("section");
+    secEl.innerHTML = '<h2 class="g-section-title">'+sec[1]+' <span class="cl-seccount">'+vis.reduce((a,u)=>a+u.count,0)+'枚</span></h2>';
+    const wrap = document.createElement("div");
+    wrap.className = view==="img" ? "cl-grid" : "cl-names";
+    vis.forEach(function(u){
+      const el = document.createElement(view==="img" ? "div" : "button");
+      const isWild = u.names.length > 1;
+      const hasAlt = u.names.some(n => DATA.alt[n]);
+      if(view==="img"){
+        el.className = isWild ? "cl-card cl-set" : "cl-card";
+        if(isWild){
+          let imgs = "";
+          u.names.forEach(function(n,i){
+            const c = card(n);
+            imgs += '<img loading="lazy" class="cl-set-img cl-si'+i+' cl-sn'+u.names.length+'" src="'+imgSrc(c)+'" alt="'+esc(n)+'">';
+          });
+          el.innerHTML = '<div class="cl-set-stack">'+imgs+'</div>' +
+            '<span class="cl-wtag">ワイルド</span>' +
+            (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "") +
+            (hasAlt ? '<span class="cl-errata">代替</span>' : "");
+        } else {
+          const c = card(u.names[0]);
+          el.innerHTML = '<img loading="lazy" src="'+imgSrc(c)+'" alt="'+esc(u.names[0])+'">' +
+            (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "") +
+            (hasAlt ? '<span class="cl-errata">代替</span>' : "");
+        }
+      } else {
+        el.className = "cl-nameitem";
+        el.innerHTML = esc(unitLabel(u)) +
+          (isWild ? ' <span class="cl-wtag-in">ワイルド</span>' : "") +
+          (u.count>1 ? ' <span class="cl-nbadge">×'+u.count+'</span>' : "") +
+          (hasAlt ? ' <span class="cl-errata-inline">代替</span>' : "");
+      }
+      el.addEventListener("click", function(){ openModal(u); });
+      wrap.appendChild(el);
+    });
+    secEl.appendChild(wrap);
+    root.appendChild(secEl);
+  });
+  document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
+  document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚");
+}
+
+function lvLine(c){
+  const parts = [];
+  if(c.attr) parts.push(c.attr+"属性");
+  if(c.lvt && c.lv != null) parts.push(c.lvt+" "+c.lv);
+  if(c.sub) parts.push(c.sub+(c.kind==="spell"?"魔法":"罠"));
+  else if(c.kind==="spell") parts.push("通常魔法");
+  else if(c.kind==="trap") parts.push("通常罠");
+  return parts.join("　");
+}
+function cardBlock(name, idx, total){
+  const c = card(name);
+  const alt = DATA.alt[name];
+  let head = "";
+  if(total > 1) head = '<div class="cl-set-no">'+(idx+1)+' / '+total+'枚目</div>';
+  let info = '<div class="cl-cardname">'+esc(name)+'</div>';
+  if(c.ruby && c.ruby !== name) info += '<div class="cl-en">'+esc(c.ruby)+'</div>';
+  info += '<div class="cl-type">'+esc(lvLine(c)) +
+    (c.types && c.types.length ? '　【'+esc(c.types.join("／"))+'】' : "") + '</div>';
+  if(c.atk != null || c.def != null){
+    info += '<div class="cl-line cl-pt" style="text-align:left">攻撃力 '+esc(String(c.atk!=null?c.atk:"-"))+'　／　守備力 '+esc(String(c.def!=null?c.def:"-"))+'</div>';
+  }
+  if(c.pens) info += '<div class="cl-line"><strong>Pスケール：'+esc(String(c.pens))+'</strong></div>';
+  if(c.pen) info += '<div class="cl-text" style="border-left:2px solid var(--u);padding-left:.6rem">'+brz(c.pen)+'</div>';
+  if(alt){
+    info += '<div class="cl-ovnote">このカードには<strong>代替テキスト</strong>が適用される。本来のテキストの代わりに以下のテキストを用いる。</div>';
+    info += '<div class="cl-text">'+brz(alt)+'</div>';
+    if(c.text) info += '<details class="cl-orig"><summary>現在の公式テキストを表示</summary><div class="cl-text">'+brz(c.text)+'</div></details>';
+  } else {
+    info += '<div class="cl-text">'+brz(c.text||"(テキストなし)")+'</div>';
+  }
+  const img = imgSrc(c) ? '<div class="cl-detail-imgs"><img src="'+imgSrc(c)+'" alt="'+esc(name)+'"></div>' : "";
+  return head + '<div class="cl-detail">'+img+'<div class="cl-detail-info">'+info+'</div></div>';
+}
+function openModal(u){
+  const isWild = u.names.length > 1;
+  let html = "";
+  if(isWild) html += '<div class="cl-ovnote" style="background:#2a2418;border-color:var(--gold);color:var(--gold2)">'+
+    '<strong>ワイルドカード</strong>：これをピックすると、以下の'+u.names.length+'枚全てがセットでカードプールに加わる。</div>';
+  if(u.count>1) html += '<div class="cl-line" style="color:var(--muted)">キューブ内に同一のもの ×'+u.count+'</div>';
+  u.names.forEach(function(n,i){ if(i>0) html += '<hr class="cl-hr">'; html += cardBlock(n, i, u.names.length); });
+  document.getElementById("cl-modal-content").innerHTML = html;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(){
+  document.getElementById("cl-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  const v = "?v=" + Date.now();
+  fetch("data/cards.json"+v).then(r=>r.json()).then(function(d){
+    DATA = d;
+    const nUnits = d.units.length, nCards = Object.keys(d.cards).length;
+    const nTotal = d.units.reduce((a,u)=>a+u.count,0);
+    document.getElementById("cl-meta").textContent =
+      "最終更新日: "+(d.updated||"")+" ｜ 全"+nTotal+"枚(ユニット"+nUnits+"種・カード"+nCards+"種) ｜ カードをクリックで詳細表示";
+    render();
+  }).catch(function(e){
+    document.getElementById("cl-meta").textContent = "データの読み込みに失敗しました";
+  });
+  document.getElementById("cl-search").addEventListener("input", function(){
+    query = kanaN(this.value.trim()); render();
+  });
+  document.getElementById("cl-view-img").addEventListener("click", function(){
+    view="img"; this.classList.add("active");
+    document.getElementById("cl-view-name").classList.remove("active"); render();
+  });
+  document.getElementById("cl-view-name").addEventListener("click", function(){
+    view="name"; this.classList.add("active");
+    document.getElementById("cl-view-img").classList.remove("active"); render();
+  });
+  document.querySelector("#cl-modal .cl-modal-back").addEventListener("click", closeModal);
+  document.querySelector("#cl-modal .cl-close").addEventListener("click", closeModal);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+});
+})();
+</script>
+
 <footer class="site">
   最終更新日: 2026年07月29日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
