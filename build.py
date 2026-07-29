@@ -59,8 +59,8 @@ CUBES = [
     {
         "slug": "all-in",
         "name": "オールイン",
-        "tags": ["遊戯王OCG", "1パック16枚", "ドラフト3回"],
-        "desc": "遊戯王OCGのキューブドラフト。1人3パック(16枚入り)で通常のドラフトを3回行う。",
+        "tags": ["遊戯王OCG", "パワード", "2～8人"],
+        "desc": "「強すぎる」という理由でカードを不採用にしない理念のもと、ハイパワーカードを詰め込んだ遊戯王OCGのキューブドラフト。グッドスタッフ要素が強く、カテゴリ中心の近年の遊戯王とは異なる体験を提供する。",
         "cardlist_url": None,
         "cardlist_label": None,
         "has_content": True,
@@ -72,6 +72,7 @@ CUBES = [
         "has_aid": False,
         "has_glossary": False,
         "has_hint": True,
+        "cards_app": True,
     },
 ]
 
@@ -219,6 +220,20 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-lognote{margin:.2rem 0;color:var(--text)}
 .cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
 .cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+/* ---- wild card sets (all-in) ---- */
+.cl-set-stack{position:relative;width:100%;padding-top:150%}
+.cl-set-img{position:absolute;width:76%;border-radius:7px;background:var(--panel);
+  box-shadow:2px 3px 10px rgba(0,0,0,.65);display:block}
+.cl-si0{left:0;top:0;z-index:3}
+.cl-si1{left:12%;top:5%;z-index:2}
+.cl-si2{left:24%;top:10%;z-index:1}
+.cl-sn2.cl-si0{left:0;top:0}.cl-sn2.cl-si1{left:16%;top:7%}
+.cl-set:hover .cl-set-img{box-shadow:2px 3px 14px rgba(0,0,0,.85)}
+.cl-wtag{position:absolute;bottom:6px;left:6px;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.02rem .4rem;font-size:.72rem;font-weight:700}
+.cl-wtag-in{font-size:.7rem;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.05rem .3rem}
+.cl-set-no{color:var(--muted);font-size:.8rem;letter-spacing:.15em;margin:.2rem 0 .4rem}
 .ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
   border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
 .ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
