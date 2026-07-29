@@ -383,7 +383,8 @@ function openModal(u){
   let h = '<div class="cl-detail">';
   h += '<div class="cl-detail-imgs">'+(imgSrc(u.name)
     ? '<img src="'+imgSrc(u.name)+'" alt="'+esc(u.name)+'">'
-    : '<div class="cl-blank cl-blank-lg"><span>'+esc(u.name)+'</span></div>')+'</div>';
+    : '<div class="cl-blank cl-blank-lg"><span>'+esc(u.name)+'</span></div>')+
+    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.id)+'b.jpg" alt="'+esc(u.name)+' 裏面">' : '')+'</div>';
   h += '<div class="cl-detail-info">';
   if(!c){
     h += '<div class="cl-cardname">'+esc(u.name)+'</div><div class="cl-text" style="color:var(--muted)">データ未取得</div>';
@@ -393,7 +394,7 @@ function openModal(u){
       if(i>0) h += '<hr class="cl-hr">';
       h += faceHtml(f, c.faces.length>1 ? (faceNames[i]||"") : (c.offName||u.name));
     });
-    h += '<div class="cl-metainfo">公式DB: '+esc(c.id)+
+    h += '<div class="cl-metainfo">'+(c.orig ? 'ゲームオリジナルカード' : '公式DB: '+esc(c.id))+
       (u.count>1 ? ' ｜ キューブに'+u.count+'枚' : '')+'</div>';
   }
   h += '</div></div>';
