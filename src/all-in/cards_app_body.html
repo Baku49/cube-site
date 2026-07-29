@@ -43,7 +43,11 @@ function kanaN(s){
   return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
 }
 function card(name){ return DATA.cards[name] || {name:name, ruby:"", types:[], text:""}; }
+function disp(name){ const c = card(name); return c.name || name; }
 function imgSrc(c){ return c.cid && c.img ? "../assets/ygo/"+c.cid+".jpg" : ""; }
+function blankHtml(name, cls){
+  return '<div class="cl-blank '+(cls||"")+'"><span>'+esc(disp(name))+'</span><span class="cl-blank-sub">未発売</span></div>';
+}
 
 function typeOrd(u){
   const c = card(u.names[0]);
@@ -63,10 +67,10 @@ function unitCmp(a,b){
   const ka = kanaN(ca.ruby||ca.name), kb = kanaN(cb.ruby||cb.name);
   return ka.localeCompare(kb, "ja");
 }
-function unitLabel(u){ return u.names.join(" ＋ "); }
+function unitLabel(u){ return u.names.map(disp).join(" ＋ "); }
 function matches(u){
   if(!query) return true;
-  const hay = kanaN(u.names.map(n => { const c=card(n); return n+" "+(c.ruby||""); }).join(" "));
+  const hay = kanaN(u.names.map(n => { const c=card(n); return n+" "+(c.name||"")+" "+(c.ruby||""); }).join(" "));
   return hay.includes(query);
 }
 
@@ -95,7 +99,10 @@ function render(){
           let imgs = "";
           u.names.forEach(function(n,i){
             const c = card(n);
-            imgs += '<img loading="lazy" class="cl-set-img cl-si'+i+' cl-sn'+u.names.length+'" src="'+imgSrc(c)+'" alt="'+esc(n)+'">';
+            const cls = "cl-set-img cl-si"+i+" cl-sn"+u.names.length;
+            imgs += imgSrc(c)
+              ? '<img loading="lazy" class="'+cls+'" src="'+imgSrc(c)+'" alt="'+esc(disp(n))+'">'
+              : blankHtml(n, cls);
           });
           el.innerHTML = '<div class="cl-set-stack">'+imgs+'</div>' +
             '<span class="cl-wtag">ワイルド</span>' +
@@ -103,7 +110,9 @@ function render(){
             (hasAlt ? '<span class="cl-errata">代替</span>' : "");
         } else {
           const c = card(u.names[0]);
-          el.innerHTML = '<img loading="lazy" src="'+imgSrc(c)+'" alt="'+esc(u.names[0])+'">' +
+          el.innerHTML = (imgSrc(c)
+              ? '<img loading="lazy" src="'+imgSrc(c)+'" alt="'+esc(disp(u.names[0]))+'">'
+              : blankHtml(u.names[0], "")) +
             (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "") +
             (hasAlt ? '<span class="cl-errata">代替</span>' : "");
         }
@@ -138,8 +147,8 @@ function cardBlock(name, idx, total){
   const alt = DATA.alt[name];
   let head = "";
   if(total > 1) head = '<div class="cl-set-no">'+(idx+1)+' / '+total+'枚目</div>';
-  let info = '<div class="cl-cardname">'+esc(name)+'</div>';
-  if(c.ruby && c.ruby !== name) info += '<div class="cl-en">'+esc(c.ruby)+'</div>';
+  let info = '<div class="cl-cardname">'+esc(disp(name))+'</div>';
+  if(c.ruby && c.ruby !== disp(name)) info += '<div class="cl-en">'+esc(c.ruby)+'</div>';
   info += '<div class="cl-type">'+esc(lvLine(c)) +
     (c.types && c.types.length ? '　【'+esc(c.types.join("／"))+'】' : "") + '</div>';
   if(c.atk != null || c.def != null){
@@ -151,10 +160,14 @@ function cardBlock(name, idx, total){
     info += '<div class="cl-ovnote">このカードには<strong>代替テキスト</strong>が適用される。本来のテキストの代わりに以下のテキストを用いる。</div>';
     info += '<div class="cl-text">'+brz(alt)+'</div>';
     if(c.text) info += '<details class="cl-orig"><summary>現在の公式テキストを表示</summary><div class="cl-text">'+brz(c.text)+'</div></details>';
+  } else if(c.unreleased){
+    info += '<div class="cl-text" style="color:var(--muted)">未発売カード（公式データベース未収録のため、データは未登録）</div>';
   } else {
     info += '<div class="cl-text">'+brz(c.text||"(テキストなし)")+'</div>';
   }
-  const img = imgSrc(c) ? '<div class="cl-detail-imgs"><img src="'+imgSrc(c)+'" alt="'+esc(name)+'"></div>' : "";
+  const img = imgSrc(c)
+    ? '<div class="cl-detail-imgs"><img src="'+imgSrc(c)+'" alt="'+esc(disp(name))+'"></div>'
+    : '<div class="cl-detail-imgs">'+blankHtml(name, "cl-blank-lg")+'</div>';
   return head + '<div class="cl-detail">'+img+'<div class="cl-detail-info">'+info+'</div></div>';
 }
 function openModal(u){
