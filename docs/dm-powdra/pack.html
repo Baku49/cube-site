@@ -314,7 +314,8 @@ function openModal(name){
   let h = '<div class="cl-detail">';
   h += '<div class="cl-detail-imgs">'+(imgSrc(name)
     ? '<img src="'+imgSrc(name)+'" alt="'+esc(name)+'">'
-    : '<div class="cl-blank cl-blank-lg"><span>'+esc(name)+'</span></div>')+'</div>';
+    : '<div class="cl-blank cl-blank-lg"><span>'+esc(name)+'</span></div>')+
+    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.id)+'b.jpg" alt="'+esc(name)+' 裏面">' : '')+'</div>';
   h += '<div class="cl-detail-info">';
   if(!c){ h += '<div class="cl-cardname">'+esc(name)+'</div>'; }
   else {
