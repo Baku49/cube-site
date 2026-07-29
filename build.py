@@ -381,6 +381,8 @@ def page(title, body, *, cube=None, active="", depth=0):
         items.append(("cards", "カードリスト", "cards.html", True))
         if cube.get("pack"):
             items.append(("pack", cube.get("pack_label", "パックシミュレーター"), "pack.html", cube["pack"] == "ready"))
+        if cube.get("cards_app"):
+            items.append(("changelog", "変更履歴", "changelog.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
         for key, label, href, enabled in items:
             if not enabled:
@@ -682,6 +684,51 @@ def build_pack(cube):
         page(f'{label} | {cube["name"]}', body, cube=cube, active="pack", depth=1), encoding="utf-8")
 
 
+# ---------------- 各キューブ: 変更履歴 ----------------
+CHANGELOG_BODY = r"""
+<main class="cl-main">
+<h1 class="page">__CUBE_NAME__ 変更履歴</h1>
+<div class="updated" id="lg-meta">読み込み中…</div>
+<div id="lg-list"></div>
+<div id="lg-empty" class="wip hidden"><p>変更履歴はまだありません。</p></div>
+</main>
+<script>
+(function(){
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+document.addEventListener("DOMContentLoaded", function(){
+  fetch("data/changelog.json?v="+Date.now()).then(r=>r.ok?r.json():[]).catch(()=>[]).then(function(log){
+    const root = document.getElementById("lg-list");
+    if(!log.length){
+      document.getElementById("lg-empty").classList.remove("hidden");
+      document.getElementById("lg-meta").textContent = "";
+      return;
+    }
+    const nChange = log.filter(e=>(e.added&&e.added.length)||(e.removed&&e.removed.length)).length;
+    document.getElementById("lg-meta").textContent =
+      "カードリストの入れ替え履歴を新しい順に表示しています ｜ 記録"+log.length+"件";
+    root.innerHTML = log.map(function(e){
+      let h = '<div class="cl-logentry"><div class="cl-logdate">'+esc(e.date)+'</div>';
+      if(e.note) h += '<div class="cl-lognote">'+esc(e.note)+'</div>';
+      if(e.added && e.added.length)
+        h += '<div class="cl-logadd">＋ 追加('+e.added.length+'枚): '+e.added.map(esc).join("、")+'</div>';
+      if(e.removed && e.removed.length)
+        h += '<div class="cl-logrem">－ 削除('+e.removed.length+'枚): '+e.removed.map(esc).join("、")+'</div>';
+      return h+'</div>';
+    }).join("");
+  });
+});
+})();
+</script>
+"""
+
+def build_changelog(cube):
+    out = OUT / cube["slug"]
+    out.mkdir(exist_ok=True)
+    body = CHANGELOG_BODY.replace("__CUBE_NAME__", cube["name"])
+    (out / "changelog.html").write_text(
+        page(f'変更履歴 | {cube["name"]}', body, cube=cube, active="changelog", depth=1), encoding="utf-8")
+
+
 # ---------------- 各キューブ: キューブトップ ----------------
 def build_cube_index(cube):
     tags = "".join(f'<span class="tag">{t}</span>' for t in cube["tags"])
@@ -789,6 +836,8 @@ if __name__ == "__main__":
     for c in CUBES:
         build_cube_index(c)
         build_cards(c)
+        if c.get("cards_app"):
+            build_changelog(c)
         if c.get("pack"):
             build_pack(c)
         if c["has_content"]:
