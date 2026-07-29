@@ -161,6 +161,17 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-si1{left:12%;top:5%;z-index:2}
 .cl-si2{left:24%;top:10%;z-index:1}
 .cl-sn2.cl-si0{left:0;top:0}.cl-sn2.cl-si1{left:16%;top:7%}
+.cl-set-img.cl-sn4{width:70%}
+.cl-sn4.cl-si0{left:0;top:0;z-index:4}
+.cl-sn4.cl-si1{left:10%;top:4%;z-index:3}
+.cl-sn4.cl-si2{left:20%;top:8%;z-index:2}
+.cl-sn4.cl-si3{left:30%;top:12%;z-index:1}
+.cl-set-img.cl-sn5{width:66%}
+.cl-sn5.cl-si0{left:0;top:0;z-index:5}
+.cl-sn5.cl-si1{left:8%;top:4%;z-index:4}
+.cl-sn5.cl-si2{left:16%;top:8%;z-index:3}
+.cl-sn5.cl-si3{left:25%;top:12%;z-index:2}
+.cl-sn5.cl-si4{left:33%;top:16%;z-index:1}
 .cl-set:hover .cl-set-img{box-shadow:2px 3px 14px rgba(0,0,0,.85)}
 .cl-wtag{position:absolute;bottom:6px;left:6px;background:rgba(20,16,10,.9);color:var(--gold2);
   border:1px solid var(--gold);border-radius:4px;padding:.02rem .4rem;font-size:.72rem;font-weight:700}
@@ -308,9 +319,8 @@ function faceHtml(face, faceName){
   h += '</div>';
   return h;
 }
-function openModal(name){
+function detailHtml(name){
   const c = card(name);
-  const box = document.getElementById("cl-modal-content");
   let h = '<div class="cl-detail">';
   h += '<div class="cl-detail-imgs">'+(imgSrc(name)
     ? '<img src="'+imgSrc(name)+'" alt="'+esc(name)+'">'
@@ -326,6 +336,19 @@ function openModal(name){
     });
   }
   h += '</div></div>';
+  return h;
+}
+function openModal(name){
+  const c = card(name);
+  const box = document.getElementById("cl-modal-content");
+  let h = detailHtml(name);
+  if(c && c.set){
+    h += '<div class="cl-set-no" style="margin-top:1.2rem">セット内容（'+c.set.length+'枚）</div>';
+    c.set.forEach(function(n,i){
+      if(i>0) h += '<hr class="cl-hr">';
+      h += detailHtml(n);
+    });
+  }
   box.innerHTML = h;
   document.getElementById("cl-modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -348,10 +371,20 @@ function reroll(){
   root.innerHTML = "";
   sample(pool, 20).forEach(function(n){
     const el = document.createElement("div");
-    el.className = "cl-card";
-    el.innerHTML = imgSrc(n)
-      ? '<img loading="lazy" src="'+imgSrc(n)+'" alt="'+esc(n)+'">'
-      : '<div class="cl-blank"><span>'+esc(n)+'</span></div>';
+    const c = card(n);
+    if(c && c.set){
+      el.className = "cl-card cl-set";
+      const all = [n].concat(c.set);
+      el.innerHTML = '<div class="cl-set-stack">'+all.map(function(m,i){
+          const s = imgSrc(m);
+          return s ? '<img loading="lazy" class="cl-set-img cl-si'+i+' cl-sn'+all.length+'" src="'+s+'" alt="'+esc(m)+'">' : '';
+        }).join('')+'</div><span class="cl-wtag">セット</span>';
+    } else {
+      el.className = "cl-card";
+      el.innerHTML = imgSrc(n)
+        ? '<img loading="lazy" src="'+imgSrc(n)+'" alt="'+esc(n)+'">'
+        : '<div class="cl-blank"><span>'+esc(n)+'</span></div>';
+    }
     el.addEventListener("click", function(){ openModal(n); });
     root.appendChild(el);
   });
