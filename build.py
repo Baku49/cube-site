@@ -71,7 +71,7 @@ CUBES = [
         "has_summary": False,
         "has_aid": False,
         "has_glossary": False,
-        "hint_pending": True,
+        "has_hint": True,
     },
 ]
 
@@ -328,7 +328,9 @@ def page(title, body, *, cube=None, active="", depth=0):
             items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
         if cube.get("has_aid"):
             items.append(("aid", "ルールエイドとヒント", "aid.html", True))
-        if cube.get("hint_pending"):
+        if cube.get("has_hint"):
+            items.append(("hint", "ヒント", "hint.html", True))
+        elif cube.get("hint_pending"):
             items.append(("hint", "ヒント", "hint.html", False))
         items.append(("cards", "カードリスト", "cards.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
@@ -623,7 +625,9 @@ def build_cube_index(cube):
             btns += '<a class="btn" href="glossary.html">用語集</a>'
         if cube.get("has_aid"):
             btns += '<a class="btn" href="aid.html">ルールエイドとヒント</a>'
-        if cube.get("hint_pending"):
+        if cube.get("has_hint"):
+            btns += '<a class="btn" href="hint.html">ヒント</a>'
+        elif cube.get("hint_pending"):
             btns += '<span class="btn disabled">ヒント(準備中)</span>'
         btns += '<a class="btn" href="cards.html">カードリスト</a>'
         if cube["cardlist_url"]:
@@ -719,6 +723,8 @@ if __name__ == "__main__":
                 build_summary(c)
             if c.get("has_aid"):
                 build_aid(c)
+            if c.get("has_hint"):
+                build_article(c, "hint.md", "hint.html", "ヒント", "hint")
             if c.get("has_glossary", True):
                 build_glossary(c)
     gen = sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.html"))
