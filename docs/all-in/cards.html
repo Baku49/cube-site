@@ -324,8 +324,14 @@ function typeOrd(u){
 }
 function unitCmp(a,b){
   const ca = card(a.names[0]), cb = card(b.names[0]);
-  const d1 = (ca.lv||0)-(cb.lv||0); if(d1) return d1;
-  const d2 = typeOrd(a)-typeOrd(b); if(d2) return d2;
+  if(a.sec === "EX"){
+    // EXはカードの種類(融合→シンクロ→エクシーズ→リンク)をレベルより優先
+    const d0 = typeOrd(a)-typeOrd(b); if(d0) return d0;
+    const d1 = (ca.lv||0)-(cb.lv||0); if(d1) return d1;
+  } else {
+    const d1 = (ca.lv||0)-(cb.lv||0); if(d1) return d1;
+    const d2 = typeOrd(a)-typeOrd(b); if(d2) return d2;
+  }
   const ka = kanaN(ca.ruby||ca.name), kb = kanaN(cb.ruby||cb.name);
   return ka.localeCompare(kb, "ja");
 }
