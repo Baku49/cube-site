@@ -194,7 +194,8 @@ function openModal(c){
   if(c.rarity) h += ' ｜ '+esc(c.rarity);
   if(c.artist) h += ' ｜ Illus. '+esc(c.artist);
   if(c.count>1) h += ' ｜ キューブに'+c.count+'枚';
-  if(c.lang!=='ja') h += '<br><span class="cl-noja">※日本語版データなし(英語版を表示)</span>';
+  if(c.wg) h += '<br><span class="cl-noja">※日本語テキストはWISDOM GUILDの日本語訳を表示</span>';
+  else if(c.lang!=='ja') h += '<br><span class="cl-noja">※日本語版データなし(英語版を表示)</span>';
   h += '</div>';
   if(c.scryfall_uri) h += '<div class="cl-metainfo"><a href="'+esc(c.scryfall_uri)+'" target="_blank" rel="noopener">Scryfallで見る ↗</a></div>';
   h += '</div></div>';
