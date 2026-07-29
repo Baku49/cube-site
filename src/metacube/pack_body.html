@@ -1,0 +1,152 @@
+<main class="cl-main">
+<h1 class="page">メタキューブ パックシミュレーター</h1>
+<div class="updated">カードプール(全1000枚超)からランダムに20枚を取り出したパックを表示します。カードをクリックで詳細表示。</div>
+
+<div class="cl-btnrow" style="margin:0 0 1.2rem">
+  <button id="pk-reroll" class="btn" style="cursor:pointer;font-family:inherit;background:none">↻ 再開封</button>
+</div>
+
+<h2 class="g-section-title">パック <span class="cl-seccount">20枚</span></h2>
+<div id="pk-pack" class="cl-grid"></div>
+
+<h2 class="g-section-title">背景カード <span class="cl-seccount">2枚</span></h2>
+<p class="g-section-note">配布カードの「背景カード」からランダムに2枚(ドラフト開始前に各プレイヤーへ配布されるもの)。</p>
+<div id="pk-bg" class="cl-grid"></div>
+</main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+let CARDS = [], OVR = {}, BG = [];
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function br(s){ return esc(s).replace(/\n/g,"<br>").replace(/\{([^}]{1,4})\}/g, function(_, sym){
+  const cls = {W:"mw",U:"mu",B:"mb",R:"mr",G:"mg"}[sym] || "mc";
+  return '<span class="ms '+cls+'">'+sym+'</span>';
+}); }
+function manaHtml(cost){
+  if(!cost) return "";
+  return esc(cost).replace(/\{([^}]+)\}/g, function(_, sym){
+    const cls = {W:"mw",U:"mu",B:"mb",R:"mr",G:"mg"}[sym] || "mc";
+    return '<span class="ms '+cls+'">'+sym+'</span>';
+  });
+}
+function key(c){ return c.set + ":" + c.cn; }
+function ov(c){ return OVR[key(c)] || {}; }
+function jaName(c){ const o=ov(c); return o.name || c.printed_name || (c.faces&&c.faces.map(f=>f.printed_name||f.name).join(" // ")) || c.name; }
+function cardImg(c){
+  const o=ov(c);
+  return o.img || c.img || (c.faces && c.faces[0] && c.faces[0].img) || "";
+}
+
+function faceHtml(f, c){
+  let h = '<div class="cl-face">';
+  h += '<div class="cl-cardname">'+esc(f.printed_name||f.name)+'</div>';
+  if(f.printed_name && f.name && f.printed_name!==f.name) h += '<div class="cl-en">'+esc(f.name)+'</div>';
+  if(f.mana_cost) h += '<div class="cl-line">'+manaHtml(f.mana_cost)+'</div>';
+  h += '<div class="cl-type">'+esc(f.printed_type_line||f.type_line||"")+'</div>';
+  const text = f.printed_text!=null ? f.printed_text : f.oracle_text;
+  if(text) h += '<div class="cl-text">'+br(text)+'</div>';
+  if(f.flavor_text) h += '<div class="cl-flavor">'+br(f.flavor_text)+'</div>';
+  const pt = f.power!=null ? f.power+"/"+f.toughness : (f.loyalty!=null ? "忠誠度 "+f.loyalty : (f.defense!=null ? "守備値 "+f.defense : ""));
+  if(pt) h += '<div class="cl-pt">'+esc(pt)+'</div>';
+  h += '</div>';
+  return h;
+}
+function openModal(c){
+  const o = ov(c);
+  const box = document.getElementById("cl-modal-content");
+  let imgs = [];
+  if(o.img){ imgs = [o.img]; }
+  else if(c.faces && c.faces.some(f=>f.img)){ imgs = c.faces.map(f=>f.img).filter(Boolean); }
+  else if(cardImg(c)) imgs = [cardImg(c)];
+  let h = '<div class="cl-detail">';
+  h += '<div class="cl-detail-imgs">'+imgs.map(u=>'<img src="'+u+'">').join("")+'</div>';
+  h += '<div class="cl-detail-info">';
+  if(o.note) h += '<div class="cl-ovnote">⚠ '+esc(o.note)+'</div>';
+  if(o.name || o.type || o.text || o.flavor){
+    h += '<div class="cl-face">';
+    h += '<div class="cl-cardname">'+esc(o.name||jaName(c))+'</div>';
+    h += '<div class="cl-en">'+esc(c.name)+'</div>';
+    if(c.mana_cost) h += '<div class="cl-line">'+manaHtml(c.mana_cost)+'</div>';
+    h += '<div class="cl-type">'+esc(o.type||c.printed_type_line||c.type_line||"")+'</div>';
+    if(o.text) h += '<div class="cl-text">'+br(o.text)+'</div>';
+    if(o.flavor) h += '<div class="cl-flavor">'+br(o.flavor)+'</div>';
+    h += '</div>';
+    h += '<details class="cl-orig"><summary>元のテキストを表示</summary>';
+  }
+  if(c.faces && c.faces.length){
+    h += c.faces.map(f=>faceHtml(f,c)).join('<hr class="cl-hr">');
+  } else {
+    h += faceHtml(c, c);
+  }
+  if(o.name || o.type || o.text || o.flavor) h += '</details>';
+  h += '<div class="cl-metainfo">';
+  h += esc(c.set_name||c.set.toUpperCase())+' ('+esc(c.set.toUpperCase())+') #'+esc(c.cn);
+  if(c.lang!=='ja') h += '<br><span class="cl-noja">※日本語版データなし(英語版を表示)</span>';
+  h += '</div>';
+  h += '</div></div>';
+  box.innerHTML = h;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function closeModals(){
+  document.querySelectorAll(".cl-modal").forEach(m=>m.classList.add("hidden"));
+  document.body.style.overflow = "";
+}
+
+function sample(arr, n){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a.slice(0, Math.min(n, a.length));
+}
+function renderCards(rootId, cards){
+  const root = document.getElementById(rootId);
+  root.innerHTML = "";
+  cards.forEach(function(c){
+    const el = document.createElement("div");
+    el.className = "cl-card";
+    el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
+      (ov(c).note ? '<span class="cl-errata">E</span>' : "");
+    el.addEventListener("click", ()=>openModal(c));
+    root.appendChild(el);
+  });
+}
+function reroll(){
+  // カードプールを枚数分に展開してから20枚引く(複数枚あるカードは出やすく、重複もあり得る)
+  const pool = [];
+  CARDS.forEach(c => { for(let i=0;i<(c.count||1);i++) pool.push(c); });
+  renderCards("pk-pack", sample(pool, 20));
+  renderCards("pk-bg", sample(BG, 2));
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".cl-modal-back,.cl-close").forEach(el=>el.addEventListener("click", closeModals));
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModals(); });
+  document.getElementById("pk-reroll").addEventListener("click", reroll);
+  const v = "?v=" + Date.now();
+  Promise.all([
+    fetch("data/cards.json"+v).then(r=>r.json()),
+    fetch("data/overrides.json"+v).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null)
+  ]).then(function(res){
+    CARDS = res[0].cards;
+    OVR = res[1];
+    BG = res[2] ? res[2].bg : [];
+    reroll();
+  }).catch(function(e){
+    document.getElementById("pk-pack").innerHTML = "<p>データの読み込みに失敗しました</p>";
+  });
+});
+})();
+</script>
