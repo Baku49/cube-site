@@ -57,7 +57,8 @@ CUBES = [
         "has_summary": False,
         "has_aid": True,
         "glossary_style": "dm",
-        "pack": "pending",
+        "cards_app": True,
+        "pack": "ready",
         "pack_size": 20,
     },
     {
