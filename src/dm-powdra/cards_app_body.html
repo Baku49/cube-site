@@ -1,0 +1,180 @@
+<main class="cl-main">
+<h1 class="page">デュエマパワドラ カードリスト</h1>
+<div class="updated" id="cl-meta">読み込み中…</div>
+
+<div class="cl-controls">
+  <input id="cl-search" class="g-search" type="search" placeholder="カード名で検索(かな・カナ可)" autocomplete="off">
+  <div class="cl-btnrow">
+    <div class="cl-toggle">
+      <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
+      <button id="cl-view-name" class="cl-tbtn">カード名表示</button>
+    </div>
+    <span id="cl-count" class="cl-count"></span>
+  </div>
+</div>
+
+<div id="cl-sections"></div>
+<div id="cl-empty" class="wip hidden"><p>該当するカードがありません</p></div>
+</main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const SECTIONS = [
+  ["zero","無色"],["W","光"],["U","水"],["B","闇"],["R","火"],["G","自然"],["multi","多色"],
+  ["cho","超次元ゾーン"],["gr","超GR"],["start","ゲーム開始時にバトルゾーンに存在するカード"]
+];
+function secOf(row){
+  if(row.deck === "2.超次元") return "cho";
+  if(row.deck === "3.超GR") return "gr";
+  if(row.deck === "4.開始時") return "start";
+  const c = (row.color||"").split(" ").pop();
+  if(c === "C") return "zero";
+  if(["W","U","B","R","G"].includes(c)) return c;
+  return "multi";
+}
+let DATA = null, UNITS = [], view = "img", query = "";
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function brz(s){ return esc(s).replace(/\n/g,"<br>"); }
+function kanaN(s){
+  return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
+}
+function card(name){ return DATA.cards[name] || null; }
+function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+c.id+".jpg" : ""; }
+function blankHtml(name){
+  return '<div class="cl-blank"><span>'+esc(name)+'</span><span class="cl-blank-sub">画像なし</span></div>';
+}
+function matches(u){
+  if(!query) return true;
+  const c = card(u.name);
+  return kanaN(u.name+" "+(c?c.offName:"")).includes(query);
+}
+
+function render(){
+  const root = document.getElementById("cl-sections");
+  root.innerHTML = "";
+  let shown = 0, total = 0;
+  SECTIONS.forEach(function(sec){
+    const us = UNITS.filter(u=>u.sec===sec[0]);
+    if(!us.length) return;
+    total += us.reduce((a,u)=>a+u.count,0);
+    const vis = us.filter(matches);
+    if(!vis.length) return;
+    shown += vis.reduce((a,u)=>a+u.count,0);
+    const secEl = document.createElement("section");
+    secEl.innerHTML = '<h2 class="g-section-title">'+sec[1]+' <span class="cl-seccount">'+vis.reduce((a,u)=>a+u.count,0)+'枚</span></h2>';
+    const wrap = document.createElement("div");
+    wrap.className = view==="img" ? "cl-grid" : "cl-names";
+    vis.forEach(function(u){
+      const el = document.createElement(view==="img" ? "div" : "button");
+      if(view==="img"){
+        el.className = "cl-card";
+        el.innerHTML = (imgSrc(u.name)
+            ? '<img loading="lazy" src="'+imgSrc(u.name)+'" alt="'+esc(u.name)+'">'
+            : blankHtml(u.name)) +
+          (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "");
+      } else {
+        el.className = "cl-nameitem";
+        el.innerHTML = esc(u.name) + (u.count>1 ? ' <span class="cl-nbadge">×'+u.count+'</span>' : "");
+      }
+      el.addEventListener("click", function(){ openModal(u); });
+      wrap.appendChild(el);
+    });
+    secEl.appendChild(wrap);
+    root.appendChild(secEl);
+  });
+  document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
+  document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚("+UNITS.length+"種)");
+}
+
+const FACE_FIELDS = [["文明","文明"],["カードの種類","カードの種類"],["コスト","コスト"],["パワー","パワー"],["マナ","マナ"],["種族","種族"],["レアリティ","レアリティ"]];
+function faceHtml(face, faceName){
+  let h = '<div class="cl-face">';
+  if(faceName) h += '<div class="cl-cardname">'+esc(faceName)+'</div>';
+  const specs = [];
+  FACE_FIELDS.forEach(function(f){
+    const v = face[f[0]];
+    if(v != null && v !== "") specs.push(f[1]+"："+v);
+  });
+  if(specs.length) h += '<div class="cl-type">'+esc(specs.join("　"))+'</div>';
+  if(face["特殊能力"]) h += '<div class="cl-text">'+brz(face["特殊能力"])+'</div>';
+  if(face["フレーバー"]) h += '<div class="cl-flavor">'+brz(face["フレーバー"])+'</div>';
+  if(face["イラストレーター"]) h += '<div class="cl-metainfo">Illus. '+esc(face["イラストレーター"])+'</div>';
+  h += '</div>';
+  return h;
+}
+function openModal(u){
+  const c = card(u.name);
+  const box = document.getElementById("cl-modal-content");
+  let h = '<div class="cl-detail">';
+  h += '<div class="cl-detail-imgs">'+(imgSrc(u.name)
+    ? '<img src="'+imgSrc(u.name)+'" alt="'+esc(u.name)+'">'
+    : '<div class="cl-blank cl-blank-lg"><span>'+esc(u.name)+'</span></div>')+'</div>';
+  h += '<div class="cl-detail-info">';
+  if(!c){
+    h += '<div class="cl-cardname">'+esc(u.name)+'</div><div class="cl-text" style="color:var(--muted)">データ未取得</div>';
+  } else {
+    const faceNames = (c.offName||u.name).split("/").map(s=>s.trim());
+    c.faces.forEach(function(f,i){
+      if(i>0) h += '<hr class="cl-hr">';
+      h += faceHtml(f, c.faces.length>1 ? (faceNames[i]||"") : (c.offName||u.name));
+    });
+    h += '<div class="cl-metainfo">公式DB: '+esc(c.id)+
+      (u.count>1 ? ' ｜ キューブに'+u.count+'枚' : '')+'</div>';
+  }
+  h += '</div></div>';
+  box.innerHTML = h;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(){
+  document.getElementById("cl-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelector("#cl-modal .cl-modal-back").addEventListener("click", closeModal);
+  document.querySelector("#cl-modal .cl-close").addEventListener("click", closeModal);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+  document.getElementById("cl-search").addEventListener("input", function(){
+    query = kanaN(this.value.trim()); render();
+  });
+  document.getElementById("cl-view-img").addEventListener("click", function(){
+    view="img"; this.classList.add("active");
+    document.getElementById("cl-view-name").classList.remove("active"); render();
+  });
+  document.getElementById("cl-view-name").addEventListener("click", function(){
+    view="name"; this.classList.add("active");
+    document.getElementById("cl-view-img").classList.remove("active"); render();
+  });
+  fetch("data/cards.json?v="+Date.now()).then(r=>r.json()).then(function(d){
+    DATA = d;
+    // rows(シート順)からセクションごとのユニットを構築(同名連続をまとめて枚数化)
+    const map = {};
+    UNITS = [];
+    d.rows.forEach(function(row){
+      const sec = secOf(row);
+      const key = sec+"|"+row.name;
+      if(map[key]){ map[key].count++; return; }
+      const u = {name:row.name, sec:sec, count:1};
+      map[key] = u;
+      UNITS.push(u);
+    });
+    const total = d.rows.length;
+    document.getElementById("cl-meta").textContent =
+      "最終更新日: "+(d.updated||"")+" ｜ 全"+total+"枚("+UNITS.length+"種) ｜ カードをクリックで詳細表示 ｜ データ・画像はデュエル・マスターズ公式カードデータベースより";
+    render();
+  }).catch(function(e){
+    document.getElementById("cl-meta").textContent = "データの読み込みに失敗しました";
+  });
+});
+})();
+</script>
