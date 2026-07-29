@@ -239,6 +239,17 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-si1{left:12%;top:5%;z-index:2}
 .cl-si2{left:24%;top:10%;z-index:1}
 .cl-sn2.cl-si0{left:0;top:0}.cl-sn2.cl-si1{left:16%;top:7%}
+.cl-set-img.cl-sn4{width:70%}
+.cl-sn4.cl-si0{left:0;top:0;z-index:4}
+.cl-sn4.cl-si1{left:10%;top:4%;z-index:3}
+.cl-sn4.cl-si2{left:20%;top:8%;z-index:2}
+.cl-sn4.cl-si3{left:30%;top:12%;z-index:1}
+.cl-set-img.cl-sn5{width:66%}
+.cl-sn5.cl-si0{left:0;top:0;z-index:5}
+.cl-sn5.cl-si1{left:8%;top:4%;z-index:4}
+.cl-sn5.cl-si2{left:16%;top:8%;z-index:3}
+.cl-sn5.cl-si3{left:25%;top:12%;z-index:2}
+.cl-sn5.cl-si4{left:33%;top:16%;z-index:1}
 .cl-set:hover .cl-set-img{box-shadow:2px 3px 14px rgba(0,0,0,.85)}
 .cl-wtag{position:absolute;bottom:6px;left:6px;background:rgba(20,16,10,.9);color:var(--gold2);
   border:1px solid var(--gold);border-radius:4px;padding:.02rem .4rem;font-size:.72rem;font-weight:700}
