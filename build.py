@@ -39,6 +39,8 @@ CUBES = [
         "has_aid": False,
         "glossary_style": "metacube",
         "cards_app": True,
+        "pack": "ready",
+        "pack_size": 20,
     },
     {
         "slug": "dm-powdra",
@@ -55,6 +57,8 @@ CUBES = [
         "has_summary": False,
         "has_aid": True,
         "glossary_style": "dm",
+        "pack": "pending",
+        "pack_size": 20,
     },
     {
         "slug": "all-in",
@@ -73,6 +77,8 @@ CUBES = [
         "has_glossary": False,
         "has_hint": True,
         "cards_app": True,
+        "pack": "ready",
+        "pack_size": 16,
     },
 ]
 
@@ -360,6 +366,8 @@ def page(title, body, *, cube=None, active="", depth=0):
         elif cube.get("hint_pending"):
             items.append(("hint", "ヒント", "hint.html", False))
         items.append(("cards", "カードリスト", "cards.html", True))
+        if cube.get("pack"):
+            items.append(("pack", "パックシミュレーター", "pack.html", cube["pack"] == "ready"))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
         for key, label, href, enabled in items:
             if not enabled:
@@ -641,6 +649,25 @@ def build_cards(cube):
         page(f'カードリスト | {cube["name"]}', body, cube=cube, active="cards", depth=1), encoding="utf-8")
 
 
+# ---------------- 各キューブ: パックシミュレーター ----------------
+def build_pack(cube):
+    out = OUT / cube["slug"]
+    out.mkdir(exist_ok=True)
+    if cube.get("pack") == "ready":
+        body = (SRC / cube["src_dir"] / "pack_body.html").read_text(encoding="utf-8")
+    else:
+        body = f"""
+<main>
+<h1 class="page">{cube["name"]} パックシミュレーター</h1>
+<div class="wip">
+  <div class="wip-mark">─ 準備中 ─</div>
+  <p>カードリストの公開後に利用できるようになります。</p>
+</div>
+</main>"""
+    (out / "pack.html").write_text(
+        page(f'パックシミュレーター | {cube["name"]}', body, cube=cube, active="pack", depth=1), encoding="utf-8")
+
+
 # ---------------- 各キューブ: キューブトップ ----------------
 def build_cube_index(cube):
     tags = "".join(f'<span class="tag">{t}</span>' for t in cube["tags"])
@@ -657,6 +684,10 @@ def build_cube_index(cube):
         elif cube.get("hint_pending"):
             btns += '<span class="btn disabled">ヒント(準備中)</span>'
         btns += '<a class="btn" href="cards.html">カードリスト</a>'
+        if cube.get("pack") == "ready":
+            btns += '<a class="btn" href="pack.html">パックシミュレーター</a>'
+        elif cube.get("pack"):
+            btns += '<span class="btn disabled">パックシミュレーター(準備中)</span>'
         if cube["cardlist_url"]:
             btns += (f'<a class="btn ghost" href="{cube["cardlist_url"]}" target="_blank" '
                      f'rel="noopener">カードリスト ({cube["cardlist_label"]}) ↗</a>')
@@ -744,6 +775,8 @@ if __name__ == "__main__":
     for c in CUBES:
         build_cube_index(c)
         build_cards(c)
+        if c.get("pack"):
+            build_pack(c)
         if c["has_content"]:
             build_rules(c)
             if c.get("has_summary"):
