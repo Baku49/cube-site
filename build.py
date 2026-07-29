@@ -41,6 +41,7 @@ CUBES = [
         "cards_app": True,
         "pack": "ready",
         "pack_size": 20,
+        "pack_label": "ドラフトシミュレーター",
     },
     {
         "slug": "dm-powdra",
@@ -368,7 +369,7 @@ def page(title, body, *, cube=None, active="", depth=0):
             items.append(("hint", "ヒント", "hint.html", False))
         items.append(("cards", "カードリスト", "cards.html", True))
         if cube.get("pack"):
-            items.append(("pack", "パックシミュレーター", "pack.html", cube["pack"] == "ready"))
+            items.append(("pack", cube.get("pack_label", "パックシミュレーター"), "pack.html", cube["pack"] == "ready"))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
         for key, label, href, enabled in items:
             if not enabled:
@@ -654,19 +655,20 @@ def build_cards(cube):
 def build_pack(cube):
     out = OUT / cube["slug"]
     out.mkdir(exist_ok=True)
+    label = cube.get("pack_label", "パックシミュレーター")
     if cube.get("pack") == "ready":
         body = (SRC / cube["src_dir"] / "pack_body.html").read_text(encoding="utf-8")
     else:
         body = f"""
 <main>
-<h1 class="page">{cube["name"]} パックシミュレーター</h1>
+<h1 class="page">{cube["name"]} {label}</h1>
 <div class="wip">
   <div class="wip-mark">─ 準備中 ─</div>
   <p>カードリストの公開後に利用できるようになります。</p>
 </div>
 </main>"""
     (out / "pack.html").write_text(
-        page(f'パックシミュレーター | {cube["name"]}', body, cube=cube, active="pack", depth=1), encoding="utf-8")
+        page(f'{label} | {cube["name"]}', body, cube=cube, active="pack", depth=1), encoding="utf-8")
 
 
 # ---------------- 各キューブ: キューブトップ ----------------
@@ -686,9 +688,9 @@ def build_cube_index(cube):
             btns += '<span class="btn disabled">ヒント(準備中)</span>'
         btns += '<a class="btn" href="cards.html">カードリスト</a>'
         if cube.get("pack") == "ready":
-            btns += '<a class="btn" href="pack.html">パックシミュレーター</a>'
+            btns += '<a class="btn" href="pack.html">' + cube.get("pack_label", "パックシミュレーター") + '</a>'
         elif cube.get("pack"):
-            btns += '<span class="btn disabled">パックシミュレーター(準備中)</span>'
+            btns += '<span class="btn disabled">' + cube.get("pack_label", "パックシミュレーター") + '(準備中)</span>'
         if cube["cardlist_url"]:
             btns += (f'<a class="btn ghost" href="{cube["cardlist_url"]}" target="_blank" '
                      f'rel="noopener">カードリスト ({cube["cardlist_label"]}) ↗</a>')
