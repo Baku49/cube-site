@@ -1,0 +1,104 @@
+<main class="cl-main">
+<h1 class="page">デュエマパワドラ パックシミュレーター</h1>
+<div class="updated">カードリスト(全500枚)からランダムに20枚を取り出したパックを表示します。カードをクリックで詳細表示。</div>
+
+<div class="cl-btnrow" style="margin:0 0 1.2rem">
+  <button id="pk-reroll" class="btn" style="cursor:pointer;font-family:inherit;background:none">↻ 再開封</button>
+</div>
+
+<h2 class="g-section-title">パック <span class="cl-seccount">20枚</span></h2>
+<div id="pk-pack" class="cl-grid"></div>
+</main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+let DATA = null;
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function brz(s){ return esc(s).replace(/\n/g,"<br>"); }
+function card(name){ return DATA.cards[name] || null; }
+function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+c.id+".jpg" : ""; }
+
+const FACE_FIELDS = [["文明","文明"],["カードの種類","カードの種類"],["コスト","コスト"],["パワー","パワー"],["マナ","マナ"],["種族","種族"],["レアリティ","レアリティ"]];
+function faceHtml(face, faceName){
+  let h = '<div class="cl-face">';
+  if(faceName) h += '<div class="cl-cardname">'+esc(faceName)+'</div>';
+  const specs = [];
+  FACE_FIELDS.forEach(function(f){
+    const v = face[f[0]];
+    if(v != null && v !== "") specs.push(f[1]+"："+v);
+  });
+  if(specs.length) h += '<div class="cl-type">'+esc(specs.join("　"))+'</div>';
+  if(face["特殊能力"]) h += '<div class="cl-text">'+brz(face["特殊能力"])+'</div>';
+  if(face["フレーバー"]) h += '<div class="cl-flavor">'+brz(face["フレーバー"])+'</div>';
+  h += '</div>';
+  return h;
+}
+function openModal(name){
+  const c = card(name);
+  const box = document.getElementById("cl-modal-content");
+  let h = '<div class="cl-detail">';
+  h += '<div class="cl-detail-imgs">'+(imgSrc(name)
+    ? '<img src="'+imgSrc(name)+'" alt="'+esc(name)+'">'
+    : '<div class="cl-blank cl-blank-lg"><span>'+esc(name)+'</span></div>')+'</div>';
+  h += '<div class="cl-detail-info">';
+  if(!c){ h += '<div class="cl-cardname">'+esc(name)+'</div>'; }
+  else {
+    const faceNames = (c.offName||name).split("/").map(s=>s.trim());
+    c.faces.forEach(function(f,i){
+      if(i>0) h += '<hr class="cl-hr">';
+      h += faceHtml(f, c.faces.length>1 ? (faceNames[i]||"") : (c.offName||name));
+    });
+  }
+  h += '</div></div>';
+  box.innerHTML = h;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(){
+  document.getElementById("cl-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+function sample(arr, n){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a.slice(0, Math.min(n, a.length));
+}
+function reroll(){
+  const pool = DATA.rows.map(r=>r.name);
+  const root = document.getElementById("pk-pack");
+  root.innerHTML = "";
+  sample(pool, 20).forEach(function(n){
+    const el = document.createElement("div");
+    el.className = "cl-card";
+    el.innerHTML = imgSrc(n)
+      ? '<img loading="lazy" src="'+imgSrc(n)+'" alt="'+esc(n)+'">'
+      : '<div class="cl-blank"><span>'+esc(n)+'</span></div>';
+    el.addEventListener("click", function(){ openModal(n); });
+    root.appendChild(el);
+  });
+}
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelector("#cl-modal .cl-modal-back").addEventListener("click", closeModal);
+  document.querySelector("#cl-modal .cl-close").addEventListener("click", closeModal);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+  document.getElementById("pk-reroll").addEventListener("click", reroll);
+  fetch("data/cards.json?v="+Date.now()).then(r=>r.json()).then(function(d){
+    DATA = d; reroll();
+  }).catch(function(e){
+    document.getElementById("pk-pack").innerHTML = "<p>データの読み込みに失敗しました</p>";
+  });
+});
+})();
+</script>
