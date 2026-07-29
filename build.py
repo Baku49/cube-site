@@ -56,6 +56,23 @@ CUBES = [
         "has_aid": True,
         "glossary_style": "dm",
     },
+    {
+        "slug": "all-in",
+        "name": "オールイン",
+        "tags": ["遊戯王OCG", "1パック16枚", "ドラフト3回"],
+        "desc": "遊戯王OCGのキューブドラフト。1人3パック(16枚入り)で通常のドラフトを3回行う。",
+        "cardlist_url": None,
+        "cardlist_label": None,
+        "has_content": True,
+        "src_dir": "all-in",
+        "art": "allin_theme.webp",
+        "art_overlay": (".3", ".88"),
+        "art_in_header": True,
+        "has_summary": False,
+        "has_aid": False,
+        "has_glossary": False,
+        "hint_pending": True,
+    },
 ]
 
 CSS = r"""
@@ -307,9 +324,12 @@ def page(title, body, *, cube=None, active="", depth=0):
         items.append(("rules", "ルール", "rules.html", cube["has_content"]))
         if cube.get("has_summary"):
             items.append(("summary", "ルールサマリー", "summary.html", True))
-        items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
+        if cube.get("has_glossary", True):
+            items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
         if cube.get("has_aid"):
             items.append(("aid", "ルールエイドとヒント", "aid.html", True))
+        if cube.get("hint_pending"):
+            items.append(("hint", "ヒント", "hint.html", False))
         items.append(("cards", "カードリスト", "cards.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
         for key, label, href, enabled in items:
@@ -599,9 +619,12 @@ def build_cube_index(cube):
         btns = '<a class="btn" href="rules.html">ルール</a>'
         if cube.get("has_summary"):
             btns += '<a class="btn" href="summary.html">ルールサマリー</a>'
-        btns += '<a class="btn" href="glossary.html">用語集</a>'
+        if cube.get("has_glossary", True):
+            btns += '<a class="btn" href="glossary.html">用語集</a>'
         if cube.get("has_aid"):
             btns += '<a class="btn" href="aid.html">ルールエイドとヒント</a>'
+        if cube.get("hint_pending"):
+            btns += '<span class="btn disabled">ヒント(準備中)</span>'
         btns += '<a class="btn" href="cards.html">カードリスト</a>'
         if cube["cardlist_url"]:
             btns += (f'<a class="btn ghost" href="{cube["cardlist_url"]}" target="_blank" '
@@ -643,8 +666,9 @@ def build_site_index():
         tags = "".join(f'<span class="tag">{t}</span>' for t in c["tags"])
         if c["has_content"]:
             btns = (f'<a class="btn" href="{c["slug"]}/index.html">キューブトップ</a>'
-                    f'<a class="btn ghost" href="{c["slug"]}/rules.html">ルール</a>'
-                    f'<a class="btn ghost" href="{c["slug"]}/glossary.html">用語集</a>')
+                    f'<a class="btn ghost" href="{c["slug"]}/rules.html">ルール</a>')
+            if c.get("has_glossary", True):
+                btns += f'<a class="btn ghost" href="{c["slug"]}/glossary.html">用語集</a>'
             cls = "cube-card"
         else:
             btns = f'<a class="btn ghost" href="{c["slug"]}/index.html">キューブトップ(準備中)</a>'
@@ -695,7 +719,8 @@ if __name__ == "__main__":
                 build_summary(c)
             if c.get("has_aid"):
                 build_aid(c)
-            build_glossary(c)
+            if c.get("has_glossary", True):
+                build_glossary(c)
     gen = sorted(str(p.relative_to(OUT)) for p in OUT.rglob("*.html"))
     print("generated:")
     for g in gen:
