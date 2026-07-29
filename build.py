@@ -234,6 +234,14 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-wtag-in{font-size:.7rem;background:rgba(20,16,10,.9);color:var(--gold2);
   border:1px solid var(--gold);border-radius:4px;padding:.05rem .3rem}
 .cl-set-no{color:var(--muted);font-size:.8rem;letter-spacing:.15em;margin:.2rem 0 .4rem}
+.cl-blank{aspect-ratio:59/86;width:100%;border:1px dashed var(--gold);border-radius:8px;
+  background:linear-gradient(160deg,var(--panel2),var(--panel));display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.4rem;text-align:center;color:var(--gold2);
+  font-size:.82rem;padding:.6rem;line-height:1.5}
+.cl-blank .cl-blank-sub{font-size:.68rem;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:.05rem .5rem}
+.cl-blank.cl-blank-lg{width:260px;font-size:1rem}
+div.cl-set-img{height:auto}
 .ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
   border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
 .ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
