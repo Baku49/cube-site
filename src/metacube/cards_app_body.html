@@ -6,6 +6,10 @@
   <input id="cl-search" class="g-search" type="search" placeholder="カード名で検索(日本語名・英語名)" autocomplete="off">
   <div class="cl-btnrow">
     <div class="cl-toggle">
+      <button id="cl-pool-main" class="cl-tbtn active">カードプール</button>
+      <button id="cl-pool-dist" class="cl-tbtn">配布カード</button>
+    </div>
+    <div class="cl-toggle">
       <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
       <button id="cl-view-name" class="cl-tbtn">カード名表示</button>
     </div>
@@ -63,7 +67,7 @@ function cardCmp(a,b){
   }
   return typePri(a)-typePri(b) || (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:(a.name>b.name?1:0));
 }
-let CARDS = [], OVR = {}, LOG = [], view = "img", query = "";
+let CARDS = [], OVR = {}, LOG = [], DIST = null, pool = "main", view = "img", query = "";
 
 function norm(s){
   return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
@@ -97,15 +101,25 @@ function render(){
   const root = document.getElementById("cl-sections");
   root.innerHTML = "";
   let shown = 0, total = 0;
-  CATS.forEach(function(cat){
-    const cs = CARDS.filter(c=>c.cat===cat[0]);
+  let groups;
+  if(pool === "dist"){
+    groups = DIST ? [
+      ["固定配布カード", "全プレイヤーに配布されるカード。", DIST.fixed],
+      ["背景カード", "ドラフト開始前に、ランダムに各プレイヤーへ2枚ずつ配布される。", DIST.bg]
+    ] : [];
+  } else {
+    groups = CATS.map(cat=>[cat[1], null, CARDS.filter(c=>c.cat===cat[0])]);
+  }
+  groups.forEach(function(g){
+    const cs = g[2] || [];
     if(!cs.length) return;
     total += cs.reduce((a,c)=>a+c.count,0);
     const vis = cs.filter(matches);
     if(!vis.length) return;
     shown += vis.reduce((a,c)=>a+c.count,0);
     const sec = document.createElement("section");
-    sec.innerHTML = '<h2 class="g-section-title">'+cat[1]+' <span class="cl-seccount">'+vis.reduce((a,c)=>a+c.count,0)+'枚</span></h2>';
+    sec.innerHTML = '<h2 class="g-section-title">'+g[0]+' <span class="cl-seccount">'+vis.reduce((a,c)=>a+c.count,0)+'枚</span></h2>'
+      + (g[1] ? '<p class="g-section-note">'+g[1]+'</p>' : "");
     const wrap = document.createElement("div");
     wrap.className = view==="img" ? "cl-grid" : "cl-names";
     vis.forEach(function(c){
@@ -127,7 +141,8 @@ function render(){
     root.appendChild(sec);
   });
   document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
-  document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚("+CARDS.length+"種)");
+  const kinds = pool==="dist" ? (DIST ? DIST.fixed.length+DIST.bg.length : 0) : CARDS.length;
+  document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚("+kinds+"種)");
 }
 
 function faceHtml(f, c){
@@ -221,15 +236,27 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("cl-view-name").classList.remove("active");
     btn.classList.add("active");
   }
+  function setPool(p, btn){
+    pool = p;
+    document.getElementById("cl-pool-main").classList.remove("active");
+    document.getElementById("cl-pool-dist").classList.remove("active");
+    btn.classList.add("active");
+    render();
+  }
+  document.getElementById("cl-pool-main").addEventListener("click", function(){ setPool("main", this); });
+  document.getElementById("cl-pool-dist").addEventListener("click", function(){ setPool("dist", this); });
   const v = "?v=" + Date.now();
   Promise.all([
     fetch("data/cards.json"+v).then(r=>r.json()),
     fetch("data/overrides.json"+v).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch("data/changelog.json"+v).then(r=>r.ok?r.json():[]).catch(()=>[])
+    fetch("data/changelog.json"+v).then(r=>r.ok?r.json():[]).catch(()=>[]),
+    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null)
   ]).then(function(res){
     CARDS = res[0].cards;
-    OVR = res[1]; LOG = res[2];
+    OVR = res[1]; LOG = res[2]; DIST = res[3];
     CARDS.sort(cardCmp);
+    if(DIST){ DIST.fixed.sort(cardCmp); DIST.bg.sort(cardCmp); }
+    else document.getElementById("cl-pool-dist").style.display = "none";
     document.getElementById("cl-meta").textContent = "最終更新日: "+(res[0].generated||"-")+" ｜ カードリストは Cube Cobra を元に Scryfall のデータで表示しています";
     render();
   }).catch(function(e){
