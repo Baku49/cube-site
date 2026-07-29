@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>パックシミュレーター | メタキューブ</title>
+<title>ドラフトシミュレーター | メタキューブ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -261,23 +261,49 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
   <div class="site-inner">
     <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
     <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html" selected>メタキューブ</option><option value="../dm-powdra/index.html">デュエマパワドラ</option><option value="../all-in/index.html">オールイン</option></select></div>
-    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="summary.html">ルールサマリー</a><a href="glossary.html">用語集</a><a href="cards.html">カードリスト</a><a href="pack.html" class="active">パックシミュレーター</a></nav>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="summary.html">ルールサマリー</a><a href="glossary.html">用語集</a><a href="cards.html">カードリスト</a><a href="pack.html" class="active">ドラフトシミュレーター</a></nav>
   </div>
 </header>
 <main class="cl-main">
-<h1 class="page">メタキューブ パックシミュレーター</h1>
-<div class="updated">カードプール(全1000枚超)からランダムに20枚を取り出したパックを表示します。カードをクリックで詳細表示。</div>
+<h1 class="page">メタキューブ ドラフトシミュレーター</h1>
+<div class="updated" id="dr-meta">読み込み中…</div>
 
 <div class="cl-btnrow" style="margin:0 0 1.2rem">
-  <button id="pk-reroll" class="btn" style="cursor:pointer;font-family:inherit;background:none">↻ 再開封</button>
+  <span id="dr-status" class="g-section-note" style="margin:0;padding:0"></span>
+  <button id="dr-restart" class="btn ghost" style="cursor:pointer;font-family:inherit;background:none;margin-left:auto">↻ 最初からやり直す</button>
 </div>
 
-<h2 class="g-section-title">パック <span class="cl-seccount">20枚</span></h2>
-<div id="pk-pack" class="cl-grid"></div>
+<div id="dr-draft">
+  <h2 class="g-section-title">パック <span id="dr-packinfo" class="cl-seccount"></span></h2>
+  <p class="g-section-note">カードをクリックすると詳細が開き、「ドラフト」ボタンでピックできます。他の3人はEloの高いカードを自動でピックします。</p>
+  <div id="dr-pack" class="cl-grid"></div>
 
-<h2 class="g-section-title">背景カード <span class="cl-seccount">2枚</span></h2>
-<p class="g-section-note">配布カードの「背景カード」からランダムに2枚(ドラフト開始前に各プレイヤーへ配布されるもの)。</p>
-<div id="pk-bg" class="cl-grid"></div>
+  <h2 class="g-section-title">ピック済み <span id="dr-poolinfo" class="cl-seccount"></span></h2>
+  <div id="dr-pool" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))"></div>
+
+  <h2 class="g-section-title">背景カード <span class="cl-seccount">2枚</span></h2>
+  <p class="g-section-note">あなたに配布された背景。ドラフト不要で、このページを開いている間は固定です。</p>
+  <div id="dr-bg" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))"></div>
+</div>
+
+<div id="dr-build" class="hidden">
+  <h2 class="g-section-title">デッキ構築</h2>
+  <p class="g-section-note">カードをクリックでデッキ⇔プールを移動。基本土地は無限に使えます。ドラフトしたカード・配布カード・背景が使えます。</p>
+
+  <div class="cl-btnrow" style="margin:.4rem 0 1rem">
+    <button id="dr-save" class="btn" style="cursor:pointer;font-family:inherit;background:none">📷 デッキリストを画像で保存</button>
+    <span id="dr-deckcount" class="cl-count"></span>
+  </div>
+
+  <h3 class="g-section-title" style="font-size:1.05rem">デッキ <span id="dr-deckinfo" class="cl-seccount"></span></h3>
+  <div id="dr-deck" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))"></div>
+
+  <h3 class="g-section-title" style="font-size:1.05rem">基本土地</h3>
+  <div id="dr-lands" style="display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0 1.2rem"></div>
+
+  <h3 class="g-section-title" style="font-size:1.05rem">プール <span id="dr-restinfo" class="cl-seccount"></span></h3>
+  <div id="dr-rest" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))"></div>
+</div>
 </main>
 
 <div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
@@ -290,7 +316,29 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 
 <script>
 (function(){
-let CARDS = [], OVR = {}, BG = [];
+let CARDS = [], OVR = {}, DIST = null, ELO = {byName:{},byId:{}};
+let BG = [];
+let state = null;
+
+const CATS_ORD = {White:0,Blue:1,Black:2,Red:3,Green:4,Multicolored:5,Colorless:6};
+const CATS_JA = {White:"白",Blue:"青",Black:"黒",Red:"赤",Green:"緑",Multicolored:"多色",Colorless:"無色"};
+const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
+const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
+  "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
+  "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
+function typePri(c){
+  const tl = (c.faces && c.faces.length) ? (c.faces[0].type_line||"") : (c.type_line||"").split(" // ")[0];
+  for(let i=0;i<TYPE_PRI.length;i++){ if(tl.includes(TYPE_PRI[i])) return i; }
+  return TYPE_PRI.length;
+}
+function ciIdx(c){ const i = CI_ORDER.indexOf(c.ci||""); return i<0 ? CI_ORDER.length : i; }
+function cardCmp(a,b){
+  const ca = CATS_ORD[a.cat] != null ? CATS_ORD[a.cat] : 9;
+  const cb = CATS_ORD[b.cat] != null ? CATS_ORD[b.cat] : 9;
+  if(ca !== cb) return ca - cb;
+  if(a.cat === "Multicolored"){ const d = ciIdx(a) - ciIdx(b); if(d) return d; }
+  return typePri(a)-typePri(b) || (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:(a.name>b.name?1:0));
+}
 
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 function br(s){ return esc(s).replace(/\n/g,"<br>").replace(/\{([^}]{1,4})\}/g, function(_, sym){
@@ -311,7 +359,19 @@ function cardImg(c){
   const o=ov(c);
   return o.img || c.img || (c.faces && c.faces[0] && c.faces[0].img) || "";
 }
+function eloOf(c){
+  return ELO.byName[c.name] != null ? ELO.byName[c.name] : (ELO.byId && ELO.byId[c.cardID] != null ? ELO.byId[c.cardID] : 1100);
+}
+function sample(arr, n){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a.slice(0, Math.min(n, a.length));
+}
 
+/* ---------- モーダル ---------- */
 function faceHtml(f, c){
   let h = '<div class="cl-face">';
   h += '<div class="cl-cardname">'+esc(f.printed_name||f.name)+'</div>';
@@ -326,7 +386,7 @@ function faceHtml(f, c){
   h += '</div>';
   return h;
 }
-function openModal(c){
+function openModal(c, draftIdx){
   const o = ov(c);
   const box = document.getElementById("cl-modal-content");
   let imgs = [];
@@ -336,6 +396,9 @@ function openModal(c){
   let h = '<div class="cl-detail">';
   h += '<div class="cl-detail-imgs">'+imgs.map(u=>'<img src="'+u+'">').join("")+'</div>';
   h += '<div class="cl-detail-info">';
+  if(draftIdx != null){
+    h += '<div style="margin-bottom:.8rem"><button id="cl-draftbtn" class="btn" style="cursor:pointer;font-family:inherit;background:none;font-size:1rem;padding:.5rem 1.6rem">⭐ このカードをドラフト</button></div>';
+  }
   if(o.note) h += '<div class="cl-ovnote">⚠ '+esc(o.note)+'</div>';
   if(o.name || o.type || o.text || o.flavor){
     h += '<div class="cl-face">';
@@ -354,64 +417,251 @@ function openModal(c){
     h += faceHtml(c, c);
   }
   if(o.name || o.type || o.text || o.flavor) h += '</details>';
-  h += '<div class="cl-metainfo">';
-  h += esc(c.set_name||c.set.toUpperCase())+' ('+esc(c.set.toUpperCase())+') #'+esc(c.cn);
-  if(c.lang!=='ja') h += '<br><span class="cl-noja">※日本語版データなし(英語版を表示)</span>';
-  h += '</div>';
   h += '</div></div>';
   box.innerHTML = h;
+  if(draftIdx != null){
+    document.getElementById("cl-draftbtn").addEventListener("click", function(){
+      closeModal(); humanPick(draftIdx);
+    });
+  }
   document.getElementById("cl-modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
-function closeModals(){
-  document.querySelectorAll(".cl-modal").forEach(m=>m.classList.add("hidden"));
+function closeModal(){
+  document.getElementById("cl-modal").classList.add("hidden");
   document.body.style.overflow = "";
 }
 
-function sample(arr, n){
-  const a = arr.slice();
-  for(let i = a.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = a[i]; a[i] = a[j]; a[j] = t;
-  }
-  return a.slice(0, Math.min(n, a.length));
-}
-function renderCards(rootId, cards){
-  const root = document.getElementById(rootId);
-  root.innerHTML = "";
-  cards.forEach(function(c){
-    const el = document.createElement("div");
-    el.className = "cl-card";
-    el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
-      (ov(c).note ? '<span class="cl-errata">E</span>' : "");
-    el.addEventListener("click", ()=>openModal(c));
-    root.appendChild(el);
-  });
-}
-function reroll(){
-  // カードプールを枚数分に展開してから20枚引く(複数枚あるカードは出やすく、重複もあり得る)
+/* ---------- ドラフト ---------- */
+function startDraft(){
+  BG = sample(DIST ? DIST.bg : [], 2);
   const pool = [];
   CARDS.forEach(c => { for(let i=0;i<(c.count||1);i++) pool.push(c); });
-  renderCards("pk-pack", sample(pool, 20));
-  renderCards("pk-bg", sample(BG, 2));
+  const drawn = sample(pool, 240);
+  const packs = [];
+  for(let i=0;i<12;i++) packs.push(drawn.slice(i*20,(i+1)*20));
+  state = {
+    phase: "draft",
+    round: 0, pick: 0,
+    packs: packs,               // 12パック(ラウンドrのプレイヤーsは packs[r*4+s] から開始し、回して使う)
+    current: packs.slice(0,4),  // 現在の各席のパック(席0=あなた)
+    pools: [[],[],[],[]]
+  };
+  renderDraft();
+}
+function humanPick(idx){
+  if(!state || state.phase!=="draft") return;
+  const myPack = state.current[0];
+  if(idx<0 || idx>=myPack.length) return;
+  // あなたのピック
+  state.pools[0].push(myPack.splice(idx,1)[0]);
+  // AI(席1-3)はElo最大をピック
+  for(let s=1;s<4;s++){
+    const pk = state.current[s];
+    if(!pk.length) continue;
+    let bi=0;
+    for(let i=1;i<pk.length;i++){ if(eloOf(pk[i])>eloOf(pk[bi])) bi=i; }
+    state.pools[s].push(pk.splice(bi,1)[0]);
+  }
+  state.pick++;
+  if(state.current[0].length===0){
+    // パック終了 → 次のパックへ
+    state.round++;
+    state.pick=0;
+    if(state.round<3){
+      state.current = state.packs.slice(state.round*4, state.round*4+4);
+    } else {
+      startBuild();
+      return;
+    }
+  } else {
+    // パックを回す(1,3パック目は左回り、2パック目は右回り)
+    const cur = state.current;
+    state.current = (state.round%2===0)
+      ? [cur[1],cur[2],cur[3],cur[0]]
+      : [cur[3],cur[0],cur[1],cur[2]];
+  }
+  renderDraft();
+}
+function cardEl(c, opts){
+  const el = document.createElement("div");
+  el.className = "cl-card";
+  el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
+    (ov(c).note ? '<span class="cl-errata">E</span>' : "");
+  el.addEventListener("click", opts.onclick);
+  return el;
+}
+function renderDraft(){
+  document.getElementById("dr-status").textContent =
+    "4人ドラフト(あなた+コンピューター3人) ｜ 第"+(state.round+1)+"パック ピック"+(state.pick+1)+"/20";
+  document.getElementById("dr-packinfo").textContent = "残り"+state.current[0].length+"枚";
+  const packRoot = document.getElementById("dr-pack");
+  packRoot.innerHTML = "";
+  state.current[0].forEach(function(c,i){
+    packRoot.appendChild(cardEl(c,{onclick:()=>openModal(c,i)}));
+  });
+  const poolRoot = document.getElementById("dr-pool");
+  poolRoot.innerHTML = "";
+  document.getElementById("dr-poolinfo").textContent = state.pools[0].length+"枚";
+  state.pools[0].slice().sort(cardCmp).forEach(function(c){
+    poolRoot.appendChild(cardEl(c,{onclick:()=>openModal(c,null)}));
+  });
+  const bgRoot = document.getElementById("dr-bg");
+  bgRoot.innerHTML = "";
+  BG.forEach(function(c){
+    bgRoot.appendChild(cardEl(c,{onclick:()=>openModal(c,null)}));
+  });
+}
+
+/* ---------- デッキ構築 ---------- */
+const BASICS = ["平地","島","沼","山","森"];
+let build = null;
+function startBuild(){
+  state.phase = "build";
+  const rest = state.pools[0].slice();
+  if(DIST){ DIST.fixed.forEach(c => { for(let i=0;i<(c.count||1);i++) rest.push(c); }); }
+  BG.forEach(c => rest.push(c));
+  rest.sort(cardCmp);
+  build = { rest: rest, deck: [], lands: {平地:0,島:0,沼:0,山:0,森:0} };
+  document.getElementById("dr-draft").classList.add("hidden");
+  document.getElementById("dr-build").classList.remove("hidden");
+  document.getElementById("dr-status").textContent = "ドラフト完了 → デッキ構築";
+  renderBuild();
+}
+function renderBuild(){
+  const deckRoot = document.getElementById("dr-deck");
+  deckRoot.innerHTML = "";
+  build.deck.slice().sort(cardCmp).forEach(function(c){
+    const el = cardEl(c,{onclick:function(){
+      const i = build.deck.indexOf(c);
+      if(i>=0){ build.deck.splice(i,1); build.rest.push(c); build.rest.sort(cardCmp); renderBuild(); }
+    }});
+    deckRoot.appendChild(el);
+  });
+  const restRoot = document.getElementById("dr-rest");
+  restRoot.innerHTML = "";
+  build.rest.forEach(function(c){
+    const el = cardEl(c,{onclick:function(){
+      const i = build.rest.indexOf(c);
+      if(i>=0){ build.rest.splice(i,1); build.deck.push(c); renderBuild(); }
+    }});
+    restRoot.appendChild(el);
+  });
+  const landsRoot = document.getElementById("dr-lands");
+  landsRoot.innerHTML = "";
+  BASICS.forEach(function(b){
+    const w = document.createElement("div");
+    w.style.cssText = "display:flex;align-items:center;gap:.5rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.4rem .8rem";
+    w.innerHTML = '<span style="min-width:2.2rem">'+b+'</span>'+
+      '<button class="cl-tbtn" data-b="'+b+'" data-d="-1" style="border:1px solid var(--line);border-radius:6px">−</button>'+
+      '<strong style="min-width:1.6rem;text-align:center;color:var(--gold2)">'+build.lands[b]+'</strong>'+
+      '<button class="cl-tbtn" data-b="'+b+'" data-d="1" style="border:1px solid var(--line);border-radius:6px">＋</button>';
+    landsRoot.appendChild(w);
+  });
+  landsRoot.querySelectorAll("button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      const b = this.dataset.b, d = parseInt(this.dataset.d);
+      build.lands[b] = Math.max(0, build.lands[b]+d);
+      renderBuild();
+    });
+  });
+  const landN = BASICS.reduce((a,b)=>a+build.lands[b],0);
+  const total = build.deck.length + landN;
+  document.getElementById("dr-deckinfo").textContent = build.deck.length+"枚";
+  document.getElementById("dr-restinfo").textContent = build.rest.length+"枚";
+  document.getElementById("dr-deckcount").textContent = "デッキ合計 "+total+"枚(呪文"+build.deck.length+" + 土地"+landN+")";
+}
+
+/* ---------- デッキ画像保存 ---------- */
+function saveDeckImage(){
+  const groups = {};
+  build.deck.forEach(function(c){
+    const g = CATS_JA[c.cat] || "その他";
+    (groups[g] = groups[g] || []).push(c);
+  });
+  const secs = [];
+  ["白","青","黒","赤","緑","多色","無色","その他"].forEach(function(g){
+    if(!groups[g]) return;
+    const counts = {};
+    groups[g].slice().sort(cardCmp).forEach(function(c){
+      const n = jaName(c);
+      counts[n] = (counts[n]||0)+1;
+    });
+    secs.push({title:g, lines:Object.entries(counts).map(([n,k])=>k+"× "+n)});
+  });
+  const landLines = BASICS.filter(b=>build.lands[b]>0).map(b=>build.lands[b]+"× "+b);
+  if(landLines.length) secs.push({title:"基本土地", lines:landLines});
+
+  const colW = 340, lineH = 26, pad = 24, headH = 64;
+  const allLines = secs.reduce((a,s)=>a+s.lines.length+1.6,0);
+  const perCol = Math.max(18, Math.ceil(allLines/3));
+  // 列割り
+  const cols = [[]]; let cur = 0;
+  secs.forEach(function(s){
+    if(cols[cur].reduce((a,x)=>a+x.lines.length+1.6,0) + s.lines.length + 1.6 > perCol && cols[cur].length){ cols.push([]); cur++; }
+    cols[cur].push(s);
+  });
+  const nCols = cols.length;
+  const colHeights = cols.map(cl=>cl.reduce((a,s)=>a+(s.lines.length+1.6)*lineH,0));
+  const H = headH + Math.max.apply(null, colHeights) + pad*2;
+  const W = pad*2 + nCols*colW;
+  const cv = document.createElement("canvas");
+  cv.width = W; cv.height = H;
+  const ctx = cv.getContext("2d");
+  ctx.fillStyle = "#0c0e13"; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle = "#e3c98f";
+  ctx.font = "bold 24px 'Noto Sans JP',sans-serif";
+  const landN = BASICS.reduce((a,b)=>a+build.lands[b],0);
+  ctx.fillText("メタキューブ ドラフトデッキ("+(build.deck.length+landN)+"枚)", pad, pad+24);
+  ctx.font = "13px 'Noto Sans JP',sans-serif";
+  ctx.fillStyle = "#9a94a8";
+  ctx.fillText(new Date().toLocaleDateString("ja-JP")+" ｜ がくたそのキューブ ドラフトシミュレーター", pad, pad+46);
+  cols.forEach(function(cl, ci){
+    let y = headH + pad;
+    const x = pad + ci*colW;
+    cl.forEach(function(s){
+      ctx.fillStyle = "#c9a86a";
+      ctx.font = "bold 16px 'Noto Sans JP',sans-serif";
+      ctx.fillText("■ "+s.title+"("+s.lines.reduce((a,l)=>a+parseInt(l),0)+")", x, y);
+      y += lineH;
+      ctx.fillStyle = "#e8e4d8";
+      ctx.font = "14px 'Noto Sans JP',sans-serif";
+      s.lines.forEach(function(l){
+        ctx.fillText(l, x+10, y, colW-24);
+        y += lineH*0.85;
+      });
+      y += lineH*0.6;
+    });
+  });
+  cv.toBlob(function(blob){
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "metacube_deck.png";
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+  }, "image/png");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll(".cl-modal-back,.cl-close").forEach(el=>el.addEventListener("click", closeModals));
-  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModals(); });
-  document.getElementById("pk-reroll").addEventListener("click", reroll);
+  document.querySelector("#cl-modal .cl-modal-back").addEventListener("click", closeModal);
+  document.querySelector("#cl-modal .cl-close").addEventListener("click", closeModal);
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+  document.getElementById("dr-restart").addEventListener("click", ()=>location.reload());
+  document.getElementById("dr-save").addEventListener("click", saveDeckImage);
   const v = "?v=" + Date.now();
   Promise.all([
     fetch("data/cards.json"+v).then(r=>r.json()),
     fetch("data/overrides.json"+v).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch("data/elo.json"+v).then(r=>r.ok?r.json():{byName:{},byId:{}}).catch(()=>({byName:{},byId:{}}))
   ]).then(function(res){
     CARDS = res[0].cards;
-    OVR = res[1];
-    BG = res[2] ? res[2].bg : [];
-    reroll();
+    OVR = res[1]; DIST = res[2]; ELO = res[3];
+    document.getElementById("dr-meta").textContent =
+      "4人ブースタードラフト(20枚パック×3)。コンピューター3人はCube CobraのElo("+(ELO.updated||"")+"時点)が高いカードを優先してピックします。";
+    startDraft();
   }).catch(function(e){
-    document.getElementById("pk-pack").innerHTML = "<p>データの読み込みに失敗しました</p>";
+    document.getElementById("dr-meta").textContent = "データの読み込みに失敗しました: "+e;
   });
 });
 })();
