@@ -221,6 +221,9 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
 .cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
 /* ---- wild card sets (all-in) ---- */
+.cl-card{z-index:1}
+.cl-card.cl-set{z-index:0}
+.cl-card.cl-set:hover{z-index:5}
 .cl-set-stack{position:relative;width:100%;padding-top:150%}
 .cl-set-img{position:absolute;width:76%;border-radius:7px;background:var(--panel);
   box-shadow:2px 3px 10px rgba(0,0,0,.65);display:block}
