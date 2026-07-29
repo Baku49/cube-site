@@ -48,7 +48,7 @@ function kanaN(s){
   return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
 }
 function card(name){ return DATA.cards[name] || null; }
-function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+c.id+".jpg" : ""; }
+function imgSrc(name){ const c = card(name); return c && c.img && c.id ? "../assets/dm/"+(c.imgId||c.id)+".jpg" : ""; }
 function blankHtml(name){
   return '<div class="cl-blank"><span>'+esc(name)+'</span><span class="cl-blank-sub">画像なし</span></div>';
 }
@@ -118,7 +118,7 @@ function openModal(u){
   h += '<div class="cl-detail-imgs">'+(imgSrc(u.name)
     ? '<img src="'+imgSrc(u.name)+'" alt="'+esc(u.name)+'">'
     : '<div class="cl-blank cl-blank-lg"><span>'+esc(u.name)+'</span></div>')+
-    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.id)+'b.jpg" alt="'+esc(u.name)+' 裏面">' : '')+'</div>';
+    (c && c.img2 ? '<img src="../assets/dm/'+esc(c.imgId||c.id)+'b.jpg" alt="'+esc(u.name)+' 裏面">' : '')+'</div>';
   h += '<div class="cl-detail-info">';
   if(!c){
     h += '<div class="cl-cardname">'+esc(u.name)+'</div><div class="cl-text" style="color:var(--muted)">データ未取得</div>';
