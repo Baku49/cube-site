@@ -22,14 +22,20 @@
 
 <div id="dr-build" class="hidden">
   <h2 class="g-section-title">デッキ構築</h2>
-  <p class="g-section-note">カードをクリックでデッキ⇔プールを移動。基本土地は無限に使えます。ドラフトしたカード・配布カード・背景が使えます。</p>
+  <p class="g-section-note">カードをクリックで移動（プール→メインデッキ、デッキ→プール）。右下の「ⓘ」で詳細を表示し、そこから統率者にも指定できます。基本土地は無限に使えます。</p>
 
-  <div class="cl-btnrow" style="margin:.4rem 0 1rem">
-    <button id="dr-save" class="btn" style="cursor:pointer;font-family:inherit;background:none">📷 デッキリストを画像で保存</button>
-    <span id="dr-deckcount" class="cl-count"></span>
+  <div id="dr-counter" style="position:sticky;top:60px;z-index:40;background:rgba(18,21,29,.97);border:1px solid var(--gold);border-radius:12px;padding:.7rem 1.2rem;margin:.6rem 0 1.2rem;display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;backdrop-filter:blur(6px)">
+    <span style="font-family:'Shippori Mincho',serif;color:var(--gold2);font-size:1.15rem">デッキ合計 <strong id="dr-c-total" style="font-size:1.5rem">0</strong> 枚</span>
+    <span style="color:var(--muted)">統率者 <strong id="dr-c-cmd" style="color:var(--gold2)">0</strong></span>
+    <span style="color:var(--muted)">メイン <strong id="dr-c-main" style="color:var(--gold2)">0</strong>（呪文 <span id="dr-c-spell">0</span> ＋ 基本土地 <span id="dr-c-land">0</span>）</span>
+    <button id="dr-save" class="btn" style="cursor:pointer;font-family:inherit;background:none;margin-left:auto">📷 デッキリストを画像で保存</button>
   </div>
 
-  <h3 class="g-section-title" style="font-size:1.05rem">デッキ <span id="dr-deckinfo" class="cl-seccount"></span></h3>
+  <h3 class="g-section-title" style="font-size:1.05rem;border-left-color:var(--gold)">統率者 <span id="dr-cmdinfo" class="cl-seccount"></span></h3>
+  <div id="dr-cmd" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))"></div>
+  <p id="dr-cmdempty" class="g-section-note">まだ統率者がいません。カードの「ⓘ」から「統率者にする」を選んでください。</p>
+
+  <h3 class="g-section-title" style="font-size:1.05rem">メインデッキ <span id="dr-deckinfo" class="cl-seccount"></span></h3>
   <div id="dr-deck" class="cl-grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))"></div>
 
   <h3 class="g-section-title" style="font-size:1.05rem">基本土地</h3>
@@ -120,7 +126,7 @@ function faceHtml(f, c){
   h += '</div>';
   return h;
 }
-function openModal(c, draftIdx){
+function openModal(c, draftIdx, buildZone){
   const o = ov(c);
   const box = document.getElementById("cl-modal-content");
   let imgs = [];
@@ -132,6 +138,14 @@ function openModal(c, draftIdx){
   h += '<div class="cl-detail-info">';
   if(draftIdx != null){
     h += '<div style="margin-bottom:.8rem"><button id="cl-draftbtn" class="btn" style="cursor:pointer;font-family:inherit;background:none;font-size:1rem;padding:.5rem 1.6rem">⭐ このカードをドラフト</button></div>';
+  }
+  if(buildZone){
+    const bs = 'cursor:pointer;font-family:inherit;background:none;font-size:.92rem;padding:.4rem 1rem';
+    let btns = '';
+    if(buildZone !== "cmd") btns += '<button class="btn" id="cl-b-cmd" style="'+bs+'">👑 統率者にする</button>';
+    if(buildZone !== "main") btns += '<button class="btn" id="cl-b-main" style="'+bs+'">メインデッキへ</button>';
+    if(buildZone !== "pool") btns += '<button class="btn ghost" id="cl-b-pool" style="'+bs+'">プールに戻す</button>';
+    h += '<div style="margin-bottom:.8rem;display:flex;gap:.6rem;flex-wrap:wrap">'+btns+'</div>';
   }
   if(o.note) h += '<div class="cl-ovnote">⚠ '+esc(o.note)+'</div>';
   if(o.name || o.type || o.text || o.flavor){
@@ -157,6 +171,14 @@ function openModal(c, draftIdx){
     document.getElementById("cl-draftbtn").addEventListener("click", function(){
       closeModal(); humanPick(draftIdx);
     });
+  }
+  if(buildZone){
+    const bcmd = document.getElementById("cl-b-cmd");
+    const bmain = document.getElementById("cl-b-main");
+    const bpool = document.getElementById("cl-b-pool");
+    if(bcmd) bcmd.addEventListener("click", function(){ closeModal(); moveCard(c, buildZone, "cmd"); });
+    if(bmain) bmain.addEventListener("click", function(){ closeModal(); moveCard(c, buildZone, "main"); });
+    if(bpool) bpool.addEventListener("click", function(){ closeModal(); moveCard(c, buildZone, "pool"); });
   }
   document.getElementById("cl-modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -256,30 +278,52 @@ function startBuild(){
   if(DIST){ DIST.fixed.forEach(c => { for(let i=0;i<(c.count||1);i++) rest.push(c); }); }
   BG.forEach(c => rest.push(c));
   rest.sort(cardCmp);
-  build = { rest: rest, deck: [], lands: {平地:0,島:0,沼:0,山:0,森:0} };
+  build = { rest: rest, main: [], cmd: [], lands: {平地:0,島:0,沼:0,山:0,森:0} };
   document.getElementById("dr-draft").classList.add("hidden");
   document.getElementById("dr-build").classList.remove("hidden");
   document.getElementById("dr-status").textContent = "ドラフト完了 → デッキ構築";
   renderBuild();
 }
+function zoneArr(z){ return z==="pool" ? build.rest : (z==="main" ? build.main : build.cmd); }
+function moveCard(c, from, to){
+  if(from===to) return;
+  const src = zoneArr(from);
+  const i = src.indexOf(c);
+  if(i<0) return;
+  src.splice(i,1);
+  zoneArr(to).push(c);
+  if(to==="pool") build.rest.sort(cardCmp);
+  renderBuild();
+}
+function buildCardEl(c, zone, defaultTo){
+  const el = document.createElement("div");
+  el.className = "cl-card";
+  el.style.position = "relative";
+  el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
+    (ov(c).note ? '<span class="cl-errata">E</span>' : "") +
+    '<span class="dr-info" style="position:absolute;bottom:6px;right:6px;z-index:4;background:rgba(0,0,0,.85);color:var(--gold2);border:1px solid var(--gold);border-radius:999px;width:1.5rem;height:1.5rem;display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer">ⓘ</span>';
+  el.addEventListener("click", function(e){
+    if(e.target.classList.contains("dr-info")){ openModal(c, null, zone); return; }
+    moveCard(c, zone, defaultTo);
+  });
+  return el;
+}
 function renderBuild(){
+  const cmdRoot = document.getElementById("dr-cmd");
+  cmdRoot.innerHTML = "";
+  build.cmd.slice().sort(cardCmp).forEach(function(c){
+    cmdRoot.appendChild(buildCardEl(c, "cmd", "pool"));
+  });
+  document.getElementById("dr-cmdempty").classList.toggle("hidden", build.cmd.length>0);
   const deckRoot = document.getElementById("dr-deck");
   deckRoot.innerHTML = "";
-  build.deck.slice().sort(cardCmp).forEach(function(c){
-    const el = cardEl(c,{onclick:function(){
-      const i = build.deck.indexOf(c);
-      if(i>=0){ build.deck.splice(i,1); build.rest.push(c); build.rest.sort(cardCmp); renderBuild(); }
-    }});
-    deckRoot.appendChild(el);
+  build.main.slice().sort(cardCmp).forEach(function(c){
+    deckRoot.appendChild(buildCardEl(c, "main", "pool"));
   });
   const restRoot = document.getElementById("dr-rest");
   restRoot.innerHTML = "";
   build.rest.forEach(function(c){
-    const el = cardEl(c,{onclick:function(){
-      const i = build.rest.indexOf(c);
-      if(i>=0){ build.rest.splice(i,1); build.deck.push(c); renderBuild(); }
-    }});
-    restRoot.appendChild(el);
+    restRoot.appendChild(buildCardEl(c, "pool", "main"));
   });
   const landsRoot = document.getElementById("dr-lands");
   landsRoot.innerHTML = "";
@@ -300,20 +344,33 @@ function renderBuild(){
     });
   });
   const landN = BASICS.reduce((a,b)=>a+build.lands[b],0);
-  const total = build.deck.length + landN;
-  document.getElementById("dr-deckinfo").textContent = build.deck.length+"枚";
+  const mainN = build.main.length + landN;
+  const total = build.cmd.length + mainN;
+  document.getElementById("dr-cmdinfo").textContent = build.cmd.length+"枚";
+  document.getElementById("dr-deckinfo").textContent = mainN+"枚(呪文"+build.main.length+"+土地"+landN+")";
   document.getElementById("dr-restinfo").textContent = build.rest.length+"枚";
-  document.getElementById("dr-deckcount").textContent = "デッキ合計 "+total+"枚(呪文"+build.deck.length+" + 土地"+landN+")";
+  document.getElementById("dr-c-total").textContent = total;
+  document.getElementById("dr-c-cmd").textContent = build.cmd.length;
+  document.getElementById("dr-c-main").textContent = mainN;
+  document.getElementById("dr-c-spell").textContent = build.main.length;
+  document.getElementById("dr-c-land").textContent = landN;
 }
 
 /* ---------- デッキ画像保存 ---------- */
 function saveDeckImage(){
+  const secs = [];
+  if(build.cmd.length){
+    const cc = {};
+    build.cmd.slice().sort(cardCmp).forEach(function(c){
+      const n = jaName(c); cc[n] = (cc[n]||0)+1;
+    });
+    secs.push({title:"👑 統率者", lines:Object.entries(cc).map(([n,k])=>k+"× "+n)});
+  }
   const groups = {};
-  build.deck.forEach(function(c){
+  build.main.forEach(function(c){
     const g = CATS_JA[c.cat] || "その他";
     (groups[g] = groups[g] || []).push(c);
   });
-  const secs = [];
   ["白","青","黒","赤","緑","多色","無色","その他"].forEach(function(g){
     if(!groups[g]) return;
     const counts = {};
@@ -346,7 +403,8 @@ function saveDeckImage(){
   ctx.fillStyle = "#e3c98f";
   ctx.font = "bold 24px 'Noto Sans JP',sans-serif";
   const landN = BASICS.reduce((a,b)=>a+build.lands[b],0);
-  ctx.fillText("メタキューブ ドラフトデッキ("+(build.deck.length+landN)+"枚)", pad, pad+24);
+  const mainN = build.main.length + landN;
+  ctx.fillText("メタキューブ ドラフトデッキ（統率者"+build.cmd.length+" ＋ メイン"+mainN+"枚）", pad, pad+24);
   ctx.font = "13px 'Noto Sans JP',sans-serif";
   ctx.fillStyle = "#9a94a8";
   ctx.fillText(new Date().toLocaleDateString("ja-JP")+" ｜ がくたそのキューブ ドラフトシミュレーター", pad, pad+46);
