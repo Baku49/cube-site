@@ -150,6 +150,32 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-lognote{margin:.2rem 0;color:var(--text)}
 .cl-logadd{color:#9fd3a8;font-size:.85rem;margin-top:.3rem;line-height:1.7}
 .cl-logrem{color:#e8a89a;font-size:.85rem;margin-top:.3rem;line-height:1.7}
+/* ---- wild card sets (all-in) ---- */
+.cl-card{z-index:1}
+.cl-card.cl-set{z-index:0}
+.cl-card.cl-set:hover{z-index:5}
+.cl-set-stack{position:relative;width:100%;padding-top:150%}
+.cl-set-img{position:absolute;width:76%;border-radius:7px;background:var(--panel);
+  box-shadow:2px 3px 10px rgba(0,0,0,.65);display:block}
+.cl-si0{left:0;top:0;z-index:3}
+.cl-si1{left:12%;top:5%;z-index:2}
+.cl-si2{left:24%;top:10%;z-index:1}
+.cl-sn2.cl-si0{left:0;top:0}.cl-sn2.cl-si1{left:16%;top:7%}
+.cl-set:hover .cl-set-img{box-shadow:2px 3px 14px rgba(0,0,0,.85)}
+.cl-wtag{position:absolute;bottom:6px;left:6px;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.02rem .4rem;font-size:.72rem;font-weight:700}
+.cl-card .cl-badge,.cl-card .cl-errata,.cl-card .cl-wtag{z-index:4}
+.cl-wtag-in{font-size:.7rem;background:rgba(20,16,10,.9);color:var(--gold2);
+  border:1px solid var(--gold);border-radius:4px;padding:.05rem .3rem}
+.cl-set-no{color:var(--muted);font-size:.8rem;letter-spacing:.15em;margin:.2rem 0 .4rem}
+.cl-blank{aspect-ratio:59/86;width:100%;border:1px dashed var(--gold);border-radius:8px;
+  background:linear-gradient(160deg,var(--panel2),var(--panel));display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.4rem;text-align:center;color:var(--gold2);
+  font-size:.82rem;padding:.6rem;line-height:1.5}
+.cl-blank .cl-blank-sub{font-size:.68rem;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:.05rem .5rem}
+.cl-blank.cl-blank-lg{width:260px;font-size:1rem}
+div.cl-set-img{height:auto}
 .ms{display:inline-flex;align-items:center;justify-content:center;width:1.25rem;height:1.25rem;
   border-radius:50%;font-size:.72rem;font-weight:700;margin:0 1px;vertical-align:-3px;color:#1a1a1a}
 .ms.mw{background:#f8f4d8}.ms.mu{background:#9ec6e8}.ms.mb{background:#b8a8c8}
@@ -235,7 +261,7 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
   <div class="site-inner">
     <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
     <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html">デュエマパワドラ</option><option value="../all-in/index.html" selected>オールイン</option></select></div>
-    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html" class="active">ルール</a><a href="hint.html">ヒント</a><a href="cards.html">カードリスト</a></nav>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html" class="active">ルール</a><a href="hint.html">ヒント</a><a href="cards.html">カードリスト</a><a href="pack.html">パックシミュレーター</a></nav>
   </div>
 </header>
 
