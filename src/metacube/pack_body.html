@@ -62,7 +62,7 @@ let state = null;
 
 const CATS_ORD = {White:0,Blue:1,Black:2,Red:3,Green:4,Multicolored:5,Colorless:6};
 const CATS_JA = {White:"白",Blue:"青",Black:"黒",Red:"赤",Green:"緑",Multicolored:"多色",Colorless:"無色"};
-const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
+const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Conspiracy","Land"];
 const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
   "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
   "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
@@ -157,14 +157,14 @@ function openModal(c, draftIdx, buildZone){
     if(o.text) h += '<div class="cl-text">'+br(o.text)+'</div>';
     if(o.flavor) h += '<div class="cl-flavor">'+br(o.flavor)+'</div>';
     h += '</div>';
-    h += '<details class="cl-orig"><summary>元のテキストを表示</summary>';
+    h += '<hr class="cl-hr"><div class="cl-orig"><div class="cl-origlabel">元のテキスト</div>';
   }
   if(c.faces && c.faces.length){
     h += c.faces.map(f=>faceHtml(f,c)).join('<hr class="cl-hr">');
   } else {
     h += faceHtml(c, c);
   }
-  if(o.name || o.type || o.text || o.flavor) h += '</details>';
+  if(o.name || o.type || o.text || o.flavor) h += '</div>';
   h += '</div></div>';
   box.innerHTML = h;
   if(draftIdx != null){
