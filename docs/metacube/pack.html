@@ -144,6 +144,7 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
   padding:.5rem .8rem;margin-bottom:.8rem;font-size:.88rem}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
+.cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
@@ -339,7 +340,7 @@ let state = null;
 
 const CATS_ORD = {White:0,Blue:1,Black:2,Red:3,Green:4,Multicolored:5,Colorless:6};
 const CATS_JA = {White:"白",Blue:"青",Black:"黒",Red:"赤",Green:"緑",Multicolored:"多色",Colorless:"無色"};
-const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
+const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Conspiracy","Land"];
 const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
   "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
   "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
@@ -434,14 +435,14 @@ function openModal(c, draftIdx, buildZone){
     if(o.text) h += '<div class="cl-text">'+br(o.text)+'</div>';
     if(o.flavor) h += '<div class="cl-flavor">'+br(o.flavor)+'</div>';
     h += '</div>';
-    h += '<details class="cl-orig"><summary>元のテキストを表示</summary>';
+    h += '<hr class="cl-hr"><div class="cl-orig"><div class="cl-origlabel">元のテキスト</div>';
   }
   if(c.faces && c.faces.length){
     h += c.faces.map(f=>faceHtml(f,c)).join('<hr class="cl-hr">');
   } else {
     h += faceHtml(c, c);
   }
-  if(o.name || o.type || o.text || o.flavor) h += '</details>';
+  if(o.name || o.type || o.text || o.flavor) h += '</div>';
   h += '</div></div>';
   box.innerHTML = h;
   if(draftIdx != null){
@@ -737,7 +738,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 <footer class="site">
-  最終更新日: 2026年07月29日<br>
+  最終更新日: 2026年07月30日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
 </footer>
 </body>
