@@ -109,11 +109,17 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(12,14,19,.92);
 .cube-switch select{background:var(--panel);color:var(--gold2);border:1px solid var(--line);
   border-radius:8px;padding:.35rem .6rem;font-size:.92rem;font-family:inherit;cursor:pointer}
 .cube-switch select:focus{outline:none;border-color:var(--gold)}
-nav.main{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto;align-items:center}
-nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem}
+nav.main{display:flex;gap:.2rem;flex-wrap:nowrap;margin-left:auto;align-items:center;
+  overflow-x:auto;max-width:100%;min-width:0;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+nav.main::-webkit-scrollbar{height:5px}
+nav.main::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+nav.main a{padding:.35rem .8rem;border-radius:6px;color:var(--text);font-size:.92rem;
+  white-space:nowrap;flex-shrink:0}
 nav.main a:hover{background:var(--panel2);text-decoration:none}
 nav.main a.active{background:var(--panel2);color:var(--gold2);border:1px solid var(--line)}
-nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default}
+nav.main span.disabled{padding:.35rem .8rem;color:var(--muted);font-size:.92rem;cursor:default;
+  white-space:nowrap;flex-shrink:0}
 .badge{font-size:.65rem;border:1px solid var(--line);border-radius:999px;
   padding:.05rem .45rem;color:var(--muted);margin-left:.3rem;vertical-align:middle}
 main{max-width:1040px;margin:0 auto;padding:1.6rem 1.2rem 4rem;}
