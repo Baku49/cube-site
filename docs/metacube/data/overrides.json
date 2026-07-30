@@ -579,7 +579,8 @@
  "uds:118": {
   "type": "伝説のクリーチャー — エルフ(Elf)・ドルイド(Druid)",
   "text": "{T}：あなたがコントロールする森(Forest)１つにつき{G}を加える。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "../assets/mtg/uds-118-ja.jpg"
  },
  "uds:135": {
   "type": "アーティファクト・クリーチャー — 構築物(Construct)",
