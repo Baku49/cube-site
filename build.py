@@ -222,6 +222,7 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
   padding:.5rem .8rem;margin-bottom:.8rem;font-size:.88rem}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
+.cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
