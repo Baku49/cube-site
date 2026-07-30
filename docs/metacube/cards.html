@@ -144,6 +144,7 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
   padding:.5rem .8rem;margin-bottom:.8rem;font-size:.88rem}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
+.cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
@@ -322,7 +323,7 @@ const CATS = [
   ["White","白"],["Blue","青"],["Black","黒"],["Red","赤"],["Green","緑"],
   ["Multicolored","多色"],["Colorless","無色"]
 ];
-const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Land","Conspiracy"];
+const TYPE_PRI = ["Creature","Planeswalker","Instant","Sorcery","Artifact","Enchantment","Battle","Conspiracy","Land"];
 function typePri(c){
   // 両面カードは第1面のタイプのみで判定
   const tl = (c.faces && c.faces.length) ? (c.faces[0].type_line||"") :
@@ -458,14 +459,14 @@ function openModal(c){
     if(o.text) h += '<div class="cl-text">'+br(o.text)+'</div>';
     if(o.flavor) h += '<div class="cl-flavor">'+br(o.flavor)+'</div>';
     h += '</div>';
-    h += '<details class="cl-orig"><summary>元のテキストを表示</summary>';
+    h += '<hr class="cl-hr"><div class="cl-orig"><div class="cl-origlabel">元のテキスト</div>';
   }
   if(c.faces && c.faces.length){
     h += c.faces.map(f=>faceHtml(f,c)).join('<hr class="cl-hr">');
   } else {
     h += faceHtml(c, c);
   }
-  if(o.name || o.type || o.text || o.flavor) h += '</details>';
+  if(o.name || o.type || o.text || o.flavor) h += '</div>';
   h += '<div class="cl-metainfo">';
   h += esc(c.set_name||c.set.toUpperCase())+' ('+esc(c.set.toUpperCase())+') #'+esc(c.cn);
   if(c.rarity) h += ' ｜ '+esc(c.rarity);
