@@ -42,6 +42,7 @@ CUBES = [
         "pack": "ready",
         "pack_size": 20,
         "pack_label": "ドラフトシミュレーター",
+        "has_combos": True,
     },
     {
         "slug": "dm-powdra",
@@ -229,6 +230,22 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
 .cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
+/* ---- コンボ ---- */
+.cb-item{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:.5rem 0}
+.cb-item summary{cursor:pointer;padding:.55rem .9rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.cb-item summary::-webkit-details-marker{display:none}
+.cb-item[open] summary{border-bottom:1px solid var(--line)}
+.cb-title{font-weight:700;color:var(--gold2)}
+.cb-mv{margin-left:auto;color:var(--muted);font-size:.8rem;white-space:nowrap}
+.cb-pips{white-space:nowrap}
+.cb-body{padding:.8rem 1rem 1rem}
+.cb-imgs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem}
+.cb-imgs img{width:130px;border-radius:6px}
+.cb-h{color:var(--gold2);font-size:.82rem;letter-spacing:.12em;margin:.7rem 0 .2rem}
+.cb-ul,.cb-ol{margin:.2rem 0 .2rem 1.4rem;padding:0;line-height:1.8}
+.cb-en{color:var(--muted)}
+.cb-res li{color:#9fd3a8}
+.cb-mana{line-height:1.8}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
@@ -388,6 +405,8 @@ def page(title, body, *, cube=None, active="", depth=0):
         items.append(("cards", "カードリスト", "cards.html", True))
         if cube.get("pack"):
             items.append(("pack", cube.get("pack_label", "パックシミュレーター"), "pack.html", cube["pack"] == "ready"))
+        if cube.get("has_combos"):
+            items.append(("combos", "コンボ", "combos.html", True))
         if cube.get("cards_app"):
             items.append(("changelog", "変更履歴", "changelog.html", True))
         nav = f'<a href="{root}index.html">キューブ一覧</a>'
@@ -736,6 +755,15 @@ def build_changelog(cube):
         page(f'変更履歴 | {cube["name"]}', body, cube=cube, active="changelog", depth=1), encoding="utf-8")
 
 
+# ---------------- 各キューブ: コンボ ----------------
+def build_combos(cube):
+    out = OUT / cube["slug"]
+    out.mkdir(exist_ok=True)
+    body = (SRC / cube["src_dir"] / "combos_body.html").read_text(encoding="utf-8")
+    (out / "combos.html").write_text(
+        page(f'コンボ | {cube["name"]}', body, cube=cube, active="combos", depth=1), encoding="utf-8")
+
+
 # ---------------- 各キューブ: キューブトップ ----------------
 def build_cube_index(cube):
     tags = "".join(f'<span class="tag">{t}</span>' for t in cube["tags"])
@@ -845,6 +873,8 @@ if __name__ == "__main__":
         build_cards(c)
         if c.get("cards_app"):
             build_changelog(c)
+        if c.get("has_combos"):
+            build_combos(c)
         if c.get("pack"):
             build_pack(c)
         if c["has_content"]:
