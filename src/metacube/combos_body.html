@@ -44,7 +44,6 @@ function comboHtml(c){
   const title=c.cards.map(x=>esc(x.ja)).join(" ＋ ");
   let h='<details class="cb-item"><summary><span class="cb-pips">'+pips(idKey(c.identity))+'</span>'+
     '<span class="cb-title">'+title+'</span>'+
-    (c.mv!=null?'<span class="cb-mv">マナ総量 '+c.mv+'</span>':'')+
     '</summary><div class="cb-body">';
   h+='<div class="cb-imgs">'+c.cards.map(x=>x.img?'<img loading="lazy" src="'+esc(x.img)+'" alt="'+esc(x.ja)+'">':'').join("")+'</div>';
   h+='<div class="cb-info">';
