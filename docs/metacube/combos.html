@@ -316,7 +316,11 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 <script>
 (function(){
 let DATA=null, query="";
-const ORDER=["","w","u","b","r","g","wu","ub","br","rg","gw","wb","ur","bg","rw","gu","wub","ubr","brg","rgw","gwu","wbr","urg","bgw","rwu","gub","wubr","ubrg","brgw","rgwu","gwub","wubrg"];
+// 標準的な色順: 無色→単色(白青黒赤緑)→友好2色→対抗2色→弧3色→楔3色→4色→5色
+const CANON=["","w","u","b","r","g",
+  "wu","ub","br","rg","gw","wb","ur","bg","rw","gu",
+  "wub","ubr","brg","rgw","gwu","wbg","urw","bgu","rwb","gur",
+  "wubr","ubrg","brgw","rgwu","gwub","wubrg"];
 const CN={w:"白",u:"青",b:"黒",r:"赤",g:"緑"};
 function idLabel(id){
   if(!id) return "無色";
@@ -327,6 +331,9 @@ function idKey(id){
   const o="wubrg";
   return (id||"").toLowerCase().split("").filter(c=>o.includes(c)).sort((a,b)=>o.indexOf(a)-o.indexOf(b)).join("");
 }
+// 正規化キー → {順番, 標準表記(ラベル・ピップ用)}
+const CANON_MAP={};
+CANON.forEach(function(c,i){ CANON_MAP[idKey(c)]={i:i,c:c}; });
 function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 function kanaN(s){
   return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
@@ -342,7 +349,7 @@ function matches(c){
 }
 function comboHtml(c){
   const title=c.cards.map(x=>esc(x.ja)).join(" ＋ ");
-  let h='<details class="cb-item"><summary><span class="cb-pips">'+pips(idKey(c.identity))+'</span>'+
+  let h='<details class="cb-item"><summary><span class="cb-pips">'+pips((CANON_MAP[idKey(c.identity)]||{c:idKey(c.identity)}).c)+'</span>'+
     '<span class="cb-title">'+title+'</span>'+
     '</summary><div class="cb-body">';
   h+='<div class="cb-imgs">'+c.cards.map(x=>x.img?'<img loading="lazy" src="'+esc(x.img)+'" alt="'+esc(x.ja)+'">':'').join("")+'</div>';
@@ -369,14 +376,15 @@ function render(){
     shown++;
   });
   const keys=Object.keys(groups).sort((a,b)=>{
-    const ia=ORDER.indexOf(a),ib=ORDER.indexOf(b);
-    return (ia<0?99:ia)-(ib<0?99:ib)||a.length-b.length||(a<b?-1:1);
+    const ia=CANON_MAP[a]?CANON_MAP[a].i:99,ib=CANON_MAP[b]?CANON_MAP[b].i:99;
+    return ia-ib||a.length-b.length||(a<b?-1:1);
   });
   keys.forEach(k=>{
     const cs=groups[k];
     cs.sort((a,b)=>(a.mv==null?99:a.mv)-(b.mv==null?99:b.mv));
+    const disp=CANON_MAP[k]?CANON_MAP[k].c:k;
     const sec=document.createElement("section");
-    sec.innerHTML='<h2 class="g-section-title">'+idLabel(k)+' <span class="cl-seccount">'+cs.length+'件</span></h2>';
+    sec.innerHTML='<h2 class="g-section-title">'+idLabel(disp)+' <span class="cl-seccount">'+cs.length+'件</span></h2>';
     const wrap=document.createElement("div");
     wrap.innerHTML=cs.map(comboHtml).join("");
     sec.appendChild(wrap);
