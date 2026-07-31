@@ -1,0 +1,103 @@
+<main class="cl-main">
+<h1 class="page">メタキューブ コンボ</h1>
+<div class="updated" id="cb-meta">読み込み中…</div>
+
+<div class="cl-controls">
+  <input id="cb-search" class="g-search" type="search" placeholder="カード名で検索(そのカードを使うコンボを表示)" autocomplete="off">
+  <div class="cl-btnrow">
+    <span id="cb-count" class="cl-count"></span>
+  </div>
+</div>
+
+<div id="cb-sections"></div>
+<div id="cb-empty" class="wip hidden"><p>該当するコンボがありません</p></div>
+</main>
+
+<script>
+(function(){
+let DATA=null, query="";
+const ORDER=["","w","u","b","r","g","wu","ub","br","rg","gw","wb","ur","bg","rw","gu","wub","ubr","brg","rgw","gwu","wbr","urg","bgw","rwu","gub","wubr","ubrg","brgw","rgwu","gwub","wubrg"];
+const CN={w:"白",u:"青",b:"黒",r:"赤",g:"緑"};
+function idLabel(id){
+  if(!id) return "無色";
+  return id.split("").map(c=>CN[c]||c).join("");
+}
+function idKey(id){
+  // 正規化: wubrg順に並べ替え
+  const o="wubrg";
+  return (id||"").toLowerCase().split("").filter(c=>o.includes(c)).sort((a,b)=>o.indexOf(a)-o.indexOf(b)).join("");
+}
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function kanaN(s){
+  return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
+}
+function pips(id){
+  const cls={w:"mw",u:"mu",b:"mb",r:"mr",g:"mg"};
+  if(!id) return '<span class="ms mc">◇</span>';
+  return id.split("").map(c=>'<span class="ms '+(cls[c]||"mc")+'">'+(CN[c]||c)+'</span>').join("");
+}
+function matches(c){
+  if(!query) return true;
+  return c.cards.some(x=>kanaN(x.ja+" "+x.en).includes(query));
+}
+function comboHtml(c){
+  const title=c.cards.map(x=>esc(x.ja)).join(" ＋ ");
+  let h='<details class="cb-item"><summary><span class="cb-pips">'+pips(idKey(c.identity))+'</span>'+
+    '<span class="cb-title">'+title+'</span>'+
+    (c.mv!=null?'<span class="cb-mv">マナ総量 '+c.mv+'</span>':'')+
+    '</summary><div class="cb-body">';
+  h+='<div class="cb-imgs">'+c.cards.map(x=>x.img?'<img loading="lazy" src="'+esc(x.img)+'" alt="'+esc(x.ja)+'">':'').join("")+'</div>';
+  h+='<div class="cb-info">';
+  const inits=c.cards.map(x=>x.init).filter(Boolean);
+  if(inits.length) h+='<div class="cb-h">初期状態</div><ul class="cb-ul">'+inits.map(i=>'<li>'+esc(i)+'</li>').join("")+'</ul>';
+  if(c.pre&&c.pre.length) h+='<div class="cb-h">前提条件</div><ul class="cb-ul">'+c.pre.map(p=>'<li'+(p.en?' class="cb-en"':'')+'>'+esc(p.t)+'</li>').join("")+'</ul>';
+  if(c.mana) h+='<div class="cb-h">必要マナ</div><div class="cb-mana">'+esc(c.mana)+'</div>';
+  if(c.steps&&c.steps.length) h+='<div class="cb-h">手順</div><ol class="cb-ol">'+c.steps.map(s=>'<li'+(s.en?' class="cb-en"':'')+'>'+esc(s.t)+'</li>').join("")+'</ol>';
+  if(c.results&&c.results.length) h+='<div class="cb-h">結果</div><ul class="cb-ul cb-res">'+c.results.map(r=>'<li>'+esc(r)+'</li>').join("")+'</ul>';
+  h+='<div class="cl-metainfo"><a href="https://commanderspellbook.com/combo/'+esc(String(c.id))+'/" target="_blank" rel="noopener">Commander Spellbookで見る ↗</a></div>';
+  h+='</div></div></details>';
+  return h;
+}
+function render(){
+  const root=document.getElementById("cb-sections");
+  root.innerHTML="";
+  let shown=0;
+  const groups={};
+  DATA.combos.forEach(c=>{
+    if(!matches(c)) return;
+    const k=idKey(c.identity);
+    (groups[k]=groups[k]||[]).push(c);
+    shown++;
+  });
+  const keys=Object.keys(groups).sort((a,b)=>{
+    const ia=ORDER.indexOf(a),ib=ORDER.indexOf(b);
+    return (ia<0?99:ia)-(ib<0?99:ib)||a.length-b.length||(a<b?-1:1);
+  });
+  keys.forEach(k=>{
+    const cs=groups[k];
+    cs.sort((a,b)=>(a.mv==null?99:a.mv)-(b.mv==null?99:b.mv));
+    const sec=document.createElement("section");
+    sec.innerHTML='<h2 class="g-section-title">'+idLabel(k)+' <span class="cl-seccount">'+cs.length+'件</span></h2>';
+    const wrap=document.createElement("div");
+    wrap.innerHTML=cs.map(comboHtml).join("");
+    sec.appendChild(wrap);
+    root.appendChild(sec);
+  });
+  document.getElementById("cb-empty").classList.toggle("hidden", shown>0);
+  document.getElementById("cb-count").textContent=query?(shown+" / "+DATA.combos.length+"件"):(DATA.combos.length+"件");
+}
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("cb-search").addEventListener("input", function(){
+    query=kanaN(this.value.trim()); render();
+  });
+  fetch("data/combos.json?v="+Date.now()).then(r=>r.json()).then(function(d){
+    DATA=d;
+    document.getElementById("cb-meta").textContent=
+      "最終更新日: "+(d.updated||"")+" ｜ キューブ内で成立するコンボ"+d.combos.length+"件 ｜ 出典: Commander Spellbook";
+    render();
+  }).catch(function(e){
+    document.getElementById("cb-meta").textContent="データの読み込みに失敗しました";
+  });
+});
+})();
+</script>
