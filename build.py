@@ -784,6 +784,8 @@ def build_cube_index(cube):
             btns += '<a class="btn" href="pack.html">' + cube.get("pack_label", "パックシミュレーター") + '</a>'
         elif cube.get("pack"):
             btns += '<span class="btn disabled">' + cube.get("pack_label", "パックシミュレーター") + '(準備中)</span>'
+        if cube.get("has_combos"):
+            btns += '<a class="btn" href="combos.html">コンボ</a>'
         if cube["cardlist_url"]:
             btns += (f'<a class="btn ghost" href="{cube["cardlist_url"]}" target="_blank" '
                      f'rel="noopener">カードリスト ({cube["cardlist_label"]}) ↗</a>')
