@@ -151,6 +151,22 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
 .cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
+/* ---- コンボ ---- */
+.cb-item{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:.5rem 0}
+.cb-item summary{cursor:pointer;padding:.55rem .9rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.cb-item summary::-webkit-details-marker{display:none}
+.cb-item[open] summary{border-bottom:1px solid var(--line)}
+.cb-title{font-weight:700;color:var(--gold2)}
+.cb-mv{margin-left:auto;color:var(--muted);font-size:.8rem;white-space:nowrap}
+.cb-pips{white-space:nowrap}
+.cb-body{padding:.8rem 1rem 1rem}
+.cb-imgs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem}
+.cb-imgs img{width:130px;border-radius:6px}
+.cb-h{color:var(--gold2);font-size:.82rem;letter-spacing:.12em;margin:.7rem 0 .2rem}
+.cb-ul,.cb-ol{margin:.2rem 0 .2rem 1.4rem;padding:0;line-height:1.8}
+.cb-en{color:var(--muted)}
+.cb-res li{color:#9fd3a8}
+.cb-mana{line-height:1.8}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
@@ -285,7 +301,7 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 
 <main>
 <h1 class="page">デュエマパワドラ ルール</h1>
-<div class="updated">最終更新日: 2026年07月30日</div>
+<div class="updated">最終更新日: 2026年08月07日</div>
 <div class="toc"><div class="toc-title">目次</div><ol><li><a href="#sec1">全般</a><li><a href="#sec2">ドラフトのルール</a><li><a href="#sec3">構築のルール</a><li><a href="#sec4">対戦のルール</a><li><a href="#sec5">拡張パックを用いる効果</a><li><a href="#sec6">デュエパーティー</a></li></ol></div>
 <article class="doc">
 <h1 id="sec1">全般</h1>
@@ -315,14 +331,14 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 <p>ドラフトを始めるより前に全員の合意があれば、デュエパーティーでプレイしてもよい</p>
 <p>デュエパーティーなら、1枚のパートナーと、39枚のメインデッキと、0～8枚の超次元ゾーンに置かれるカード、0枚または6枚の超GR、0～1セットのゲーム開始時にバトルゾーンに存在出来るカードを構築する</p>
 <p>指定できるパートナーの条件は、通常のデュエパーティーと同じである</p>
-<p>パートナーの色による構築制限のルールが適用される(なお、超次元ゾーンに置かれるカード、超GR、ゲーム開始時にバトルゾーンに存在出来るカードについては、この制限は適用されない)</p>
+<p>パートナーの色による構築制限のルールは適用されない</p>
 <p>超次元ゾーンに置かれるカード、超GR、ゲーム開始時にバトルゾーンに存在出来るカードも使用できる</p>
 <p>同名カードを1ターンに何度でもバトルゾーンに出せ、使える</p>
 <p>特殊勝利する効果、相手を敗北させる効果、追加ターンを得る効果も働く</p>
 </article>
 </main>
 <footer class="site">
-  最終更新日: 2026年07月30日<br>
+  最終更新日: 2026年08月07日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
 </footer>
 </body>
