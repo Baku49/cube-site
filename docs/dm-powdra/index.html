@@ -151,6 +151,22 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-orig{margin:.8rem 0;color:var(--muted)}
 .cl-orig summary{cursor:pointer;font-size:.85rem}
 .cl-origlabel{font-size:.8rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:.3rem}
+/* ---- コンボ ---- */
+.cb-item{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:.5rem 0}
+.cb-item summary{cursor:pointer;padding:.55rem .9rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.cb-item summary::-webkit-details-marker{display:none}
+.cb-item[open] summary{border-bottom:1px solid var(--line)}
+.cb-title{font-weight:700;color:var(--gold2)}
+.cb-mv{margin-left:auto;color:var(--muted);font-size:.8rem;white-space:nowrap}
+.cb-pips{white-space:nowrap}
+.cb-body{padding:.8rem 1rem 1rem}
+.cb-imgs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem}
+.cb-imgs img{width:130px;border-radius:6px}
+.cb-h{color:var(--gold2);font-size:.82rem;letter-spacing:.12em;margin:.7rem 0 .2rem}
+.cb-ul,.cb-ol{margin:.2rem 0 .2rem 1.4rem;padding:0;line-height:1.8}
+.cb-en{color:var(--muted)}
+.cb-res li{color:#9fd3a8}
+.cb-mana{line-height:1.8}
 .cl-hr{border:none;border-top:1px solid var(--line);margin:.8rem 0}
 .cl-logentry{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.6rem 0;background:var(--panel)}
 .cl-logdate{color:var(--gold2);font-weight:700}
@@ -278,7 +294,7 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 <header class="site" style="background-image:linear-gradient(rgba(12,14,19,.82),rgba(12,14,19,.9)),url('../assets/dm_theme.webp');background-size:cover;background-position:center 30%">
   <div class="site-inner">
     <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
-    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html" selected>デュエマパワドラ</option><option value="../all-in/index.html">オールイン</option></select></div>
+    <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html" selected>デュエマパワドラ</option><option value="../all-in/index.html">オールイン</option><option value="../okido/index.html">オーキドドラフト</option></select></div>
     <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html" class="active">キューブトップ</a><a href="rules.html">ルール</a><a href="glossary.html">用語集</a><a href="aid.html">ルールエイドとヒント</a><a href="cards.html">カードリスト</a><a href="pack.html">パックシミュレーター</a><a href="changelog.html">変更履歴</a></nav>
   </div>
 </header>
@@ -293,7 +309,7 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
 
 </main>
 <footer class="site">
-  最終更新日: 2026年07月30日<br>
+  最終更新日: 2026年08月31日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
 </footer>
 </body>
