@@ -298,6 +298,29 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
     <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="aid.html">ルールエイドとヒント</a><a href="cards.html">カードリスト</a><a href="dist.html" class="active">配布カード</a><a href="changelog.html">変更履歴</a></nav>
   </div>
 </header>
+<style>
+.pe{display:inline-flex;width:1.2em;height:1.2em;border-radius:50%;align-items:center;justify-content:center;
+  font-size:.74em;font-weight:700;color:#fff;margin:0 1px;vertical-align:-.18em;
+  border:1px solid rgba(0,0,0,.4);box-shadow:0 1px 2px rgba(0,0,0,.4);font-family:"Noto Sans JP",sans-serif;line-height:1}
+.pe-g{background:#43a047}.pe-r{background:#e53935}.pe-w{background:#039be5}
+.pe-l{background:#fdd835;color:#4a3d00}.pe-p{background:#ab5fc9}.pe-f{background:#c1683a}
+.pe-d{background:#37414f}.pe-m{background:#b0bec5;color:#263238}.pe-n{background:#c9a227;color:#3d2e00}
+.pe-y{background:#ec6ab7}.pe-c{background:#cfc4ae;color:#4a4234}.pe-z{background:#666}
+.pd-meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.35rem 0 .2rem;color:var(--text)}
+.pd-chip{border:1px solid var(--line);border-radius:5px;padding:.05rem .45rem;font-size:.78rem;color:var(--muted)}
+.pd-hp{font-weight:700;color:var(--gold2)}
+.pd-sech{color:var(--gold2);font-size:.78rem;letter-spacing:.14em;border-bottom:1px solid var(--line);
+  margin:.8rem 0 .35rem;padding-bottom:.2rem}
+.pd-item{margin:.35rem 0}
+.pd-iname{font-weight:700;color:var(--text)}
+.pd-dmg{float:right;font-weight:700;color:var(--gold2);font-family:"Noto Sans JP",sans-serif}
+.pd-itext{margin:.15rem 0 .4rem;line-height:1.75;font-size:.92rem;color:var(--text)}
+.pd-label{display:inline-block;border:1px solid var(--gold);color:var(--gold2);border-radius:4px;
+  padding:0 .35rem;font-size:.72rem;margin-right:.3rem}
+.pd-wrt{display:flex;gap:1.2rem;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:.7rem;padding-top:.5rem;
+  font-size:.88rem;color:var(--muted)}
+.pd-wrt b{color:var(--text);font-weight:600}
+</style>
 <main class="cl-main">
 <h1 class="page">オーキドドラフト 配布カード</h1>
 <div class="updated" id="cl-meta">読み込み中…</div>
@@ -411,6 +434,55 @@ function render(){
     query ? (shown+" / "+UNITS.length+"種") : (totalPiles+"枚("+UNITS.length+"種)・カード"+totalCards+"枚");
 }
 
+const PE = {"草":"g","炎":"r","水":"w","雷":"l","超":"p","闘":"f","悪":"d","鋼":"m","竜":"n","妖":"y","無":"c","0":"z"};
+function peIcon(t){
+  const cls = PE[t];
+  if(!cls) return esc(t);
+  return '<span class="pe pe-'+cls+'" title="'+esc(t)+'">'+esc(t==="無"?"無":t)+'</span>';
+}
+function iconize(s){
+  return esc(s||"").replace(/\{([^}]+)\}/g, function(_,t){ return peIcon(t); });
+}
+function detailBody(d){
+  let h = '';
+  h += '<div class="pd-meta">';
+  if(d.st) h += '<span class="pd-chip">'+esc(d.st)+'</span>';
+  if(d.ty) d.ty.forEach(t=>{ h += peIcon(t); });
+  if(d.hp) h += '<span class="pd-hp">HP '+esc(d.hp)+'</span>';
+  h += '</div>';
+  (d.secs||[]).forEach(function(sec){
+    if(sec.h) h += '<div class="pd-sech">'+esc(sec.h)+'</div>';
+    sec.it.forEach(function(it){
+      // label-only item (e.g. VSTARパワー内の「特性」「ワザ」)
+      if(it.n && !it.t && !it.c && !it.d && (it.n==="特性"||it.n==="ワザ")){
+        h += '<div class="pd-item"><span class="pd-label">'+esc(it.n)+'</span></div>';
+        return;
+      }
+      h += '<div class="pd-item">';
+      if(it.d) h += '<span class="pd-dmg">'+esc(it.d)+'</span>';
+      if(it.c || it.n){
+        h += '<div class="pd-iname">';
+        if(it.c) it.c.forEach(t=>{ h += peIcon(t); });
+        if(it.n) h += (it.c?' ':'')+esc(it.n);
+        h += '</div>';
+      }
+      if(it.t) h += '<div class="pd-itext">'+iconize(it.t)+'</div>';
+      h += '</div>';
+    });
+  });
+  if(d.hp){
+    const escv = (d.e===0||d.e) ? d.e : null;
+    let eIc = '';
+    if(escv === 0) eIc = 'なし';
+    else if(typeof escv === 'number'){ for(let i=0;i<escv;i++) eIc += peIcon('無'); }
+    else eIc = '-';
+    h += '<div class="pd-wrt">'+
+      '<span>弱点 <b>'+(d.w&&d.w!=='-'?iconize(d.w):'ー')+'</b></span>'+
+      '<span>抵抗力 <b>'+(d.r&&d.r!=='-'?iconize(d.r):'ー')+'</b></span>'+
+      '<span>にげる <b>'+eIc+'</b></span></div>';
+  }
+  return h;
+}
 function detailHtml(name){
   const c = card(name);
   const link = officialUrl(name);
@@ -421,7 +493,8 @@ function detailHtml(name){
   h += '<div class="cl-detail-info">';
   h += '<div class="cl-cardname">'+esc(name)+'</div>';
   if(c && c.official) h += '<div class="cl-en">'+esc(c.official)+'</div>';
-  if(link) h += '<div class="cl-line"><a class="btn ghost" style="font-size:.85rem" href="'+link+'" target="_blank" rel="noopener">カード詳細(公式/DB) ↗</a></div>';
+  if(c && c.d) h += detailBody(c.d);
+  if(link) h += '<div class="cl-line" style="margin-top:.7rem"><a class="btn ghost" style="font-size:.85rem" href="'+link+'" target="_blank" rel="noopener">カード詳細(公式/DB) ↗</a></div>';
   if(!c) h += '<div class="cl-text" style="color:var(--muted)">カードデータ未特定(後日修正)</div>';
   h += '</div></div>';
   return h;
