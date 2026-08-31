@@ -295,17 +295,183 @@ footer.site{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem
   <div class="site-inner">
     <a href="../index.html" style="text-decoration:none"><div class="brand">がくたそのキューブ<span class="sub">GAKUTASO'S CUBE DRAFTS</span></div></a>
     <div class="cube-switch"><select aria-label="キューブ切り替え" onchange="if(this.value)location.href=this.value"><option value="../metacube/index.html">メタキューブ</option><option value="../dm-powdra/index.html">デュエマパワドラ</option><option value="../all-in/index.html">オールイン</option><option value="../okido/index.html" selected>オーキドドラフト</option></select></div>
-    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="aid.html">ルールエイドとヒント</a><a href="cards.html">カードリスト</a><a href="dist.html" class="active">配布カード</a></nav>
+    <nav class="main"><a href="../index.html">キューブ一覧</a><a href="index.html">キューブトップ</a><a href="rules.html">ルール</a><a href="aid.html">ルールエイドとヒント</a><a href="cards.html">カードリスト</a><a href="dist.html" class="active">配布カード</a><a href="changelog.html">変更履歴</a></nav>
   </div>
 </header>
-
-<main>
+<main class="cl-main">
 <h1 class="page">オーキドドラフト 配布カード</h1>
-<div class="wip">
-  <div class="wip-mark">─ 準備中 ─</div>
-  <p>配布カードのページは現在準備中です。<br>公開までしばらくお待ちください。</p>
+<div class="updated" id="cl-meta">読み込み中…</div>
+
+<div class="cl-controls">
+  <input id="cl-search" class="g-search" type="search" placeholder="カード名で検索(かな・カナ可)" autocomplete="off">
+  <div class="cl-btnrow">
+    <div class="cl-toggle">
+      <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
+      <button id="cl-view-name" class="cl-tbtn">カード名表示</button>
+    </div>
+    <span id="cl-count" class="cl-count"></span>
+  </div>
 </div>
+
+<div id="cl-sections"></div>
+<div id="cl-empty" class="wip hidden"><p>該当するカードがありません</p></div>
 </main>
+
+<div id="cl-modal" class="cl-modal hidden" role="dialog" aria-modal="true">
+  <div class="cl-modal-back"></div>
+  <div class="cl-modal-box">
+    <button class="cl-close" aria-label="閉じる">×</button>
+    <div id="cl-modal-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const LIST_KEY = "dist";
+const NOTE = "ドラフトとは別に全員のカードプールに加わるカード";
+const CATS = ["01.無色","02.草","03.炎","04.水","05.雷","06.超","07.闘","08.悪","09.鋼",
+  "10.ドラゴン","11.フェアリー","12.グッズ","13.ポケモンのどうぐ","14.サポート","15.スタジアム",
+  "16.トレーナー","17.エネルギー"];
+let DATA=null, UNITS=[], view="img", query="";
+
+function esc(s){ return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function kanaN(s){
+  return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
+}
+function card(name){ return DATA.cards[name] || null; }
+function imgSrc(name){
+  const c = card(name);
+  return c && c.f ? "../assets/okido/"+c.f : "";
+}
+function officialUrl(name){
+  const c = card(name);
+  if(!c) return "";
+  if(c.url) return c.url;
+  if(c.id) return "https://www.pokemon-card.com/card-search/details.php/card/"+c.id+"/";
+  return "";
+}
+function blankHtml(name){
+  return '<div class="cl-blank"><span>'+esc(name)+'</span><span class="cl-blank-sub">画像なし</span></div>';
+}
+function matches(u){
+  if(!query) return true;
+  return kanaN(u.cards.join(" ")).includes(query);
+}
+
+function render(){
+  const root = document.getElementById("cl-sections");
+  root.innerHTML = "";
+  let shown = 0, totalPiles = 0, totalCards = 0;
+  CATS.forEach(function(cat){
+    const us = UNITS.filter(u=>u.cat===cat);
+    if(!us.length) return;
+    totalPiles += us.reduce((a,u)=>a+u.count,0);
+    totalCards += us.reduce((a,u)=>a+u.count*u.cards.length,0);
+    const vis = us.filter(matches);
+    if(!vis.length) return;
+    shown += vis.length;
+    const secEl = document.createElement("section");
+    secEl.innerHTML = '<h2 class="g-section-title">'+esc(cat.replace(/^\d+\./,""))+
+      ' <span class="cl-seccount">'+vis.reduce((a,u)=>a+u.count,0)+'枚</span></h2>';
+    const wrap = document.createElement("div");
+    wrap.className = view==="img" ? "cl-grid" : "cl-names";
+    vis.forEach(function(u){
+      const el = document.createElement(view==="img" ? "div" : "button");
+      if(view==="img"){
+        if(u.cards.length>1){
+          el.className = "cl-card cl-set";
+          el.innerHTML = '<div class="cl-set-stack">'+u.cards.map(function(n,i){
+              const s = imgSrc(n);
+              const cls = "cl-set-img cl-si"+i+" cl-sn"+u.cards.length;
+              return s ? '<img loading="lazy" class="'+cls+'" src="'+s+'" alt="'+esc(n)+'">'
+                       : '<div class="'+cls+' cl-blank" style="padding-top:0"><span>'+esc(n)+'</span></div>';
+            }).join('')+'</div>' +
+            '<span class="cl-wtag">パイル'+u.cards.length+'枚</span>' +
+            (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "");
+        } else {
+          el.className = "cl-card";
+          el.innerHTML = (imgSrc(u.cards[0])
+              ? '<img loading="lazy" src="'+imgSrc(u.cards[0])+'" alt="'+esc(u.cards[0])+'">'
+              : blankHtml(u.cards[0])) +
+            (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "");
+        }
+      } else {
+        el.className = "cl-nameitem";
+        el.innerHTML = esc(u.cards.join(" / ")) +
+          (u.count>1 ? ' <span class="cl-nbadge">×'+u.count+'</span>' : "");
+      }
+      el.addEventListener("click", function(){ openModal(u); });
+      wrap.appendChild(el);
+    });
+    secEl.appendChild(wrap);
+    root.appendChild(secEl);
+  });
+  document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
+  document.getElementById("cl-count").textContent =
+    query ? (shown+" / "+UNITS.length+"種") : (totalPiles+"枚("+UNITS.length+"種)・カード"+totalCards+"枚");
+}
+
+function detailHtml(name){
+  const c = card(name);
+  const link = officialUrl(name);
+  let h = '<div class="cl-detail">';
+  h += '<div class="cl-detail-imgs">'+(imgSrc(name)
+    ? '<img src="'+imgSrc(name)+'" alt="'+esc(name)+'">'
+    : '<div class="cl-blank cl-blank-lg"><span>'+esc(name)+'</span></div>')+'</div>';
+  h += '<div class="cl-detail-info">';
+  h += '<div class="cl-cardname">'+esc(name)+'</div>';
+  if(c && c.official) h += '<div class="cl-en">'+esc(c.official)+'</div>';
+  if(link) h += '<div class="cl-line"><a class="btn ghost" style="font-size:.85rem" href="'+link+'" target="_blank" rel="noopener">カード詳細(公式/DB) ↗</a></div>';
+  if(!c) h += '<div class="cl-text" style="color:var(--muted)">カードデータ未特定(後日修正)</div>';
+  h += '</div></div>';
+  return h;
+}
+function openModal(u){
+  const box = document.getElementById("cl-modal-content");
+  let h = '';
+  if(u.cards.length>1) h += '<div class="cl-set-no">パイル(カード'+u.cards.length+'枚)</div>';
+  u.cards.forEach(function(n,i){
+    if(i>0) h += '<hr class="cl-hr">';
+    h += detailHtml(n);
+  });
+  if(u.count>1) h += '<div class="cl-metainfo">配布'+u.count+'枚 ｜ 2枚目以降はワイルド(代用カード)</div>';
+  box.innerHTML = h;
+  document.getElementById("cl-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(){
+  document.getElementById("cl-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelector("#cl-modal .cl-modal-back").addEventListener("click", closeModal);
+  document.querySelector("#cl-modal .cl-close").addEventListener("click", closeModal);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
+  document.getElementById("cl-search").addEventListener("input", function(){
+    query = kanaN(this.value.trim()); render();
+  });
+  document.getElementById("cl-view-img").addEventListener("click", function(){
+    view="img"; this.classList.add("active");
+    document.getElementById("cl-view-name").classList.remove("active"); render();
+  });
+  document.getElementById("cl-view-name").addEventListener("click", function(){
+    view="name"; this.classList.add("active");
+    document.getElementById("cl-view-img").classList.remove("active"); render();
+  });
+  fetch("data/cards.json?v="+Date.now()).then(r=>r.json()).then(function(d){
+    DATA = d;
+    UNITS = d[LIST_KEY] || [];
+    document.getElementById("cl-meta").textContent =
+      "最終更新日: "+(d.updated||"")+" ｜ "+NOTE+" ｜ カードクリックで詳細 ｜ 画像はポケモンカードゲーム公式カード検索等より";
+    render();
+  }).catch(function(e){
+    document.getElementById("cl-meta").textContent = "データの読み込みに失敗しました";
+  });
+});
+})();
+</script>
+
 <footer class="site">
   最終更新日: 2026年08月31日<br>
   本サイトはファンコンテンツです。各カードゲームの名称・カード情報はそれぞれの権利者に帰属します。
