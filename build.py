@@ -83,6 +83,25 @@ CUBES = [
         "pack": "ready",
         "pack_size": 16,
     },
+    {
+        "slug": "okido",
+        "name": "オーキドドラフト",
+        "tags": ["ポケモンカードゲーム", "パイルドラフト", "2〜6人"],
+        "desc": "カード1〜3枚の「パイル」単位でドラフトする、ポケモンカードゲームのキューブドラフト。",
+        "cardlist_url": None,
+        "cardlist_label": None,
+        "has_content": True,
+        "src_dir": "okido",
+        "art": "okido_theme.webp",
+        "art_overlay": (".45", ".92"),
+        "art_in_header": True,
+        "has_summary": False,
+        "has_aid": True,
+        "has_glossary": False,
+        "cards_app": False,
+        "pack": None,
+        "has_dist": "pending",
+    },
 ]
 
 CSS = r"""
@@ -403,6 +422,8 @@ def page(title, body, *, cube=None, active="", depth=0):
         elif cube.get("hint_pending"):
             items.append(("hint", "ヒント", "hint.html", False))
         items.append(("cards", "カードリスト", "cards.html", True))
+        if cube.get("has_dist"):
+            items.append(("dist", "配布カード", "dist.html", True))
         if cube.get("pack"):
             items.append(("pack", cube.get("pack_label", "パックシミュレーター"), "pack.html", cube["pack"] == "ready"))
         if cube.get("has_combos"):
@@ -690,6 +711,22 @@ def build_cards(cube):
         page(f'カードリスト | {cube["name"]}', body, cube=cube, active="cards", depth=1), encoding="utf-8")
 
 
+# ---------------- 各キューブ: 配布カード ----------------
+def build_dist(cube):
+    out = OUT / cube["slug"]
+    out.mkdir(exist_ok=True)
+    body = f"""
+<main>
+<h1 class="page">{cube["name"]} 配布カード</h1>
+<div class="wip">
+  <div class="wip-mark">─ 準備中 ─</div>
+  <p>配布カードのページは現在準備中です。<br>公開までしばらくお待ちください。</p>
+</div>
+</main>"""
+    (out / "dist.html").write_text(
+        page(f'配布カード | {cube["name"]}', body, cube=cube, active="dist", depth=1), encoding="utf-8")
+
+
 # ---------------- 各キューブ: パックシミュレーター ----------------
 def build_pack(cube):
     out = OUT / cube["slug"]
@@ -780,6 +817,8 @@ def build_cube_index(cube):
         elif cube.get("hint_pending"):
             btns += '<span class="btn disabled">ヒント(準備中)</span>'
         btns += '<a class="btn" href="cards.html">カードリスト</a>'
+        if cube.get("has_dist"):
+            btns += '<a class="btn" href="dist.html">配布カード</a>'
         if cube.get("pack") == "ready":
             btns += '<a class="btn" href="pack.html">' + cube.get("pack_label", "パックシミュレーター") + '</a>'
         elif cube.get("pack"):
@@ -873,6 +912,8 @@ if __name__ == "__main__":
     for c in CUBES:
         build_cube_index(c)
         build_cards(c)
+        if c.get("has_dist"):
+            build_dist(c)
         if c.get("cards_app"):
             build_changelog(c)
         if c.get("has_combos"):
