@@ -366,6 +366,9 @@ function imgSrc(name){
   const c = card(name);
   return c && c.f ? "../assets/okido/"+c.f : "";
 }
+function tbaHtml(name){
+  return '<div class="cl-blank"><span>'+esc(name)+'</span><span class="cl-blank-sub">未発売</span></div>';
+}
 function officialUrl(name){
   const c = card(name);
   if(!c) return "";
@@ -412,10 +415,11 @@ function render(){
             '<span class="cl-wtag">パイル'+u.cards.length+'枚</span>' +
             (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "");
         } else {
+          const c0 = card(u.cards[0]);
           el.className = "cl-card";
           el.innerHTML = (imgSrc(u.cards[0])
               ? '<img loading="lazy" src="'+imgSrc(u.cards[0])+'" alt="'+esc(u.cards[0])+'">'
-              : blankHtml(u.cards[0])) +
+              : (c0 && c0.tba ? tbaHtml(u.cards[0]) : blankHtml(u.cards[0]))) +
             (u.count>1 ? '<span class="cl-badge">×'+u.count+'</span>' : "");
         }
       } else {
@@ -495,6 +499,7 @@ function detailHtml(name){
   if(c && c.official) h += '<div class="cl-en">'+esc(c.official)+'</div>';
   if(c && c.d) h += detailBody(c.d);
   if(link) h += '<div class="cl-line" style="margin-top:.7rem"><a class="btn ghost" style="font-size:.85rem" href="'+link+'" target="_blank" rel="noopener">カード詳細(公式/DB) ↗</a></div>';
+  if(c && c.tba) h += '<div class="cl-text" style="color:var(--muted)">未発売のカードです(発売後にデータを追加予定)</div>';
   if(!c) h += '<div class="cl-text" style="color:var(--muted)">カードデータ未特定(後日修正)</div>';
   h += '</div></div>';
   return h;

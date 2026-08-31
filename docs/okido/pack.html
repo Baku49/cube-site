@@ -418,6 +418,7 @@ function detailHtml(name){
   if(c && c.official) h += '<div class="cl-en">'+esc(c.official)+'</div>';
   if(c && c.d) h += detailBody(c.d);
   if(link) h += '<div class="cl-line" style="margin-top:.7rem"><a class="btn ghost" style="font-size:.85rem" href="'+link+'" target="_blank" rel="noopener">カード詳細(公式/DB) ↗</a></div>';
+  if(c && c.tba) h += '<div class="cl-text" style="color:var(--muted)">未発売のカードです(発売後にデータを追加予定)</div>';
   h += '</div></div>';
   return h;
 }
@@ -458,9 +459,10 @@ function pileEl(u){
       '<span class="cl-wtag">パイル'+u.cards.length+'枚</span>';
   } else {
     el.className = "cl-card";
+    const c0 = card(u.cards[0]);
     el.innerHTML = imgSrc(u.cards[0])
       ? '<img loading="lazy" src="'+imgSrc(u.cards[0])+'" alt="'+esc(u.cards[0])+'">'
-      : '<div class="cl-blank"><span>'+esc(u.cards[0])+'</span></div>';
+      : '<div class="cl-blank"><span>'+esc(u.cards[0])+'</span>'+(c0&&c0.tba?'<span class="cl-blank-sub">未発売</span>':'')+'</div>';
   }
   el.addEventListener("click", function(){ openModal(u); });
   return el;
