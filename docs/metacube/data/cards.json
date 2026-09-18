@@ -24342,7 +24342,8 @@
    "scryfall_uri": "https://scryfall.com/card/ice/121/demonic-consultation?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/8/d/8d727b9b-6114-414d-9172-16b6e1db41cc.jpg?1783947504",
    "faces": null,
-   "ci": "B"
+   "ci": "B",
+   "wg": true
   },
   {
    "set": "soa",
