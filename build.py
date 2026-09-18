@@ -87,7 +87,7 @@ CUBES = [
         "slug": "okido",
         "name": "オーキドドラフト",
         "tags": ["ポケモンカードゲーム", "パイルドラフト", "2〜6人"],
-        "desc": "カード1〜3枚の「パイル」単位でドラフトする、ポケモンカードゲームのキューブドラフト。",
+        "desc": "過去の名だたるカードを惜しみなく使える超パワードのポケカドラフト。ポケモンカードの深淵を味わいたい人にオススメ",
         "cardlist_url": None,
         "cardlist_label": None,
         "has_content": True,
@@ -98,9 +98,10 @@ CUBES = [
         "has_summary": False,
         "has_aid": True,
         "has_glossary": False,
-        "cards_app": False,
-        "pack": None,
-        "has_dist": "pending",
+        "cards_app": True,
+        "pack": "ready",
+        "pack_size": 20,
+        "has_dist": True,
     },
 ]
 
@@ -715,6 +716,12 @@ def build_cards(cube):
 def build_dist(cube):
     out = OUT / cube["slug"]
     out.mkdir(exist_ok=True)
+    app = SRC / cube["src_dir"] / "dist_app_body.html"
+    if app.exists():
+        frag = app.read_text(encoding="utf-8")
+        (out / "dist.html").write_text(
+            page(f'配布カード | {cube["name"]}', frag, cube=cube, active="dist", depth=1), encoding="utf-8")
+        return
     body = f"""
 <main>
 <h1 class="page">{cube["name"]} 配布カード</h1>
