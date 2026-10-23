@@ -1,4 +1,4 @@
-name,CMC,Type,Color,Set,Collector Number,Rarity,Color Category,status,Finish,board,maybeboard,image URL,image Back URL,tags,Notes,MTGO ID,Custom,Voucher,Artist
+﻿name,CMC,Type,Color,Set,Collector Number,Rarity,Color Category,status,Finish,board,maybeboard,image URL,image Back URL,tags,Notes,MTGO ID,Custom,Voucher,Artist
 "_____ Goblin",3,"Creature - Goblin Guest",R,"unf","107",common,Red,Owned,Non-foil,mainboard,false,,,"","",-1,false,false,"Chuck Lukacs"
 "Abeyance",2,"Instant",W,"wth","1",rare,null,Owned,Non-foil,mainboard,false,,,"","",9353,false,false,"Thomas Gianni"
 "Abrade",2,"Instant",R,"soa","102",common,Red,Owned,Non-foil,mainboard,false,,,"","",148511,false,false,"Hagiya Kaoru"
@@ -1577,7 +1577,7 @@ name,CMC,Type,Color,Set,Collector Number,Rarity,Color Category,status,Finish,boa
 "Gift Horse",0,"Artifact Contraption",,"ust","183",rare,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Steve Prescott"
 "Guest List",0,"Artifact Contraption",,"ust","186",rare,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Franz Vohwinkel"
 "Hard Hat Area",0,"Artifact Contraption",,"ust","187",mythic,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Steve Prescott"
-"Hypnotic Swirly Disc",0,"Artifact Contraption",,"ust","189",rare,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Ralph Horsley"
+"Bee-Bee Gun",0,"Artifact Contraption",,"ust","171",mythic,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Chuck Lukacs"
 "Insufferable Syphon",0,"Artifact Contraption",,"ust","191",uncommon,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Ralph Horsley"
 "Pet Project",0,"Artifact Contraption",,"ust","198",mythic,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Franz Vohwinkel"
 "Rapid Prototyper",0,"Artifact Contraption",,"ust","200",mythic,Colorless,Owned,Non-foil,contraption,false,,,"","",-1,false,false,"Jason Felix"
