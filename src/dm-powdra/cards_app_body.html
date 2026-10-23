@@ -189,10 +189,13 @@ document.addEventListener("DOMContentLoaded", function(){
       const sec = secOf(row);
       const key = sec+"|"+row.name;
       if(map[key]){ map[key].count++; return; }
-      const u = {name:row.name, sec:sec, count:1};
+      const u = {name:row.name, sec:sec, count:1, type:row.type||"", cost:row.cost||""};
       map[key] = u;
       UNITS.push(u);
     });
+    // カードタイプ → コスト(昇順) → カード名(コード順)
+    const cmp = (a,b)=> a<b?-1:(a>b?1:0);
+    UNITS.sort((a,b)=> cmp(a.type,b.type) || cmp(a.cost,b.cost) || cmp(a.name,b.name));
     const total = d.rows.length;
     document.getElementById("cl-meta").textContent =
       "最終更新日: "+(d.updated||"")+" ｜ 全"+total+"枚("+UNITS.length+"種) ｜ カードをクリックで詳細表示 ｜ データ・画像はデュエル・マスターズ公式カードデータベースより";
