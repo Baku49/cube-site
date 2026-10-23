@@ -139,7 +139,7 @@ function render(){
         el.className = "cl-card";
         el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
           (c.count>1 ? '<span class="cl-badge">×'+c.count+'</span>' : "") +
-          (ov(c).note ? '<span class="cl-errata">E</span>' : "");
+          (ov(c).note ? '<span class="cl-errata">エラッタ</span>' : "");
       } else {
         el.className = "cl-nameitem";
         el.innerHTML = esc(jaName(c)) + (c.count>1 ? ' <span class="cl-nbadge">×'+c.count+'</span>' : "") +

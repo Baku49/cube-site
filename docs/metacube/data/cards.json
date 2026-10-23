@@ -19290,7 +19290,7 @@
    "type_line": "Legendary Creature — Elf Wizard",
    "printed_type_line": null,
    "oracle_text": "Partner with Alphinaud Leveilleur (When this creature enters, target player may put Alphinaud Leveilleur into their hand from their library, then shuffle.)\nFirst strike\nDualcast — The second spell you cast each turn costs {2} less to cast.",
-   "printed_text": "アルフィノ・ルヴェユールとの共闘（このクリーチャーが戦場に出たとき、プレイヤー１人を対象とする。そのプレイヤーは「自分のライブラリーからアルフィノ・ルヴェユールを自分の手札に加える。その後、ライブラリーを切り直す。」を選んでもよい。）\n先制攻撃\n連続魔 ― あなたが各ターン内のあなたの２つ目の呪文を唱えるためのコストはo2 少なくなる。",
+   "printed_text": "アルフィノ・ルヴェユールとの共闘（このクリーチャーが戦場に出たとき、プレイヤー１人を対象とする。そのプレイヤーは「自分のライブラリーからアルフィノ・ルヴェユールを自分の手札に加える。その後、ライブラリーを切り直す。」を選んでもよい。）\n先制攻撃\n連続魔 ― あなたが各ターン内のあなたの２つ目の呪文を唱えるためのコストは{2}少なくなる。",
    "flavor_text": null,
    "power": "3",
    "toughness": "2",

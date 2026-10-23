@@ -115,8 +115,7 @@ button.cl-tbtn#cl-history{border:1px solid var(--line);border-radius:8px}
 .cl-card img{width:100%;border-radius:8px;display:block;background:var(--panel);min-height:120px}
 .cl-badge{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.85);color:var(--gold2);
   border:1px solid var(--gold);border-radius:999px;padding:.05rem .5rem;font-size:.8rem;font-weight:700}
-.cl-errata{position:absolute;top:6px;left:6px;background:#7a2a1e;color:#ffd9cc;border-radius:4px;
-  padding:.02rem .35rem;font-size:.72rem;font-weight:700}
+.cl-errata{position:absolute;top:6px;left:6px;background:rgba(122,42,30,.92);color:#ffd9cc;border-radius:4px;font-size:.62rem;font-weight:700;line-height:1;padding:.18rem .32rem;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.5)}
 .cl-errata-inline{font-size:.68rem;background:#7a2a1e;color:#ffd9cc;border-radius:4px;padding:.05rem .3rem}
 .cl-names{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.3rem;margin:.8rem 0 1.6rem}
 .cl-nameitem{text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--text);
@@ -543,7 +542,7 @@ function cardEl(c, opts){
   const el = document.createElement("div");
   el.className = "cl-card";
   el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
-    (ov(c).note ? '<span class="cl-errata">E</span>' : "");
+    (ov(c).note ? '<span class="cl-errata">エラッタ</span>' : "");
   el.addEventListener("click", opts.onclick);
   return el;
 }
@@ -600,7 +599,7 @@ function buildCardEl(c, zone, defaultTo){
   el.className = "cl-card";
   el.style.position = "relative";
   el.innerHTML = '<img loading="lazy" src="'+cardImg(c)+'" alt="'+esc(jaName(c))+'">' +
-    (ov(c).note ? '<span class="cl-errata">E</span>' : "") +
+    (ov(c).note ? '<span class="cl-errata">エラッタ</span>' : "") +
     '<span class="dr-info" style="position:absolute;bottom:6px;right:6px;z-index:4;background:rgba(0,0,0,.85);color:var(--gold2);border:1px solid var(--gold);border-radius:999px;width:1.5rem;height:1.5rem;display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer">ⓘ</span>';
   el.addEventListener("click", function(e){
     if(e.target.classList.contains("dr-info")){ openModal(c, null, zone); return; }

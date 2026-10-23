@@ -22,6 +22,26 @@ REQ = {
     'Mana Dork or Mana Dork Creator': 'マナ・クリーチャー(またはそれを生成するカード)をコントロールしている。',
     'Creature with "When this creature ETBs, create 2+ creature tokens"': '「戦場に出たとき、クリーチャー・トークンを2体以上生成する」クリーチャーをコントロールしている。',
     'Artifact / Creature with "{T}: Add Mana" that can tap upon ETB (Mana Rock)': '戦場に出てすぐタップできる「(T)：マナを加える」を持つアーティファクトかクリーチャー(マナ・ロック)をコントロールしている。',
+    'Artifact Castable for {0} that survives': '(0)で唱えられ、戦場に残り続けるアーティファクトがある。',
+    'Artifact Creature with Mana Cost Equal to {0}': 'マナ・コストが(0)のアーティファクト・クリーチャーがある。',
+    'Artifact Land': 'アーティファクト・土地がある。',
+    'Card That Copies a Creature': 'クリーチャーをコピーするカードがある。',
+    'Card that Earthbends': '土の技を行うカードがある。',
+    'Card with "The Ring tempts you"': '「指輪があなたを誘惑する」を持つカードがある。',
+    'Creature Castable for One Colored Mana': '色マナ1点で唱えられるクリーチャーがある。',
+    'Creature with MV<=1': 'マナ総量が1以下のクリーチャーがある。',
+    'Creature with MV<=1 and Power>=3': 'マナ総量が1以下でパワーが3以上のクリーチャーがある。',
+    "Effects that Alter a Creature's Power/Toughness (Anthem Effects)": 'クリーチャーのパワーやタフネスを変える効果(全体強化など)がある。',
+    'Extra Turn Spell - GY on Resolution': '解決時に墓地に置かれる追加ターン呪文がある。',
+    'Instant or Sorcery that untaps a Creature': 'クリーチャーをアンタップするインスタントかソーサリーがある。',
+    'Land with Cycling Cost that can be paid using one colored mana': '色マナ1点で支払えるサイクリング・コストを持つ土地がある。',
+    'Man-Land that Enters Untapped': 'アンタップ状態で戦場に出る、クリーチャー化できる土地がある。',
+    'Noncreature Artifact Castable for {0}': '(0)で唱えられるクリーチャーでないアーティファクトがある。',
+    'Noncreature permanent castable for {0}': '(0)で唱えられるクリーチャーでないパーマネントがある。',
+    'Permanent Castable for {C}{C}': '(◇)(◇)で唱えられるパーマネントがある。',
+    'Permanent castable for {0} that survives': '(0)で唱えられ、戦場に残り続けるパーマネントがある。',
+    'Permanent with Affinity and a Generic Mana Cost': '親和と不特定マナ・コストを持つパーマネントがある。',
+    'Spell with Buyback (Mana Payments Only)': 'マナのみで支払える買戻しを持つ呪文がある。',
 }
 STATE = {
     'without summoning sickness': '{X}が召喚酔いしていない。',
@@ -36,6 +56,8 @@ STATE = {
     'exiled by Isochron Scepter': '{X}が《等時の王笏》によって追放されている。',
     'exiled by Panoptic Mirror': '{X}が《一望の鏡》によって追放されている。',
     'is prepared': '{X}が準備済状態である。',
+    'with three or more +1/+1 counters on it': '{X}に+1/+1カウンターが3個以上置かれている。',
+    'with three or more charge counters on it': '{X}に蓄積カウンターが3個以上置かれている。',
     'without summoning sickness and with a +1/+1 counter on it': '{X}が召喚酔いしておらず、+1/+1カウンターが置かれている。',
 }
 
@@ -116,6 +138,10 @@ def main():
                         t = rec(st[len('attached to '):])
                         tn = ja(t) if t else st[len('attached to '):]
                         extra_pre.append(f'《{jn}》が《{tn}》についている。')
+                    elif st.startswith('as a copy of '):
+                        t = rec(st[len('as a copy of '):])
+                        tn = ja(t) if t else st[len('as a copy of '):]
+                        extra_pre.append(f'《{jn}》が《{tn}》のコピーである。')
                     elif st.startswith('is paired with '):
                         t = rec(st[len('is paired with '):])
                         tn = ja(t) if t else st[len('is paired with '):]
