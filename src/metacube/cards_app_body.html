@@ -8,6 +8,9 @@
     <div class="cl-toggle">
       <button id="cl-pool-main" class="cl-tbtn active">カードプール</button>
       <button id="cl-pool-dist" class="cl-tbtn">配布カード</button>
+      <button id="cl-pool-contraption" class="cl-tbtn">からくり</button>
+      <button id="cl-pool-attraction" class="cl-tbtn">アトラクション</button>
+      <button id="cl-pool-sticker" class="cl-tbtn">ステッカー</button>
     </div>
     <div class="cl-toggle">
       <button id="cl-view-img" class="cl-tbtn active">画像表示</button>
@@ -67,8 +70,13 @@ function cardCmp(a,b){
   }
   return typePri(a)-typePri(b) || (a.cmc||0)-(b.cmc||0) || (a.name<b.name?-1:(a.name>b.name?1:0));
 }
-let CARDS = [], OVR = {}, LOG = [], DIST = null, pool = "main", view = "img", query = "";
+let CARDS = [], OVR = {}, LOG = [], DIST = null, EXTRA = null, pool = "main", view = "img", query = "";
 
+const EXTRA_POOLS = {
+  contraption: ["からくり", "からくりを組み立てる効果を解決したプレイヤーが、この組をゲームの外部から受け取る。《Widget Contraption》を一番上にしてからくりデッキにする。"],
+  attraction:  ["アトラクション", "アトラクションを開く効果を解決したプレイヤーが、この組をゲームの外部から受け取り、シャッフルしてアトラクション・デッキにする。"],
+  sticker:     ["ステッカー", "ステッカーを貼る効果を解決したプレイヤーが、この中から無作為に3枚を受け取る。"]
+};
 function norm(s){
   return (s||"").toLowerCase().replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0)-0x60));
 }
@@ -107,6 +115,9 @@ function render(){
       ["固定配布カード", "全プレイヤーに配布されるカード。", DIST.fixed],
       ["背景カード", "ドラフト開始前に、ランダムに各プレイヤーへ2枚ずつ配布される。", DIST.bg]
     ] : [];
+  } else if(EXTRA_POOLS[pool]){
+    const ep = EXTRA_POOLS[pool];
+    groups = EXTRA && EXTRA[pool] ? [[ep[0], ep[1], EXTRA[pool]]] : [];
   } else {
     groups = CATS.map(cat=>[cat[1], null, CARDS.filter(c=>c.cat===cat[0])]);
   }
@@ -141,7 +152,8 @@ function render(){
     root.appendChild(sec);
   });
   document.getElementById("cl-empty").classList.toggle("hidden", shown>0);
-  const kinds = pool==="dist" ? (DIST ? DIST.fixed.length+DIST.bg.length : 0) : CARDS.length;
+  const kinds = pool==="dist" ? (DIST ? DIST.fixed.length+DIST.bg.length : 0)
+              : (EXTRA_POOLS[pool] ? ((EXTRA&&EXTRA[pool])||[]).length : CARDS.length);
   document.getElementById("cl-count").textContent = query ? (shown+" / "+total+"枚") : (total+"枚("+kinds+"種)");
 }
 
@@ -239,20 +251,30 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   function setPool(p, btn){
     pool = p;
-    document.getElementById("cl-pool-main").classList.remove("active");
-    document.getElementById("cl-pool-dist").classList.remove("active");
+    ["main","dist","contraption","attraction","sticker"].forEach(id=>{
+      const b=document.getElementById("cl-pool-"+id); if(b) b.classList.remove("active");
+    });
     btn.classList.add("active");
     render();
   }
   document.getElementById("cl-pool-main").addEventListener("click", function(){ setPool("main", this); });
   document.getElementById("cl-pool-dist").addEventListener("click", function(){ setPool("dist", this); });
+  ["contraption","attraction","sticker"].forEach(function(id){
+    document.getElementById("cl-pool-"+id).addEventListener("click", function(){ setPool(id, this); });
+  });
   const v = "?v=" + Date.now();
   Promise.all([
     fetch("data/cards.json"+v).then(r=>r.json()),
     fetch("data/overrides.json"+v).then(r=>r.ok?r.json():{}).catch(()=>({})),
     fetch("data/changelog.json"+v).then(r=>r.ok?r.json():[]).catch(()=>[]),
-    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch("data/dist.json"+v).then(r=>r.ok?r.json():null).catch(()=>null),
+    fetch("data/extras.json"+v).then(r=>r.ok?r.json():null).catch(()=>null)
   ]).then(function(res){
+    EXTRA = res[4];
+    ["contraption","attraction","sticker"].forEach(function(id){
+      if(EXTRA && EXTRA[id] && EXTRA[id].length) EXTRA[id].sort((a,b)=>a.name<b.name?-1:(a.name>b.name?1:0));
+      else document.getElementById("cl-pool-"+id).style.display = "none";
+    });
     CARDS = res[0].cards;
     OVR = res[1]; LOG = res[2]; DIST = res[3];
     CARDS.sort(cardCmp);
