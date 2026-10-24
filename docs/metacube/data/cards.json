@@ -6091,7 +6091,7 @@
    "scryfall_uri": "https://scryfall.com/card/prm/80919/gyruda-doom-of-depths?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/2/e/2ec2cac1-e02e-41fd-99f3-d0076ad13c8c.jpg?1783930829",
    "faces": null,
-   "ci": "BU",
+   "ci": "UB",
    "wg": true,
    "wgSrc": "MTG Wiki"
   },
@@ -7680,7 +7680,7 @@
    "scryfall_uri": "https://scryfall.com/card/fca/17/ja/%E7%B5%B1%E3%81%B9%E3%82%8B%E3%82%82%E3%81%AE%E3%80%81%E3%82%B8%E3%83%A7%E3%83%80%E3%83%BC-(jodah-the-unifier)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/3/f/3f7dbed6-f989-4a12-a654-f9ee880c2fcb.jpg?1782770401",
    "faces": null,
-   "ci": "BGRUW"
+   "ci": "WUBRG"
   },
   {
    "set": "sld",
@@ -9372,7 +9372,7 @@
    "scryfall_uri": "https://scryfall.com/card/sld/1599/ja/child-of-alara?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/4/5/45b8010a-c36b-43ed-a47d-48a5da9e0f1f.jpg?1782791317",
    "faces": null,
-   "ci": "BGRUW"
+   "ci": "WUBRG"
   },
   {
    "set": "znc",
@@ -11171,7 +11171,7 @@
    "type_line": "Artifact",
    "printed_type_line": "アーティファクト",
    "oracle_text": "{1}, Sacrifice this artifact: Search your library for a land card that doesn't have the same art as a permanent you control, reveal it, put it into your hand, then shuffle.",
-   "printed_text": "(１),パークの地図を生け贄に捧げる：あなたのライブラリーからあなたがコントロールしているパーマネントと同じアートを持たない土地・カード１枚を探し、公開し、あなたの手札に加え、その後、ライブラリーを切り直す。[どんぐりシンボル付き - トーナメントでは使用できない。]",
+   "printed_text": "(１),パークの地図を生け贄に捧げる：あなたのライブラリーからあなたがコントロールしているパーマネントと同じアートを持たない土地・カード１枚を探し、公開し、あなたの手札に加え、その後、ライブラリーを切り直す。",
    "flavor_text": "It's always up-to-date, so visitors know what rides are open, how long the lines are, and which areas are closed due to gremlins.",
    "power": null,
    "toughness": null,
@@ -12470,7 +12470,7 @@
    "type_line": "Artifact Creature — Cyborg Advisor",
    "printed_type_line": "アーティファクト・クリーチャー — サイボーグ・アドバイザー",
    "oracle_text": "State-based actions don't apply to you or other permanents you control. (You don't lose the game due to having 0 or less life or drawing from an empty library. Your creatures aren't destroyed due to damage or deathtouch and aren't put into a graveyard due to having 0 or less toughness. Your planeswalkers aren't put into a graveyard if they have 0 loyalty. You don't put a legendary permanent into a graveyard if you control two with the same name. Counters aren't removed from your permanents due to game rules. Permanents you control attached or combined illegally remain on the battlefield. For complete rules and regulations, see rule 704.)",
-   "printed_text": "あなたやあなたがコントロールする他のパーマネントに、状況起因処理は適用されない。（ライフが０点以下になったことや空のライブラリーからカードを引くことによってあなたは負けにならない。あなたのクリーチャーはダメージや接死によって破壊されず、タフネスが０以下であることによって墓地に置かれない。あなたのプレインズウォーカーは忠誠度が０になったときに墓地に置かれない。あなたが同名の伝説のパーマネントを２つコントロールしているときに１つが墓地に置かれることはない。ゲームルールによってあなたのパーマネントからカウンターが取り除かれることはない。あなたがコントロールしていて不正についていたり結合していたりするパーマネントは戦場に残る。完全なルールや規定についてはrule 704 参照。）透かし：小型装置団/Order of the Widget",
+   "printed_text": "あなたやあなたがコントロールする他のパーマネントに、状況起因処理は適用されない。（ライフが０点以下になったことや空のライブラリーからカードを引くことによってあなたは負けにならない。あなたのクリーチャーはダメージや接死によって破壊されず、タフネスが０以下であることによって墓地に置かれない。あなたのプレインズウォーカーは忠誠度が０になったときに墓地に置かれない。あなたが同名の伝説のパーマネントを２つコントロールしているときに１つが墓地に置かれることはない。ゲームルールによってあなたのパーマネントからカウンターが取り除かれることはない。あなたがコントロールしていて不正についていたり結合していたりするパーマネントは戦場に残る。完全なルールや規定についてはrule 704 参照。）",
    "flavor_text": null,
    "power": "1",
    "toughness": "1",
@@ -22101,7 +22101,7 @@
    "scryfall_uri": "https://scryfall.com/card/40k/7/magus-lucea-kane?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/4/f/4f86e7cc-2b6e-49d0-964e-bba0c51cc11d.jpg?1783920949",
    "faces": null,
-   "ci": "GRU",
+   "ci": "URG",
    "wg": true,
    "wgSrc": "MTG Wiki"
   },
@@ -23312,7 +23312,7 @@
    "scryfall_uri": "https://scryfall.com/card/mbc/37/elda-conjurer-of-spectacle?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/9/6/96a12028-cf12-4d3d-af5f-a161cb2b7d97.jpg?1785759008",
    "faces": null,
-   "ci": "GW",
+   "ci": "WG",
    "wg": true,
    "wgSrc": "MTG Wiki"
   },
@@ -23342,7 +23342,7 @@
    "scryfall_uri": "https://scryfall.com/card/gtc/143/ja/%E6%88%A6%E5%B0%8E%E8%80%85%E3%82%AA%E3%83%AC%E3%83%AA%E3%82%A2-(aurelia-the-warleader)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/d/6/d637f71c-6a8c-4afd-8339-3c8bcefb482d.jpg?1782978875",
    "faces": null,
-   "ci": "RW"
+   "ci": "WR"
   },
   {
    "set": "mbc",
@@ -23370,7 +23370,7 @@
    "scryfall_uri": "https://scryfall.com/card/mbc/33/arzakon?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/8/5/85f81500-1b1b-47e7-93a1-db5f6de95e87.jpg?1785762533",
    "faces": null,
-   "ci": "BGRUW",
+   "ci": "WUBRG",
    "wg": true,
    "wgSrc": "管理人による非公式"
   },
@@ -23400,7 +23400,7 @@
    "scryfall_uri": "https://scryfall.com/card/neo/216/ja/%E5%B7%A8%E5%A4%A7%E3%81%AA%E7%A9%BA%E4%BA%80-(colossal-skyturtle)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/0/8/081ca93c-b90a-4fd4-a9aa-dbe28b61c336.jpg?1782861528",
    "faces": null,
-   "ci": "GU"
+   "ci": "UG"
   },
   {
    "set": "fra",
@@ -23934,7 +23934,7 @@
    "scryfall_uri": "https://scryfall.com/card/frc/10/ja/%E5%B9%BD%E9%9C%8A%E5%BC%81%E8%AD%B7%E5%A3%AB%E3%80%81%E3%83%8B%E3%83%B4%EF%BC%9D%E3%83%9F%E3%82%BC%E3%83%83%E3%83%88-(niv-mizzet-ghost-counsel)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/5/2/52cadf85-c347-4d37-89be-1ea6da9eeabd.jpg?1790692513",
    "faces": null,
-   "ci": "BW"
+   "ci": "WB"
   },
   {
    "set": "frc",
@@ -23962,7 +23962,7 @@
    "scryfall_uri": "https://scryfall.com/card/frc/1/ja/%E5%A4%9A%E5%85%83%E5%AE%87%E5%AE%99%E3%82%92%E7%AF%89%E3%81%8F%E8%80%85%E3%80%81%E3%82%B8%E3%82%A7%E3%82%A4%E3%82%B9-(jace-multiverse-architect)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/4/b/4bd53e23-73b9-4a32-9701-3d3bdd2d8df4.jpg?1790692271",
    "faces": null,
-   "ci": "BRUW"
+   "ci": "WUBR"
   },
   {
    "set": "fra",
@@ -24643,7 +24643,7 @@
    "scryfall_uri": "https://scryfall.com/card/dsk/220/ja/%E6%82%AA%E5%A4%A2%E6%BB%85%E3%81%BC%E3%81%97%E3%80%81%E9%AD%81%E6%B8%A1-(kaito-bane-of-nightmares)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/9/0/90179e84-e34f-40d6-851a-3cea4ca01274.jpg?1782784609",
    "faces": null,
-   "ci": "BU"
+   "ci": "UB"
   },
   {
    "set": "dsk",
@@ -25732,7 +25732,7 @@
    "scryfall_uri": "https://scryfall.com/card/unf/178/space-beleren?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/1/4/14ddb2e7-6bc6-43ce-aeec-175a0ce17ed5.jpg?1783920538",
    "faces": null,
-   "ci": "UW",
+   "ci": "WU",
    "wg": true,
    "wgSrc": "MTG Wiki"
   },
@@ -25762,7 +25762,7 @@
    "scryfall_uri": "https://scryfall.com/card/cns/42/ja/%E3%83%80%E3%82%AF%E3%83%BB%E3%83%95%E3%82%A7%E3%82%A4%E3%83%87%E3%83%B3-(dack-fayden)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/5/2/5295b5b0-0e43-4e29-b71d-f3591472e3cf.jpg?1782970896",
    "faces": null,
-   "ci": "RU"
+   "ci": "UR"
   },
   {
    "set": "lci",
@@ -25790,7 +25790,7 @@
    "scryfall_uri": "https://scryfall.com/card/lci/238/ja/%E3%82%AF%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%83%B3%E3%83%89-(quintorius-kand)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/e/e/eec34b0b-d214-4998-ba9e-77741baca76e.jpg?1782807691",
    "faces": null,
-   "ci": "RW"
+   "ci": "WR"
   },
   {
    "set": "all",
@@ -27197,7 +27197,7 @@
    "scryfall_uri": "https://scryfall.com/card/ph18/3/sol-advocate-eternal?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/7/1/711ccbf2-1cd6-4881-b020-a71bedb8f664.jpg?1783932838",
    "faces": null,
-   "ci": "BGUW",
+   "ci": "WUBG",
    "wg": true,
    "wgSrc": "MTG Wiki"
   },
@@ -29026,7 +29026,7 @@
    "scryfall_uri": "https://scryfall.com/card/rvr/205/ja/%E9%BE%8D%E7%A5%9E%E3%80%81%E3%83%8B%E3%82%B3%E3%83%AB%E3%83%BB%E3%83%9C%E3%83%BC%E3%83%A9%E3%82%B9-(nicol-bolas-dragon-god)?utm_source=api",
    "img": "https://cards.scryfall.io/normal/front/8/9/89b4e807-d9b4-44b8-967e-29b9bf739618.jpg?1782805492",
    "faces": null,
-   "ci": "BRU"
+   "ci": "UBR"
   },
   {
    "set": "fdn",
@@ -29089,7 +29089,7 @@
    "cn": "296",
    "count": 1,
    "cat": "Black",
-   "lang": "en",
+   "lang": "ja",
    "name": "Bojuka Bog",
    "printed_name": "ボジューカの沼",
    "mana_cost": "",
@@ -29117,7 +29117,7 @@
    "cn": "311",
    "count": 1,
    "cat": "Colorless",
-   "lang": "en",
+   "lang": "ja",
    "name": "Scavenger Grounds",
    "printed_name": "屍肉あさりの地",
    "mana_cost": "",

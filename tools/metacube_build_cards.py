@@ -1,3 +1,4 @@
+import re
 #!/usr/bin/env python3
 """メタキューブ カードリスト更新スクリプト
 
@@ -32,6 +33,13 @@ def cat_of(ci):
     return 'Multicolored'
 
 
+NOTE_RE = re.compile(r'\n?(透かし|すかし)[：:][^\n]*|\n?\[どんぐりシンボル付き[^\]]*\]')
+def strip_notes(t):
+    return NOTE_RE.sub('', t).strip() if t else t
+
+def ci_norm(ci):
+    return ''.join(sorted(set(ci or ''), key='WUBRG'.index)) if ci and all(ch in 'WUBRG' for ch in ci) else (ci or '')
+
 def build_record(en, ja, ja_other, count):
     """既存 cards.json と同じスキーマのレコードを作る"""
     p = ja or en
@@ -60,7 +68,12 @@ def build_record(en, ja, ja_other, count):
                 if not rec.get(k):
                     rec[k] = ja_other.get(k)
     rec['faces'] = faces
-    rec['ci'] = ''.join(en['color_identity'] or [])
+    rec['ci'] = ci_norm(''.join(en['color_identity'] or []))
+    for k in ('printed_text', 'oracle_text'):
+        if rec.get(k): rec[k] = strip_notes(rec[k])
+    for f in rec.get('faces') or []:
+        for k in ('printed_text', 'oracle_text'):
+            if f.get(k): f[k] = strip_notes(f[k])
     return rec
 
 

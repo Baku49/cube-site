@@ -59,7 +59,8 @@ function typePri(c){
 const CI_ORDER = ["WU","UB","BR","RG","WG","WB","UR","BG","WR","UG",
   "WUG","WUB","UBR","BRG","WRG","WBG","WUR","UBG","WBR","URG",
   "WUBR","WUBG","WURG","WBRG","UBRG","WUBRG"];
-function ciIdx(c){ const i = CI_ORDER.indexOf(c.ci||""); return i<0 ? CI_ORDER.length : i; }
+function ciNorm(ci){ return (ci||"").split("").filter((x,i,a)=>"WUBRG".includes(x)&&a.indexOf(x)===i).sort((x,y)=>"WUBRG".indexOf(x)-"WUBRG".indexOf(y)).join(""); }
+function ciIdx(c){ const i = CI_ORDER.indexOf(ciNorm(c.ci)); return i<0 ? CI_ORDER.length : i; }
 const CAT_IDX = {White:0,Blue:1,Black:2,Red:3,Green:4,Multicolored:5,Colorless:6};
 function cardCmp(a,b){
   const ca = CAT_IDX[a.cat] != null ? CAT_IDX[a.cat] : 9;
