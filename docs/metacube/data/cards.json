@@ -14270,8 +14270,8 @@
    "ci": "R"
   },
   {
-   "set": "ath",
-   "cn": "77",
+   "set": "4ed",
+   "cn": "363",
    "count": 1,
    "cat": "Colorless",
    "lang": "en",
@@ -14289,11 +14289,11 @@
    "loyalty": null,
    "defense": null,
    "rarity": "rare",
-   "set_name": "Anthologies",
+   "set_name": "Fourth Edition",
    "artist": "Daniel Gelon",
    "layout": "normal",
-   "scryfall_uri": "https://scryfall.com/card/ath/77/strip-mine?utm_source=api",
-   "img": "https://cards.scryfall.io/normal/front/2/b/2bbff39f-f16b-4ae5-aa99-da5bdf482c33.jpg?1783946268",
+   "scryfall_uri": "https://scryfall.com/card/4ed/363/strip-mine",
+   "img": "https://cards.scryfall.io/normal/front/a/5/a5899b46-226b-4be6-8e80-d2396f54210d.jpg?1783947790",
    "faces": null,
    "ci": "",
    "wg": true
