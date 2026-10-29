@@ -1267,8 +1267,8 @@
   "cat": "Green"
  },
  {
-  "set": "ice",
-  "cn": "289",
+  "set": "ecc",
+  "cn": "54",
   "name": "Fire Covenant",
   "count": 1,
   "cat": "Multicolored"
@@ -3423,8 +3423,8 @@
   "cat": "Red"
  },
  {
-  "set": "4ed",
-  "cn": "363",
+  "set": "ath",
+  "cn": "77",
   "name": "Strip Mine",
   "count": 1,
   "cat": "Colorless"
@@ -3521,8 +3521,8 @@
   "cat": "Colorless"
  },
  {
-  "set": "ncc",
-  "cn": "211",
+  "set": "spg",
+  "cn": "54",
   "name": "Swords to Plowshares",
   "count": 1,
   "cat": "White"
@@ -5572,13 +5572,6 @@
   "cat": "Green"
  },
  {
-  "set": "uma",
-  "cn": "217",
-  "name": "Murderous Redcap",
-  "count": 1,
-  "cat": "Multicolored"
- },
- {
   "set": "mbc",
   "cn": "37",
   "name": "Elda, Conjurer of Spectacle",
@@ -5614,13 +5607,6 @@
   "cat": "Colorless"
  },
  {
-  "set": "emn",
-  "cn": "7",
-  "name": "Eternal Scourge",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
   "set": "dsk",
   "cn": "248",
   "name": "Ghost Vacuum",
@@ -5649,20 +5635,6 @@
   "cat": "Colorless"
  },
  {
-  "set": "usg",
-  "cn": "309",
-  "name": "Smokestack",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
-  "set": "otj",
-  "cn": "243",
-  "name": "Lavaspur Boots",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
   "set": "dmr",
   "cn": "219",
   "name": "Damping Sphere",
@@ -5670,23 +5642,9 @@
   "cat": "Colorless"
  },
  {
-  "set": "a25",
-  "cn": "232",
-  "name": "Strionic Resonator",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
   "set": "gtc",
   "cn": "231",
   "name": "Illusionist's Bracers",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
-  "set": "ice",
-  "cn": "353",
-  "name": "Glacial Chasm",
   "count": 1,
   "cat": "Colorless"
  },
@@ -5902,13 +5860,6 @@
  },
  {
   "set": "dsk",
-  "cn": "220",
-  "name": "Kaito, Bane of Nightmares",
-  "count": 1,
-  "cat": "Multicolored"
- },
- {
-  "set": "dsk",
   "cn": "253",
   "name": "Marvin, Murderous Mimic",
   "count": 1,
@@ -5918,13 +5869,6 @@
   "set": "tsr",
   "cn": "390",
   "name": "Chalice of the Void",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
-  "set": "tsr",
-  "cn": "270",
-  "name": "Lotus Bloom",
   "count": 1,
   "cat": "Colorless"
  },
@@ -6133,7 +6077,7 @@
  },
  {
   "set": "unf",
-  "cn": "445",
+  "cn": "159",
   "name": "Tug of War",
   "count": 1,
   "cat": "Green"
@@ -6144,13 +6088,6 @@
   "name": "Birthing Ritual",
   "count": 1,
   "cat": "Green"
- },
- {
-  "set": "unf",
-  "cn": "178",
-  "name": "Space Beleren",
-  "count": 1,
-  "cat": "Multicolored"
  },
  {
   "set": "cns",
@@ -6184,13 +6121,6 @@
   "set": "cns",
   "cn": "55",
   "name": "Canal Dredger",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
-  "set": "bro",
-  "cn": "233",
-  "name": "Cityscape Leveler",
   "count": 1,
   "cat": "Colorless"
  },
@@ -6371,7 +6301,7 @@
  },
  {
   "set": "fra",
-  "cn": "212",
+  "cn": "297",
   "name": "Chandra, Chill of Compliance",
   "count": 1,
   "cat": "Blue"
@@ -6524,13 +6454,6 @@
   "cat": "Green"
  },
  {
-  "set": "cmm",
-  "cn": "965",
-  "name": "Nevinyrral's Disk",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
   "set": "hho",
   "cn": "7†",
   "name": "Gifts Given",
@@ -6601,13 +6524,6 @@
   "cat": "Colorless"
  },
  {
-  "set": "mir",
-  "cn": "152",
-  "name": "Withering Boon",
-  "count": 1,
-  "cat": "Black"
- },
- {
   "set": "spg",
   "cn": "166",
   "name": "Mind Twist",
@@ -6664,13 +6580,6 @@
   "cat": "Blue"
  },
  {
-  "set": "mh3",
-  "cn": "54",
-  "name": "Consign to Memory",
-  "count": 1,
-  "cat": "Blue"
- },
- {
   "set": "fin",
   "cn": "59",
   "name": "Louisoix's Sacrifice",
@@ -6706,8 +6615,8 @@
   "cat": "Blue"
  },
  {
-  "set": "dft",
-  "cn": "67",
+  "set": "soa",
+  "cn": "89",
   "name": "Stock Up",
   "count": 1,
   "cat": "Blue"
@@ -6783,13 +6692,6 @@
   "cat": "Green"
  },
  {
-  "set": "spm",
-  "cn": "46",
-  "name": "Spider-Sense",
-  "count": 1,
-  "cat": "Blue"
- },
- {
   "set": "unf",
   "cn": "307",
   "name": "Park Bleater",
@@ -6826,14 +6728,14 @@
  },
  {
   "set": "m21",
-  "cn": "285",
+  "cn": "1",
   "name": "Ugin, the Spirit Dragon",
   "count": 1,
   "cat": "Colorless"
  },
  {
   "set": "cmr",
-  "cn": "547",
+  "cn": "2",
   "name": "Akroma, Vision of Ixidor",
   "count": 1,
   "cat": "White"
@@ -6868,14 +6770,14 @@
  },
  {
   "set": "unf",
-  "cn": "411",
+  "cn": "125",
   "name": "Trigger Happy",
   "count": 1,
   "cat": "Red"
  },
  {
-  "set": "mrd",
-  "cn": "19",
+  "set": "m20",
+  "cn": "35",
   "name": "Rule of Law",
   "count": 1,
   "cat": "White"
@@ -6902,15 +6804,8 @@
   "cat": "Black"
  },
  {
-  "set": "ema",
-  "cn": "231",
-  "name": "Relic of Progenitus",
-  "count": 1,
-  "cat": "Colorless"
- },
- {
-  "set": "fdc",
-  "cn": "296",
+  "set": "soc",
+  "cn": "363",
   "name": "Bojuka Bog",
   "count": 1,
   "cat": "Black"
@@ -6921,5 +6816,110 @@
   "name": "Scavenger Grounds",
   "count": 1,
   "cat": "Colorless"
+ },
+ {
+  "set": "cns",
+  "cn": "1",
+  "name": "Advantageous Proclamation",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "cns",
+  "cn": "2",
+  "name": "Backup Plan",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "cns",
+  "cn": "8",
+  "name": "Power Play",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "cns",
+  "cn": "11",
+  "name": "Sentinel Dispatch",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "cn2",
+  "cn": "11",
+  "name": "Summoner's Bond",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "emn",
+  "cn": "7",
+  "name": "Eternal Scourge",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "mmq",
+  "cn": "320",
+  "name": "High Market",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "exo",
+  "cn": "40",
+  "name": "Mind Over Matter",
+  "count": 1,
+  "cat": "Blue"
+ },
+ {
+  "set": "cns",
+  "cn": "3",
+  "name": "Brago's Favor",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "sum",
+  "cn": "97",
+  "name": "Contract from Below",
+  "count": 1,
+  "cat": "Black"
+ },
+ {
+  "set": "sok",
+  "cn": "38",
+  "name": "Freed from the Real",
+  "count": 1,
+  "cat": "Blue"
+ },
+ {
+  "set": "ulg",
+  "cn": "129",
+  "name": "Memory Jar",
+  "count": 1,
+  "cat": "Colorless"
+ },
+ {
+  "set": "dom",
+  "cn": "207",
+  "name": "Teferi, Hero of Dominaria",
+  "count": 1,
+  "cat": "Multicolored"
+ },
+ {
+  "set": "vow",
+  "cn": "132",
+  "name": "Toxrill, the Corrosive",
+  "count": 1,
+  "cat": "Multicolored"
+ },
+ {
+  "set": "thb",
+  "cn": "221",
+  "name": "Kroxa, Titan of Death's Hunger",
+  "count": 1,
+  "cat": "Multicolored"
  }
 ]
