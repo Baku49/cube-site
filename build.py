@@ -7,6 +7,7 @@ src/<cube>/ 配下の原稿から docs/ 配下のHTMLを生成する。
   docs/index.html            … サイトトップ(キューブ一覧)
   docs/<slug>/index.html     … 各キューブのトップ
   docs/<slug>/rules.html     … ルール (src/<slug>/rule.md から生成)
+  docs/<slug>/floor.html     … フロアルール (src/<slug>/floor.md から生成)
   docs/<slug>/glossary.html  … 用語集 (src/<slug>/glossary.md から生成)
   docs/<slug>/cards.html     … カードリスト置き場(現在は準備中表示)
 """
@@ -36,6 +37,7 @@ CUBES = [
         "src_dir": "metacube",
         "art": "art_crop.webp",
         "has_summary": True,
+        "has_floor": True,
         "has_aid": False,
         "glossary_style": "metacube",
         "cards_app": True,
@@ -169,6 +171,12 @@ article.doc h4{font-size:1rem;color:var(--gold2);margin:1.4rem 0 .4rem;}
 article.doc p{margin:.55rem 0}
 article.doc strong{color:var(--gold2)}
 article.doc a{border-bottom:1px dotted var(--gold)}
+article.doc ol{padding-left:1.4rem;margin:.6rem 0 1rem}
+article.doc ol>li{margin:.45rem 0;padding-left:.3rem}
+article.doc ol>li::marker{color:var(--gold);font-weight:700}
+article.doc ol ul{margin:.3rem 0 .2rem;padding-left:1.1rem}
+article.doc ol ul li{margin:.2rem 0;color:var(--muted)}
+article.doc ol ul li::marker{color:var(--u)}
 .toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;
   padding:1rem 1.4rem;margin:0 0 1.5rem;}
 .toc .toc-title{font-size:.8rem;letter-spacing:.25em;color:var(--muted);margin-bottom:.5rem}
@@ -413,6 +421,8 @@ def page(title, body, *, cube=None, active="", depth=0):
         items.append(("rules", "ルール", "rules.html", cube["has_content"]))
         if cube.get("has_summary"):
             items.append(("summary", "ルールサマリー", "summary.html", True))
+        if cube.get("has_floor"):
+            items.append(("floor", "フロアルール", "floor.html", True))
         if cube.get("has_glossary", True):
             items.append(("glossary", "用語集", "glossary.html", cube["has_content"]))
         if cube.get("has_aid"):
@@ -814,6 +824,8 @@ def build_cube_index(cube):
         btns = '<a class="btn" href="rules.html">ルール</a>'
         if cube.get("has_summary"):
             btns += '<a class="btn" href="summary.html">ルールサマリー</a>'
+        if cube.get("has_floor"):
+            btns += '<a class="btn" href="floor.html">フロアルール</a>'
         if cube.get("has_glossary", True):
             btns += '<a class="btn" href="glossary.html">用語集</a>'
         if cube.get("has_aid"):
@@ -930,6 +942,8 @@ if __name__ == "__main__":
             build_rules(c)
             if c.get("has_summary"):
                 build_summary(c)
+            if c.get("has_floor"):
+                build_article(c, "floor.md", "floor.html", "フロアルール", "floor")
             if c.get("has_aid"):
                 build_aid(c)
             if c.get("has_hint"):
