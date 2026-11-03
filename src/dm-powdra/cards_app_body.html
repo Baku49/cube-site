@@ -139,7 +139,7 @@ function detailHtml(name, count){
       if(i>0) h += '<hr class="cl-hr">';
       h += faceHtml(f, c.faces.length>1 ? (faceNames[i]||"") : (c.offName||name));
     });
-    h += '<div class="cl-metainfo">'+(c.orig ? 'ゲームオリジナルカード' : '公式DB: '+esc(c.id))+
+    h += '<div class="cl-metainfo">'+(c.orig ? 'ゲームオリジナルカード' : c.unreleased ? 'カード版未発売' : '公式DB: '+esc(c.id))+
       (count>1 ? ' ｜ キューブに'+count+'枚' : '')+'</div>';
   }
   h += '</div></div>';
