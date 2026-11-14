@@ -36,11 +36,6 @@
    "name": "Burnt Offering"
   },
   {
-   "set": "atq",
-   "cn": "43",
-   "name": "Candelabra of Tawnos"
-  },
-  {
    "set": "q06",
    "cn": "6",
    "name": "Chandra, Torch of Defiance"
@@ -292,11 +287,6 @@
   },
   {
    "set": "mbc",
-   "cn": "37",
-   "name": "Elda, Conjurer of Spectacle"
-  },
-  {
-   "set": "mbc",
    "cn": "33",
    "name": "Arzakon"
   },
@@ -336,24 +326,9 @@
    "name": "Wrenn and One"
   },
   {
-   "set": "unf",
-   "cn": "159",
-   "name": "Tug of War"
-  },
-  {
-   "set": "all",
-   "cn": "129",
-   "name": "Shield Sphere"
-  },
-  {
-   "set": "und",
-   "cn": "13",
-   "name": "Staying Power"
-  },
-  {
-   "set": "ulst",
-   "cn": "14",
-   "name": "Clocknapper"
+   "set": "eos",
+   "cn": "2",
+   "name": "Blast Zone"
   },
   {
    "set": "cmb2",
@@ -366,19 +341,19 @@
    "name": "Sol, Advocate Eternal"
   },
   {
-   "set": "2ed",
-   "cn": "275",
+   "set": "vma",
+   "cn": "287",
    "name": "Time Vault"
+  },
+  {
+   "set": "who",
+   "cn": "186",
+   "name": "Sonic Screwdriver"
   },
   {
    "set": "hho",
    "cn": "7†",
    "name": "Gifts Given"
-  },
-  {
-   "set": "cmb2",
-   "cn": "18",
-   "name": "Command the Chaff"
   },
   {
    "set": "unf",
@@ -416,16 +391,6 @@
    "name": "Trigger Happy"
   },
   {
-   "set": "soc",
-   "cn": "363",
-   "name": "Bojuka Bog"
-  },
-  {
-   "set": "mmq",
-   "cn": "320",
-   "name": "High Market"
-  },
-  {
    "set": "exo",
    "cn": "40",
    "name": "Mind Over Matter"
@@ -436,9 +401,139 @@
    "name": "Contract from Below"
   },
   {
-   "set": "ulg",
-   "cn": "129",
-   "name": "Memory Jar"
+   "set": "usg",
+   "cn": "103",
+   "name": "Time Spiral"
+  },
+  {
+   "set": "ncc",
+   "cn": "152",
+   "name": "Seize the Spotlight"
+  },
+  {
+   "set": "ugl",
+   "cn": "69",
+   "name": "Ashnod's Coupon"
+  },
+  {
+   "set": "ice",
+   "cn": "326",
+   "name": "Jeweled Amulet"
+  },
+  {
+   "set": "all",
+   "cn": "45",
+   "name": "Contagion"
+  },
+  {
+   "set": "inr",
+   "cn": "71",
+   "name": "Laboratory Maniac"
+  },
+  {
+   "set": "hop",
+   "cn": "9",
+   "name": "Fabricate"
+  },
+  {
+   "set": "one",
+   "cn": "427",
+   "name": "Skrelv, Defector Mite"
+  },
+  {
+   "set": "inr",
+   "cn": "22",
+   "name": "Fiend Hunter"
+  },
+  {
+   "set": "pca",
+   "cn": "3",
+   "name": "Auratouched Mage"
+  },
+  {
+   "set": "mmq",
+   "cn": "44",
+   "name": "Reverent Mantra"
+  },
+  {
+   "set": "uds",
+   "cn": "15",
+   "name": "Replenish"
+  },
+  {
+   "set": "pca",
+   "cn": "6",
+   "name": "Felidar Umbra"
+  },
+  {
+   "set": "fic",
+   "cn": "454",
+   "name": "Brilliant Wings"
+  },
+  {
+   "set": "fdc",
+   "cn": "275",
+   "name": "Nettlecyst"
+  },
+  {
+   "set": "sld",
+   "cn": "2081",
+   "name": "Super State"
+  },
+  {
+   "set": "fdc",
+   "cn": "41",
+   "name": "Norn's Choirmaster"
+  },
+  {
+   "set": "pip",
+   "cn": "857",
+   "name": "Radstorm"
+  },
+  {
+   "set": "exo",
+   "cn": "64",
+   "name": "Hatred"
+  },
+  {
+   "set": "mb2",
+   "cn": "581",
+   "name": "Phyrexian Seedling"
+  },
+  {
+   "set": "tmp",
+   "cn": "57",
+   "name": "Counterspell"
+  },
+  {
+   "set": "msc",
+   "cn": "876",
+   "name": "Mister Fantastic"
+  },
+  {
+   "set": "mb2",
+   "cn": "504",
+   "name": "Omnipresent Impostor"
+  },
+  {
+   "set": "fdc",
+   "cn": "269",
+   "name": "Metallic Mimic"
+  },
+  {
+   "set": "lci",
+   "cn": "410f",
+   "name": "Cavern of Souls"
+  },
+  {
+   "set": "fdc",
+   "cn": "310",
+   "name": "Rogue's Passage"
+  },
+  {
+   "set": "bot",
+   "cn": "6",
+   "name": "Slicer, Hired Muscle // Slicer, High-Speed Antagonist"
   }
  ],
  "ja_but_no_printed_text": [

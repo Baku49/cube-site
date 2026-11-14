@@ -129,7 +129,7 @@
   "text": "続唱（あなたがこの呪文を唱えたとき、コストがこれより低く土地でないカードが追放されるまで、あなたのライブラリーの一番上からカードを１枚ずつ追放する。あなたはそれをそのマナ・コストを支払うことなく唱えてもよい。追放したカードをあなたのライブラリーの一番下に無作為の順番で置く。）\nあなたが唱えるスリヴァー呪文は続唱を持つ。",
   "pt": "7/7",
   "src": "wisdom-guild",
-  "img": "../assets/cards/h1r-26-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F59fa538b-fa1c-4cdc-9fc0-801d6b618f01.jpg?alt=media&token=a75f3ba0-1619-4603-a11e-0c54c714a3bf"
  },
  "ice:289": {
   "name": "火の誓約",
@@ -202,7 +202,7 @@
   "type": "ソーサリー",
   "text": "あなたはこのターンに続いて追加の１ターンを行う。",
   "src": "wisdom-guild",
-  "img": "../assets/cards/j15-1-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fd0e5c734-d725-4bb9-823e-ab890952a4b8.jpg?alt=media&token=28dcdb7b-f820-4932-9a20-be1524fc8264"
  },
  "mar:91": {
   "name": "革新の巨人、アイアンマン",
@@ -241,7 +241,7 @@
   "flavor": "「エスパーの生命全てにエーテリウムを吹き込むことこそが、我等の騎士団の気高き行いなのです。 我等の目的は、さらに素早く達することでしょう。新たな生命を……押さえ込むことができれば。」",
   "pt": "2/2",
   "src": "wisdom-guild",
-  "img": "../assets/cards/mma-14-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F992efc14-29d0-4a33-976e-28bb0a5f6b52.jpg?alt=media&token=72ec9d4f-0247-4969-8282-6dff697a0976"
  },
  "mmq:246": {
   "type": "エンチャント",
@@ -364,15 +364,18 @@
  },
  "cmb2:107": {
   "type": "アーティファクト",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F3dff3583-a8bd-4a50-a203-0b2f069c5a32.jpg?alt=media&token=ed3d74e0-aa55-42b5-a0fe-f9f9d9eb11d0"
  },
  "cmb2:102": {
   "type": "伝説のクリーチャー — スリヴァー・エルドラージ",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F008e066b-ca19-4c86-9865-d0d2662c0e50.jpg?alt=media&token=1f7a00ec-0382-4cc6-beb7-409802652c5f"
  },
  "cmb2:16": {
   "type": "エンチャント — オーラ",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Ffd2861c3-bab3-452c-8e71-87475339a850.jpg?alt=media&token=2587eb9e-701b-4ae9-925f-636f696d0e2f"
  },
  "cmb2:31": {
   "type": "ソーサリー",
@@ -380,7 +383,8 @@
  },
  "cmb2:116": {
   "type": "土地",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F3bffc128-c340-4e1f-b813-04e7b9e72b9e.jpg?alt=media&token=4fe8d235-c265-46f8-9769-746d25a9bee3"
  },
  "cmb2:109": {
   "type": "アーティファクト・クリーチャー — 天使",
@@ -390,17 +394,20 @@
   "type": "インスタント",
   "text": "この呪文を唱えるための追加コストとして、クリーチャーを１体生け贄に捧げる。\n{B}と{R}の組み合わせのマナＸ点を加える。Ｘは、生け贄に捧げられたクリーチャーのマナ総量である。",
   "flavor": "我が敵は二度、役に立ってくれる。まずは死ぬ事で、そして死体として。――― ネクロマンサー、リム＝ドゥール.",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F1dae52a2-3af7-4b97-9d2e-2448b7c413fb.jpg?alt=media&token=436def85-caf4-4058-ac7b-7d855d207e64"
  },
  "ice:118": {
   "type": "エンチャント — オーラ",
   "text": "エンチャント（墓地にあるクリーチャー・カード）\nDance of the Deadが戦場に出たとき、それが戦場に出ている場合、それは「エンチャント（墓地にあるクリーチャー・カード）」を失い、「エンチャント（Dance of the Deadにより戦場に出たクリーチャー）」を得る。エンチャントされているクリーチャー・カードをあなたのコントロール下でタップ状態で戦場に出し、それにDance of the Deadをつける。Dance of the Deadが戦場を離れたとき、そのクリーチャーのコントローラーはそれを生け贄に捧げる。\nエンチャントされているクリーチャーは、+1/+1の修整を受けるとともに、それのコントローラーのアンタップ・ステップにアンタップしない。\nエンチャントされているクリーチャーのコントローラーのアップキープの開始時に、そのプレイヤーは{1}{B}を支払ってもよい。そうした場合、そのクリーチャーをアンタップする。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fe7c53ba4-9956-4cd6-85ca-2d6b61a5127c.jpg?alt=media&token=03833f08-454a-4f60-827f-43c469015d0a"
  },
  "ice:326": {
+  "src": "mtgwiki",
   "type": "アーティファクト",
   "text": "{1},{T}：Jeweled Amuletの上に蓄積カウンターを１個置く。この起動コストとして支払ったマナのタイプを記録しておく。Jeweled Amuletの上に蓄積カウンターが置かれていないときにのみ起動できる。\n{T},Jeweled Amuletから蓄積カウンターを１個取り除く：最後に記録されたタイプのマナ１点を加える。",
-  "src": "wisdom-guild"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F34f7bad2-d28f-42d2-9246-fe3545ef49a7.jpg?alt=media&token=b1dda1e5-7af0-48fa-8b96-3fa218857714"
  },
  "pls:106": {
   "type": "インスタント",
@@ -418,12 +425,14 @@
   "text": "相棒 ― あなたの開始時のデッキに、マナ総量が偶数のカードのみが入っていること。（このカードがあなたの選んだ相棒であるなら、ソーサリーとして{3}を支払うことでゲームの外部からそれをあなたの手札に加えてもよい。）\n深海の破滅、ジャイルーダが戦場に出たとき、各プレイヤーはそれぞれカードを４枚切削する。その切削されたカードの中から、マナ総量が偶数のクリーチャー・カード１枚をあなたのコントロール下で戦場に出す。",
   "pt": "6/6",
   "name": "深海の破滅、ジャイルーダ",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/a/3/a3465426-02a6-4e67-b0e4-0a15813a76cf.jpg?1782906653"
  },
  "prm:60450": {
   "type": "伝説の土地",
   "text": "すべてのクリーチャーは「あなたのアップキープの開始時に、あなたが{1}を支払わないかぎり、このクリーチャーを破壊する。」を持つ。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/6/4/64bc9b1d-5818-4d9e-b771-e49af4ff9a5c.jpg?1783948022"
  },
  "pmid:18p": {
   "name": "運命的不在",
@@ -437,21 +446,21 @@
   "type": "伝説のプレインズウォーカー — チャンドラ",
   "text": "[+1]：あなたのライブラリーの一番上のカードを追放する。あなたはそのカードを唱えてもよい。そうしないなら、反逆の先導者、チャンドラは各対戦相手にそれぞれ２点のダメージを与える。\n[+1]：{R}{R}を加える。\n[-3]：クリーチャー１体を対象とする。反逆の先導者、チャンドラはそれに４点のダメージを与える。\n[-7]：あなたは「あなたが呪文を１つ唱えるたび、クリーチャー１体かプレインズウォーカー１体かプレイヤー１人を対象とする。この紋章はそれに５点のダメージを与える。」を持つ紋章を得る。",
   "src": "wisdom-guild",
-  "img": "../assets/cards/q06-6-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fe885fd51-dba3-4ee5-acdd-b97238b6c678.jpg?alt=media&token=a8719424-512c-4cc1-901c-b7b7823b36c4"
  },
  "rex:42": {
   "name": "権限否認",
   "type": "インスタント",
   "text": "クリーチャーでない呪文１つを対象とする。それを打ち消す。このターン、対戦相手はクリーチャーでない呪文を唱えられない。",
   "src": "wisdom-guild",
-  "img": "../assets/cards/rex-42-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F678ad86d-6b2b-4e66-a535-9fc696cfa4ab.jpg?alt=media&token=48d7c913-abfa-4025-b543-af720eef5c60"
  },
  "scd:151": {
   "name": "マナ噴出",
   "type": "ソーサリー",
   "text": "あなたの対戦相手がコントロールするタップ状態の土地１つにつき{R}を加える。",
   "src": "wisdom-guild",
-  "img": "../assets/cards/scd-151-ja.jpg"
+  "img": "https://storage.googleapis.com/vr-card-cube.firebasestorage.app/cards/mtg-ja/mtg_c9b8b1cf-4dbf-4ddb-ab41-31e482cc573b.jpg"
  },
  "sld:1599": {
   "type": "伝説のクリーチャー — アバター",
@@ -575,7 +584,8 @@
  "ugl:70": {
   "type": "アーティファクト",
   "text": "{T}：Blacker Lotusをバラバラにちぎる。好きな色１色のマナ４点を加える。その後それらの破片を追放する。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F4c85d097-e87b-41ee-93c6-0e54ec41b174.jpg?alt=media&token=ddd81955-c198-4f43-9a71-277e226c6773"
  },
  "ugl:77": {
   "type": "アーティファクト",
@@ -586,7 +596,8 @@
   "type": "アーティファクト",
   "text": "（このカードの固有色は無色である。）\n{T}：６面ダイスを１個振る。この能力は、以下の効果の１つを持つ。\n１ - Jack-in-the-Moxを生け贄に捧げ、あなたは５点のライフを失う。\n２ - {W}を加える。\n３ - {U}を加える。\n４ - {B}を加える。\n５ - {R}を加える。\n６ - {G}を加える。",
   "src": "wisdom-guild",
-  "note": "メタキューブ特殊裁定：固有色の変更"
+  "note": "メタキューブ特殊裁定：固有色の変更",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F1834ac92-8b4e-4442-a834-acd580e1ef99.jpg?alt=media&token=7205b0ca-7033-44c2-8833-0bc2b39e4bcf"
  },
  "ulg:129": {
   "src": "mtgwiki",
@@ -609,36 +620,43 @@
  },
  "ulst:7": {
   "type": "アーティファクト・クリーチャー — サイボーグ・アドバイザー",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fb194ff52-c109-4a72-b3a6-96c6514bc6c0.jpg?alt=media&token=ef9dc693-6298-4630-82f9-aaf812625cdd"
  },
  "und:33": {
   "type": "インスタント",
   "text": "封をされたままのマジックのブースターパックを１つ開け、それらのカードを公開し、その内の１枚をあなたの手札に加える。（次のゲームの前には、そのカードをデッキから取り除くこと。）",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F0a5718db-e67d-468a-95ba-11a08fcf9fea.jpg?alt=media&token=8f415855-7ee1-4d68-a46e-5b7bb7b97f8c"
  },
  "und:29": {
   "type": "エンチャント",
   "text": "各プレイヤーのターンのフェイズ進行は逆になる。（フェイズは逆順に、終了、戦闘後メイン、戦闘、戦闘前メイン、開始の各フェイズである。）\n３人以上のプレイヤーがこのゲームに参加しているなら、ターンの順番は逆になる。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Faadf253a-eca6-405d-8216-a362854b4ae1.jpg?alt=media&token=950a2e84-edef-403a-bcb0-7a2e13954ee4"
  },
  "unf:118": {
   "type": "ソーサリー",
   "src": "wisdom-guild",
   "text": "（このカードの固有色は赤である。）\nAdd {W}{U}{B}{R}{G}{C}. You may open a sealed Magic booster pack. Until end of turn, you may cast spells from among the cards in that booster pack.",
-  "note": "メタキューブ特殊裁定：固有色の変更"
+  "note": "メタキューブ特殊裁定：固有色の変更",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F1725526f-9a18-4cbd-83cf-16334aa56e76.jpg?alt=media&token=bb8988f6-0fda-4c56-82e3-7d53801249ca"
  },
  "unf:149": {
   "type": "インスタント",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F567665f3-4227-4f3c-bfbe-4e9576f32b50.jpg?alt=media&token=373774c2-1e93-4c8c-a097-45b67c1f1c20"
  },
  "und:9": {
   "type": "エンチャント",
   "text": "Look at Me, I'm R&Dが戦場に出るに際し、数を１つと、その数より１つ多いか１つ少ない数を１つ選ぶ。\nパーマネント、呪文、あらゆる領域にあるカードに書かれている１つ目の数は２つ目の数である。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Faaee15d7-db3d-4aa2-ab04-b883ff41d12a.jpg?alt=media&token=90159b74-4ab7-4c20-ae41-63bc01d81f86"
  },
  "unf:166": {
   "type": "伝説のプレインズウォーカー — Comet(Comet)",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fa76fa8d4-923d-4afc-ba47-ba10fc0fe46e.jpg?alt=media&token=13508f97-05db-4311-bdb9-1fee3c1b538e"
  },
  "unf:199": {
   "type": "土地 — (Urza’s)",
@@ -646,7 +664,8 @@
  },
  "unf:190": {
   "type": "アーティファクト",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F420f895a-5c2e-4530-9a09-835d2b02ccae.jpg?alt=media&token=dec883e4-3520-4d4d-8db6-5d24ca26b755"
  },
  "unf:16": {
   "type": "伝説のクリーチャー — 人間・パフォーマー",
@@ -655,9 +674,11 @@
   "note": "メタキューブ特殊裁定によるエラッタ"
  },
  "usg:103": {
+  "src": "mtgwiki",
+  "name": "時のらせん",
   "type": "ソーサリー",
   "text": "時のらせんを追放する。各プレイヤーは、自分の手札と墓地を自分のライブラリーに加えて切り直し、その後カードを７枚引く。あなたは土地を最大６つまでアンタップする。",
-  "src": "wisdom-guild"
+  "img": "https://storage.googleapis.com/vr-card-cube.firebasestorage.app/cards/mtg-ja/mtg_f3d62dbd-63db-4ac9-950f-9852627f23f2.jpg"
  },
  "unf:20": {
   "type": "インスタント",
@@ -672,7 +693,8 @@
  "unh:60": {
   "type": "エンチャント",
   "text": "あなたのアンタップステップを飛ばす。\nあなたのアップキープの開始時に、あなたはX点のライフを支払ってもよい。そうした場合、X個のパーマネントをアンタップする。\n1/2点のライフを支払う：あなたのライブラリーの一番上のカードを裏向きに追放する。ターン終了時に、そのカードをあなたの手札に加える。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fead51a23-db13-4424-9191-dc992c510921.jpg?alt=media&token=8d978469-0166-472a-82d2-f112997f9811"
  },
  "usg:171": {
   "type": "ソーサリー",
@@ -732,7 +754,8 @@
  },
  "ust:40": {
   "type": "インスタント",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fb111425a-adaa-4938-88a1-6fdd0bcecc39.jpg?alt=media&token=79f40183-66f2-4f27-b1ab-5c2dff0cce80"
  },
  "ust:74": {
   "type": "ソーサリー",
@@ -747,38 +770,45 @@
  "vma:208": {
   "type": "ソーサリー",
   "text": "あなたから始めて、各プレイヤーは自分の手札にあるパーマネント・カード１枚を戦場に出してもよい。この手順を誰も戦場にカードを出さなくなるまで続ける。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/5/2/520db5fb-d961-45a3-af74-6f054b8be3ab.jpg?1783948048"
  },
  "vma:192": {
   "type": "ソーサリー",
   "text": "すべてのプレイヤーは自分の手札を捨て、その後カードを７枚引く。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/9/0/9052369f-840f-438e-b86d-e2f8d6339585.jpg?1783948618"
  },
  "vma:209": {
   "type": "エンチャント",
   "text": "あなたはあなたのターンの間に、土地を望む枚数だけプレイしてもよい。\nあなたが土地をプレイするたび、それがこのターンにあなたがプレイした最初の土地でない場合、Fastbondはあなたに１点のダメージを与える。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/f/4/f48ed192-c1a1-437a-80dd-647a616b46e3.jpg?1783948616"
  },
  "vma:305": {
   "type": "土地",
   "text": "{T}：{C}{C}{C}を加える。このマナは、アーティファクト呪文を唱えるためにのみ支払える。",
   "flavor": "最後にはトカシアを見下すようになったものの、目的の明確化についての師の教えに、ミシュラはよく耳を傾けた。ウルザと違って、ミシュラの考えは一つの目的に集中されていた。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/1/3/135de5c7-6ac9-4b68-8f1a-97f120a4b125.jpg?1783948355"
  },
  "vma:303": {
   "type": "土地",
   "text": "{T}：{C}を加える。\n{T}：カードを１枚引く。あなたの手札にカードがちょうど７枚あるときにのみ起動できる。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/e/e/ee266113-34ce-4189-84e7-ee2c86a2722c.jpg?1783948374"
  },
  "vma:3": {
   "type": "ソーサリー",
   "text": "各プレイヤーは、自分の墓地と手札を自分のライブラリーに加えて切り直す。その後、カードを７枚引く。（その後、Timetwisterをそのオーナーの墓地に置く。）",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/0/9/09f1958a-50cc-43cc-80e1-988800e44ca8.jpg?1783948639"
  },
  "vma:294": {
   "type": "土地",
   "text": "{T}：カードを２枚引き、その後カードを３枚捨てる。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://cards.scryfall.io/normal/front/f/f/ff37b863-f8c4-4584-8cc2-ac0e096e583f.jpg?1783948377"
  },
  "wth:1": {
   "type": "インスタント",
@@ -818,13 +848,15 @@
   "type": "クリーチャー — エレメンタル・アバター",
   "text": "この呪文を唱えるためのコストは、あなたの対戦相手１人につき{1}少なくなる。\nトランプル\nAvatar of Growthが戦場に出たとき、各プレイヤーは自分のライブラリーから基本土地カードを最大２枚まで探し、それらを戦場に出し、その後自分のライブラリーを切り直す。",
   "pt": "4/4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Ff524a232-7158-4f85-880e-fede2f9d35d1.jpg?alt=media&token=5ea07fba-81fb-486a-8cdf-c0595cde244e"
  },
  "hho:25": {
   "type": "クリーチャー — エレメンタル・インカーネーション",
   "text": "絆魂、速攻\nこのクリーチャーが戦場に出たとき、トークン１つを対象とする。それのコピーであるトークン２つを生成する。\n想起 ― 対戦相手１人を祝福する。（対戦相手を祝福するには、贈り物をしたり、乾杯したり、あるいは単に一緒にマジックをプレイしてくれることへの感謝を伝えるだけでも構わない。）",
   "pt": "4/4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fe5f33832-b196-49a1-8dd9-bea2c27fc2c8.jpg?alt=media&token=12fc456a-4420-4bd7-913d-4bdd6fc4a8eb"
  },
  "ltc:544": {
   "type": "インスタント",
@@ -839,56 +871,66 @@
  "mb2:539": {
   "type": "エンチャント",
   "text": "あなたの対戦相手は手札を公開したままプレイする。\n{U}, Wisedrafter's Willを生け贄に捧げる：カード１枚を引く。\n{U}{U}, Wisedrafter's Willを生け贄に捧げる：呪文１つを対象とする。それを打ち消す。",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fbad9faa8-b527-4dbf-b308-3137bced36f9.jpg?alt=media&token=7038897a-4ea7-45e5-8096-312653e8c27b"
  },
  "mb2:588": {
   "type": "土地・プレインズウォーカー — レン",
   "text": "[+1]：あなたの次のターンまで、Wrenn and Oneは「{T}：{G}を加える。」を得る。\n[-1]：緑の1/1のリス・クリーチャー・トークン１体を生成する。\n[-4]：あなたは「あなたの戦闘前メイン・フェイズの開始時に、あなたがコントロールしているクリーチャー１体につき{G}を加える。」を持つ紋章を得る。",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F0aec3061-91cd-4454-be4c-9d4443f091dc.jpg?alt=media&token=aa2166d9-1890-4df9-ae33-753d8245c21e"
  },
  "mb2:608": {
   "type": "アーティファクト",
   "text": "{T}：好きな色１色のマナ１点を加える。あなたは毒カウンター２個を得る。",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F543ce1cc-5918-40bf-921c-855268d51356.jpg?alt=media&token=64739987-5c6e-43db-9c9e-62083c72b1e7"
  },
  "mb2:605": {
   "type": "ソーサリー",
   "text": "すべてのクリーチャーを破壊する。それらは再生できない。あなたがコントロールしている土地最大４つをアンタップする。",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fd38ddf20-d1ba-4b91-a08c-8f9add66bc0f.jpg?alt=media&token=6a32633d-353e-4590-84a6-b90ddc27845a"
  },
  "pf25:4": {
   "type": "土地 — 町",
   "text": "{T}：{C}を加える。\n{T}：好きな色１色のマナ１点を加える。このマナは、そのターンにあなたが唱える２つ目の呪文を唱えるためにのみ支払える。そのマナが支払われたとき、ディープディッシュ・ピザ・トークン１つを生成する。（それは「{3}, {T}, このトークンを生け贄に捧げる：あなたは３点のライフを得てカード１枚を引く。」を持つ食物・アーティファクトである。）",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F04ab3fa9-13b2-42da-bdf7-1df93e4e3e08.jpg?alt=media&token=fbef5d64-a364-414d-b733-06aa37fe5cff"
  },
  "ph21:4": {
   "type": "伝説のプレインズウォーカー — Ersta",
   "text": "[+1]：すべての色である1/1の人間・ウィザード・クリーチャー・トークンを１体生成する。\n[-3]：《悟りの教示者/Enlightened Tutor》《神秘の教示者/Mystical Tutor》《Booster Tutor》《帝国の徴募兵/Imperial Recruiter》《俗世の教示者/Worldly Tutor》の中からカード名を１つ選ぶ。選ばれた名前であるカードのコピーを生成する。あなたはそのコピーを、マナ・コストを支払うことなく唱えてもよい。\n[-8]：あなたは「あなたのアップキープの開始時に、あなたが２０体以上のウィザードをコントロールしている場合、あなたはゲームに勝利する。」を持つ紋章を得る。\nErsta, Friend to Allは統率者として使用できる。",
   "pt": "5",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F9aeb09d6-17f3-4230-9112-eac98bce269d.jpg?alt=media&token=b0c28bc7-5c50-4dd4-83a8-5f50c43f20ab"
  },
  "ph17:2": {
   "type": "プレインズウォーカー — Inzerva",
   "text": "[+2]：カードを２枚引き、その後カードを１枚捨てる。\n[-2]：他の各プレイヤーにつき、そのプレイヤーのライブラリーの一番上から２枚のカードを見る。それらのうちの望む枚数のカードをそのプレイヤーのライブラリーの一番下に置き、残りをライブラリーの一番上に望む順番で置く。占術２を行う。\n[-4]：あなたは「あなたの対戦相手は自分の手札を公開した状態でプレイする。」と「対戦相手がカードを１枚引くたび、この紋章はそのプレイヤーに１点のダメージを与える。」を持つ紋章を得る。",
   "pt": "4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fb47e59bb-8d47-46a7-8ce5-b2060b4e3c19.jpg?alt=media&token=4dfb691c-21d7-41eb-a55d-cec4549a829f"
  },
  "ph19:5": {
   "type": "伝説の氷雪クリーチャー — 大鹿",
   "text": "この呪文を唱えるための追加コストとして、封をされたままのマジックのブースターパック１つを開封し、それらのカードをあなたのブースター束の一番下に無作為の順番で置いてもよい。\nあなたが唱える呪文はブースター続唱を持つ。（それは続唱と似ているが、ライブラリーの代わりにブースター束を用いる。）",
   "pt": "3/3",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fd7e57d2f-141f-461a-8f5a-4cec3020442e.jpg?alt=media&token=42acd8ff-cc75-42ec-96f4-496658a6645c"
  },
  "ph17:3": {
   "type": "伝説のクリーチャー — ゾンビ・エルフ・ウィザード",
   "text": "威光 ― {X},カードを１枚捨てる：プレイヤー１人を対象とする。そのプレイヤーは自分のライブラリーの一番上から、点数で見たマナ・コストがＸ以下のクリーチャー・カードが公開されるまでカードを公開し続ける。そのカードをあなたのコントロール下で戦場に出し、その後、そのプレイヤーは残りを自分のライブラリーに加えて切り直す。この能力は、M'Odo, the Gnarled Oracleが統率領域か戦場にある場合に起動できる。",
   "pt": "0/3",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F3e6a0359-f4da-442f-a130-08d278ec2fec.jpg?alt=media&token=6d6157f5-04ad-4d73-ace9-9b417dd5a67b"
  },
  "ph22:5": {
   "type": "伝説のエンチャント — 背景",
   "text": "Create a Character（伝説でないクリーチャー１体はこれを自身の背景であるかのように選択できる。それは伝説になり統率者として使用できる。）\nあなたがオーナーである、統率者であるすべてのクリーチャーは他のタイプに加えクレリックとならず者と戦士とウィザードでもある。\nあなたのパーティーが全員そろっている場合、あなたのクリーチャー１体の誘発型能力が誘発するなら、それは追加でもう１回誘発する。",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F24527eb8-ae2f-4154-80b7-7bf588862981.jpg?alt=media&token=ce900b50-acd5-49d3-9097-1e6b7c95f5dd"
  },
  "phtr:3": {
   "type": "伝説のクリーチャー — ドラゴン",
@@ -899,67 +941,77 @@
   "type": "伝説のクリーチャー — ミュータント・傭兵・英雄",
   "text": "これが戦場に出る際、あなたは「これでないクリーチャーとこれの文章欄を交換する。」ことを選んでもよい。\nあなたのアップキープ開始時に、あなたは３点のライフを失う。\n{3},このクリーチャーを生け贄に捧げる：あなた以外の各プレイヤーはカード1枚を引く。",
   "pt": "5/3",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?alt=media&token=f208cda0-2ced-49d2-a4da-f45894128c6a"
  },
  "sld:2082": {
   "type": "伝説のクリーチャー — ハリモグラ・戦士",
   "text": "二段攻撃、トランプル、速攻\nあなたがコントロールしている1体以上のクリーチャーがプレイヤー1人に戦闘ダメージを与えるたび、宝物・トークン1つを生成する。\nTreasure Hunter ─ あなたのアップキープの開始時に、あなたが30個以上のアーティファクトをコントロールしている場合、あなたはゲームに勝利する。",
   "pt": "2/4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F54b65cca-7844-4d3e-9d7f-ed1f49f94425.jpg?alt=media&token=4528ee13-0cec-4cf3-a6f1-dd236c1955c4"
  },
  "sld:2198": {
   "type": "伝説のクリーチャー — 人間・生存者",
   "text": "威迫\nクリーチャー・トークン1体が死亡するたび、このクリーチャーの上に+1/+1カウンター1個を置きカード1枚を引く。この能力は各ターン1回しか誘発しない。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "4/4",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F713ab02f-cd48-420d-a2fe-ef460e6ce2d2.jpg?alt=media&token=73ef4d74-649d-4cde-ad6a-6901359b4e38"
  },
  "slx:6": {
   "type": "伝説のクリーチャー — 人間",
   "text": "{2},{T}：このターン、戦場からあなたの墓地に置かれてそこにあるクリーチャー・カード１枚を対象とする。それをタップ状態で戦場に戻す。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "2/2",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fb867fb22-4f2a-47aa-9432-1bcc5e731947.jpg?alt=media&token=f5b4167c-6ca6-458c-963f-634651f5337a"
  },
  "slx:4": {
   "type": "伝説のクリーチャー — 人間",
   "text": "速攻\nあなたが各ターンのあなたの２つ目の呪文を唱えるたび、クリーチャー１体を対象とし、それをアンタップする。その後、調査を行う。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "3/2",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F95d197b3-fc56-43a2-981f-b5b905222b5c.jpg?alt=media&token=16440f06-095a-4f1c-8f38-7a8705f27369"
  },
  "slx:7": {
   "type": "伝説のクリーチャー — 人間・兵士",
   "text": "威迫\nChief Jim Hopperが攻撃するたび、トークンではない攻撃クリーチャー１体につき１回調査を行う。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "4/4",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fe0a64924-068e-483f-91a6-d450b67b3c75.jpg?alt=media&token=f4269c0b-4fdc-4a04-8861-10e9fde72af4"
  },
  "slx:2": {
   "type": "伝説のクリーチャー — 人間",
   "text": "{T},アーティファクト１つを生け贄に捧げる：クリーチャー１体を対象とする。これはそれに１点のダメージを与える。そのクリーチャーを使嗾する。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "1/3",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F83b0b716-bcb0-4044-b64a-354e3cbbd563.jpg?alt=media&token=e8a80f8f-74f9-4c5a-9ca6-b4c457809699"
  },
  "slx:5": {
   "type": "伝説のクリーチャー — 人間",
   "text": "{T}：{C}{C}を加える。このマナは、アーティファクト呪文を唱えるためかアーティファクトの能力を起動するためにのみ使用できる。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "2/3",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F59e1fa94-056a-4570-97b3-17e964077965.jpg?alt=media&token=3a9e35dd-ad0e-4d7f-b45f-7be58ef0e362"
  },
  "slx:8": {
   "type": "伝説のクリーチャー — 人間",
   "text": "Will the Wiseが戦場に出るか戦場を離れたとき、各対戦相手は調査を１回行ってもよい。行わなかった対戦相手は１点のライフを失う。あなたは調査をX回行う。Xはこの方法で調査を行った対戦相手の数に１を足した数に等しい。\n共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "pt": "1/2",
   "src": "mtgwiki",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F39491011-bdf6-4e61-8534-fe26c1571f8f.jpg?alt=media&token=3332ed65-244f-44fb-90a7-258627ef39a2"
  },
  "unf:107": {
   "type": "クリーチャー — ゴブリン",
   "pt": "1/1",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F5819e3f3-da49-4003-88ce-f3b7bb495787.jpg?alt=media&token=19e77484-fab2-4850-b71a-afd753133298"
  },
  "ytdm:1": {
   "name": "嵐鶴の長老、ラム",
@@ -1084,19 +1136,22 @@
  "ice:121": {
   "type": "インスタント",
   "text": "カード名を１つ選ぶ。あなたのライブラリーのカードを上から６枚追放する。その後、選ばれた名前のカードが公開されるまで、あなたのライブラリーの一番上のカードを公開し続ける。そのカードをあなたの手札に加え、これにより公開された他のすべてのカードを追放する。",
-  "src": "wisdom-guild"
+  "src": "wisdom-guild",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F8d727b9b-6114-414d-9172-16b6e1db41cc.jpg?alt=media&token=c7e061f4-1480-4e8a-bc17-cd57190c18ee"
  },
  "40k:7": {
   "type": "伝説のクリーチャー — 人間・ティラニッド・ウィザード",
   "text": "精神的指導者 ― あなたのターンの戦闘の開始時に、クリーチャー１体を対象とする。それの上に+1/+1カウンター１個を置く。\nサイキック・スティミュラス ― {T}：{C}{C}を加える。このターン、次にあなたが、マナ・コストに{X}を含む呪文を唱えたか起動コストに{X}を含む能力を起動したとき、その呪文や能力をコピーする。あなたはそのコピーの新しい対象を選んでもよい。（パーマネント呪文のコピーはトークンになる。）",
   "pt": "1/1",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F4f86e7cc-2b6e-49d0-964e-bba0c51cc11d.jpg?alt=media&token=690cfdac-c6fd-402d-a116-3fa551540a15"
  },
  "mbc:19": {
   "type": "伝説のプレインズウォーカー — Thomil",
   "text": "[+2]：黒の2/2のゾンビ・クリーチャー・トークン１体を生成する。\n[0]：あなたはクリーチャー１体を生贄に捧げてもよい。そうしたなら、{B}{B}{B}を加える。\n[-5]：《奈落の王/Lord of the Pit》・トークン１体を生成する。（それは{4}{B}{B}{B}であり飛行とトランプルと「あなたのアップキープの開始時に、これでないクリーチャーを１体生け贄に捧げる。できない場合、奈落の王はあなたに７点のダメージを与える。」を持つ7/7のデーモン・クリーチャーである。）\nThomil, the Destroyerは統率者として使用できる。",
   "pt": "4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/7/5/756e41ad-f181-4c1e-8ad6-970cee684582.jpg?1785762547"
  },
  "mbc:37": {
   "type": "伝説のクリーチャー — 人間・ウィザード",
@@ -1114,12 +1169,14 @@
   "type": "伝説のアーティファクト・クリーチャー — ファイレクシアン",
   "text": "Megalegendary（あなたはあなたのデッキにこれと同じカードを１枚だけ入れることができる。）\n警戒、トランプル\nVazal, the Compleatは戦場にある他のすべてのパーマネントの起動型能力を持つ。\n[テストカード - 構築では使用できない。]",
   "pt": "7/7",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/b/3/b3aa63b1-5801-44d9-945c-dfcec0c56efe.jpg?1783925925"
  },
  "ltc:537": {
   "type": "インスタント",
   "text": "刹那\nクリーチャー１体を対象とし、それをアンタップする。ターン終了時までそれは呪禁と到達と「このクリーチャーがタップ状態になるたび、クリーチャー最大１体を対象とする。これはそのクリーチャーにこれのパワーに等しい点数のダメージを与える。」を得る。",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/2/a/2a5d0ed2-9994-47ff-b453-77e28844ecd1.jpg?1783914178"
  },
  "exo:143": {
   "type": "土地",
@@ -1131,12 +1188,14 @@
   "type": "伝説のクリーチャー — 人間・ゲーマー",
   "text": "{4}：あなたのライブラリーからカードを１枚探し、それをあなたの手札に加え、その後ライブラリーを切り直す。",
   "pt": "1/1",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/f/8/f8fc7a61-226c-426a-9b99-21d87aca2f6f.jpg?1783931343"
  },
  "ugl:22": {
   "type": "インスタント",
   "text": "Denied!は対戦相手１人が呪文をプレイした時点でのみプレイできる。その呪文１つを対象とする。\nあなたはカード名を１つ指定する。その後そのプレイヤーの手札を見る。指定されたカードがそのプレイヤーの手札にあった場合、その呪文１つを打ち消す。",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/1/2/1285c125-e145-4565-a029-352ac6adf688.jpg?1783946434"
  },
  "tmp:55": {
   "type": "インスタント",
@@ -1190,13 +1249,15 @@
  "cmb2:52": {
   "type": "ソーサリー",
   "text": "ターン終了時まで、あなたはあなたがオーナーであり追放されている表向きのカードをプレイしてもよい。\nこのターン、カードがいずれかの領域からあなたの墓地に置かれるか追放されるなら、代わりにそれをあなたのライブラリーの一番下に置く。\n[テストカード - 構築では使用できない。]",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/9/5/9528519a-a26c-4c55-87c3-6b3fb7d23f52.jpg?1783925941"
  },
  "ph18:3": {
   "type": "伝説のクリーチャー — ドラゴン・天使",
   "text": "伝説の共闘（あなたはこれを含めた２体の統率者を使用できる。もう一方は伝説になる。）\n飛行、警戒\nTeamwork ― あなたがSol, Advocate Eternalとこれが共闘しているクリーチャーの両方で攻撃するかブロックするたび、支援４を行い、調査を４回行う。",
   "pt": "4/4",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/7/1/711ccbf2-1cd6-4881-b020-a71bedb8f664.jpg?1783932838"
  },
  "2ed:275": {
   "type": "アーティファクト",
@@ -1206,7 +1267,8 @@
  "hho:7†": {
   "type": "インスタント",
   "text": "対戦相手１人を対象とする。そのプレイヤーのライブラリーから異なる名前のカードを４枚探し、それらを公開する。そのプレイヤーはそれらのカードから２枚を選ぶ。選ばれたカードをそのプレイヤーの墓地に置き、残りをあなたの手札に加える。その後、そのプレイヤーは自分のライブラリーを切り直す。",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/b/7/b74ed7df-0d88-49e6-af51-21f2a42114a1.jpg?1783942819"
  },
  "cmb2:18": {
   "type": "インスタント",
@@ -1236,37 +1298,43 @@
   "text": "あなたがオーナーでありこれでないクリーチャー１体が戦場に出るたび、あなたは(ＴＫ)を得る。\n{W},{T}：あなたがオーナーでありこのターンに戦場に出たクリーチャー１体にステッカー１枚を貼ってもよい。",
   "pt": "2/2",
   "name": "Park Bleater",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/c/2/c2c155fd-bab7-4f86-b10c-6c9f1f43b330.jpg?1783920439"
  },
  "unh:37": {
   "type": "クリーチャー — 人間・ゲーマー",
   "text": "{U}：呪文１つかパーマネント１つを対象とする。ターン終了時まで、それの文章欄のすべての＋を－に入れ替え、－を＋に入れ替える。",
   "pt": "1/2",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/6/5/651626f5-aca6-4653-aa27-36c919566cb0.jpg?1783944257"
  },
  "unf:365": {
   "type": "クリーチャー — ゾンビ・ゲスト",
   "text": "「生涯」パス所有者はタップ状態で戦場に出る。\nこれが死亡したとき、アトラクション１つを開く。\nあなたがあなたのアトラクションを観覧するためにサイコロを振るたび、出目が６の場合、あなたの墓地にあるこれを戦場に戻してもよい。",
   "pt": "2/1",
   "name": "\"Lifetime\" Pass Holder",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/4/2/42293306-aaea-4542-8df4-8138234bf556.jpg?1783920411"
  },
  "unh:82": {
   "type": "クリーチャー — ゴブリン・ウェイター",
   "text": "クリーチャー１体か土地１つを生け贄に捧げる：(R/2)を加える。",
   "pt": "1/1",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/7/2/729238ee-b3ea-4c1d-852c-2dc9a2c58356.jpg?1783944245"
  },
  "ust:101": {
   "type": "クリーチャー — ゴブリン・装具工",
   "text": "レンチの装具工が戦場に出たとき、これはからくりを１個組み立てる。（あなたのからくりデッキの一番上のカードを、表向きであなたの起動輪いずれかに置く。）",
   "pt": "1/1",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/4/c/4c4fcdd5-8f7b-48b1-8841-afc3f8f35853.jpg?1783935413"
  },
  "unh:48": {
   "type": "インスタント",
   "text": "アーティストを１人選ぶ。あなたのライブラリーの一番上から６枚のカードを追放し、その後ライブラリーの一番上のカードから順番に、選ばれたアーティストのアートを持つカードが出るまで公開し続ける。そのカードを手札に加え、これにより公開された他のカードをすべて追放する。",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/0/4/0464a507-20e5-42d5-8aca-12504a869f21.jpg?1783944254"
  },
  "unf:411": {
   "type": "インスタント",
@@ -1447,7 +1515,8 @@
  "mbc:33": {
   "type": "伝説のプレインズウォーカー — アルザコン",
   "text": "[+2]：これでない望む対象１つを対象とする。アルザコンはそれに３点のダメージを与える。\n[-3]：Black Lotusトークン１つを生成する。（それは「{T}, このトークンを生け贄に捧げる：好きな色１色のマナ３点を加える。」を持つ{0}のアーティファクトである。）\n[-7]：各プレイヤーはそれぞれ、自分の手札と墓地を自分のライブラリーに加えて切り直し、その後カード７枚を引く。\nアルザコンはあなたの統率者になれる。",
-  "src": "unofficial"
+  "src": "unofficial",
+  "img": "https://cards.scryfall.io/normal/front/8/5/85f81500-1b1b-47e7-93a1-db5f6de95e87.jpg?1785762533"
  },
  "soc:349": {
   "img": "img/ja/soc_349.jpg",
@@ -1456,7 +1525,8 @@
  "sld:2203": {
   "text": "共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）",
   "type": "伝説のクリーチャー — 人間・生存者",
-  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え"
+  "note": "メタキューブ特殊裁定：共闘の変種を「共闘」に置き換え",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fdd0b3ace-91aa-46b7-8265-b8bc22dff5f7.jpg?alt=media&token=1fd72667-5868-4e10-8eaf-03e4d81dcf2d"
  },
  "who:142": {
   "text": "共闘（両方が共闘を持つなら、あなたは２体の統率者を使用できる。）\nマダム・ヴァストラは可能ならブロックされなければならない。\nこのターンにマダム・ヴァストラからダメージを受けたクリーチャー１体が死亡するたび、手掛かり・トークン１つと食物・トークン１つを生成する。",
@@ -1523,18 +1593,21 @@
   "type": "インスタント",
   "text": "パーマネント１つを対象とする。それの誘発型能力１つを選ぶ。その選ばれた誘発型能力は誘発する。あなたがその能力をコントロールする。",
   "name": "Trigger Happy",
-  "src": "mtgwiki"
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/1/f/1fb346c6-4732-4e35-b6e4-7b2a50b65d44.jpg?1783920392"
  },
  "exo:40": {
   "src": "mtgwiki",
   "name": "精神力",
   "type": "エンチャント",
-  "text": "カードを１枚捨てる：アーティファクト１つかクリーチャー１体か土地１つを対象とする。あなたはそれをタップまたはアンタップしてもよい。"
+  "text": "カードを１枚捨てる：アーティファクト１つかクリーチャー１体か土地１つを対象とする。あなたはそれをタップまたはアンタップしてもよい。",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2Fmtg_6e091dd6-149f-46ea-bae0-224e79e3aacb.jpg?alt=media&token=61f9a6c3-bacd-411f-8642-a489a08ed100"
  },
  "sum:97": {
   "src": "mtgwiki",
   "type": "ソーサリー",
-  "text": "アンティを賭けてプレイしない場合、プレイを開始する前にContract from Belowをあなたのデッキから取り除く。\nあなたの手札を捨て、あなたのライブラリーの一番上のカードをアンティにする。その後カードを７枚引く。"
+  "text": "アンティを賭けてプレイしない場合、プレイを開始する前にContract from Belowをあなたのデッキから取り除く。\nあなたの手札を捨て、あなたのライブラリーの一番上のカードをアンティにする。その後カードを７枚引く。",
+  "img": "https://cards.scryfall.io/normal/front/e/1/e1e33690-b851-404a-9cde-d00235be5aa5.jpg?1783948000"
  },
  "hob:164": {
   "src": "mtgwiki",
@@ -1542,5 +1615,123 @@
   "type": "伝説のクリーチャー — ドラゴン",
   "text": "飛行\nこれが戦場に出たとき、宝物トークンＸ個をタップ状態で生成する。Ｘは、あなたの対戦相手がコントロールしているアーティファクトの総数に等しい。\nあなたが呪文１つを唱えるたび、それを唱えるために宝物からのマナが支払われていた場合、カード１枚を引き、１点のライフを失う。",
   "pt": "5/5"
+ },
+ "vma:287": {
+  "type": "アーティファクト",
+  "text": "Time Vaultはタップ状態で場に出る。\nTime Vaultがアンタップ状態になる場合、代わりに以下の２つから１つを選ぶ。「Time Vaultをアンタップし、あなたの次のターンを飛ばす。」「Time Vaultをタップ状態のままにする。」\n{T}：このターンに続いて追加の１ターンを行う。",
+  "src": "mtgwiki",
+  "img": "https://cards.scryfall.io/normal/front/0/b/0b64dd0f-2e99-41bd-87aa-f623582d64d0.jpg?1783948530"
+ },
+ "ugl:69": {
+  "src": "mtgwiki",
+  "type": "アーティファクト",
+  "text": "{T},Ashnod's Couponを生け贄に捧げる：プレイヤー１人とドリンク１本を対象とする。そのプレイヤーは、そのドリンクをあなたのために取ってくる。あなたはそのドリンクに必要なあらゆるコストを支払う。",
+  "img": "https://cards.scryfall.io/normal/front/d/4/d420010f-5389-4aa2-a5f8-d9631249679a.jpg?1783946420"
+ },
+ "all:45": {
+  "src": "mtgwiki",
+  "type": "インスタント",
+  "text": "あなたは、この呪文のマナ・コストを支払うのではなく、あなたは１点のライフを支払うとともにあなたの手札にある黒のカードを１枚、追放することを選んでもよい。\n１体か２体のクリーチャーを対象とする。それらの上に-2/-1カウンターを２個、望むように割り振って置く。",
+  "img": "https://cards.scryfall.io/normal/front/0/0/00c8f94a-7690-47f5-b664-61411a32ab74.jpg?1783947189"
+ },
+ "mmq:44": {
+  "src": "mtgwiki",
+  "name": "恭しきマントラ",
+  "type": "インスタント",
+  "text": "あなたは、この呪文のマナ・コストを支払うのではなく、あなたの手札にある白のカード１枚を追放することを選んでもよい。\n色を１色選ぶ。ターン終了時まで、すべてのクリーチャーはプロテクション（選ばれた色）を得る。",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2FtUagFvpht7PVUyj0Vhzw_mtg_48364e19-a3ea-4980-925f-7918e57315f1.jpg?alt=media&token=facc6c11-7ea3-48a5-b919-540f444e5a08&v=1794674008462"
+ },
+ "uds:15": {
+  "src": "mtgwiki",
+  "name": "補充",
+  "type": "ソーサリー",
+  "text": "あなたの墓地にある、すべてのエンチャント・カードを戦場に戻す。（エンチャントできる何かがないオーラは、あなたの墓地に残る。）",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2FtUagFvpht7PVUyj0Vhzw_mtg_47b27815-4fd1-43b1-b6e8-60b54f9c2468.jpg?alt=media&token=21d2e2e6-99ce-42c9-be65-0b64b2e3cb6d&v=1794673948538"
+ },
+ "fic:454": {
+  "src": "mtgwiki",
+  "type": "エンチャント — オーラ",
+  "text": "瞬速\nエンチャント(あなたがコントロールしているクリーチャー)\nエンチャントしているクリーチャーは飛行と呪禁を持つ。\nあなたがコントロールしているクリーチャー1体が戦場に出るたび、{1}を支払ってもよい。そうしたなら、このオーラをそのクリーチャーにつける。\nWhisper Gatherer",
+  "img": "https://cards.scryfall.io/normal/front/c/3/c358af5d-61e3-4c4d-9d7d-2f3e43210339.jpg?1783904653"
+ },
+ "sld:2081": {
+  "src": "mtgwiki",
+  "type": "伝説のエンチャント — オーラ",
+  "text": "エンチャント（あなたがコントロールしているクリーチャー）\nエンチャントされているクリーチャーの基本のパワーとタフネスは9/9であり、飛行と先制攻撃とトランプルと速攻を持つ。\nエンチャントされているクリーチャーが対戦相手1人に戦闘ダメージを与えるたび、それはその点数に等しい点数のダメージを、他の各対戦相手に与える。",
+  "img": "https://cards.scryfall.io/normal/front/a/6/a6a39919-a521-4e96-a47a-e09ac4d783bf.jpg?1783906091"
+ },
+ "exo:64": {
+  "src": "mtgwiki",
+  "name": "憎悪",
+  "type": "インスタント",
+  "text": "この呪文を唱えるための追加コストとして、Ｘ点のライフを支払う。\nクリーチャー１体を対象とする。ターン終了時まで、それは+X/+0の修整を受ける。",
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2FtUagFvpht7PVUyj0Vhzw_mtg_2383a8d9-96fd-4f9a-bcf9-eb81fdb15ead.jpg?alt=media&token=e3e29624-ea9c-42c5-b85e-eb08d9c90ed3&v=1794673725976"
+ },
+ "bot:6": {
+  "src": "mtgwiki",
+  "type": "伝説のアーティファクト クリーチャー — ロボット",
+  "text": "見た目以上のもの{2}{R}（あなたは{2}{R}を支払ってこのカードをトランスフォームした状態で唱えてもよい。）\n二段攻撃、速攻\n各対戦相手のアップキープの開始時に、あなたは「ターン終了時まで、そのプレイヤーは雇われの剛力、スライサーのコントロールを得る。」を選んでもよい。そうしたなら、雇われの剛力、スライサーをアンタップし、使嗾する。このターン、これは生け贄に捧げられない。そうしないなら、これをトランスフォームさせる。\n――――\n高速の敵対者、スライサー\n〔赤〕\n伝説のアーティファクト — 機体\n金属生命体（あなたのターンの間、このはクリーチャーでもある。）\n先制攻撃、速攻\n高速の敵対者、スライサーがプレイヤー１人に戦闘ダメージを与えるたび、戦闘終了時に、これをトランスフォームさせる。",
+  "pt": "3/4",
+  "img": "https://cards.scryfall.io/normal/front/9/d/9d9a9350-4734-4cc1-986d-467e6715199f.jpg?1783919908"
+ },
+ "ath:77": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2FtUagFvpht7PVUyj0Vhzw_mtg_cf9fa11b-0fd6-47f7-8557-605520041cae.jpg?alt=media&token=e7221c70-956c-4b20-8f6a-afbe6d89a084&v=1791468478641"
+ },
+ "eos:2": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F9c9c051c-bfed-4338-b87f-449195d19c98.jpg?alt=media&token=712d0a26-18bf-4eb0-81ed-aa71cce2389f"
+ },
+ "who:186": {
+  "img": "https://cards.scryfall.io/normal/front/d/9/d940a940-4c06-4820-9d72-32cb964fe420.jpg?1782811565"
+ },
+ "ncc:152": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F090b1421-ff14-4bf4-bc1a-579ff947320f.jpg?alt=media&token=fc035f85-ecca-412a-bb4d-f44dc551b66a"
+ },
+ "inr:71": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F7034fff6-7969-47ac-a0ca-ae3a251acb67.jpg?alt=media&token=a32741bd-38a7-44c3-a2d2-b3bf501a061b"
+ },
+ "hop:9": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Febfac1b9-b074-4e6c-a09b-8f3fd5bd9656.jpg?alt=media&token=f6c04890-dc90-4c41-aee3-20312b052bc9"
+ },
+ "one:427": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F2dfc9445-b9ff-4aa6-962e-5d9f491b3afa.jpg?alt=media&token=3d31283e-5cb2-4d1d-ac54-14061e4bf9c0"
+ },
+ "inr:22": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F66751f47-35b7-44e8-b0f9-0ff374b4549c.jpg?alt=media&token=f0f7b254-3b50-4208-aeb2-d7115282bd63"
+ },
+ "pca:3": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2Fec1d1f5a-5dc8-4cfa-9bf2-727313713dd0.jpg?alt=media&token=f1a9660b-1b30-4da5-abb2-b29b251dc7b6"
+ },
+ "pca:6": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F12e66cfa-0cc4-4114-b365-e268786d969e.jpg?alt=media&token=1fec27d5-272e-4c37-abbb-a1cfeeadbc13"
+ },
+ "fdc:275": {
+  "img": "https://cards.scryfall.io/normal/front/1/8/18ce96d6-d440-42b2-9052-7e70fda1c8a7.jpg?1782803498"
+ },
+ "fdc:41": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F1bc04e5e-1610-459f-a8bf-131619373e79.jpg?alt=media&token=7c486fc1-6704-4198-b64a-978e16a65c8a"
+ },
+ "pip:857": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F21c77392-29cb-4787-964b-e9bd21c81d0e.jpg?alt=media&token=19a21677-f059-4bf3-ace2-2649a762c83a"
+ },
+ "mb2:581": {
+  "img": "https://cards.scryfall.io/normal/front/c/d/cd2de002-28c0-427e-a61b-4d6032bca83a.jpg?1783910513"
+ },
+ "tmp:57": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F65df5537-1c62-4dfd-9c1b-6de5014f34e7.jpg?alt=media&token=423b6842-e02f-42c2-b2c7-c9442160755e"
+ },
+ "msc:876": {
+  "img": "https://cards.scryfall.io/normal/front/1/d/1d91f05d-f275-45a1-8486-029214c83bed.jpg?1785258983"
+ },
+ "mb2:504": {
+  "img": "https://cards.scryfall.io/normal/front/3/4/34a870d3-c2c4-40e3-adee-666215dbd6d0.jpg?1783910537"
+ },
+ "fdc:269": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F9ad98263-9fe6-4766-a9fb-4776e570c250.jpg?alt=media&token=41f290b5-e39d-4b93-8d68-fa15983be63e"
+ },
+ "lci:410f": {
+  "img": "https://cards.scryfall.io/normal/front/2/a/2ada6c4f-af47-4927-b6a8-26a5811a615c.jpg?1782807500"
+ },
+ "fdc:310": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F58c76a0c-f13c-483c-bb7b-9af21d7fc924.jpg?alt=media&token=8867d225-2b11-468b-ac56-acb72900c109"
  }
 }
