@@ -57,6 +57,7 @@ CUBES = [
         "src_dir": "dm-powdra",
         "art": "dm_theme.webp",
         "art_overlay": (".25", ".85"),
+        "art_pos": "center 15%",   # ヘッダー・ヒーロー・トップのカード画像の縦位置（絵の見せたい帯に合わせる）
         "art_in_header": True,
         "has_summary": False,
         "has_aid": True,
@@ -452,7 +453,8 @@ def page(title, body, *, cube=None, active="", depth=0):
     if cube and cube.get("art_in_header") and cube.get("art"):
         art_url = root + "assets/" + cube["art"]
         header_style = (' style="background-image:linear-gradient(rgba(12,14,19,.82),rgba(12,14,19,.9)),'
-                        + "url('" + art_url + "');background-size:cover;background-position:center 30%" + '"')
+                        + "url('" + art_url + "');background-size:cover;background-position:"
+                        + cube.get("art_pos", "center 30%") + '"')
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -857,7 +859,8 @@ def build_cube_index(cube):
     if cube.get("art"):
         ov1, ov2 = cube.get("art_overlay", (".45", ".94"))
         hero_open = (f'<div class="hero art" style="background-image:linear-gradient(rgba(12,14,19,{ov1}),'
-                     f'rgba(12,14,19,{ov2})),url(\'../assets/{cube["art"]}\')">')
+                     f'rgba(12,14,19,{ov2})),url(\'../assets/{cube["art"]}\');'
+                     f'background-position:{cube.get("art_pos", "center 30%")}">')
     else:
         hero_open = '<div class="hero">'
     body = f"""
@@ -890,7 +893,8 @@ def build_site_index():
         else:
             btns = f'<a class="btn ghost" href="{c["slug"]}/index.html">キューブトップ(準備中)</a>'
             cls = "cube-card coming"
-        art = f'<div class="card-art" style="background-image:url(assets/{c["art"]})"></div>' if c.get("art") else ""
+        art = (f'<div class="card-art" style="background-image:url(assets/{c["art"]});'
+               f'background-position:{c.get("art_pos", "center 30%")}"></div>') if c.get("art") else ""
         cards += f"""
   <div class="{cls}">
     {art}
