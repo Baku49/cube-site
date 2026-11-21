@@ -1,249 +1,9 @@
 {
  "no_japanese_printing": [
   {
-   "set": "unf",
-   "cn": "107",
-   "name": "_____ Goblin"
-  },
-  {
-   "set": "cmb2",
-   "cn": "16",
-   "name": "Animate Spell"
-  },
-  {
-   "set": "gnt",
-   "cn": "5",
-   "name": "Avatar of Growth"
-  },
-  {
-   "set": "vma",
-   "cn": "294",
-   "name": "Bazaar of Baghdad"
-  },
-  {
-   "set": "slx",
-   "cn": "2",
-   "name": "Bjorna, Nightfall Alchemist"
-  },
-  {
-   "set": "und",
-   "cn": "33",
-   "name": "Booster Tutor"
-  },
-  {
-   "set": "ice",
-   "cn": "116",
-   "name": "Burnt Offering"
-  },
-  {
-   "set": "q06",
-   "cn": "6",
-   "name": "Chandra, Torch of Defiance"
-  },
-  {
-   "set": "hho",
-   "cn": "25",
-   "name": "Cheer"
-  },
-  {
-   "set": "unf",
-   "cn": "166",
-   "name": "Comet, Stellar Pup"
-  },
-  {
-   "set": "ice",
-   "cn": "118",
-   "name": "Dance of the Dead"
-  },
-  {
-   "set": "sld",
-   "cn": "1753",
-   "name": "Deadpool, Trading Card"
-  },
-  {
-   "set": "sld",
-   "cn": "2203",
-   "name": "Ellie, Vengeful Hunter"
-  },
-  {
-   "set": "slx",
-   "cn": "4",
-   "name": "Elmar, Ulvenwald Informant"
-  },
-  {
-   "set": "ph21",
-   "cn": "4",
-   "name": "Ersta, Friend to All"
-  },
-  {
-   "set": "vma",
-   "cn": "209",
-   "name": "Fastbond"
-  },
-  {
-   "set": "prm",
-   "cn": "80919",
-   "name": "Gyruda, Doom of Depths"
-  },
-  {
-   "set": "cmb2",
-   "cn": "116",
-   "name": "Gold Mine"
-  },
-  {
-   "set": "slx",
-   "cn": "5",
-   "name": "Hargilde, Kindly Runechanter"
-  },
-  {
-   "set": "ph17",
-   "cn": "2",
-   "name": "Inzerva, Master of Insights"
-  },
-  {
-   "set": "ugl",
-   "cn": "75",
-   "name": "Jack-in-the-Mox"
-  },
-  {
-   "set": "sld",
-   "cn": "2198",
-   "name": "Joel, Resolute Survivor"
-  },
-  {
-   "set": "vma",
-   "cn": "303",
-   "name": "Library of Alexandria"
-  },
-  {
-   "set": "scd",
-   "cn": "151",
-   "name": "Mana Geyser"
-  },
-  {
-   "set": "cmb2",
-   "cn": "107",
-   "name": "Mirrored Lotus"
-  },
-  {
-   "set": "vma",
-   "cn": "305",
-   "name": "Mishra's Workshop"
-  },
-  {
-   "set": "ph17",
-   "cn": "3",
-   "name": "M'Odo, the Gnarled Oracle"
-  },
-  {
-   "set": "ust",
-   "cn": "40",
-   "name": "More or Less"
-  },
-  {
-   "set": "mb2",
-   "cn": "608",
-   "name": "Mox Poison"
-  },
-  {
-   "set": "ph19",
-   "cn": "5",
-   "name": "Myntasha, Honored One"
-  },
-  {
-   "set": "unh",
-   "cn": "60",
-   "name": "Necro-Impotence"
-  },
-  {
-   "set": "unf",
-   "cn": "118",
-   "name": "Opening Ceremony"
-  },
-  {
-   "set": "slx",
-   "cn": "6",
-   "name": "Othelm, Sigardian Outcast"
-  },
-  {
-   "set": "unf",
-   "cn": "149",
-   "name": "Pair o' Dice Lost"
-  },
-  {
-   "set": "unf",
-   "cn": "190",
-   "name": "Park Map"
-  },
-  {
-   "set": "rex",
-   "cn": "42",
-   "name": "Permission Denied"
-  },
-  {
-   "set": "ulst",
-   "cn": "7",
-   "name": "Rules Lawyer"
-  },
-  {
-   "set": "cmb2",
-   "cn": "102",
-   "name": "Slivdrazi Monstrosity"
-  },
-  {
-   "set": "slx",
-   "cn": "7",
-   "name": "Sophina, Spearsage Deserter"
-  },
-  {
-   "set": "ath",
-   "cn": "77",
-   "name": "Strip Mine"
-  },
-  {
-   "set": "j15",
-   "cn": "1",
-   "name": "Temporal Manipulation"
-  },
-  {
-   "set": "h1r",
-   "cn": "26",
-   "name": "The First Sliver"
-  },
-  {
-   "set": "prm",
-   "cn": "60450",
-   "name": "The Tabernacle at Pendrell Vale"
-  },
-  {
-   "set": "vma",
-   "cn": "3",
-   "name": "Timetwister"
-  },
-  {
-   "set": "slx",
-   "cn": "8",
-   "name": "Wernog, Rider's Chaplain"
-  },
-  {
-   "set": "vma",
-   "cn": "192",
-   "name": "Wheel of Fortune"
-  },
-  {
-   "set": "mb2",
-   "cn": "539",
-   "name": "Wisedrafter's Will"
-  },
-  {
-   "set": "ph22",
-   "cn": "5",
-   "name": "Wizard from Beyond"
-  },
-  {
-   "set": "mb2",
-   "cn": "605",
-   "name": "Wrath of Leknif"
+   "set": "one",
+   "cn": "427",
+   "name": "Skrelv, Defector Mite"
   },
   {
    "set": "mma",
@@ -251,109 +11,9 @@
    "name": "Ethersworn Canonist"
   },
   {
-   "set": "vma",
-   "cn": "208",
-   "name": "Eureka"
-  },
-  {
-   "set": "ugl",
-   "cn": "70",
-   "name": "Blacker Lotus"
-  },
-  {
-   "set": "pf25",
-   "cn": "4",
-   "name": "Second City"
-  },
-  {
-   "set": "ice",
-   "cn": "121",
-   "name": "Demonic Consultation"
-  },
-  {
-   "set": "sld",
-   "cn": "2082",
-   "name": "Knuckles the Echidna"
-  },
-  {
-   "set": "40k",
-   "cn": "7",
-   "name": "Magus Lucea Kane"
-  },
-  {
-   "set": "mbc",
-   "cn": "19",
-   "name": "Thomil, the Destroyer"
-  },
-  {
-   "set": "mbc",
-   "cn": "33",
-   "name": "Arzakon"
-  },
-  {
-   "set": "cmb2",
-   "cn": "85",
-   "name": "Vazal, the Compleat"
-  },
-  {
-   "set": "ltc",
-   "cn": "537",
-   "name": "Legolas's Quick Reflexes"
-  },
-  {
-   "set": "und",
-   "cn": "9",
-   "name": "Look at Me, I'm R&D"
-  },
-  {
-   "set": "und",
-   "cn": "23",
-   "name": "Johnny, Combo Player"
-  },
-  {
-   "set": "ugl",
+   "set": "inr",
    "cn": "22",
-   "name": "Denied!"
-  },
-  {
-   "set": "und",
-   "cn": "29",
-   "name": "Topsy Turvy"
-  },
-  {
-   "set": "mb2",
-   "cn": "588",
-   "name": "Wrenn and One"
-  },
-  {
-   "set": "eos",
-   "cn": "2",
-   "name": "Blast Zone"
-  },
-  {
-   "set": "cmb2",
-   "cn": "52",
-   "name": "Yawgmoth's Testament"
-  },
-  {
-   "set": "ph18",
-   "cn": "3",
-   "name": "Sol, Advocate Eternal"
-  },
-  {
-   "set": "vma",
-   "cn": "287",
-   "name": "Time Vault"
-  },
-  {
-   "set": "who",
-   "cn": "186",
-   "name": "Sonic Screwdriver"
-  },
-  {
-   "set": "hho",
-   "cn": "7†",
-   "name": "Gifts Given"
+   "name": "Fiend Hunter"
   },
   {
    "set": "unf",
@@ -361,89 +21,14 @@
    "name": "Park Bleater"
   },
   {
-   "set": "unh",
-   "cn": "37",
-   "name": "Magical Hacker"
+   "set": "fdc",
+   "cn": "41",
+   "name": "Norn's Choirmaster"
   },
   {
-   "set": "unf",
-   "cn": "365",
-   "name": "\"Lifetime\" Pass Holder"
-  },
-  {
-   "set": "unh",
-   "cn": "82",
-   "name": "Mons's Goblin Waiters"
-  },
-  {
-   "set": "ust",
-   "cn": "101",
-   "name": "Wrench-Rigger"
-  },
-  {
-   "set": "unh",
-   "cn": "48",
-   "name": "Aesthetic Consultation"
-  },
-  {
-   "set": "unf",
-   "cn": "125",
-   "name": "Trigger Happy"
-  },
-  {
-   "set": "exo",
-   "cn": "40",
-   "name": "Mind Over Matter"
-  },
-  {
-   "set": "sum",
-   "cn": "97",
-   "name": "Contract from Below"
-  },
-  {
-   "set": "usg",
-   "cn": "103",
-   "name": "Time Spiral"
-  },
-  {
-   "set": "ncc",
-   "cn": "152",
-   "name": "Seize the Spotlight"
-  },
-  {
-   "set": "ugl",
-   "cn": "69",
-   "name": "Ashnod's Coupon"
-  },
-  {
-   "set": "ice",
-   "cn": "326",
-   "name": "Jeweled Amulet"
-  },
-  {
-   "set": "all",
-   "cn": "45",
-   "name": "Contagion"
-  },
-  {
-   "set": "inr",
-   "cn": "71",
-   "name": "Laboratory Maniac"
-  },
-  {
-   "set": "hop",
-   "cn": "9",
-   "name": "Fabricate"
-  },
-  {
-   "set": "one",
-   "cn": "427",
-   "name": "Skrelv, Defector Mite"
-  },
-  {
-   "set": "inr",
-   "cn": "22",
-   "name": "Fiend Hunter"
+   "set": "ulst",
+   "cn": "7",
+   "name": "Rules Lawyer"
   },
   {
    "set": "pca",
@@ -461,29 +46,64 @@
    "name": "Replenish"
   },
   {
-   "set": "pca",
-   "cn": "6",
-   "name": "Felidar Umbra"
-  },
-  {
    "set": "fic",
    "cn": "454",
    "name": "Brilliant Wings"
   },
   {
-   "set": "fdc",
-   "cn": "275",
-   "name": "Nettlecyst"
+   "set": "tor",
+   "cn": "5",
+   "name": "Floating Shield"
   },
   {
-   "set": "sld",
-   "cn": "2081",
-   "name": "Super State"
+   "set": "und",
+   "cn": "9",
+   "name": "Look at Me, I'm R&D"
   },
   {
-   "set": "fdc",
-   "cn": "41",
-   "name": "Norn's Choirmaster"
+   "set": "und",
+   "cn": "13",
+   "name": "Staying Power"
+  },
+  {
+   "set": "unh",
+   "cn": "37",
+   "name": "Magical Hacker"
+  },
+  {
+   "set": "inr",
+   "cn": "71",
+   "name": "Laboratory Maniac"
+  },
+  {
+   "set": "und",
+   "cn": "23",
+   "name": "Johnny, Combo Player"
+  },
+  {
+   "set": "ulst",
+   "cn": "14",
+   "name": "Clocknapper"
+  },
+  {
+   "set": "jmp",
+   "cn": "14",
+   "name": "Scholar of the Lost Trove"
+  },
+  {
+   "set": "ugl",
+   "cn": "22",
+   "name": "Denied!"
+  },
+  {
+   "set": "ust",
+   "cn": "40",
+   "name": "More or Less"
+  },
+  {
+   "set": "hho",
+   "cn": "7†",
+   "name": "Gifts Given"
   },
   {
    "set": "pip",
@@ -491,9 +111,174 @@
    "name": "Radstorm"
   },
   {
+   "set": "nem",
+   "cn": "48",
+   "name": "Submerge"
+  },
+  {
+   "set": "hop",
+   "cn": "9",
+   "name": "Fabricate"
+  },
+  {
+   "set": "vma",
+   "cn": "3",
+   "name": "Timetwister"
+  },
+  {
+   "set": "j15",
+   "cn": "1",
+   "name": "Temporal Manipulation"
+  },
+  {
+   "set": "usg",
+   "cn": "103",
+   "name": "Time Spiral"
+  },
+  {
+   "set": "cmb2",
+   "cn": "16",
+   "name": "Animate Spell"
+  },
+  {
+   "set": "mb2",
+   "cn": "539",
+   "name": "Wisedrafter's Will"
+  },
+  {
+   "set": "sum",
+   "cn": "53",
+   "name": "Copy Artifact"
+  },
+  {
+   "set": "und",
+   "cn": "29",
+   "name": "Topsy Turvy"
+  },
+  {
+   "set": "exo",
+   "cn": "40",
+   "name": "Mind Over Matter"
+  },
+  {
+   "set": "unf",
+   "cn": "365",
+   "name": "\"Lifetime\" Pass Holder"
+  },
+  {
+   "set": "mbc",
+   "cn": "19",
+   "name": "Thomil, the Destroyer"
+  },
+  {
+   "set": "unh",
+   "cn": "48",
+   "name": "Aesthetic Consultation"
+  },
+  {
+   "set": "und",
+   "cn": "33",
+   "name": "Booster Tutor"
+  },
+  {
+   "set": "ice",
+   "cn": "121",
+   "name": "Demonic Consultation"
+  },
+  {
+   "set": "all",
+   "cn": "45",
+   "name": "Contagion"
+  },
+  {
    "set": "exo",
    "cn": "64",
    "name": "Hatred"
+  },
+  {
+   "set": "sum",
+   "cn": "97",
+   "name": "Contract from Below"
+  },
+  {
+   "set": "cmb2",
+   "cn": "52",
+   "name": "Yawgmoth's Testament"
+  },
+  {
+   "set": "nem",
+   "cn": "58",
+   "name": "Massacre"
+  },
+  {
+   "set": "ice",
+   "cn": "118",
+   "name": "Dance of the Dead"
+  },
+  {
+   "set": "unh",
+   "cn": "60",
+   "name": "Necro-Impotence"
+  },
+  {
+   "set": "unh",
+   "cn": "82",
+   "name": "Mons's Goblin Waiters"
+  },
+  {
+   "set": "ust",
+   "cn": "101",
+   "name": "Wrench-Rigger"
+  },
+  {
+   "set": "unf",
+   "cn": "107",
+   "name": "_____ Goblin"
+  },
+  {
+   "set": "fdc",
+   "cn": "137",
+   "name": "Anger"
+  },
+  {
+   "set": "sld",
+   "cn": "2082",
+   "name": "Knuckles the Echidna"
+  },
+  {
+   "set": "inr",
+   "cn": "148",
+   "name": "Chandra, Dressed to Kill"
+  },
+  {
+   "set": "q06",
+   "cn": "6",
+   "name": "Chandra, Torch of Defiance"
+  },
+  {
+   "set": "unf",
+   "cn": "125",
+   "name": "Trigger Happy"
+  },
+  {
+   "set": "nem",
+   "cn": "94",
+   "name": "Mogg Salvage"
+  },
+  {
+   "set": "vma",
+   "cn": "192",
+   "name": "Wheel of Fortune"
+  },
+  {
+   "set": "scd",
+   "cn": "151",
+   "name": "Mana Geyser"
+  },
+  {
+   "set": "fdc",
+   "cn": "140",
+   "name": "Blasphemous Act"
   },
   {
    "set": "mb2",
@@ -501,29 +286,269 @@
    "name": "Phyrexian Seedling"
   },
   {
-   "set": "tmp",
-   "cn": "57",
-   "name": "Counterspell"
+   "set": "ph19",
+   "cn": "5",
+   "name": "Myntasha, Honored One"
   },
   {
-   "set": "msc",
-   "cn": "876",
-   "name": "Mister Fantastic"
+   "set": "gnt",
+   "cn": "5",
+   "name": "Avatar of Growth"
+  },
+  {
+   "set": "cmb2",
+   "cn": "85",
+   "name": "Vazal, the Compleat"
+  },
+  {
+   "set": "ltc",
+   "cn": "537",
+   "name": "Legolas's Quick Reflexes"
+  },
+  {
+   "set": "unf",
+   "cn": "149",
+   "name": "Pair o' Dice Lost"
+  },
+  {
+   "set": "vma",
+   "cn": "208",
+   "name": "Eureka"
+  },
+  {
+   "set": "who",
+   "cn": "820",
+   "name": "Carpet of Flowers"
+  },
+  {
+   "set": "vma",
+   "cn": "209",
+   "name": "Fastbond"
+  },
+  {
+   "set": "unf",
+   "cn": "118",
+   "name": "Opening Ceremony"
+  },
+  {
+   "set": "rex",
+   "cn": "42",
+   "name": "Permission Denied"
+  },
+  {
+   "set": "slx",
+   "cn": "5",
+   "name": "Hargilde, Kindly Runechanter"
   },
   {
    "set": "mb2",
-   "cn": "504",
-   "name": "Omnipresent Impostor"
+   "cn": "605",
+   "name": "Wrath of Leknif"
+  },
+  {
+   "set": "prm",
+   "cn": "80919",
+   "name": "Gyruda, Doom of Depths"
+  },
+  {
+   "set": "ice",
+   "cn": "116",
+   "name": "Burnt Offering"
+  },
+  {
+   "set": "sld",
+   "cn": "2203",
+   "name": "Ellie, Vengeful Hunter"
+  },
+  {
+   "set": "sld",
+   "cn": "1753",
+   "name": "Deadpool, Trading Card"
+  },
+  {
+   "set": "slx",
+   "cn": "4",
+   "name": "Elmar, Ulvenwald Informant"
+  },
+  {
+   "set": "slx",
+   "cn": "6",
+   "name": "Othelm, Sigardian Outcast"
+  },
+  {
+   "set": "slx",
+   "cn": "8",
+   "name": "Wernog, Rider's Chaplain"
+  },
+  {
+   "set": "slx",
+   "cn": "2",
+   "name": "Bjorna, Nightfall Alchemist"
+  },
+  {
+   "set": "ph17",
+   "cn": "2",
+   "name": "Inzerva, Master of Insights"
+  },
+  {
+   "set": "vis",
+   "cn": "137",
+   "name": "Squandered Resources"
+  },
+  {
+   "set": "sld",
+   "cn": "2198",
+   "name": "Joel, Resolute Survivor"
+  },
+  {
+   "set": "unf",
+   "cn": "166",
+   "name": "Comet, Stellar Pup"
+  },
+  {
+   "set": "slx",
+   "cn": "7",
+   "name": "Sophina, Spearsage Deserter"
+  },
+  {
+   "set": "hho",
+   "cn": "25",
+   "name": "Cheer"
+  },
+  {
+   "set": "40k",
+   "cn": "7",
+   "name": "Magus Lucea Kane"
+  },
+  {
+   "set": "ph17",
+   "cn": "3",
+   "name": "M'Odo, the Gnarled Oracle"
+  },
+  {
+   "set": "ph18",
+   "cn": "3",
+   "name": "Sol, Advocate Eternal"
+  },
+  {
+   "set": "mbc",
+   "cn": "33",
+   "name": "Arzakon"
+  },
+  {
+   "set": "ph21",
+   "cn": "4",
+   "name": "Ersta, Friend to All"
+  },
+  {
+   "set": "h1r",
+   "cn": "26",
+   "name": "The First Sliver"
+  },
+  {
+   "set": "ph22",
+   "cn": "5",
+   "name": "Wizard from Beyond"
+  },
+  {
+   "set": "cmb2",
+   "cn": "102",
+   "name": "Slivdrazi Monstrosity"
   },
   {
    "set": "fdc",
-   "cn": "269",
-   "name": "Metallic Mimic"
+   "cn": "277",
+   "name": "Ornithopter of Paradise"
   },
   {
-   "set": "lci",
-   "cn": "410f",
-   "name": "Cavern of Souls"
+   "set": "ugl",
+   "cn": "69",
+   "name": "Ashnod's Coupon"
+  },
+  {
+   "set": "ugl",
+   "cn": "70",
+   "name": "Blacker Lotus"
+  },
+  {
+   "set": "ugl",
+   "cn": "75",
+   "name": "Jack-in-the-Mox"
+  },
+  {
+   "set": "ice",
+   "cn": "326",
+   "name": "Jeweled Amulet"
+  },
+  {
+   "set": "cmb2",
+   "cn": "107",
+   "name": "Mirrored Lotus"
+  },
+  {
+   "set": "mb2",
+   "cn": "608",
+   "name": "Mox Poison"
+  },
+  {
+   "set": "unf",
+   "cn": "190",
+   "name": "Park Map"
+  },
+  {
+   "set": "exo",
+   "cn": "139",
+   "name": "Sphere of Resistance"
+  },
+  {
+   "set": "vma",
+   "cn": "287",
+   "name": "Time Vault"
+  },
+  {
+   "set": "fdc",
+   "cn": "275",
+   "name": "Nettlecyst"
+  },
+  {
+   "set": "who",
+   "cn": "186",
+   "name": "Sonic Screwdriver"
+  },
+  {
+   "set": "sld",
+   "cn": "2081",
+   "name": "Super State"
+  },
+  {
+   "set": "mb2",
+   "cn": "588",
+   "name": "Wrenn and One"
+  },
+  {
+   "set": "vma",
+   "cn": "294",
+   "name": "Bazaar of Baghdad"
+  },
+  {
+   "set": "eos",
+   "cn": "2",
+   "name": "Blast Zone"
+  },
+  {
+   "set": "cmb2",
+   "cn": "116",
+   "name": "Gold Mine"
+  },
+  {
+   "set": "vma",
+   "cn": "303",
+   "name": "Library of Alexandria"
+  },
+  {
+   "set": "vma",
+   "cn": "305",
+   "name": "Mishra's Workshop"
   },
   {
    "set": "fdc",
@@ -531,9 +556,19 @@
    "name": "Rogue's Passage"
   },
   {
-   "set": "bot",
-   "cn": "6",
-   "name": "Slicer, Hired Muscle // Slicer, High-Speed Antagonist"
+   "set": "pf25",
+   "cn": "4",
+   "name": "Second City"
+  },
+  {
+   "set": "ath",
+   "cn": "77",
+   "name": "Strip Mine"
+  },
+  {
+   "set": "prm",
+   "cn": "60450",
+   "name": "The Tabernacle at Pendrell Vale"
   }
  ],
  "ja_but_no_printed_text": [
