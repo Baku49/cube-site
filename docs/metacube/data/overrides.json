@@ -111,11 +111,11 @@
   "img": "../assets/cards/exo-129-ja.jpg"
  },
  "exo:139": {
+  "src": "mtgwiki",
+  "name": "抵抗の宝球",
   "type": "アーティファクト",
   "text": "呪文は、それを唱えるためのコストが{1}多くなる。",
-  "flavor": "珠は、あらゆる方向に同じ力を出すんだ。",
-  "src": "wisdom-guild",
-  "img": "../assets/cards/exo-139-ja.jpg"
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fcustom%2Fmtg_17f4d2a5-bb85-4662-b2dd-a363ec7eab9b.jpg?alt=media&token=471cf185-2322-4e81-a926-0928152d8d99"
  },
  "exo:55": {
   "type": "インスタント",
@@ -1229,9 +1229,10 @@
   "img": "img/ja/exo_10.jpg"
  },
  "und:13": {
+  "src": "mtgwiki",
   "type": "エンチャント",
   "text": "「ターン終了時まで」と「このターン」の効果は終わらない。",
-  "src": "mtgwiki"
+  "img": "https://cards.scryfall.io/normal/front/f/c/fcc13f28-6d2e-4589-b475-3c18d0eea2de.jpg?1783931347"
  },
  "sok:35": {
   "type": "伝説のクリーチャー — ムーンフォーク・モンク",
@@ -1241,10 +1242,11 @@
   "img": "img/ja/sok_35.jpg"
  },
  "ulst:14": {
+  "src": "mtgwiki",
   "type": "伝説のクリーチャー — 人間・スパイ",
-  "text": "時計泥棒が戦場に出たとき、プレイヤー１人を対象とする。開始フェイズか戦闘前メイン・フェイズか戦闘フェイズか戦闘後メイン・フェイズか終了フェイズかを選ぶ。そのプレイヤーの次のターンの間、そのフェイズをそのプレイヤーから盗む（そのフェイズは、代わりに、あなたのターンであるかのように起こる。）",
+  "text": "時計泥棒が戦場に出たとき、プレイヤー１人を対象とする。開始フェイズか戦闘前メイン・フェイズか戦闘フェイズか戦闘後メイン・フェイズか終了フェイズかを選ぶ。そのプレイヤーの次のターンの間、そのフェイズをそのプレイヤーから盗む（そのフェイズは、代わりに、あなたのターンであるかのように起こる。）\n透かし：S.N.E.A.K.職員/Agents of S.N.E.A.K.",
   "pt": "2/2",
-  "src": "mtgwiki"
+  "img": "https://cards.scryfall.io/normal/front/1/b/1b2ef373-66db-41e1-b5ea-771a5c3ef5a9.jpg?1783920332"
  },
  "cmb2:52": {
   "type": "ソーサリー",
@@ -1733,5 +1735,64 @@
  },
  "fdc:310": {
   "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F58c76a0c-f13c-483c-bb7b-9af21d7fc924.jpg?alt=media&token=8867d225-2b11-468b-ac56-acb72900c109"
+ },
+ "tor:5": {
+  "src": "mtgwiki",
+  "name": "浮揚盾",
+  "type": "エンチャント — オーラ",
+  "text": "エンチャント（クリーチャー）\n浮揚盾が戦場に出るに際し、色を１色選ぶ。\nエンチャントされているクリーチャーは、選ばれた色に対するプロテクションを持つ。この効果は、浮揚盾自身を取り除かない。\n浮揚盾を生け贄に捧げる：クリーチャー１体を対象とする。それはターン終了時まで選ばれた色に対するプロテクションを得る。",
+  "img": "https://cards.scryfall.io/normal/front/4/d/4dbda39b-a998-4ad9-95df-72ed9556c390.jpg?1783945169"
+ },
+ "jmp:14": {
+  "src": "mtgwiki",
+  "type": "クリーチャー — スフィンクス",
+  "text": "飛行\n失われた宝物庫の学者が戦場に出たとき、あなたの墓地からインスタントかソーサリーかアーティファクトであるカード１枚を対象とし、それを、そのマナ・コストを支払うことなく唱えてもよい。これにより唱えられたインスタント呪文かソーサリー呪文があなたの墓地に置かれるなら、代わりにそれを追放する。",
+  "pt": "5/5",
+  "img": "https://cards.scryfall.io/normal/front/a/a/aa254a86-3c30-408d-9c14-befd472f9740.jpg?1783930505"
+ },
+ "nem:48": {
+  "src": "mtgwiki",
+  "name": "水没",
+  "type": "インスタント",
+  "text": "いずれかの対戦相手が森をコントロールしており、あなたが島をコントロールしているなら、あなたはこの呪文をそのマナ・コストを支払うことなく唱えてもよい。\nクリーチャー１体を対象とし、それをオーナーのライブラリーの一番上に置く。",
+  "img": "https://cards.scryfall.io/normal/front/d/2/d2741fe4-37fe-427f-ae85-5107991d4eee.jpg?1783945831"
+ },
+ "sum:53": {
+  "src": "mtgwiki",
+  "type": "エンチャント",
+  "text": "あなたは、Copy Artifactが、それの他のタイプに加えてエンチャントであることを除き、戦場に出ているいずれかのアーティファクトのコピーとして戦場に出ることを選んでもよい。",
+  "img": "https://cards.scryfall.io/normal/front/2/1/2183848b-c0ad-46a0-a017-e60210c4c6b7.jpg?1783948010"
+ },
+ "nem:58": {
+  "src": "mtgwiki",
+  "name": "虐殺",
+  "type": "ソーサリー",
+  "text": "いずれかの対戦相手が平地をコントロールしており、かつあなたが沼をコントロールしているなら、あなたはこの呪文をそのマナ・コストを支払うことなく唱えてもよい。\nターン終了時まで、すべてのクリーチャーは-2/-2の修整を受ける。",
+  "img": "https://cards.scryfall.io/normal/front/f/0/f05f5d93-50d1-4aa6-af05-383a6808345b.jpg?1783945827"
+ },
+ "vis:137": {
+  "src": "mtgwiki",
+  "name": "資源の浪費",
+  "type": "エンチャント",
+  "text": "土地を１つ生け贄に捧げる：生け贄に捧げられた土地が生み出すことのできる好きなタイプのマナ１点を加える。",
+  "img": "https://cards.scryfall.io/normal/front/f/c/fcddbea7-3025-47b1-a597-2d2b2711fb81.jpg?1783946976"
+ },
+ "fdc:137": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F6d8438e5-33fa-4fd6-9e69-b5b73df01dde.jpg?alt=media&token=1ee9f12f-b6f8-449e-8965-314b7dbaedc4"
+ },
+ "inr:148": {
+  "img": "https://cards.scryfall.io/normal/front/f/5/f54e433d-e014-4692-a6be-34268f6d0441.jpg?1782866256"
+ },
+ "nem:94": {
+  "img": "https://cards.scryfall.io/normal/front/4/0/403aa48c-b684-4c54-8863-460958055a1f.jpg?1783945818"
+ },
+ "fdc:140": {
+  "img": "https://cards.scryfall.io/normal/front/4/9/49b4db06-3c29-4063-b513-a782b7a58cad.jpg?1782987643"
+ },
+ "who:820": {
+  "img": "https://cards.scryfall.io/normal/front/8/6/86e6f8f9-c17c-4f96-9283-a8a4d27b4746.jpg?1783914365"
+ },
+ "fdc:277": {
+  "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F025b0f0f-daf6-4071-82e7-39c015447ce4.jpg?alt=media&token=0cf638cf-3ed7-4ccd-a877-62ba680f2048"
  }
 }
