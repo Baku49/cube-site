@@ -5,6 +5,7 @@ import re
 入力:
   --csv      Cube Cobra 書き出しCSV (mainboard)
   --scry     ブラウザで取得した Scryfall データ {"set:cn": {en, ja, jaOther}}  (slim 形式)
+             任意で img_override（Cube Builder の表示画像URL）、rec（以前のレコードをそのまま復元）を付けられる
   --wg       ブラウザで取得した Wisdom Guild データ {name: {found, rows{...}}}
   --elo      ブラウザで取得した Cube Cobra Elo {cardID: {name,set,cn,elo}}
   --date     更新日 (YYYY-MM-DD)
@@ -36,6 +37,17 @@ def cat_of(ci):
 NOTE_RE = re.compile(r'\n?(透かし|すかし)[：:][^\n]*|\n?\[どんぐりシンボル付き[^\]]*\]')
 def strip_notes(t):
     return NOTE_RE.sub('', t).strip() if t else t
+
+FURI_RE = re.compile(r'（[ぁ-んー]+）')
+JP_RE = re.compile(r'[ぁ-んァ-ヶ一-龥]')
+def strip_furigana(name):
+    """Scryfall の日本語名に混じる振り仮名「隊（たい）長（ちょう）」を外す"""
+    return FURI_RE.sub('', name) if name else name
+
+def has_ja_text(rec):
+    """日本語のテキストを持っているか（Scryfall の日本語版データでも中身が英語のことがある）"""
+    ts = [f.get('printed_text') for f in rec['faces']] if rec.get('faces') else [rec.get('printed_text')]
+    return any(t and JP_RE.search(t) for t in ts)
 
 def ci_norm(ci):
     return ''.join(sorted(set(ci or ''), key='WUBRG'.index)) if ci and all(ch in 'WUBRG' for ch in ci) else (ci or '')
@@ -110,8 +122,8 @@ def apply_wg(rec, wg):
     ja_name = None
     if '/' in name_row:
         ja_name = name_row.split('/')[0].strip()
-    text = rows.get('テキスト', '').strip()
-    typ = rows.get('タイプ', '').strip()
+    text = strip_notes(strip_en_types(rows.get('テキスト', '').strip()))
+    typ = strip_en_types(rows.get('タイプ', '').strip())
     flav = rows.get('フレーバ', '').strip()
     pt = rows.get('Ｐ／Ｔ', '').strip()
     ov = {}
@@ -125,7 +137,7 @@ def apply_wg(rec, wg):
     if text:
         rec['printed_text'] = text
         ov['text'] = conv_symbols(text)
-    if flav and rec['lang'] != 'ja':
+    if flav and (rec['lang'] != 'ja' or not rec.get('flavor_text')):
         ov['flavor'] = flav
     if pt and text:
         ov['pt'] = pt
@@ -179,12 +191,22 @@ def main():
             rec = dict(old_map[k]); rec['count'] = counts[k]
         else:
             d = scry[f'{k[0]}:{k[1]}']
-            en, ja, jo = d['en'], d['ja'], d['jaOther']
-            if not ja and jo and jo['set'] == en['set']:
-                ja = jo
-            rec = build_record(en, ja, jo, counts[k])
             key = f'{k[0]}:{k[1]}'
-            has_ja = rec.get('printed_text') or (rec.get('faces') and any(f.get('printed_text') for f in rec['faces']))
+            if d.get('rec'):
+                # 以前のリストにあったカードの復元（レコードと overrides をそのまま使う）
+                rec = dict(d['rec']); rec['count'] = counts[k]
+                has_ja = True
+            else:
+                en, ja, jo = d['en'], d['ja'], d['jaOther']
+                if not ja and jo and jo['set'] == en['set']:
+                    ja = jo
+                rec = build_record(en, ja, jo, counts[k])
+                rec['printed_name'] = strip_furigana(rec.get('printed_name'))
+                for f in rec.get('faces') or []:
+                    f['printed_name'] = strip_furigana(f.get('printed_name'))
+                has_ja = has_ja_text(rec)
+            if key in overrides and (overrides[key].get('text') or overrides[key].get('type')):
+                has_ja = True   # 既存の訳（overrides）を優先して残す
             if not has_ja:
                 w = wg.get(front(rec['name']))
                 ov = apply_wg(rec, w) if (w and w.get('found')) else None
@@ -204,6 +226,9 @@ def main():
                                     if not rec.get(f):
                                         rec[f] = ox.get(f)
                             break
+            if d.get('img_override'):
+                # 日本語版スキャンが無いカードは Cube Builder の表示画像を使う（作者の指示 2026-11-15）
+                overrides.setdefault(key, {})['img'] = d['img_override']
             if rec['lang'] != 'ja':
                 missing_ja.append({'set': k[0], 'cn': k[1], 'name': rec['name']})
             added_recs.append(rec)
