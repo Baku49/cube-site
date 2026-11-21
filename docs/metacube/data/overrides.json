@@ -1738,7 +1738,7 @@
   "type": "エンチャント — オーラ",
   "text": "エンチャント（クリーチャー）\n浮揚盾が戦場に出るに際し、色を１色選ぶ。\nエンチャントされているクリーチャーは、選ばれた色に対するプロテクションを持つ。この効果は、浮揚盾自身を取り除かない。\n浮揚盾を生け贄に捧げる：クリーチャー１体を対象とする。それはターン終了時まで選ばれた色に対するプロテクションを得る。",
   "src": "wisdom-guild",
-  "img": "https://cards.scryfall.io/normal/front/4/d/4dbda39b-a998-4ad9-95df-72ed9556c390.jpg?1783945169"
+  "img": "img/ja/tor_5.jpg"
  },
  "jmp:14": {
   "name": "失われた宝物庫の学者",
@@ -1751,7 +1751,7 @@
   "type": "インスタント",
   "text": "いずれかの対戦相手が森をコントロールしており、あなたが島をコントロールしているなら、あなたはこの呪文をそのマナ・コストを支払うことなく唱えてもよい。\nクリーチャー１体を対象とし、それをオーナーのライブラリーの一番上に置く。",
   "src": "wisdom-guild",
-  "img": "https://cards.scryfall.io/normal/front/d/2/d2741fe4-37fe-427f-ae85-5107991d4eee.jpg?1783945831"
+  "img": "img/ja/nem_48.jpg"
  },
  "sum:53": {
   "type": "エンチャント",
@@ -1762,7 +1762,7 @@
   "type": "ソーサリー",
   "text": "いずれかの対戦相手が平地をコントロールしており、かつあなたが沼をコントロールしているなら、あなたはこの呪文をそのマナ・コストを支払うことなく唱えてもよい。\nターン終了時まで、すべてのクリーチャーは-2/-2の修整を受ける。",
   "src": "wisdom-guild",
-  "img": "https://cards.scryfall.io/normal/front/f/0/f05f5d93-50d1-4aa6-af05-383a6808345b.jpg?1783945827"
+  "img": "img/ja/nem_58.jpg"
  },
  "fdc:137": {
   "img": "https://firebasestorage.googleapis.com/v0/b/vr-card-cube.firebasestorage.app/o/cards%2Fmtg%2F6d8438e5-33fa-4fd6-9e69-b5b73df01dde.jpg?alt=media&token=1ee9f12f-b6f8-449e-8965-314b7dbaedc4"
@@ -1771,7 +1771,7 @@
   "img": "https://cards.scryfall.io/normal/front/f/5/f54e433d-e014-4692-a6be-34268f6d0441.jpg?1782866256"
  },
  "nem:94": {
-  "img": "https://cards.scryfall.io/normal/front/4/0/403aa48c-b684-4c54-8863-460958055a1f.jpg?1783945818"
+  "img": "img/ja/nem_94.jpg"
  },
  "fdc:140": {
   "img": "https://cards.scryfall.io/normal/front/4/9/49b4db06-3c29-4063-b513-a782b7a58cad.jpg?1782987643"
@@ -1781,7 +1781,7 @@
   "text": "土地を１つ生け贄に捧げる：生け贄に捧げられた土地が生み出すことのできる好きなタイプのマナ１点を加える。",
   "flavor": "彼女は砂を革と、革を金と、金を生命と取り替えた。結局彼女は、砂を生命と取り替えたわけだ。――― アファーリー「語り」.",
   "src": "wisdom-guild",
-  "img": "https://cards.scryfall.io/normal/front/f/c/fcddbea7-3025-47b1-a597-2d2b2711fb81.jpg?1783946976"
+  "img": "img/ja/vis_137.jpg"
  },
  "eoe:226": {
   "type": "伝説のクリーチャー — 人間・工匠・ならず者",
@@ -1878,5 +1878,8 @@
   "type": "土地",
   "text": "{T}：{C}を加える。\n{4},{T}：増殖を行う。（望む数のパーマネントやプレイヤーを選び、その後すでにそこにあるカウンター１種類につき、そのカウンターをもう１個与える。）",
   "src": "wisdom-guild"
+ },
+ "who:820": {
+  "img": "https://cards.scryfall.io/normal/front/c/8/c840a33f-ec6b-41af-acdd-bf7b7c7a1d20.jpg?1782811490"
  }
 }
